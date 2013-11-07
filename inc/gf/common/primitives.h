@@ -1,7 +1,9 @@
 ﻿#ifndef GF_COMMON_PRIMITIVES_H
 #define GF_COMMON_PRIMITIVES_H
 
-#include <uchar.h>
+#ifndef __cplusplus
+#   include <uchar.h>
+#endif  // __cplusplus
 
 typedef bool gfBool;
 
