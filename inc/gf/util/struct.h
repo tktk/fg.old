@@ -10,7 +10,7 @@
     , _struct   \
 )   \
     GFEXTERNC_START \
-    struct _namespace##_struct; \
+    typedef struct _namespace##_struct _namespace##_struct; \
     GFEXPORT void _namespace##_struct##Free(    \
         _namespace##_struct *   \
     );  \
