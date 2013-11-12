@@ -1,5 +1,5 @@
-﻿#ifndef GF_MAIN_GAMECONFIG_H
-#define GF_MAIN_GAMECONFIG_H
+﻿#ifndef GF_BOOT_GAMECONFIG_H
+#define GF_BOOT_GAMECONFIG_H
 
 #include "gf/util/import.h"
 #include "gf/util/externc.h"
@@ -14,4 +14,4 @@ GFEXPORT gfGameConfig * gfGameConfigNew(
 
 GFEXTERNC_END
 
-#endif  // GF_MAIN_GAMECONFIG_H
+#endif  // GF_BOOT_GAMECONFIG_H
