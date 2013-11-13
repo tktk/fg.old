@@ -3,13 +3,16 @@
 
 #include "gf/util/import.h"
 #include "gf/util/externc.h"
-#include "gf/util/struct.h"
-
-GFSTRUCT( gf, GameConfig )
 
 GFEXTERNC_START
 
-GFEXPORT gfGameConfig * gfGameConfigNew(
+typedef struct GfGameConfig GfGameConfig;
+
+GFEXPORT GfGameConfig * gfGameConfigNew(
+);
+
+GFEXPORT void gfGameConfigFree(
+    GfGameConfig *
 );
 
 GFEXTERNC_END

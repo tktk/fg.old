@@ -8,8 +8,8 @@
 
 GFEXTERNC_START
 
-GFEXPORT gfInt gfBoot(
-    const gfGameConfig *
+GFEXPORT GfInt gfBoot(
+    const GfGameConfig *
 );
 
 GFEXTERNC_END
