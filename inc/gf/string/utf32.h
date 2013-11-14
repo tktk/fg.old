@@ -93,6 +93,14 @@ GFEXPORT void gfUtf32Free(
     GfUtf32 *
 );
 
+GFEXPORT const GfUtf32Char * gfUtf32GetPtr(
+    const GfUtf32 *
+);
+
+GFEXPORT GfSize gfUtf32GetLength(
+    const GfUtf32 *
+);
+
 GFEXTERNC_END
 
 #endif  // GF_STRING_UTF32_H

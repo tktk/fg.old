@@ -93,6 +93,14 @@ GFEXPORT void gfUtf8Free(
     GfUtf8 *
 );
 
+GFEXPORT const GfUtf8Char * gfUtf8GetPtr(
+    const GfUtf8 *
+);
+
+GFEXPORT GfSize gfUtf8GetLength(
+    const GfUtf8 *
+);
+
 GFEXTERNC_END
 
 #endif  // GF_STRING_UTF8_H

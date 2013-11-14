@@ -93,6 +93,14 @@ GFEXPORT void gfUtf16Free(
     GfUtf16 *
 );
 
+GFEXPORT const GfUtf16Char * gfUtf16GetPtr(
+    const GfUtf16 *
+);
+
+GFEXPORT GfSize gfUtf16GetLength(
+    const GfUtf16 *
+);
+
 GFEXTERNC_END
 
 #endif  // GF_STRING_UTF16_H

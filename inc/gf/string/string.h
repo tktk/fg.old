@@ -93,6 +93,14 @@ GFEXPORT void gfStringFree(
     GfString *
 );
 
+GFEXPORT const GfStringChar * gfStringGetPtr(
+    const GfString *
+);
+
+GFEXPORT GfSize gfStringGetLength(
+    const GfString *
+);
+
 GFEXTERNC_END
 
 #endif  // GF_STRING_STRING_H
