@@ -17,14 +17,26 @@ GFEXPORT void gfGameConfigFree(
     GfGameConfig *
 );
 
+GFEXPORT const GfUtf32 * gfGameConfigGetBinDir(
+    const GfGameConfig *
+);
+
 GFEXPORT GfBool gfGameConfigSetBinDir(
     GfGameConfig *
     , const GfUtf32 *
 );
 
+GFEXPORT const GfUtf32 * gfGameConfigGetMainFile(
+    const GfGameConfig *
+);
+
 GFEXPORT GfBool gfGameConfigSetMainFile(
     GfGameConfig *
     , const GfUtf32 *
+);
+
+GFEXPORT const GfUtf32 * gfGameConfigGetMain(
+    const GfGameConfig *
 );
 
 GFEXPORT GfBool gfGameConfigSetMain(
