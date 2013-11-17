@@ -17,39 +17,6 @@ GFEXTERNC_END
 
 GFEXTERNC_START
 
-GFEXPORT GfBool gfStringFromUtf8(
-    GfString *
-    , const GfUtf8 *
-);
-
-GFEXPORT GfBool gfStringFromUtf8CharPtr(
-    GfString *
-    , const GfUtf8Char *
-    , GfSize
-);
-
-GFEXPORT GfBool gfStringFromUtf16(
-    GfString *
-    , const GfUtf16 *
-);
-
-GFEXPORT GfBool gfStringFromUtf16CharPtr(
-    GfString *
-    , const GfUtf16Char *
-    , GfSize
-);
-
-GFEXPORT GfBool gfStringFromUtf32(
-    GfString *
-    , const GfUtf32 *
-);
-
-GFEXPORT GfBool gfStringFromUtf32CharPtr(
-    GfString *
-    , const GfUtf32Char *
-    , GfSize
-);
-
 GFEXPORT GfString * gfStringNew(
 );
 
@@ -99,6 +66,50 @@ GFEXPORT const GfStringChar * gfStringGetPtr(
 
 GFEXPORT GfSize gfStringGetLength(
     const GfString *
+);
+
+GFEXPORT GfBool gfStringAssign(
+    GfString *
+    , const GfString *
+);
+
+GFEXPORT GfBool gfStringAssignFromCharPtr(
+    GfString *
+    , const GfStringChar *
+    , GfSize
+);
+
+GFEXPORT GfBool gfStringAssignFromUtf8(
+    GfString *
+    , const GfUtf8 *
+);
+
+GFEXPORT GfBool gfStringAssignFromUtf8CharPtr(
+    GfString *
+    , const GfUtf8Char *
+    , GfSize
+);
+
+GFEXPORT GfBool gfStringAssignFromUtf16(
+    GfString *
+    , const GfUtf16 *
+);
+
+GFEXPORT GfBool gfStringAssignFromUtf16CharPtr(
+    GfString *
+    , const GfUtf16Char *
+    , GfSize
+);
+
+GFEXPORT GfBool gfStringAssignFromUtf32(
+    GfString *
+    , const GfUtf32 *
+);
+
+GFEXPORT GfBool gfStringAssignFromUtf32CharPtr(
+    GfString *
+    , const GfUtf32Char *
+    , GfSize
 );
 
 GFEXTERNC_END
