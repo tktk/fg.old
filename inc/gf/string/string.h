@@ -26,6 +26,10 @@ GFEXPORT GfString * gfStringClone(
 
 GFEXPORT GfString * gfStringNewFromCharPtr(
     const GfStringChar *
+);
+
+GFEXPORT GfString * gfStringNewFromCharPtrWithLength(
+    const GfStringChar *
     , GfSize
 );
 
@@ -34,6 +38,10 @@ GFEXPORT GfString * gfStringNewFromUtf8(
 );
 
 GFEXPORT GfString * gfStringNewFromUtf8CharPtr(
+    const GfUtf8Char *
+);
+
+GFEXPORT GfString * gfStringNewFromUtf8CharPtrWithLength(
     const GfUtf8Char *
     , GfSize
 );
@@ -44,6 +52,10 @@ GFEXPORT GfString * gfStringNewFromUtf16(
 
 GFEXPORT GfString * gfStringNewFromUtf16CharPtr(
     const GfUtf16Char *
+);
+
+GFEXPORT GfString * gfStringNewFromUtf16CharPtrWithLength(
+    const GfUtf16Char *
     , GfSize
 );
 
@@ -52,6 +64,10 @@ GFEXPORT GfString * gfStringNewFromUtf32(
 );
 
 GFEXPORT GfString * gfStringNewFromUtf32CharPtr(
+    const GfUtf32Char *
+);
+
+GFEXPORT GfString * gfStringNewFromUtf32CharPtrWithLength(
     const GfUtf32Char *
     , GfSize
 );
@@ -76,6 +92,11 @@ GFEXPORT GfBool gfStringAssign(
 GFEXPORT GfBool gfStringAssignFromCharPtr(
     GfString *
     , const GfStringChar *
+);
+
+GFEXPORT GfBool gfStringAssignFromCharPtrWithLength(
+    GfString *
+    , const GfStringChar *
     , GfSize
 );
 
@@ -85,6 +106,11 @@ GFEXPORT GfBool gfStringAssignFromUtf8(
 );
 
 GFEXPORT GfBool gfStringAssignFromUtf8CharPtr(
+    GfString *
+    , const GfUtf8Char *
+);
+
+GFEXPORT GfBool gfStringAssignFromUtf8CharPtrWithLength(
     GfString *
     , const GfUtf8Char *
     , GfSize
@@ -98,6 +124,11 @@ GFEXPORT GfBool gfStringAssignFromUtf16(
 GFEXPORT GfBool gfStringAssignFromUtf16CharPtr(
     GfString *
     , const GfUtf16Char *
+);
+
+GFEXPORT GfBool gfStringAssignFromUtf16CharPtrWithLength(
+    GfString *
+    , const GfUtf16Char *
     , GfSize
 );
 
@@ -107,6 +138,11 @@ GFEXPORT GfBool gfStringAssignFromUtf32(
 );
 
 GFEXPORT GfBool gfStringAssignFromUtf32CharPtr(
+    GfString *
+    , const GfUtf32Char *
+);
+
+GFEXPORT GfBool gfStringAssignFromUtf32CharPtrWithLength(
     GfString *
     , const GfUtf32Char *
     , GfSize
