@@ -26,6 +26,10 @@ GFEXPORT GfUtf16 * gfUtf16Clone(
 
 GFEXPORT GfUtf16 * gfUtf16NewFromCharPtr(
     const GfUtf16Char *
+);
+
+GFEXPORT GfUtf16 * gfUtf16NewFromCharPtrWithLength(
+    const GfUtf16Char *
     , GfSize
 );
 
@@ -34,6 +38,10 @@ GFEXPORT GfUtf16 * gfUtf16NewFromString(
 );
 
 GFEXPORT GfUtf16 * gfUtf16NewFromStringCharPtr(
+    const GfStringChar *
+);
+
+GFEXPORT GfUtf16 * gfUtf16NewFromStringCharPtrWithLength(
     const GfStringChar *
     , GfSize
 );
@@ -44,6 +52,10 @@ GFEXPORT GfUtf16 * gfUtf16NewFromUtf8(
 
 GFEXPORT GfUtf16 * gfUtf16NewFromUtf8CharPtr(
     const GfUtf8Char *
+);
+
+GFEXPORT GfUtf16 * gfUtf16NewFromUtf8CharPtrWithLength(
+    const GfUtf8Char *
     , GfSize
 );
 
@@ -52,6 +64,11 @@ GFEXPORT GfUtf16 * gfUtf16NewFromUtf32(
 );
 
 GFEXPORT GfUtf16 * gfUtf16NewFromUtf32CharPtr(
+    const GfUtf32Char *
+    , GfSize
+);
+
+GFEXPORT GfUtf16 * gfUtf16NewFromUtf32CharPtrWithLength(
     const GfUtf32Char *
     , GfSize
 );
@@ -76,6 +93,11 @@ GFEXPORT GfBool gfUtf16Assign(
 GFEXPORT GfBool gfUtf16AssignFromCharPtr(
     GfUtf16 *
     , const GfUtf16Char *
+);
+
+GFEXPORT GfBool gfUtf16AssignFromCharPtrWithLength(
+    GfUtf16 *
+    , const GfUtf16Char *
     , GfSize
 );
 
@@ -85,6 +107,11 @@ GFEXPORT GfBool gfUtf16AssignFromString(
 );
 
 GFEXPORT GfBool gfUtf16AssignFromStringCharPtr(
+    GfUtf16 *
+    , const GfStringChar *
+);
+
+GFEXPORT GfBool gfUtf16AssignFromStringCharPtrWithLength(
     GfUtf16 *
     , const GfStringChar *
     , GfSize
@@ -98,6 +125,11 @@ GFEXPORT GfBool gfUtf16AssignFromUtf8(
 GFEXPORT GfBool gfUtf16AssignFromUtf8CharPtr(
     GfUtf16 *
     , const GfUtf8Char *
+);
+
+GFEXPORT GfBool gfUtf16AssignFromUtf8CharPtrWithLength(
+    GfUtf16 *
+    , const GfUtf8Char *
     , GfSize
 );
 
@@ -107,6 +139,11 @@ GFEXPORT GfBool gfUtf16AssignFromUtf32(
 );
 
 GFEXPORT GfBool gfUtf16AssignFromUtf32CharPtr(
+    GfUtf16 *
+    , const GfUtf32Char *
+);
+
+GFEXPORT GfBool gfUtf16AssignFromUtf32CharPtrWithLength(
     GfUtf16 *
     , const GfUtf32Char *
     , GfSize
