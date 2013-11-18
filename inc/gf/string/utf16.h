@@ -65,7 +65,6 @@ GFEXPORT GfUtf16 * gfUtf16NewFromUtf32(
 
 GFEXPORT GfUtf16 * gfUtf16NewFromUtf32CharPtr(
     const GfUtf32Char *
-    , GfSize
 );
 
 GFEXPORT GfUtf16 * gfUtf16NewFromUtf32CharPtrWithLength(
