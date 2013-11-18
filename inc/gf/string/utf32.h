@@ -1,21 +1,13 @@
 ﻿#ifndef GF_STRING_UTF32_H
 #define GF_STRING_UTF32_H
 
-#include "gf/util/externc.h"
-
-GFEXTERNC_START
-
 typedef struct GfUtf32 GfUtf32;
-
-GFEXTERNC_END
 
 #include "gf/string/string.h"
 #include "gf/string/utf8.h"
 #include "gf/string/utf16.h"
 #include "gf/common/primitives.h"
 #include "gf/util/import.h"
-
-GFEXTERNC_START
 
 GFEXPORT GfUtf32 * gfUtf32New(
 );
@@ -147,7 +139,5 @@ GFEXPORT GfBool gfUtf32AssignFromUtf16CharPtrWithLength(
     , const GfUtf16Char *
     , GfSize
 );
-
-GFEXTERNC_END
 
 #endif  // GF_STRING_UTF32_H

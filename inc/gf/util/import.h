@@ -3,9 +3,9 @@
 
 #ifndef GFEXPORT
 #   if defined OS_LINUX // OS
-#       define GFEXPORT
+#       define GFEXPORT extern "C"
 #   elif defined OS_WINDOWS // OS
-#       define GFEXPORT __declspec( dllimport )
+#       define GFEXPORT __declspec( dllimport ) extern "C"
 #   else   // OS
 #       error 未対応のOS
 #   endif  // OS
