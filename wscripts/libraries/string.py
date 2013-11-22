@@ -13,6 +13,7 @@ def build( _context ):
                 MODULE_NAME : {
                     'string.cpp',
                     'utf8.cpp',
+                    'utf16.cpp',
                 },
             },
         },
