@@ -12,6 +12,7 @@ def build( _context ):
             common.GF : {
                 MODULE_NAME : {
                     'string.cpp',
+                    'utf8.cpp',
                 },
             },
         },
