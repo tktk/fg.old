@@ -2,11 +2,11 @@
 
 from . import common
 
+OS = 'os'
+
 BUILD = 'build'
 BUILD_DEBUG = 'debug'
 BUILD_RELEASE = 'release'
-
-OS = 'os'
 
 CXX = 'cxx'
 CXX_CLANGXX = 'clang++'
