@@ -12,6 +12,8 @@ def build( _context ):
             common.GF : {
                 MODULE_NAME : {
                     'boot.cpp',
+                    'gameconfig.cpp',
+                    'library.cpp',
                 },
             },
         },
