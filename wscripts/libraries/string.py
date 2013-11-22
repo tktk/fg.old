@@ -14,6 +14,7 @@ def build( _context ):
                     'string.cpp',
                     'utf8.cpp',
                     'utf16.cpp',
+                    'utf32.cpp',
                 },
             },
         },
