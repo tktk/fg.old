@@ -48,9 +48,21 @@ GFEXPORT void gfWindowEventHandlersSetCloseEventHandler(
     , GfWindowCloseEventHandler
 );
 
+GFEXPORT void gfWindowEventHandlersCallCloseEventHandler(
+    const GfWindowEventHandlers *
+    , GfWindow *
+);
+
 GFEXPORT void gfWindowEventHandlersSetPositionEventHandler(
     GfWindowEventHandlers *
     , GfWindowPositionEventHandler
+);
+
+GFEXPORT void gfWindowEventHandlersCallPositionEventHandler(
+    const GfWindowEventHandlers *
+    , GfWindow *
+    , GfInt
+    , GfInt
 );
 
 GFEXPORT void gfWindowEventHandlersSetSizeEventHandler(
@@ -58,9 +70,25 @@ GFEXPORT void gfWindowEventHandlersSetSizeEventHandler(
     , GfWindowSizeEventHandler
 );
 
+GFEXPORT void gfWindowEventHandlersCallSizeEventHandler(
+    const GfWindowEventHandlers *
+    , GfWindow *
+    , GfInt
+    , GfInt
+);
+
 GFEXPORT void gfWindowEventHandlersSetPaintEventHandler(
     GfWindowEventHandlers *
     , GfWindowPaintEventHandler
+);
+
+GFEXPORT void gfWindowEventHandlersCallPaintEventHandler(
+    const GfWindowEventHandlers *
+    , GfWindow *
+    , GfInt
+    , GfInt
+    , GfInt
+    , GfInt
 );
 
 #endif  // GF_WINDOW_EVENTHANDLERS_H
