@@ -30,6 +30,18 @@ typedef void( * GfWindowPaintEventHandler )(
     , GfInt
 );
 
+typedef void( * GfWindowMouseButtonEventHandler )(
+    GfWindow *
+    , GfULong
+    , GfBool
+);
+
+typedef void( * GfWindowMouseMotionEventHandler )(
+    GfWindow *
+    , GfInt
+    , GfInt
+);
+
 #include "gf/util/import.h"
 
 GFEXPORT GfWindowEventHandlers * gfWindowEventHandlersNew(
@@ -87,6 +99,30 @@ GFEXPORT void gfWindowEventHandlersCallPaintEventHandler(
     , GfWindow *
     , GfInt
     , GfInt
+    , GfInt
+    , GfInt
+);
+
+GFEXPORT void gfWindowEventHandlersSetMouseButtonEventHandler(
+    GfWindowEventHandlers *
+    , GfWindowMouseButtonEventHandler
+);
+
+GFEXPORT void gfWindowEventHandlersCallMouseButtonEventHandler(
+    const GfWindowEventHandlers *
+    , GfWindow *
+    , GfULong
+    , GfBool
+);
+
+GFEXPORT void gfWindowEventHandlersSetMouseMotionEventHandler(
+    GfWindowEventHandlers *
+    , GfWindowMouseMotionEventHandler
+);
+
+GFEXPORT void gfWindowEventHandlersCallMouseMotionEventHandler(
+    const GfWindowEventHandlers *
+    , GfWindow *
     , GfInt
     , GfInt
 );
