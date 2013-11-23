@@ -86,3 +86,35 @@ void gfWindowEventHandlersCallPaintEventHandler(
 )
 {
 }
+
+void gfWindowEventHandlersSetMouseButtonEventHandler(
+    GfWindowEventHandlers *
+    , GfWindowMouseButtonEventHandler
+)
+{
+}
+
+void gfWindowEventHandlersCallMouseButtonEventHandler(
+    const GfWindowEventHandlers *
+    , GfWindow *
+    , GfULong
+    , GfBool
+)
+{
+}
+
+void gfWindowEventHandlersSetMouseMotionEventHandler(
+    GfWindowEventHandlers *
+    , GfWindowMouseMotionEventHandler
+)
+{
+}
+
+void gfWindowEventHandlersCallMouseMotionEventHandler(
+    const GfWindowEventHandlers *
+    , GfWindow *
+    , GfInt
+    , GfInt
+)
+{
+}
