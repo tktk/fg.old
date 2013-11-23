@@ -4,6 +4,7 @@
 typedef struct GfWindowEventHandlers GfWindowEventHandlers;
 
 #include "gf/window/window.h"
+#include "gf/window/key.h"
 #include "gf/common/primitives.h"
 
 typedef void( * GfWindowCloseEventHandler )(
@@ -28,6 +29,13 @@ typedef void( * GfWindowPaintEventHandler )(
     , GfInt
     , GfInt
     , GfInt
+);
+
+typedef void( * GfWindowKeyEventHandler )(
+    GfWindow *
+    , GfKey
+    , const GfUtf32Char *
+    , GfBool
 );
 
 typedef void( * GfWindowMouseButtonEventHandler )(
@@ -101,6 +109,19 @@ GFEXPORT void gfWindowEventHandlersCallPaintEventHandler(
     , GfInt
     , GfInt
     , GfInt
+);
+
+GFEXPORT void gfWindowEventHandlersSetKeyEventHandler(
+    GfWindowEventHandlers *
+    , GfWindowKeyEventHandler
+);
+
+GFEXPORT void gfWindowEventHandlersCallKeyEventHandler(
+    const GfWindowEventHandlers *
+    , GfWindow *
+    , GfKey
+    , const GfUtf32Char *
+    , GfBool
 );
 
 GFEXPORT void gfWindowEventHandlersSetMouseButtonEventHandler(
