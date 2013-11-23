@@ -87,6 +87,23 @@ void gfWindowEventHandlersCallPaintEventHandler(
 {
 }
 
+void gfWindowEventHandlersSetKeyEventHandler(
+    GfWindowEventHandlers *
+    , GfWindowKeyEventHandler
+)
+{
+}
+
+void gfWindowEventHandlersCallKeyEventHandler(
+    const GfWindowEventHandlers *
+    , GfWindow *
+    , GfKey
+    , const GfUtf32Char *
+    , GfBool
+)
+{
+}
+
 void gfWindowEventHandlersSetMouseButtonEventHandler(
     GfWindowEventHandlers *
     , GfWindowMouseButtonEventHandler
