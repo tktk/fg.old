@@ -116,6 +116,8 @@ void gfWindowEventHandlersCallMouseButtonEventHandler(
     , GfWindow *
     , GfULong
     , GfBool
+    , GfInt
+    , GfInt
 )
 {
 }

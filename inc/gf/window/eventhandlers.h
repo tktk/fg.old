@@ -42,6 +42,8 @@ typedef void( * GfWindowMouseButtonEventHandler )(
     GfWindow *
     , GfULong
     , GfBool
+    , GfInt
+    , GfInt
 );
 
 typedef void( * GfWindowMouseMotionEventHandler )(
@@ -134,6 +136,8 @@ GFEXPORT void gfWindowEventHandlersCallMouseButtonEventHandler(
     , GfWindow *
     , GfULong
     , GfBool
+    , GfInt
+    , GfInt
 );
 
 GFEXPORT void gfWindowEventHandlersSetMouseMotionEventHandler(
