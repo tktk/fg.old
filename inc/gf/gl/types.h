@@ -1,5 +1,5 @@
-﻿#ifndef GF_OPENGL_TYPES_H
-#define GF_OPENGL_TYPES_H
+﻿#ifndef GF_GL_TYPES_H
+#define GF_GL_TYPES_H
 
 #include <stddef.h>
 #include <stdint.h>
@@ -64,4 +64,4 @@ typedef unsigned short GfGLhalfNV;
 // GL_NV_vdpau_interop
 typedef GfGLintptr GfGLvdpauSurfaceNV;
 
-#endif  // GF_OPENGL_TYPES_H
+#endif  // GF_GL_TYPES_H
