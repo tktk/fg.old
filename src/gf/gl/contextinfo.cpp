@@ -22,312 +22,312 @@ void gfGLContextInfoFree(
 {
 }
 
-GfBool gfGLContextGetDoubleBuffer(
+GfBool gfGLContextInfoGetDoubleBuffer(
     const GfGLContextInfo *
 )
 {
     return false;
 }
 
-void gfGLContextSetDoubleBuffer(
+void gfGLContextInfoSetDoubleBuffer(
     GfGLContextInfo *
     , GfBool
 )
 {
 }
 
-GfBool gfGLContextExistsAuxBuffers(
+GfBool gfGLContextInfoExistsAuxBuffers(
     const GfGLContextInfo *
 )
 {
     return false;
 }
 
-GfInt gfGLContextGetAuxBuffers(
+GfInt gfGLContextInfoGetAuxBuffers(
     const GfGLContextInfo *
 )
 {
     return 0;
 }
 
-void gfGLContextSetAuxBuffers(
+void gfGLContextInfoSetAuxBuffers(
     GfGLContextInfo *
     , GfInt
 )
 {
 }
 
-void gfGLContextClearAuxBuffers(
+void gfGLContextInfoClearAuxBuffers(
     GfGLContextInfo *
 )
 {
 }
 
-GfBool gfGLContextExistsRedBits(
+GfBool gfGLContextInfoExistsRedBits(
     const GfGLContextInfo *
 )
 {
     return false;
 }
 
-GfInt gfGLContextGetRedBits(
+GfInt gfGLContextInfoGetRedBits(
     const GfGLContextInfo *
 )
 {
     return 0;
 }
 
-void gfGLContextSetRedBits(
+void gfGLContextInfoSetRedBits(
     GfGLContextInfo *
     , GfInt
 )
 {
 }
 
-void gfGLContextClearRedBits(
+void gfGLContextInfoClearRedBits(
     GfGLContextInfo *
 )
 {
 }
 
-GfBool gfGLContextExistsGreenBits(
+GfBool gfGLContextInfoExistsGreenBits(
     const GfGLContextInfo *
 )
 {
     return false;
 }
 
-GfInt gfGLContextGetGreenBits(
+GfInt gfGLContextInfoGetGreenBits(
     const GfGLContextInfo *
 )
 {
     return 0;
 }
 
-void gfGLContextSetGreenBits(
+void gfGLContextInfoSetGreenBits(
     GfGLContextInfo *
     , GfInt
 )
 {
 }
 
-void gfGLContextClearGreenBits(
+void gfGLContextInfoClearGreenBits(
     GfGLContextInfo *
 )
 {
 }
 
-GfBool gfGLContextExistsBlueBits(
+GfBool gfGLContextInfoExistsBlueBits(
     const GfGLContextInfo *
 )
 {
     return false;
 }
 
-GfInt gfGLContextGetBlueBits(
+GfInt gfGLContextInfoGetBlueBits(
     const GfGLContextInfo *
 )
 {
     return 0;
 }
 
-void gfGLContextSetBlueBits(
+void gfGLContextInfoSetBlueBits(
     GfGLContextInfo *
     , GfInt
 )
 {
 }
 
-void gfGLContextClearBlueBits(
+void gfGLContextInfoClearBlueBits(
     GfGLContextInfo *
 )
 {
 }
 
-GfBool gfGLContextExistsAlphaBits(
+GfBool gfGLContextInfoExistsAlphaBits(
     const GfGLContextInfo *
 )
 {
     return false;
 }
 
-GfInt gfGLContextGetAlphaBits(
+GfInt gfGLContextInfoGetAlphaBits(
     const GfGLContextInfo *
 )
 {
     return 0;
 }
 
-void gfGLContextSetAlphaBits(
+void gfGLContextInfoSetAlphaBits(
     GfGLContextInfo *
     , GfInt
 )
 {
 }
 
-void gfGLContextClearAlphaBits(
+void gfGLContextInfoClearAlphaBits(
     GfGLContextInfo *
 )
 {
 }
 
-GfBool gfGLContextExistsDepthBits(
+GfBool gfGLContextInfoExistsDepthBits(
     const GfGLContextInfo *
 )
 {
     return false;
 }
 
-GfInt gfGLContextGetDepthBits(
+GfInt gfGLContextInfoGetDepthBits(
     const GfGLContextInfo *
 )
 {
     return 0;
 }
 
-void gfGLContextSetDepthBits(
+void gfGLContextInfoSetDepthBits(
     GfGLContextInfo *
     , GfInt
 )
 {
 }
 
-void gfGLContextClearDepthBits(
+void gfGLContextInfoClearDepthBits(
     GfGLContextInfo *
 )
 {
 }
 
-GfBool gfGLContextExistsStencilBits(
+GfBool gfGLContextInfoExistsStencilBits(
     const GfGLContextInfo *
 )
 {
     return false;
 }
 
-GfInt gfGLContextGetStencilBits(
+GfInt gfGLContextInfoGetStencilBits(
     const GfGLContextInfo *
 )
 {
     return 0;
 }
 
-void gfGLContextSetStencilBits(
+void gfGLContextInfoSetStencilBits(
     GfGLContextInfo *
     , GfInt
 )
 {
 }
 
-void gfGLContextClearStencilBits(
+void gfGLContextInfoClearStencilBits(
     GfGLContextInfo *
 )
 {
 }
 
-GfBool gfGLContextExistsAccumRedBits(
+GfBool gfGLContextInfoExistsAccumRedBits(
     const GfGLContextInfo *
 )
 {
     return false;
 }
 
-GfInt gfGLContextGetAccumRedBits(
+GfInt gfGLContextInfoGetAccumRedBits(
     const GfGLContextInfo *
 )
 {
     return 0;
 }
 
-void gfGLContextSetAccumRedBits(
+void gfGLContextInfoSetAccumRedBits(
     GfGLContextInfo *
     , GfInt
 )
 {
 }
 
-void gfGLContextClearAccumRedBits(
+void gfGLContextInfoClearAccumRedBits(
     GfGLContextInfo *
 )
 {
 }
 
-GfBool gfGLContextExistsAccumGreenBits(
+GfBool gfGLContextInfoExistsAccumGreenBits(
     const GfGLContextInfo *
 )
 {
     return false;
 }
 
-GfInt gfGLContextGetAccumGreenBits(
+GfInt gfGLContextInfoGetAccumGreenBits(
     const GfGLContextInfo *
 )
 {
     return 0;
 }
 
-void gfGLContextSetAccumGreenBits(
+void gfGLContextInfoSetAccumGreenBits(
     GfGLContextInfo *
     , GfInt
 )
 {
 }
 
-void gfGLContextClearAccumGreenBits(
+void gfGLContextInfoClearAccumGreenBits(
     GfGLContextInfo *
 )
 {
 }
 
-GfBool gfGLContextExistsAccumBlueBits(
+GfBool gfGLContextInfoExistsAccumBlueBits(
     const GfGLContextInfo *
 )
 {
     return false;
 }
 
-GfInt gfGLContextGetAccumBlueBits(
+GfInt gfGLContextInfoGetAccumBlueBits(
     const GfGLContextInfo *
 )
 {
     return 0;
 }
 
-void gfGLContextSetAccumBlueBits(
+void gfGLContextInfoSetAccumBlueBits(
     GfGLContextInfo *
     , GfInt
 )
 {
 }
 
-void gfGLContextClearAccumBlueBits(
+void gfGLContextInfoClearAccumBlueBits(
     GfGLContextInfo *
 )
 {
 }
 
-GfBool gfGLContextExistsAccumAlphaBits(
+GfBool gfGLContextInfoExistsAccumAlphaBits(
     const GfGLContextInfo *
 )
 {
     return false;
 }
 
-GfInt gfGLContextGetAccumAlphaBits(
+GfInt gfGLContextInfoGetAccumAlphaBits(
     const GfGLContextInfo *
 )
 {
     return 0;
 }
 
-void gfGLContextSetAccumAlphaBits(
+void gfGLContextInfoSetAccumAlphaBits(
     GfGLContextInfo *
     , GfInt
 )
 {
 }
 
-void gfGLContextClearAccumAlphaBits(
+void gfGLContextInfoClearAccumAlphaBits(
     GfGLContextInfo *
 )
 {

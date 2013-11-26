@@ -17,199 +17,199 @@ GFEXPORT void gfGLContextInfoFree(
     GfGLContextInfo *
 );
 
-GFEXPORT GfBool gfGLContextGetDoubleBuffer(
+GFEXPORT GfBool gfGLContextInfoGetDoubleBuffer(
     const GfGLContextInfo *
 );
 
-GFEXPORT void gfGLContextSetDoubleBuffer(
+GFEXPORT void gfGLContextInfoSetDoubleBuffer(
     GfGLContextInfo *
     , GfBool
 );
 
-GFEXPORT GfBool gfGLContextExistsAuxBuffers(
+GFEXPORT GfBool gfGLContextInfoExistsAuxBuffers(
     const GfGLContextInfo *
 );
 
-GFEXPORT GfInt gfGLContextGetAuxBuffers(
+GFEXPORT GfInt gfGLContextInfoGetAuxBuffers(
     const GfGLContextInfo *
 );
 
-GFEXPORT void gfGLContextSetAuxBuffers(
+GFEXPORT void gfGLContextInfoSetAuxBuffers(
     GfGLContextInfo *
     , GfInt
 );
 
-GFEXPORT void gfGLContextClearAuxBuffers(
+GFEXPORT void gfGLContextInfoClearAuxBuffers(
     GfGLContextInfo *
 );
 
-GFEXPORT GfBool gfGLContextExistsRedBits(
+GFEXPORT GfBool gfGLContextInfoExistsRedBits(
     const GfGLContextInfo *
 );
 
-GFEXPORT GfInt gfGLContextGetRedBits(
+GFEXPORT GfInt gfGLContextInfoGetRedBits(
     const GfGLContextInfo *
 );
 
-GFEXPORT void gfGLContextSetRedBits(
-    GfGLContextInfo *
-    , GfInt
-);
-
-GFEXPORT void gfGLContextClearRedBits(
-    GfGLContextInfo *
-);
-
-GFEXPORT GfBool gfGLContextExistsGreenBits(
-    const GfGLContextInfo *
-);
-
-GFEXPORT GfInt gfGLContextGetGreenBits(
-    const GfGLContextInfo *
-);
-
-GFEXPORT void gfGLContextSetGreenBits(
+GFEXPORT void gfGLContextInfoSetRedBits(
     GfGLContextInfo *
     , GfInt
 );
 
-GFEXPORT void gfGLContextClearGreenBits(
+GFEXPORT void gfGLContextInfoClearRedBits(
     GfGLContextInfo *
 );
 
-GFEXPORT GfBool gfGLContextExistsBlueBits(
+GFEXPORT GfBool gfGLContextInfoExistsGreenBits(
     const GfGLContextInfo *
 );
 
-GFEXPORT GfInt gfGLContextGetBlueBits(
+GFEXPORT GfInt gfGLContextInfoGetGreenBits(
     const GfGLContextInfo *
 );
 
-GFEXPORT void gfGLContextSetBlueBits(
-    GfGLContextInfo *
-    , GfInt
-);
-
-GFEXPORT void gfGLContextClearBlueBits(
-    GfGLContextInfo *
-);
-
-GFEXPORT GfBool gfGLContextExistsAlphaBits(
-    const GfGLContextInfo *
-);
-
-GFEXPORT GfInt gfGLContextGetAlphaBits(
-    const GfGLContextInfo *
-);
-
-GFEXPORT void gfGLContextSetAlphaBits(
+GFEXPORT void gfGLContextInfoSetGreenBits(
     GfGLContextInfo *
     , GfInt
 );
 
-GFEXPORT void gfGLContextClearAlphaBits(
+GFEXPORT void gfGLContextInfoClearGreenBits(
     GfGLContextInfo *
 );
 
-GFEXPORT GfBool gfGLContextExistsDepthBits(
+GFEXPORT GfBool gfGLContextInfoExistsBlueBits(
     const GfGLContextInfo *
 );
 
-GFEXPORT GfInt gfGLContextGetDepthBits(
+GFEXPORT GfInt gfGLContextInfoGetBlueBits(
     const GfGLContextInfo *
 );
 
-GFEXPORT void gfGLContextSetDepthBits(
-    GfGLContextInfo *
-    , GfInt
-);
-
-GFEXPORT void gfGLContextClearDepthBits(
-    GfGLContextInfo *
-);
-
-GFEXPORT GfBool gfGLContextExistsStencilBits(
-    const GfGLContextInfo *
-);
-
-GFEXPORT GfInt gfGLContextGetStencilBits(
-    const GfGLContextInfo *
-);
-
-GFEXPORT void gfGLContextSetStencilBits(
+GFEXPORT void gfGLContextInfoSetBlueBits(
     GfGLContextInfo *
     , GfInt
 );
 
-GFEXPORT void gfGLContextClearStencilBits(
+GFEXPORT void gfGLContextInfoClearBlueBits(
     GfGLContextInfo *
 );
 
-GFEXPORT GfBool gfGLContextExistsAccumRedBits(
+GFEXPORT GfBool gfGLContextInfoExistsAlphaBits(
     const GfGLContextInfo *
 );
 
-GFEXPORT GfInt gfGLContextGetAccumRedBits(
+GFEXPORT GfInt gfGLContextInfoGetAlphaBits(
     const GfGLContextInfo *
 );
 
-GFEXPORT void gfGLContextSetAccumRedBits(
-    GfGLContextInfo *
-    , GfInt
-);
-
-GFEXPORT void gfGLContextClearAccumRedBits(
-    GfGLContextInfo *
-);
-
-GFEXPORT GfBool gfGLContextExistsAccumGreenBits(
-    const GfGLContextInfo *
-);
-
-GFEXPORT GfInt gfGLContextGetAccumGreenBits(
-    const GfGLContextInfo *
-);
-
-GFEXPORT void gfGLContextSetAccumGreenBits(
+GFEXPORT void gfGLContextInfoSetAlphaBits(
     GfGLContextInfo *
     , GfInt
 );
 
-GFEXPORT void gfGLContextClearAccumGreenBits(
+GFEXPORT void gfGLContextInfoClearAlphaBits(
     GfGLContextInfo *
 );
 
-GFEXPORT GfBool gfGLContextExistsAccumBlueBits(
+GFEXPORT GfBool gfGLContextInfoExistsDepthBits(
     const GfGLContextInfo *
 );
 
-GFEXPORT GfInt gfGLContextGetAccumBlueBits(
+GFEXPORT GfInt gfGLContextInfoGetDepthBits(
     const GfGLContextInfo *
 );
 
-GFEXPORT void gfGLContextSetAccumBlueBits(
-    GfGLContextInfo *
-    , GfInt
-);
-
-GFEXPORT void gfGLContextClearAccumBlueBits(
-    GfGLContextInfo *
-);
-
-GFEXPORT GfBool gfGLContextExistsAccumAlphaBits(
-    const GfGLContextInfo *
-);
-
-GFEXPORT GfInt gfGLContextGetAccumAlphaBits(
-    const GfGLContextInfo *
-);
-
-GFEXPORT void gfGLContextSetAccumAlphaBits(
+GFEXPORT void gfGLContextInfoSetDepthBits(
     GfGLContextInfo *
     , GfInt
 );
 
-GFEXPORT void gfGLContextClearAccumAlphaBits(
+GFEXPORT void gfGLContextInfoClearDepthBits(
+    GfGLContextInfo *
+);
+
+GFEXPORT GfBool gfGLContextInfoExistsStencilBits(
+    const GfGLContextInfo *
+);
+
+GFEXPORT GfInt gfGLContextInfoGetStencilBits(
+    const GfGLContextInfo *
+);
+
+GFEXPORT void gfGLContextInfoSetStencilBits(
+    GfGLContextInfo *
+    , GfInt
+);
+
+GFEXPORT void gfGLContextInfoClearStencilBits(
+    GfGLContextInfo *
+);
+
+GFEXPORT GfBool gfGLContextInfoExistsAccumRedBits(
+    const GfGLContextInfo *
+);
+
+GFEXPORT GfInt gfGLContextInfoGetAccumRedBits(
+    const GfGLContextInfo *
+);
+
+GFEXPORT void gfGLContextInfoSetAccumRedBits(
+    GfGLContextInfo *
+    , GfInt
+);
+
+GFEXPORT void gfGLContextInfoClearAccumRedBits(
+    GfGLContextInfo *
+);
+
+GFEXPORT GfBool gfGLContextInfoExistsAccumGreenBits(
+    const GfGLContextInfo *
+);
+
+GFEXPORT GfInt gfGLContextInfoGetAccumGreenBits(
+    const GfGLContextInfo *
+);
+
+GFEXPORT void gfGLContextInfoSetAccumGreenBits(
+    GfGLContextInfo *
+    , GfInt
+);
+
+GFEXPORT void gfGLContextInfoClearAccumGreenBits(
+    GfGLContextInfo *
+);
+
+GFEXPORT GfBool gfGLContextInfoExistsAccumBlueBits(
+    const GfGLContextInfo *
+);
+
+GFEXPORT GfInt gfGLContextInfoGetAccumBlueBits(
+    const GfGLContextInfo *
+);
+
+GFEXPORT void gfGLContextInfoSetAccumBlueBits(
+    GfGLContextInfo *
+    , GfInt
+);
+
+GFEXPORT void gfGLContextInfoClearAccumBlueBits(
+    GfGLContextInfo *
+);
+
+GFEXPORT GfBool gfGLContextInfoExistsAccumAlphaBits(
+    const GfGLContextInfo *
+);
+
+GFEXPORT GfInt gfGLContextInfoGetAccumAlphaBits(
+    const GfGLContextInfo *
+);
+
+GFEXPORT void gfGLContextInfoSetAccumAlphaBits(
+    GfGLContextInfo *
+    , GfInt
+);
+
+GFEXPORT void gfGLContextInfoClearAccumAlphaBits(
     GfGLContextInfo *
 );
 
