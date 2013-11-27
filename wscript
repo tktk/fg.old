@@ -2,7 +2,7 @@
 
 from wscripts import common
 from wscripts import cmdoption
-from wscripts import libraries
+from wscripts import gf
 
 import os.path
 
@@ -265,4 +265,4 @@ def _configureFlags(
     return None
 
 def build( _context ):
-    libraries.build( _context )
+    gf.build( _context )
