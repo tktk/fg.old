@@ -2,11 +2,11 @@
 
 from wscripts import common
 from wscripts import cmdoption
-from wscripts import gf
+from wscripts import fg
 
 import os.path
 
-APPNAME = 'gf'
+APPNAME = 'fg'
 VERSION = '0.1.0'
 
 out = common.BUILD_DIR
@@ -265,4 +265,4 @@ def _configureFlags(
     return None
 
 def build( _context ):
-    gf.build( _context )
+    fg.build( _context )

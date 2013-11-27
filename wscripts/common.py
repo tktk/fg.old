@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-GF = 'gf'
+FG = 'fg'
 
 BUILD_DIR = 'build'
 SOURCE_DIR = 'src'
