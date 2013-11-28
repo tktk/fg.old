@@ -3,13 +3,13 @@
 
 typedef struct FgGLContext FgGLContext;
 
-#include "fg/gl/contextinfo.h"
+#include "fg/gl/config.h"
 #include "fg/window/window.h"
 #include "fg/common/primitives.h"
 #include "fg/util/import.h"
 
 FGEXPORT FgGLContext * fgGLContextNew(
-    const FgGLContextInfo *
+    const FgGLConfig *
 );
 
 FGEXPORT void fgGLContextFree(

@@ -3,6 +3,7 @@
 from wscripts import common
 from wscripts import cmdoption
 from wscripts import fg
+from wscripts import gf
 
 import os.path
 
@@ -266,3 +267,4 @@ def _configureFlags(
 
 def build( _context ):
     fg.build( _context )
+    gf.build( _context )
