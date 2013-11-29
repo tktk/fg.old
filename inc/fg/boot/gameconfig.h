@@ -23,22 +23,4 @@ FGEXPORT FgBool fgGameConfigSetBinDir(
     , const FgUtf32 *
 );
 
-FGEXPORT const FgUtf32 * fgGameConfigGetMainFile(
-    const FgGameConfig *
-);
-
-FGEXPORT FgBool fgGameConfigSetMainFile(
-    FgGameConfig *
-    , const FgUtf32 *
-);
-
-FGEXPORT const FgUtf32 * fgGameConfigGetMain(
-    const FgGameConfig *
-);
-
-FGEXPORT FgBool fgGameConfigSetMain(
-    FgGameConfig *
-    , const FgUtf32 *
-);
-
 #endif  // FG_BOOT_GAMECONFIG_H

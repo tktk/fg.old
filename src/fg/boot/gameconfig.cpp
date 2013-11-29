@@ -30,33 +30,3 @@ FgBool fgGameConfigSetBinDir(
 {
     return false;
 }
-
-const FgUtf32 * fgGameConfigGetMainFile(
-    const FgGameConfig *
-)
-{
-    return nullptr;
-}
-
-FgBool fgGameConfigSetMainFile(
-    FgGameConfig *
-    , const FgUtf32 *
-)
-{
-    return false;
-}
-
-const FgUtf32 * fgGameConfigGetMain(
-    const FgGameConfig *
-)
-{
-    return nullptr;
-}
-
-FgBool fgGameConfigSetMain(
-    FgGameConfig *
-    , const FgUtf32 *
-)
-{
-    return false;
-}
