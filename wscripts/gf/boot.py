@@ -4,12 +4,12 @@ from .. import common
 from ..builder import buildShlib
 
 MODULE_NAME = 'boot'
-TARGET = common.FG + '-' + MODULE_NAME
+TARGET = common.GF + '-' + MODULE_NAME
 
 def build( _context ):
     sources = {
         common.SOURCE_DIR : {
-            common.FG : {
+            common.GF : {
                 MODULE_NAME : {
                     'boot.cpp',
                     'config.cpp',

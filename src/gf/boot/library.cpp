@@ -1,9 +1,9 @@
 ﻿#include "fg/util/export.h"
-#include "fg/boot/library.h"
+#include "gf/boot/library.h"
 
 #include "fg/string/utf32.h"
 
-FgLibrary * fgLibraryNew(
+GfLibrary * gfLibraryNew(
     const FgUtf32 *
     , const FgUtf32 *
 )
@@ -11,14 +11,14 @@ FgLibrary * fgLibraryNew(
     return nullptr;
 }
 
-void fgLibraryFree(
-    FgLibrary *
+void gfLibraryFree(
+    GfLibrary *
 )
 {
 }
 
-void * fgLibraryGetAddress(
-    FgLibrary *
+void * gfLibraryGetAddress(
+    GfLibrary *
     , const FgUtf32 *
 )
 {

@@ -1,10 +1,10 @@
 ﻿#include "gf/main/args.h"
 #include "fg/util/export.h"
 
-#include "fg/boot/config.h"
+#include "gf/boot/config.h"
 
 FgArgs * gfArgsNew(
-    const FgBootConfig *
+    const GfBootConfig *
 )
 {
     return nullptr;

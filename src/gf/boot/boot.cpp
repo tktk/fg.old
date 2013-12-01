@@ -1,14 +1,14 @@
 ﻿#include "fg/util/export.h"
-#include "fg/boot/boot.h"
+#include "gf/boot/boot.h"
 
-#include "fg/boot/config.h"
+#include "gf/boot/config.h"
 #include "fg/string/utf32.h"
 #include "fg/common/primitives.h"
 
-FgInt fgBoot(
+FgInt gfBoot(
     const FgUtf32 *
     , const FgUtf32 *
-    , const FgBootConfig *
+    , const GfBootConfig *
 )
 {
     return 0;
