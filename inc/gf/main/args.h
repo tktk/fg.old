@@ -2,11 +2,11 @@
 #define GF_MAIN_ARGS_H
 
 #include "fg/main/args.h"
-#include "fg/boot/gameconfig.h"
+#include "fg/boot/config.h"
 #include "fg/util/import.h"
 
 FGEXPORT FgArgs * gfArgsNew(
-    const FgGameConfig *
+    const FgBootConfig *
 );
 
 FGEXPORT void gfArgsFree(
