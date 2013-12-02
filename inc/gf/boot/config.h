@@ -14,6 +14,10 @@ FGEXPORT void gfBootConfigFree(
     GfBootConfig *
 );
 
+FGEXPORT FgBool gfBootConfigExistsBinDir(
+    const GfBootConfig *
+);
+
 FGEXPORT const FgUtf32 * gfBootConfigGetBinDir(
     const GfBootConfig *
 );
@@ -21,6 +25,10 @@ FGEXPORT const FgUtf32 * gfBootConfigGetBinDir(
 FGEXPORT FgBool gfBootConfigSetBinDir(
     GfBootConfig *
     , const FgUtf32 *
+);
+
+FGEXPORT void gfBootConfigClearBinDir(
+    GfBootConfig *
 );
 
 #endif  // GF_BOOT_CONFIG_H
