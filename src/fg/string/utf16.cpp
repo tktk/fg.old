@@ -227,3 +227,79 @@ FgBool fgUtf16ToInt(
 {
     return false;
 }
+
+FgBool fgUtf16ToIntWithBase(
+    FgInt *
+    , const FgUtf16 *
+    , FgInt
+)
+{
+    return false;
+}
+
+FgBool fgUtf16ToUInt(
+    FgUInt *
+    , const FgUtf16 *
+)
+{
+    return false;
+}
+
+FgBool fgUtf16ToUIntWithBase(
+    FgUInt *
+    , const FgUtf16 *
+    , FgInt
+)
+{
+    return false;
+}
+
+FgBool fgUtf16ToLong(
+    FgLong *
+    , const FgUtf16 *
+)
+{
+    return false;
+}
+
+FgBool fgUtf16ToLongWithBase(
+    FgLong *
+    , const FgUtf16 *
+    , FgInt
+)
+{
+    return false;
+}
+
+FgBool fgUtf16ToULong(
+    FgULong *
+    , const FgUtf16 *
+)
+{
+    return false;
+}
+
+FgBool fgUtf16ToULongWithBase(
+    FgULong *
+    , const FgUtf16 *
+    , FgInt
+)
+{
+    return false;
+}
+
+FgBool fgUtf16ToFloat(
+    FgFloat *
+    , const FgUtf16 *
+)
+{
+    return false;
+}
+
+FgBool fgUtf16ToDouble(
+    FgDouble *
+    , const FgUtf16 *
+)
+{
+    return false;
+}

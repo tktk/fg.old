@@ -227,3 +227,79 @@ FgBool fgUtf8ToInt(
 {
     return false;
 }
+
+FgBool fgUtf8ToIntWithBase(
+    FgInt *
+    , const FgUtf8 *
+    , FgInt
+)
+{
+    return false;
+}
+
+FgBool fgUtf8ToUInt(
+    FgUInt *
+    , const FgUtf8 *
+)
+{
+    return false;
+}
+
+FgBool fgUtf8ToUIntWithBase(
+    FgUInt *
+    , const FgUtf8 *
+    , FgInt
+)
+{
+    return false;
+}
+
+FgBool fgUtf8ToLong(
+    FgLong *
+    , const FgUtf8 *
+)
+{
+    return false;
+}
+
+FgBool fgUtf8ToLongWithBase(
+    FgLong *
+    , const FgUtf8 *
+    , FgInt
+)
+{
+    return false;
+}
+
+FgBool fgUtf8ToULong(
+    FgULong *
+    , const FgUtf8 *
+)
+{
+    return false;
+}
+
+FgBool fgUtf8ToULongWithBase(
+    FgULong *
+    , const FgUtf8 *
+    , FgInt
+)
+{
+    return false;
+}
+
+FgBool fgUtf8ToFloat(
+    FgFloat *
+    , const FgUtf8 *
+)
+{
+    return false;
+}
+
+FgBool fgUtf8ToDouble(
+    FgDouble *
+    , const FgUtf8 *
+)
+{
+    return false;
+}

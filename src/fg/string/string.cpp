@@ -227,3 +227,79 @@ FgBool fgStringToInt(
 {
     return false;
 }
+
+FgBool fgStringToIntWithBase(
+    FgInt *
+    , const FgString *
+    , FgInt
+)
+{
+    return false;
+}
+
+FgBool fgStringToUInt(
+    FgUInt *
+    , const FgString *
+)
+{
+    return false;
+}
+
+FgBool fgStringToUIntWithBase(
+    FgUInt *
+    , const FgString *
+    , FgInt
+)
+{
+    return false;
+}
+
+FgBool fgStringToLong(
+    FgLong *
+    , const FgString *
+)
+{
+    return false;
+}
+
+FgBool fgStringToLongWithBase(
+    FgLong *
+    , const FgString *
+    , FgInt
+)
+{
+    return false;
+}
+
+FgBool fgStringToULong(
+    FgULong *
+    , const FgString *
+)
+{
+    return false;
+}
+
+FgBool fgStringToULongWithBase(
+    FgULong *
+    , const FgString *
+    , FgInt
+)
+{
+    return false;
+}
+
+FgBool fgStringToFloat(
+    FgFloat *
+    , const FgString *
+)
+{
+    return false;
+}
+
+FgBool fgStringToDouble(
+    FgDouble *
+    , const FgString *
+)
+{
+    return false;
+}
