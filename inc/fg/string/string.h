@@ -145,4 +145,53 @@ FGEXPORT FgBool fgStringToInt(
     , const FgString *
 );
 
+FGEXPORT FgBool fgStringToIntWithBase(
+    FgInt *
+    , const FgString *
+    , FgInt
+);
+
+FGEXPORT FgBool fgStringToUInt(
+    FgUInt *
+    , const FgString *
+);
+
+FGEXPORT FgBool fgStringToUIntWithBase(
+    FgUInt *
+    , const FgString *
+    , FgInt
+);
+
+FGEXPORT FgBool fgStringToLong(
+    FgLong *
+    , const FgString *
+);
+
+FGEXPORT FgBool fgStringToLongWithBase(
+    FgLong *
+    , const FgString *
+    , FgInt
+);
+
+FGEXPORT FgBool fgStringToULong(
+    FgULong *
+    , const FgString *
+);
+
+FGEXPORT FgBool fgStringToULongWithBase(
+    FgULong *
+    , const FgString *
+    , FgInt
+);
+
+FGEXPORT FgBool fgStringToFloat(
+    FgFloat *
+    , const FgString *
+);
+
+FGEXPORT FgBool fgStringToDouble(
+    FgDouble *
+    , const FgString *
+);
+
 #endif  // FG_STRING_STRING_H

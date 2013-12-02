@@ -145,4 +145,53 @@ FGEXPORT FgBool fgUtf16ToInt(
     , const FgUtf16 *
 );
 
+FGEXPORT FgBool fgUtf16ToIntWithBase(
+    FgInt *
+    , const FgUtf16 *
+    , FgInt
+);
+
+FGEXPORT FgBool fgUtf16ToUInt(
+    FgUInt *
+    , const FgUtf16 *
+);
+
+FGEXPORT FgBool fgUtf16ToUIntWithBase(
+    FgUInt *
+    , const FgUtf16 *
+    , FgInt
+);
+
+FGEXPORT FgBool fgUtf16ToLong(
+    FgLong *
+    , const FgUtf16 *
+);
+
+FGEXPORT FgBool fgUtf16ToLongWithBase(
+    FgLong *
+    , const FgUtf16 *
+    , FgInt
+);
+
+FGEXPORT FgBool fgUtf16ToULong(
+    FgULong *
+    , const FgUtf16 *
+);
+
+FGEXPORT FgBool fgUtf16ToULongWithBase(
+    FgULong *
+    , const FgUtf16 *
+    , FgInt
+);
+
+FGEXPORT FgBool fgUtf16ToFloat(
+    FgFloat *
+    , const FgUtf16 *
+);
+
+FGEXPORT FgBool fgUtf16ToDouble(
+    FgDouble *
+    , const FgUtf16 *
+);
+
 #endif  // FG_STRING_UTF16_H

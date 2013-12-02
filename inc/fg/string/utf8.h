@@ -145,4 +145,53 @@ FGEXPORT FgBool fgUtf8ToInt(
     , const FgUtf8 *
 );
 
+FGEXPORT FgBool fgUtf8ToIntWithBase(
+    FgInt *
+    , const FgUtf8 *
+    , FgInt
+);
+
+FGEXPORT FgBool fgUtf8ToUInt(
+    FgUInt *
+    , const FgUtf8 *
+);
+
+FGEXPORT FgBool fgUtf8ToUIntWithBase(
+    FgUInt *
+    , const FgUtf8 *
+    , FgInt
+);
+
+FGEXPORT FgBool fgUtf8ToLong(
+    FgLong *
+    , const FgUtf8 *
+);
+
+FGEXPORT FgBool fgUtf8ToLongWithBase(
+    FgLong *
+    , const FgUtf8 *
+    , FgInt
+);
+
+FGEXPORT FgBool fgUtf8ToULong(
+    FgULong *
+    , const FgUtf8 *
+);
+
+FGEXPORT FgBool fgUtf8ToULongWithBase(
+    FgULong *
+    , const FgUtf8 *
+    , FgInt
+);
+
+FGEXPORT FgBool fgUtf8ToFloat(
+    FgFloat *
+    , const FgUtf8 *
+);
+
+FGEXPORT FgBool fgUtf8ToDouble(
+    FgDouble *
+    , const FgUtf8 *
+);
+
 #endif  // FG_STRING_UTF8_H
