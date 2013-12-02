@@ -219,3 +219,11 @@ FgBool fgStringAssignFromUtf32CharPtrWithLength(
 {
     return false;
 }
+
+FgBool fgStringToInt(
+    FgInt *
+    , const FgString *
+)
+{
+    return false;
+}
