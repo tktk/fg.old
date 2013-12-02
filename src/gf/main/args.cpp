@@ -1,7 +1,7 @@
-﻿#include "gf/main/args.h"
-#include "fg/util/export.h"
+﻿#include "fg/util/export.h"
+#include "gf/main/args.h"
 
-#include "gf/boot/config.h"
+#include "gf/main/bootconfig.h"
 
 FgArgs * gfArgsNew(
     const GfBootConfig *

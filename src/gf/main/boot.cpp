@@ -1,7 +1,7 @@
 ﻿#include "fg/util/export.h"
-#include "gf/boot/boot.h"
+#include "gf/main/boot.h"
 
-#include "gf/boot/config.h"
+#include "gf/main/bootconfig.h"
 #include "fg/string/utf32.h"
 #include "fg/common/primitives.h"
 

@@ -2,7 +2,7 @@
 #define GF_MAIN_ARGS_H
 
 #include "fg/main/args.h"
-#include "gf/boot/config.h"
+#include "gf/main/bootconfig.h"
 #include "fg/util/import.h"
 
 FGEXPORT FgArgs * gfArgsNew(

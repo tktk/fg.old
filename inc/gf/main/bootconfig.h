@@ -1,5 +1,5 @@
-﻿#ifndef GF_BOOT_CONFIG_H
-#define GF_BOOT_CONFIG_H
+﻿#ifndef GF_MAIN_BOOTCONFIG_H
+#define GF_MAIN_BOOTCONFIG_H
 
 typedef struct GfBootConfig GfBootConfig;
 
@@ -235,4 +235,4 @@ FGEXPORT void gfBootConfigClearGLAccumAlphaBits(
     GfBootConfig *
 );
 
-#endif  // GF_BOOT_CONFIG_H
+#endif  // GF_MAIN_BOOTCONFIG_H

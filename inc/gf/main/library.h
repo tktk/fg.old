@@ -1,5 +1,5 @@
-﻿#ifndef GF_BOOT_LIBRARY_H
-#define GF_BOOT_LIBRARY_H
+﻿#ifndef GF_MAIN_LIBRARY_H
+#define GF_MAIN_LIBRARY_H
 
 typedef struct GfLibrary GfLibrary;
 
@@ -20,4 +20,4 @@ FGEXPORT void * gfLibraryGetAddress(
     , const FgUtf32 *
 );
 
-#endif  // GF_BOOT_LIBRARY_H
+#endif  // GF_MAIN_LIBRARY_H

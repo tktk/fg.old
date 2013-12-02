@@ -12,6 +12,9 @@ def build( _context ):
             common.GF : {
                 MODULE_NAME : {
                     'args.cpp',
+                    'boot.cpp',
+                    'bootconfig.cpp',
+                    'library.cpp',
                 },
             },
         },

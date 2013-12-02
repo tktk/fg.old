@@ -1,5 +1,5 @@
 ﻿#include "fg/util/export.h"
-#include "gf/boot/config.h"
+#include "gf/main/bootconfig.h"
 
 #include "fg/string/utf32.h"
 #include "fg/common/primitives.h"
