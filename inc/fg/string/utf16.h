@@ -140,4 +140,9 @@ FGEXPORT FgBool fgUtf16AssignFromUtf32CharPtrWithLength(
     , FgSize
 );
 
+FGEXPORT FgBool fgUtf16ToInt(
+    FgInt *
+    , const FgUtf16 *
+);
+
 #endif  // FG_STRING_UTF16_H

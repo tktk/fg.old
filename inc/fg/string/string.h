@@ -140,4 +140,9 @@ FGEXPORT FgBool fgStringAssignFromUtf32CharPtrWithLength(
     , FgSize
 );
 
+FGEXPORT FgBool fgStringToInt(
+    FgInt *
+    , const FgString *
+);
+
 #endif  // FG_STRING_STRING_H
