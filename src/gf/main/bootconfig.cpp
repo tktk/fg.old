@@ -45,7 +45,7 @@ FgBool gfBootConfigGetGLDoubleBuffer(
     return false;
 }
 
-void gfBoolConfigSetGLDoubleBuffer(
+void gfBootConfigSetGLDoubleBuffer(
     GfBootConfig *
     , FgBool
 )
@@ -72,7 +72,7 @@ FgInt gfBootConfigGetGLAuxBuffers(
     return 0;
 }
 
-void gfBoolConfigSetGLAuxBuffers(
+void gfBootConfigSetGLAuxBuffers(
     GfBootConfig *
     , FgInt
 )
@@ -99,7 +99,7 @@ FgInt gfBootConfigGetGLRedBits(
     return 0;
 }
 
-void gfBoolConfigSetGLRedBits(
+void gfBootConfigSetGLRedBits(
     GfBootConfig *
     , FgInt
 )
@@ -126,7 +126,7 @@ FgInt gfBootConfigGetGLGreenBits(
     return 0;
 }
 
-void gfBoolConfigSetGLGreenBits(
+void gfBootConfigSetGLGreenBits(
     GfBootConfig *
     , FgInt
 )
@@ -153,7 +153,7 @@ FgInt gfBootConfigGetGLBlueBits(
     return 0;
 }
 
-void gfBoolConfigSetGLBlueBits(
+void gfBootConfigSetGLBlueBits(
     GfBootConfig *
     , FgInt
 )
@@ -180,7 +180,7 @@ FgInt gfBootConfigGetGLAlphaBits(
     return 0;
 }
 
-void gfBoolConfigSetGLAlphaBits(
+void gfBootConfigSetGLAlphaBits(
     GfBootConfig *
     , FgInt
 )
@@ -207,7 +207,7 @@ FgInt gfBootConfigGetGLDepthBits(
     return 0;
 }
 
-void gfBoolConfigSetGLDepthBits(
+void gfBootConfigSetGLDepthBits(
     GfBootConfig *
     , FgInt
 )
@@ -234,7 +234,7 @@ FgInt gfBootConfigGetGLStencilBits(
     return 0;
 }
 
-void gfBoolConfigSetGLStencilBits(
+void gfBootConfigSetGLStencilBits(
     GfBootConfig *
     , FgInt
 )
@@ -261,7 +261,7 @@ FgInt gfBootConfigGetGLAccumRedBits(
     return 0;
 }
 
-void gfBoolConfigSetGLAccumRedBits(
+void gfBootConfigSetGLAccumRedBits(
     GfBootConfig *
     , FgInt
 )
@@ -288,7 +288,7 @@ FgInt gfBootConfigGetGLAccumGreenBits(
     return 0;
 }
 
-void gfBoolConfigSetGLAccumGreenBits(
+void gfBootConfigSetGLAccumGreenBits(
     GfBootConfig *
     , FgInt
 )
@@ -315,7 +315,7 @@ FgInt gfBootConfigGetGLAccumBlueBits(
     return 0;
 }
 
-void gfBoolConfigSetGLAccumBlueBits(
+void gfBootConfigSetGLAccumBlueBits(
     GfBootConfig *
     , FgInt
 )
@@ -342,7 +342,7 @@ FgInt gfBootConfigGetGLAccumAlphaBits(
     return 0;
 }
 
-void gfBoolConfigSetGLAccumAlphaBits(
+void gfBootConfigSetGLAccumAlphaBits(
     GfBootConfig *
     , FgInt
 )
