@@ -2,6 +2,7 @@
 #define GF_GL_CONFIG_H
 
 #include "fg/gl/config.h"
+#include "fg/gl/version.h"
 #include "fg/common/primitives.h"
 #include "fg/util/import.h"
 
@@ -10,6 +11,11 @@ FGEXPORT FgGLConfig * gfGLConfigNew(
 
 FGEXPORT void gfGLConfigFree(
     FgGLConfig *
+);
+
+FGEXPORT void gfGLConfigSetVersion(
+    FgGLConfig *
+    , FgGLVersion
 );
 
 FGEXPORT void gfGLConfigSetDoubleBuffer(
