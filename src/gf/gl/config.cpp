@@ -2,6 +2,7 @@
 #include "gf/gl/config.h"
 
 #include "fg/gl/config.h"
+#include "fg/gl/version.h"
 #include "fg/common/primitives.h"
 
 FgGLConfig * gfGLConfigNew(
@@ -19,6 +20,13 @@ void gfGLConfigFree(
 void gfGLConfigSetDoubleBuffer(
     FgGLConfig *
     , FgBool
+)
+{
+}
+
+void gfGLConfigSetVersion(
+    FgGLConfig *
+    , FgGLVersion
 )
 {
 }
