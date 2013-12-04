@@ -1,6 +1,7 @@
 ﻿#include "fg/util/export.h"
 #include "gf/main/bootconfig.h"
 
+#include "fg/gl/version.h"
 #include "fg/string/utf32.h"
 #include "fg/common/primitives.h"
 
@@ -29,6 +30,33 @@ FgBool gfBootConfigSetBinDir(
 )
 {
     return false;
+}
+
+FgBool gfBootConfigExistsGLVersion(
+    const GfBootConfig *
+)
+{
+    return false;
+}
+
+FgGLVersion gfBootConfigGetGLVersion(
+    const GfBootConfig *
+)
+{
+    return FG_GL_VERSION_INVALID;
+}
+
+void gfBootConfigSetGLVersion(
+    GfBootConfig *
+    , FgGLVersion
+)
+{
+}
+
+void gfBootConfigClearGLVersion(
+    GfBootConfig *
+)
+{
 }
 
 FgBool gfBootConfigExistsGLDoubleBuffer(
