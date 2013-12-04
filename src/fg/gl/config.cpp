@@ -1,7 +1,15 @@
 ﻿#include "fg/util/export.h"
 #include "fg/gl/config.h"
 
+#include "fg/gl/version.h"
 #include "fg/common/primitives.h"
+
+FGEXPORT FgGLVersion fgGLConfigGetVersion(
+    const FgGLConfig *
+)
+{
+    return FG_GL_VERSION_INVALID;
+}
 
 FgBool fgGLConfigGetDoubleBuffer(
     const FgGLConfig *

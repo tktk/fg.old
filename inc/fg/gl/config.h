@@ -3,8 +3,13 @@
 
 typedef struct FgGLConfig FgGLConfig;
 
+#include "fg/gl/version.h"
 #include "fg/common/primitives.h"
 #include "fg/util/import.h"
+
+FGEXPORT FgGLVersion fgGLConfigGetVersion(
+    const FgGLConfig *
+);
 
 FGEXPORT FgBool fgGLConfigGetDoubleBuffer(
     const FgGLConfig *
