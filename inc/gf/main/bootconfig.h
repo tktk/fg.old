@@ -3,6 +3,7 @@
 
 typedef struct GfBootConfig GfBootConfig;
 
+#include "fg/gl/version.h"
 #include "fg/string/utf32.h"
 #include "fg/common/primitives.h"
 #include "fg/util/import.h"
@@ -28,6 +29,23 @@ FGEXPORT FgBool gfBootConfigSetBinDir(
 );
 
 FGEXPORT void gfBootConfigClearBinDir(
+    GfBootConfig *
+);
+
+FGEXPORT FgBool gfBootConfigExistsGLVersion(
+    const GfBootConfig *
+);
+
+FGEXPORT FgGLVersion gfBootConfigGetGLVersion(
+    const GfBootConfig *
+);
+
+FGEXPORT void gfBootConfigSetGLVersion(
+    GfBootConfig *
+    , FgGLVersion
+);
+
+FGEXPORT void gfBootConfigClearGLVersion(
     GfBootConfig *
 );
 
