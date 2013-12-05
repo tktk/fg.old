@@ -5,8 +5,6 @@ from wscripts import cmdoption
 from wscripts import fg
 from wscripts import gf
 
-from waflib import Utils
-
 import os.path
 
 APPNAME = 'fg'
@@ -83,7 +81,7 @@ _LINKFLAGS_BASES = {
 }
 
 _DEFINES = {
-    common.OS_LINUX : _generateFlags(
+    cmdoption.OS_LINUX : _generateFlags(
         common = [
             'OS_LINUX',
         ],
@@ -91,7 +89,7 @@ _DEFINES = {
             'DEBUG',
         ],
     ),
-    common.OS_WINDOWS : _generateFlags(
+    cmdoption.OS_WINDOWS : _generateFlags(
         common = [
             'OS_WINDOWS',
         ],
@@ -102,11 +100,11 @@ _DEFINES = {
 }
 
 def options( _context ):
-    for KEY, DEFAULT in cmdoption.OPTIONS.items():
+    for KEY, OPTION in cmdoption.OPTIONS.items():
         _context.add_option(
             _optionKey( KEY ),
-            type = DEFAULT[ cmdoption.TYPE ],
-            default = DEFAULT[ cmdoption.VALUE ],
+            type = OPTION[ cmdoption.TYPE ],
+            default = OPTION[ cmdoption.DEFAULT ],
         )
 
     _context.load( 'compiler_cxx' )
@@ -117,23 +115,8 @@ def _optionKey(
     return '--' + _KEY
 
 def configure( _context ):
-    _context.msg(
-        cmdoption.BUILD,
-        _context.options.build,
-    )
-    _context.msg(
-        cmdoption.CXXFLAGS_BASE,
-        _context.options.cxxflagsbase
-    )
-    _context.msg(
-        cmdoption.LINKFLAGS_BASE,
-        _context.options.linkflagsbase,
-    )
-
-    _checkBuild(
-        _context,
-    )
-
+    _configureBuild( _context )
+    _configureOs( _context )
     _configureIncludes( _context )
     _configureDefines( _context )
     _configureCxxflags( _context )
@@ -141,8 +124,13 @@ def configure( _context ):
 
     _context.load( 'compiler_cxx' )
 
-def _checkBuild( _context ):
+def _configureBuild( _context ):
     BUILD = _context.options.build
+
+    _context.msg(
+        cmdoption.BUILD,
+        BUILD,
+    )
 
     if BUILD == cmdoption.BUILD_DEBUG:
         return
@@ -151,8 +139,18 @@ def _checkBuild( _context ):
 
     _context.fatal( '非対応のビルドタイプ' )
 
+def _configureOs( _context ):
+    OS = _context.options.os
+
+    _context.msg(
+        cmdoption.OS,
+        OS,
+    )
+
+    _context.env.MY_OS = OS
+
 def _configureIncludes( _context ):
-    includes = [
+    INCLUDES = [
         os.path.abspath( i )
         for i in [
             common.INCLUDE_DIR,
@@ -161,16 +159,16 @@ def _configureIncludes( _context ):
 
     _context.msg(
         'includes',
-        includes,
+        INCLUDES,
     )
 
-    _context.env.MY_INCLUDES = includes
+    _context.env.MY_INCLUDES = INCLUDES
 
 def _configureDefines( _context ):
     defines = None
-    PLATFORM = Utils.unversioned_sys_platform()
-    if PLATFORM in _DEFINES:
-        defines = _DEFINES[ PLATFORM ][ _context.options.build ]
+    OS = _context.env.MY_OS
+    if OS in _DEFINES:
+        defines = _DEFINES[ OS ][ _context.options.build ]
 
     _context.msg(
         'defines',
@@ -180,9 +178,16 @@ def _configureDefines( _context ):
     _context.env.MY_DEFINES = defines
 
 def _configureCxxflags( _context ):
+    CXXFLAGS_BASE = _context.options.cxxflagsbase
+
+    _context.msg(
+        cmdoption.CXXFLAGS_BASE,
+        CXXFLAGS_BASE,
+    )
+
     CXXFLAGS = _configureFlags(
         _context,
-        _context.options.cxxflagsbase,
+        CXXFLAGS_BASE,
         _CXXFLAGS_BASES,
     )
 
@@ -194,9 +199,16 @@ def _configureCxxflags( _context ):
     _context.env.MY_CXXFLAGS = CXXFLAGS
 
 def _configureLinkflags( _context ):
+    LINKFLAGS_BASE = _context.options.linkflagsbase
+
+    _context.msg(
+        cmdoption.LINKFLAGS_BASE,
+        LINKFLAGS_BASE,
+    )
+
     LINKFLAGS = _configureFlags(
         _context,
-        _context.options.linkflagsbase,
+        LINKFLAGS_BASE,
         _LINKFLAGS_BASES,
     )
 
