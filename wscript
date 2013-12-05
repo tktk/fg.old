@@ -5,6 +5,8 @@ from wscripts import cmdoption
 from wscripts import fg
 from wscripts import gf
 
+from waflib import Utils
+
 import os.path
 
 APPNAME = 'fg'
@@ -12,7 +14,7 @@ VERSION = '0.1.0'
 
 out = common.BUILD_DIR
 
-def _generateFlagsBases(
+def _generateFlags(
     common = [],
     debug = [],
     release = [],
@@ -25,13 +27,8 @@ def _generateFlagsBases(
         }.items()
     }
 
-_CXXS = {
-    common.OS_LINUX : cmdoption.CXX_CLANGXX,
-    common.OS_WINDOWS : cmdoption.CXX_MSVC,
-}
-
 _CXXFLAGS_BASES = {
-    cmdoption.CXX_CLANGXX : _generateFlagsBases(
+    cmdoption.CXXFLAGS_BASE_GXX : _generateFlags(
         common = [
             '-Wall',
             '-fno-rtti',
@@ -46,7 +43,7 @@ _CXXFLAGS_BASES = {
             '-O2',
         ],
     ),
-    cmdoption.CXX_MSVC : _generateFlagsBases(
+    cmdoption.CXXFLAGS_BASE_MSVC : _generateFlags(
         common = [
             '/Wall',
             '/nologo',
@@ -66,12 +63,12 @@ _CXXFLAGS_BASES = {
 }
 
 _LINKFLAGS_BASES = {
-    cmdoption.CXX_CLANGXX : _generateFlagsBases(
+    cmdoption.LINKFLAGS_BASE_LD : _generateFlags(
         debug = [
             '-rdynamic',
         ],
     ),
-    cmdoption.CXX_MSVC : _generateFlagsBases(
+    cmdoption.LINKFLAGS_BASE_MSVC : _generateFlags(
         common = [
             '/NOLOGO',
             '/DYNAMICBASE',
@@ -85,13 +82,23 @@ _LINKFLAGS_BASES = {
     ),
 }
 
-_DDEBUG = 'DEBUG'
-_DOS_LINUX = 'OS_LINUX'
-_DOS_WINDOWS = 'OS_WINDOWS'
-
 _DEFINES = {
-    common.OS_LINUX : _DOS_LINUX,
-    common.OS_WINDOWS : _DOS_WINDOWS,
+    common.OS_LINUX : _generateFlags(
+        common = [
+            'OS_LINUX',
+        ],
+        debug = [
+            'DEBUG',
+        ],
+    ),
+    common.OS_WINDOWS : _generateFlags(
+        common = [
+            'OS_WINDOWS',
+        ],
+        debug = [
+            'DEBUG',
+        ],
+    ),
 }
 
 def options( _context ):
@@ -103,7 +110,6 @@ def options( _context ):
         )
 
     _context.load( 'compiler_cxx' )
-    _context.load( 'msvc' )
 
 def _optionKey(
     _KEY
@@ -112,12 +118,16 @@ def _optionKey(
 
 def configure( _context ):
     _context.msg(
-        cmdoption.OS,
-        _context.options.os,
-    )
-    _context.msg(
         cmdoption.BUILD,
         _context.options.build,
+    )
+    _context.msg(
+        cmdoption.CXXFLAGS_BASE,
+        _context.options.cxxflagsbase
+    )
+    _context.msg(
+        cmdoption.LINKFLAGS_BASE,
+        _context.options.linkflagsbase,
     )
 
     _checkBuild(
@@ -125,22 +135,9 @@ def configure( _context ):
     )
 
     _configureIncludes( _context )
-
     _configureDefines( _context )
-
-    flagsBase = _configureCxx( _context )
-    flagsBase = _getFlagsBase(
-        _context,
-        flagsBase,
-    )
-    _configureCxxflags(
-        _context,
-        flagsBase,
-    )
-    _configureLinkflags(
-        _context,
-        flagsBase,
-    )
+    _configureCxxflags( _context )
+    _configureLinkflags( _context )
 
     _context.load( 'compiler_cxx' )
 
@@ -170,100 +167,56 @@ def _configureIncludes( _context ):
     _context.env.MY_INCLUDES = includes
 
 def _configureDefines( _context ):
-    defines = []
-
-    OS = _context.options.os
-    if OS in _DEFINES:
-        defines.append( _DEFINES[ OS ] )
-
-    if _context.options.build == cmdoption.BUILD_DEBUG:
-        defines.append( _DDEBUG )
+    defines = None
+    PLATFORM = Utils.unversioned_sys_platform()
+    if PLATFORM in _DEFINES:
+        defines = _DEFINES[ PLATFORM ][ _context.options.build ]
 
     _context.msg(
         'defines',
         defines,
     )
 
-    if len( defines ) > 0:
-        _context.env.MY_DEFINES = defines
+    _context.env.MY_DEFINES = defines
 
-def _configureCxx( _context ):
-    cxx = None
-
-    if _context.options.cxx is not None:
-        cxx = _context.options.cxx
-    else:
-        OS = _context.options.os
-        if OS in _CXXS:
-            cxx = _CXXS[ OS ]
-
-    if cxx is not None:
-        _context.env.CXX = cxx
-
-    return cxx
-
-def _getFlagsBase(
-    _context,
-    _FLAGS_BASE,
-):
-    if _context.options.flagsbase is not None:
-        return _context.options.flagsbase
-    else:
-        return _FLAGS_BASE
-
-def _configureCxxflags(
-    _context,
-    _FLAGS_BASE,
-):
-    flags = _configureFlags(
+def _configureCxxflags( _context ):
+    CXXFLAGS = _configureFlags(
         _context,
-        cmdoption.CXXFLAGS,
-        _FLAGS_BASE,
+        _context.options.cxxflagsbase,
         _CXXFLAGS_BASES,
-        _context.options.cxxflags,
     )
 
-    if flags is not None:
-        _context.env.MY_CXXFLAGS = flags
+    _context.msg(
+        'cxxflags',
+        CXXFLAGS,
+    )
 
-def _configureLinkflags(
-    _context,
-    _FLAGS_BASE,
-):
-    flags = _configureFlags(
+    _context.env.MY_CXXFLAGS = CXXFLAGS
+
+def _configureLinkflags( _context ):
+    LINKFLAGS = _configureFlags(
         _context,
-        cmdoption.LINKFLAGS,
-        _FLAGS_BASE,
+        _context.options.linkflagsbase,
         _LINKFLAGS_BASES,
-        _context.options.linkflags,
     )
 
-    if flags is not None:
-        _context.env.MY_LINKFLAGS = flags
+    _context.msg(
+        'linkflags',
+        LINKFLAGS,
+    )
+
+    _context.env.MY_LINKFLAGS = LINKFLAGS
 
 def _configureFlags(
     _context,
-    _FLAGS_NAME,
     _FLAGS_BASE,
     _FLAGS_BASES,
-    _FLAGS,
 ):
-    flags = []
+    flags = None
     if _FLAGS_BASE in _FLAGS_BASES:
         flags = _FLAGS_BASES[ _FLAGS_BASE ][ _context.options.build ]
 
-    if _FLAGS is not None:
-        flags.append( _FLAGS )
-
-    _context.msg(
-        _FLAGS_NAME,
-        flags,
-    )
-
-    if len( flags ) > 0:
-        return flags
-
-    return None
+    return flags
 
 def build( _context ):
     fg.build( _context )

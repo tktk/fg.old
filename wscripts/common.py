@@ -8,4 +8,4 @@ SOURCE_DIR = 'src'
 INCLUDE_DIR = 'inc'
 
 OS_LINUX = 'linux'
-OS_WINDOWS = 'windows'
+OS_WINDOWS = 'win32'
