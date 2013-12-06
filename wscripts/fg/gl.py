@@ -12,6 +12,7 @@ def build( _context ):
             common.FG : {
                 MODULE_NAME : {
                     'gl.cpp',
+                    'functions.cpp',
                     'context.cpp',
                     'config.cpp',
                 },

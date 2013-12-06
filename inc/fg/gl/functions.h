@@ -3623,13 +3623,13 @@ typedef void ( * FgGLDebugProcAMD )(
     , void *
 );
 
-#define FG_GL_DECLARE_FUNCTION( _tmpValue, _returnType, _name, _args, _argValues ) \
+#define GL_DECLARE_FUNCTION( _dummyReturnValue, _returnType, _name, _args, _argValues ) \
     FGEXPORT _returnType fgGL##_name _args; \
 
-#define FG_GL_FUNCTION FG_GL_DECLARE_FUNCTION
+#define FG_GL_FUNCTION GL_DECLARE_FUNCTION
     FG_GL_FUNCTIONS
 #undef  FG_GL_FUNCTION
 
-#undef  FG_GL_DECLARE_FUNCTION
+#undef  GL_DECLARE_FUNCTION
 
 #endif  // FG_GL_FUNCTIONS_H
