@@ -1972,7 +1972,7 @@
     /* GL_EXT_bindable_uniform */ \
     FG_GL_FUNCTION( , void, UniformBufferEXT, ( FgGLuint _1, FgGLint _2, FgGLuint _3 ), ( _1, _2, _3 ) ) \
     FG_GL_FUNCTION( 0, FgGLint, GetUniformBufferSizeEXT, ( FgGLuint _1, FgGLint _2 ), ( _1, _2 ) ) \
-    FG_GL_FUNCTION( NULL, FgGLintptr, GetUniformOffsetEXT, ( FgGLuint _1, FgGLint _2 ), ( _1, _2 ) ) \
+    FG_GL_FUNCTION( 0, FgGLintptr, GetUniformOffsetEXT, ( FgGLuint _1, FgGLint _2 ), ( _1, _2 ) ) \
 \
     /* GL_EXT_blend_color */ \
     FG_GL_FUNCTION( , void, BlendColorEXT, ( FgGLfloat _1, FgGLfloat _2, FgGLfloat _3, FgGLfloat _4 ), ( _1, _2, _3, _4 ) ) \
@@ -3153,8 +3153,8 @@
     /* GL_NV_vdpau_interop */ \
     FG_GL_FUNCTION( , void, VDPAUInitNV, ( const FgGLvoid * _1, const FgGLvoid * _2 ), ( _1, _2 ) ) \
     FG_GL_FUNCTION( , void, VDPAUFiniNV, ( ), ( ) ) \
-    FG_GL_FUNCTION( NULL, FgGLvdpauSurfaceNV, VDPAURegisterVideoSurfaceNV, ( const FgGLvoid * _1, FgGLenum _2, FgGLsizei _3, const FgGLuint * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_FUNCTION( NULL, FgGLvdpauSurfaceNV, VDPAURegisterOutputSurfaceNV, ( const FgGLvoid * _1, FgGLenum _2, FgGLsizei _3, const FgGLuint * _4 ), ( _1, _2, _3, _4 ) ) \
+    FG_GL_FUNCTION( 0, FgGLvdpauSurfaceNV, VDPAURegisterVideoSurfaceNV, ( const FgGLvoid * _1, FgGLenum _2, FgGLsizei _3, const FgGLuint * _4 ), ( _1, _2, _3, _4 ) ) \
+    FG_GL_FUNCTION( 0, FgGLvdpauSurfaceNV, VDPAURegisterOutputSurfaceNV, ( const FgGLvoid * _1, FgGLenum _2, FgGLsizei _3, const FgGLuint * _4 ), ( _1, _2, _3, _4 ) ) \
     FG_GL_FUNCTION( , void, VDPAUIsSurfaceNV, ( FgGLvdpauSurfaceNV _1 ), ( _1 ) ) \
     FG_GL_FUNCTION( , void, VDPAUUnregisterSurfaceNV, ( FgGLvdpauSurfaceNV _1 ), ( _1 ) ) \
     FG_GL_FUNCTION( , void, VDPAUGetSurfaceivNV, ( FgGLvdpauSurfaceNV _1, FgGLenum _2, FgGLsizei _3, FgGLsizei * _4, FgGLint * _5 ), ( _1, _2, _3, _4, _5 ) ) \
