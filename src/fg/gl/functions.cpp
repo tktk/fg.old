@@ -7,8 +7,13 @@
         return _dummyReturnValue; \
     } \
 
+#define FG_GL_VOID_FUNCTION( _name, _args, _argValues ) \
+    FG_GL_FUNCTION( , void, _name, _args, _argValues )
+
 #define FG_GL_FUNCTION GL_DEFINE_FUNCTION
     FG_GL_FUNCTIONS
 #undef  FG_GL_FUNCTION
+
+#undef  FG_GL_VOID_FUNCTION
 
 #undef  GL_DEFINE_FUNCTION
