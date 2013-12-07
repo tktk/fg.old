@@ -38,8 +38,34 @@ typedef struct __FgGLsync *FgGLsync;
 typedef uint64_t FgGLuint64;
 typedef int64_t FgGLint64;
 
+// GL_VERSION_4_3
+typedef void ( * FgGLDebugProc )(
+    FgGLenum
+    , FgGLenum
+    , FgGLuint
+    , FgGLenum
+    , FgGLsizei
+    , const FgGLchar *
+    , const void *
+);
+
 // GL_ARB_bindless_texture
 typedef uint64_t FgGLuint64EXT;
+
+// GL_ARB_cl_event
+typedef struct __FgGLclcontext *FgGLclcontext;
+typedef struct __FgGLclevent *FgGLclevent;
+
+// GL_ARB_debug_output
+typedef void ( * FgGLDebugProcARB )(
+    FgGLenum
+    , FgGLenum
+    , FgGLuint
+    , FgGLenum
+    , FgGLsizei
+    , const FgGLchar *
+    , const void *
+);
 
 // GL_ARB_half_float_pixel
 typedef unsigned short FgGLhalfARB;
@@ -54,6 +80,16 @@ typedef ptrdiff_t FgGLintptrARB;
 
 // GL_OES_fixed_point
 typedef FgGLint FgGLfixed;
+
+// GL_AMD_debug_output
+typedef void ( * FgGLDebugProcAMD )(
+    FgGLuint
+    , FgGLenum
+    , FgGLenum
+    , FgGLsizei
+    , const FgGLchar *
+    , void *
+);
 
 // GL_NV_gpu_shader5
 typedef int64_t FgGLint64EXT;
