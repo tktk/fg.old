@@ -1,964 +1,965 @@
 ﻿#ifndef FG_GL_FUNCTIONS_H
 #define FG_GL_FUNCTIONS_H
 
+#include "fg/gl/context.h"
 #include "fg/gl/types.h"
 #include "fg/util/import.h"
 
 #define FG_GL_FUNCTIONS \
     /* GL_VERSION_1_0 */ \
-    FG_GL_FUNCTION( 0, FgGLenum, GetError, (), () ) \
-    FG_GL_VOID_FUNCTION( Begin, ( FgGLenum _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( End, (), () ) \
-    FG_GL_VOID_FUNCTION( EdgeFlag, ( FgGLboolean _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( EdgeFlagv, ( const FgGLboolean * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( Vertex2s, ( FgGLshort _1, FgGLshort _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( Vertex2i, ( FgGLint _1, FgGLint _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( Vertex2f, ( FgGLfloat _1, FgGLfloat _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( Vertex2d, ( FgGLdouble _1, FgGLdouble _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( Vertex3s, ( FgGLshort _1, FgGLshort _2, FgGLshort _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( Vertex3i, ( FgGLint _1, FgGLint _2, FgGLint _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( Vertex3f, ( FgGLfloat _1, FgGLfloat _2, FgGLfloat _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( Vertex3d, ( FgGLdouble _1, FgGLdouble _2, FgGLdouble _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( Vertex4s, ( FgGLshort _1, FgGLshort _2, FgGLshort _3, FgGLshort _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( Vertex4i, ( FgGLint _1, FgGLint _2, FgGLint _3, FgGLint _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( Vertex4f, ( FgGLfloat _1, FgGLfloat _2, FgGLfloat _3, FgGLfloat _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( Vertex4d, ( FgGLdouble _1, FgGLdouble _2, FgGLdouble _3, FgGLdouble _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( Vertex2sv, ( const FgGLshort * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( Vertex2iv, ( const FgGLint * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( Vertex2fv, ( const FgGLfloat * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( Vertex2dv, ( const FgGLdouble * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( Vertex3sv, ( const FgGLshort * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( Vertex3iv, ( const FgGLint * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( Vertex3fv, ( const FgGLfloat * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( Vertex3dv, ( const FgGLdouble * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( Vertex4sv, ( const FgGLshort * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( Vertex4iv, ( const FgGLint * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( Vertex4fv, ( const FgGLfloat * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( Vertex4dv, ( const FgGLdouble * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( TexCoord1s, ( FgGLshort _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( TexCoord1i, ( FgGLint _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( TexCoord1f, ( FgGLfloat _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( TexCoord1d, ( FgGLdouble _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( TexCoord2s, ( FgGLshort _1, FgGLshort _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( TexCoord2i, ( FgGLint _1, FgGLint _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( TexCoord2f, ( FgGLfloat _1, FgGLfloat _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( TexCoord2d, ( FgGLdouble _1, FgGLdouble _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( TexCoord3s, ( FgGLshort _1, FgGLshort _2, FgGLshort _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( TexCoord3i, ( FgGLint _1, FgGLint _2, FgGLint _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( TexCoord3f, ( FgGLfloat _1, FgGLfloat _2, FgGLfloat _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( TexCoord3d, ( FgGLdouble _1, FgGLdouble _2, FgGLdouble _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( TexCoord4s, ( FgGLshort _1, FgGLshort _2, FgGLshort _3, FgGLshort _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( TexCoord4i, ( FgGLint _1, FgGLint _2, FgGLint _3, FgGLint _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( TexCoord4f, ( FgGLfloat _1, FgGLfloat _2, FgGLfloat _3, FgGLfloat _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( TexCoord4d, ( FgGLdouble _1, FgGLdouble _2, FgGLdouble _3, FgGLdouble _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( TexCoord1sv, ( const FgGLshort * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( TexCoord1iv, ( const FgGLint * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( TexCoord1fv, ( const FgGLfloat * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( TexCoord1dv, ( const FgGLdouble * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( TexCoord2sv, ( const FgGLshort * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( TexCoord2iv, ( const FgGLint * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( TexCoord2fv, ( const FgGLfloat * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( TexCoord2dv, ( const FgGLdouble * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( TexCoord3sv, ( const FgGLshort * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( TexCoord3iv, ( const FgGLint * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( TexCoord3fv, ( const FgGLfloat * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( TexCoord3dv, ( const FgGLdouble * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( TexCoord4sv, ( const FgGLshort * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( TexCoord4iv, ( const FgGLint * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( TexCoord4fv, ( const FgGLfloat * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( TexCoord4dv, ( const FgGLdouble * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( Normal3b, ( FgGLbyte _1, FgGLbyte _2, FgGLbyte _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( Normal3s, ( FgGLshort _1, FgGLshort _2, FgGLshort _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( Normal3i, ( FgGLint _1, FgGLint _2, FgGLint _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( Normal3f, ( FgGLfloat _1, FgGLfloat _2, FgGLfloat _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( Normal3d, ( FgGLdouble _1, FgGLdouble _2, FgGLdouble _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( Normal3bv, ( const FgGLbyte * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( Normal3sv, ( const FgGLshort * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( Normal3iv, ( const FgGLint * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( Normal3fv, ( const FgGLfloat * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( Normal3dv, ( const FgGLdouble * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( Color3b, ( FgGLbyte _1, FgGLbyte _2, FgGLbyte _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( Color3s, ( FgGLshort _1, FgGLshort _2, FgGLshort _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( Color3i, ( FgGLint _1, FgGLint _2, FgGLint _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( Color3f, ( FgGLfloat _1, FgGLfloat _2, FgGLfloat _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( Color3d, ( FgGLdouble _1, FgGLdouble _2, FgGLdouble _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( Color3ub, ( FgGLubyte _1, FgGLubyte _2, FgGLubyte _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( Color3us, ( FgGLushort _1, FgGLushort _2, FgGLushort _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( Color3ui, ( FgGLuint _1, FgGLuint _2, FgGLuint _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( Color4b, ( FgGLbyte _1, FgGLbyte _2, FgGLbyte _3, FgGLbyte _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( Color4s, ( FgGLshort _1, FgGLshort _2, FgGLshort _3, FgGLshort _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( Color4i, ( FgGLint _1, FgGLint _2, FgGLint _3, FgGLint _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( Color4f, ( FgGLfloat _1, FgGLfloat _2, FgGLfloat _3, FgGLfloat _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( Color4d, ( FgGLdouble _1, FgGLdouble _2, FgGLdouble _3, FgGLdouble _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( Color4ub, ( FgGLubyte _1, FgGLubyte _2, FgGLubyte _3, FgGLubyte _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( Color4us, ( FgGLushort _1, FgGLushort _2, FgGLushort _3, FgGLushort _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( Color4ui, ( FgGLuint _1, FgGLuint _2, FgGLuint _3, FgGLuint _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( Color3bv, ( const FgGLbyte * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( Color3sv, ( const FgGLshort * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( Color3iv, ( const FgGLint * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( Color3fv, ( const FgGLfloat * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( Color3dv, ( const FgGLdouble * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( Color3ubv, ( const FgGLubyte * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( Color3usv, ( const FgGLushort * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( Color3uiv, ( const FgGLuint * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( Color4bv, ( const FgGLbyte * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( Color4sv, ( const FgGLshort * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( Color4iv, ( const FgGLint * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( Color4fv, ( const FgGLfloat * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( Color4dv, ( const FgGLdouble * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( Color4ubv, ( const FgGLubyte * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( Color4usv, ( const FgGLushort * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( Color4uiv, ( const FgGLuint * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( Indexs, ( FgGLshort _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( Indexi, ( FgGLint _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( Indexf, ( FgGLfloat _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( Indexd, ( FgGLdouble _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( Indexsv, ( const FgGLshort * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( Indexiv, ( const FgGLint * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( Indexfv, ( const FgGLfloat * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( Indexdv, ( const FgGLdouble * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( Rects, ( FgGLshort _1, FgGLshort _2, FgGLshort _3, FgGLshort _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( Recti, ( FgGLint _1, FgGLint _2, FgGLint _3, FgGLint _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( Rectf, ( FgGLfloat _1, FgGLfloat _2, FgGLfloat _3, FgGLfloat _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( Rectd, ( FgGLdouble _1, FgGLdouble _2, FgGLdouble _3, FgGLdouble _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( Rectsv, ( const FgGLshort * _1, const FgGLshort * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( Rectiv, ( const FgGLint * _1, const FgGLint * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( Rectfv, ( const FgGLfloat * _1, const FgGLfloat * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( Rectdv, ( const FgGLdouble * _1, const FgGLdouble * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( DepthRange, ( FgGLclampd _1, FgGLclampd _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( Viewport, ( FgGLint _1, FgGLint _2, FgGLsizei _3, FgGLsizei _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( MatrixMode, ( FgGLenum _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( LoadMatrixf, ( const FgGLfloat * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( LoadMatrixd, ( const FgGLdouble * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( MultMatrixf, ( const FgGLfloat * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( MultMatrixd, ( const FgGLdouble * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( LoadIdentity, (), () ) \
-    FG_GL_VOID_FUNCTION( Rotatef, ( FgGLfloat _1, FgGLfloat _2, FgGLfloat _3, FgGLfloat _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( Rotated, ( FgGLdouble _1, FgGLdouble _2, FgGLdouble _3, FgGLdouble _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( Translatef, ( FgGLfloat _1, FgGLfloat _2, FgGLfloat _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( Translated, ( FgGLdouble _1, FgGLdouble _2, FgGLdouble _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( Scalef, ( FgGLfloat _1, FgGLfloat _2, FgGLfloat _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( Scaled, ( FgGLdouble _1, FgGLdouble _2, FgGLdouble _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( Frustum, ( FgGLdouble _1, FgGLdouble _2, FgGLdouble _3, FgGLdouble _4, FgGLdouble _5, FgGLdouble _6 ), ( _1, _2, _3, _4, _5, _6 ) ) \
-    FG_GL_VOID_FUNCTION( Ortho, ( FgGLdouble _1, FgGLdouble _2, FgGLdouble _3, FgGLdouble _4, FgGLdouble _5, FgGLdouble _6 ), ( _1, _2, _3, _4, _5, _6 ) ) \
-    FG_GL_VOID_FUNCTION( PushMatrix, (), () ) \
-    FG_GL_VOID_FUNCTION( PopMatrix, (), () ) \
-    FG_GL_VOID_FUNCTION( Enable, ( FgGLenum _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( Disable, ( FgGLenum _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( TexGeni, ( FgGLenum _1, FgGLenum _2, FgGLint _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( TexGenf, ( FgGLenum _1, FgGLenum _2, FgGLfloat _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( TexGend, ( FgGLenum _1, FgGLenum _2, FgGLdouble _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( TexGeniv, ( FgGLenum _1, FgGLenum _2, const FgGLint * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( TexGenfv, ( FgGLenum _1, FgGLenum _2, const FgGLfloat * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( TexGendv, ( FgGLenum _1, FgGLenum _2, const FgGLdouble * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( ClipPlane, ( FgGLenum _1, const FgGLdouble * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( RasterPos2s, ( FgGLshort _1, FgGLshort _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( RasterPos2i, ( FgGLint _1, FgGLint _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( RasterPos2f, ( FgGLfloat _1, FgGLfloat _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( RasterPos2d, ( FgGLdouble _1, FgGLdouble _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( RasterPos2sv, ( const FgGLshort * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( RasterPos2iv, ( const FgGLint * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( RasterPos2fv, ( const FgGLfloat * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( RasterPos2dv, ( const FgGLdouble * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( RasterPos3s, ( FgGLshort _1, FgGLshort _2, FgGLshort _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( RasterPos3i, ( FgGLint _1, FgGLint _2, FgGLint _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( RasterPos3f, ( FgGLfloat _1, FgGLfloat _2, FgGLfloat _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( RasterPos3d, ( FgGLdouble _1, FgGLdouble _2, FgGLdouble _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( RasterPos3sv, ( const FgGLshort * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( RasterPos3iv, ( const FgGLint * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( RasterPos3fv, ( const FgGLfloat * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( RasterPos3dv, ( const FgGLdouble * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( RasterPos4s, ( FgGLshort _1, FgGLshort _2, FgGLshort _3, FgGLshort _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( RasterPos4i, ( FgGLint _1, FgGLint _2, FgGLint _3, FgGLint _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( RasterPos4f, ( FgGLfloat _1, FgGLfloat _2, FgGLfloat _3, FgGLfloat _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( RasterPos4d, ( FgGLdouble _1, FgGLdouble _2, FgGLdouble _3, FgGLdouble _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( RasterPos4sv, ( const FgGLshort * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( RasterPos4iv, ( const FgGLint * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( RasterPos4fv, ( const FgGLfloat * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( RasterPos4dv, ( const FgGLdouble * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( FrontFace, ( FgGLenum _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( Materiali, ( FgGLenum _1, FgGLenum _2, FgGLint _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( Materialf, ( FgGLenum _1, FgGLenum _2, FgGLfloat _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( Materialiv, ( FgGLenum _1, FgGLenum _2, const FgGLint * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( Materialfv, ( FgGLenum _1, FgGLenum _2, const FgGLfloat * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( Lighti, ( FgGLenum _1, FgGLenum _2, FgGLint _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( Lightf, ( FgGLenum _1, FgGLenum _2, FgGLfloat _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( Lightiv, ( FgGLenum _1, FgGLenum _2, const FgGLint * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( Lightfv, ( FgGLenum _1, FgGLenum _2, const FgGLfloat * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( LightModeli, ( FgGLenum _1, FgGLint _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( LightModelf, ( FgGLenum _1, FgGLfloat _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( LightModeliv, ( FgGLenum _1, const FgGLint * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( LightModelfv, ( FgGLenum _1, const FgGLfloat * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( ColorMaterial, ( FgGLenum _1, FgGLenum _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( ShadeModel, ( FgGLenum _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( PointSize, ( FgGLfloat _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( LineWidth, ( FgGLfloat _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( LineStipple, ( FgGLint _1, FgGLushort _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( CullFace, ( FgGLenum _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( PolygonStipple, ( const FgGLubyte * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( PolygonMode, ( FgGLenum _1, FgGLenum _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( PixelStorei, ( FgGLenum _1, FgGLint _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( PixelStoref, ( FgGLenum _1, FgGLfloat _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( PixelTransferi, ( FgGLenum _1, FgGLint _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( PixelTransferf, ( FgGLenum _1, FgGLfloat _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( PixelMapuiv, ( FgGLenum _1, FgGLsizei _2, const FgGLuint * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( PixelMapusv, ( FgGLenum _1, FgGLsizei _2, const FgGLushort * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( PixelMapfv, ( FgGLenum _1, FgGLsizei _2, const FgGLfloat * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( DrawPixels, ( FgGLsizei _1, FgGLsizei _2, FgGLenum _3, FgGLenum _4, const FgGLvoid * _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( PixelZoom, ( FgGLfloat _1, FgGLfloat _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( Bitmap, ( FgGLsizei _1, FgGLsizei _2, FgGLfloat _3, FgGLfloat _4, FgGLfloat _5, FgGLfloat _6, const FgGLubyte * _7 ), ( _1, _2, _3, _4, _5, _6, _7 ) ) \
-    FG_GL_VOID_FUNCTION( TexImage1D, ( FgGLenum _1, FgGLint _2, FgGLint _3, FgGLsizei _4, FgGLint _5, FgGLenum _6, FgGLenum _7, const FgGLvoid * _8 ), ( _1, _2, _3, _4, _5, _6, _7, _8 ) ) \
-    FG_GL_VOID_FUNCTION( TexImage2D, ( FgGLenum _1, FgGLint _2, FgGLint _3, FgGLsizei _4, FgGLsizei _5, FgGLint _6, FgGLenum _7, FgGLenum _8, const FgGLvoid * _9 ), ( _1, _2, _3, _4, _5, _6, _7, _8, _9 ) ) \
-    FG_GL_VOID_FUNCTION( TexParameteri, ( FgGLenum _1, FgGLenum _2, FgGLint _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( TexParameterf, ( FgGLenum _1, FgGLenum _2, FgGLfloat _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( TexParameteriv, ( FgGLenum _1, FgGLenum _2, const FgGLint * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( TexParameterfv, ( FgGLenum _1, FgGLenum _2, const FgGLfloat * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( TexEnvi, ( FgGLenum _1, FgGLenum _2, FgGLint _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( TexEnvf, ( FgGLenum _1, FgGLenum _2, FgGLfloat _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( TexEnviv, ( FgGLenum _1, FgGLenum _2, const FgGLint * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( TexEnvfv, ( FgGLenum _1, FgGLenum _2, const FgGLfloat * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( Fogi, ( FgGLenum _1, FgGLint _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( Fogf, ( FgGLenum _1, FgGLfloat _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( Fogiv, ( FgGLenum _1, const FgGLint * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( Fogfv, ( FgGLenum _1, const FgGLfloat * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( Scissor, ( FgGLint _1, FgGLint _2, FgGLsizei _3, FgGLsizei _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( AlphaFunc, ( FgGLenum _1, FgGLclampf _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( StencilFunc, ( FgGLenum _1, FgGLint _2, FgGLuint _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( StencilOp, ( FgGLenum _1, FgGLenum _2, FgGLenum _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( DepthFunc, ( FgGLenum _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( BlendFunc, ( FgGLenum _1, FgGLenum _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( LogicOp, ( FgGLenum _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( DrawBuffer, ( FgGLenum _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( IndexMask, ( FgGLuint _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( ColorMask, ( FgGLboolean _1, FgGLboolean _2, FgGLboolean _3, FgGLboolean _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( DepthMask, ( FgGLboolean _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( StencilMask, ( FgGLuint _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( Clear, ( FgGLbitfield _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( ClearColor, ( FgGLclampf _1, FgGLclampf _2, FgGLclampf _3, FgGLclampf _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( ClearIndex, ( FgGLfloat _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( ClearDepth, ( FgGLclampd _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( ClearStencil, ( FgGLint _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( ClearAccum, ( FgGLfloat _1, FgGLfloat _2, FgGLfloat _3, FgGLfloat _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( Accum, ( FgGLenum _1, FgGLfloat _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( ReadPixels, ( FgGLint _1, FgGLint _2, FgGLsizei _3, FgGLsizei _4, FgGLenum _5, FgGLenum _6, FgGLvoid * _7 ), ( _1, _2, _3, _4, _5, _6, _7 ) ) \
-    FG_GL_VOID_FUNCTION( ReadBuffer, ( FgGLenum _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( CopyPixels, ( FgGLint _1, FgGLint _2, FgGLsizei _3, FgGLsizei _4, FgGLenum _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( Map1f, ( FgGLenum _1, FgGLfloat _2, FgGLfloat _3, FgGLint _4, FgGLint _5, const FgGLfloat * _6 ), ( _1, _2, _3, _4, _5, _6 ) ) \
-    FG_GL_VOID_FUNCTION( Map1d, ( FgGLenum _1, FgGLdouble _2, FgGLdouble _3, FgGLint _4, FgGLint _5, const FgGLdouble * _6 ), ( _1, _2, _3, _4, _5, _6 ) ) \
-    FG_GL_VOID_FUNCTION( Map2f, ( FgGLenum _1, FgGLfloat _2, FgGLfloat _3, FgGLint _4, FgGLint _5, FgGLfloat _6, FgGLfloat _7, FgGLint _8, FgGLint _9, const FgGLfloat * _10 ), ( _1, _2, _3, _4, _5, _6, _7, _8, _9, _10 ) ) \
-    FG_GL_VOID_FUNCTION( Map2d, ( FgGLenum _1, FgGLdouble _2, FgGLdouble _3, FgGLint _4, FgGLint _5, FgGLdouble _6, FgGLdouble _7, FgGLint _8, FgGLint _9, const FgGLdouble * _10 ), ( _1, _2, _3, _4, _5, _6, _7, _8, _9, _10 ) ) \
-    FG_GL_VOID_FUNCTION( EvalCoord1f, ( FgGLfloat _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( EvalCoord1d, ( FgGLdouble _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( EvalCoord2f, ( FgGLfloat _1, FgGLfloat _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( EvalCoord2d, ( FgGLdouble _1, FgGLdouble _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( EvalCoord1fv, ( const FgGLfloat * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( EvalCoord1dv, ( const FgGLdouble * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( EvalCoord2fv, ( const FgGLfloat * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( EvalCoord2dv, ( const FgGLdouble * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( MapGrid1f, ( FgGLint _1, FgGLfloat _2, FgGLfloat _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( MapGrid1d, ( FgGLint _1, FgGLdouble _2, FgGLdouble _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( MapGrid2f, ( FgGLint _1, FgGLfloat _2, FgGLfloat _3, FgGLint _4, FgGLfloat _5, FgGLfloat _6 ), ( _1, _2, _3, _4, _5, _6 ) ) \
-    FG_GL_VOID_FUNCTION( MapGrid2d, ( FgGLint _1, FgGLdouble _2, FgGLdouble _3, FgGLint _4, FgGLdouble _5, FgGLdouble _6 ), ( _1, _2, _3, _4, _5, _6 ) ) \
-    FG_GL_VOID_FUNCTION( EvalMesh1, ( FgGLenum _1, FgGLint _2, FgGLint _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( EvalMesh2, ( FgGLenum _1, FgGLint _2, FgGLint _3, FgGLint _4, FgGLint _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( EvalPoint1, ( FgGLint _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( EvalPoint2, ( FgGLint _1, FgGLint _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( InitNames, (), () ) \
-    FG_GL_VOID_FUNCTION( PopName, (), () ) \
-    FG_GL_VOID_FUNCTION( PushName, ( FgGLuint _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( LoadName, ( FgGLuint _1 ), ( _1 ) ) \
-    FG_GL_FUNCTION( 0, FgGLint, RenderMode, ( FgGLenum _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( SelectBuffer, ( FgGLsizei _1, FgGLuint * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( FeedbackBuffer, ( FgGLsizei _1, FgGLenum _2, FgGLfloat * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( PassThrough, ( FgGLfloat _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( NewList, ( FgGLuint _1, FgGLenum _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( EndList, (), () ) \
-    FG_GL_VOID_FUNCTION( CallList, ( FgGLuint _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( CallLists, ( FgGLsizei _1, FgGLenum _2, const FgGLvoid * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( ListBase, ( FgGLuint _1 ), ( _1 ) ) \
-    FG_GL_FUNCTION( 0, FgGLuint, GenLists, ( FgGLsizei _1 ), ( _1 ) ) \
-    FG_GL_FUNCTION( 0, FgGLboolean, IsList, ( FgGLuint _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( DeleteLists, ( FgGLuint _1, FgGLsizei _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( Flush, (), () ) \
-    FG_GL_VOID_FUNCTION( Finish, (), () ) \
-    FG_GL_VOID_FUNCTION( Hint, ( FgGLenum _1, FgGLenum _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( GetBooleanv, ( FgGLenum _1, FgGLboolean * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( GetIntegerv, ( FgGLenum _1, FgGLint * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( GetFloatv, ( FgGLenum _1, FgGLfloat * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( GetDoublev, ( FgGLenum _1, FgGLdouble * _2 ), ( _1, _2 ) ) \
-    FG_GL_FUNCTION( 0, FgGLboolean, IsEnabled, ( FgGLenum _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( GetClipPlane, ( FgGLenum _1, FgGLdouble * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( GetLightiv, ( FgGLenum _1, FgGLenum _2, FgGLint * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetLightfv, ( FgGLenum _1, FgGLenum _2, FgGLfloat * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetMaterialiv, ( FgGLenum _1, FgGLenum _2, FgGLint * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetMaterialfv, ( FgGLenum _1, FgGLenum _2, FgGLfloat * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetTexEnviv, ( FgGLenum _1, FgGLenum _2, FgGLint * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetTexEnvfv, ( FgGLenum _1, FgGLenum _2, FgGLfloat * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetTexGeniv, ( FgGLenum _1, FgGLenum _2, FgGLint * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetTexGenfv, ( FgGLenum _1, FgGLenum _2, FgGLfloat * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetTexParameteriv, ( FgGLenum _1, FgGLenum _2, FgGLint * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetTexParameterfv, ( FgGLenum _1, FgGLenum _2, FgGLfloat * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetTexLevelParameteriv, ( FgGLenum _1, FgGLint _2, FgGLenum _3, FgGLint * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( GetTexLevelParameterfv, ( FgGLenum _1, FgGLint _2, FgGLenum _3, FgGLfloat * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( GetPixelMapuiv, ( FgGLenum _1, FgGLuint * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( GetPixelMapusv, ( FgGLenum _1, FgGLushort * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( GetPixelMapfv, ( FgGLenum _1, FgGLfloat * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( GetMapiv, ( FgGLenum _1, FgGLenum _2, FgGLint * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetMapfv, ( FgGLenum _1, FgGLenum _2, FgGLfloat * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetMapdv, ( FgGLenum _1, FgGLenum _2, FgGLdouble * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetTexImage, ( FgGLenum _1, FgGLint _2, FgGLenum _3, FgGLenum _4, FgGLvoid * _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( GetPolygonStipple, ( FgGLubyte * _1 ), ( _1 ) ) \
-    FG_GL_FUNCTION( NULL, const FgGLubyte *, GetString, ( FgGLenum _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( PushAttrib, ( FgGLbitfield _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( PopAttrib, (), () ) \
+    FG_GL_FUNCTION_NUM( GetError, FgGLenum, FgGLContext * ) \
+    FG_GL_FUNCTION_VOID( Begin, FgGLContext *, FgGLenum ) \
+    FG_GL_FUNCTION_VOID( End, FgGLContext * ) \
+    FG_GL_FUNCTION_VOID( EdgeFlag, FgGLContext *, FgGLboolean ) \
+    FG_GL_FUNCTION_VOID( EdgeFlagv, FgGLContext *, const FgGLboolean * ) \
+    FG_GL_FUNCTION_VOID( Vertex2s, FgGLContext *, FgGLshort, FgGLshort ) \
+    FG_GL_FUNCTION_VOID( Vertex2i, FgGLContext *, FgGLint, FgGLint ) \
+    FG_GL_FUNCTION_VOID( Vertex2f, FgGLContext *, FgGLfloat, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( Vertex2d, FgGLContext *, FgGLdouble, FgGLdouble ) \
+    FG_GL_FUNCTION_VOID( Vertex3s, FgGLContext *, FgGLshort, FgGLshort, FgGLshort ) \
+    FG_GL_FUNCTION_VOID( Vertex3i, FgGLContext *, FgGLint, FgGLint, FgGLint ) \
+    FG_GL_FUNCTION_VOID( Vertex3f, FgGLContext *, FgGLfloat, FgGLfloat, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( Vertex3d, FgGLContext *, FgGLdouble, FgGLdouble, FgGLdouble ) \
+    FG_GL_FUNCTION_VOID( Vertex4s, FgGLContext *, FgGLshort, FgGLshort, FgGLshort, FgGLshort ) \
+    FG_GL_FUNCTION_VOID( Vertex4i, FgGLContext *, FgGLint, FgGLint, FgGLint, FgGLint ) \
+    FG_GL_FUNCTION_VOID( Vertex4f, FgGLContext *, FgGLfloat, FgGLfloat, FgGLfloat, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( Vertex4d, FgGLContext *, FgGLdouble, FgGLdouble, FgGLdouble, FgGLdouble ) \
+    FG_GL_FUNCTION_VOID( Vertex2sv, FgGLContext *, const FgGLshort * ) \
+    FG_GL_FUNCTION_VOID( Vertex2iv, FgGLContext *, const FgGLint * ) \
+    FG_GL_FUNCTION_VOID( Vertex2fv, FgGLContext *, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( Vertex2dv, FgGLContext *, const FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( Vertex3sv, FgGLContext *, const FgGLshort * ) \
+    FG_GL_FUNCTION_VOID( Vertex3iv, FgGLContext *, const FgGLint * ) \
+    FG_GL_FUNCTION_VOID( Vertex3fv, FgGLContext *, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( Vertex3dv, FgGLContext *, const FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( Vertex4sv, FgGLContext *, const FgGLshort * ) \
+    FG_GL_FUNCTION_VOID( Vertex4iv, FgGLContext *, const FgGLint * ) \
+    FG_GL_FUNCTION_VOID( Vertex4fv, FgGLContext *, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( Vertex4dv, FgGLContext *, const FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( TexCoord1s, FgGLContext *, FgGLshort ) \
+    FG_GL_FUNCTION_VOID( TexCoord1i, FgGLContext *, FgGLint ) \
+    FG_GL_FUNCTION_VOID( TexCoord1f, FgGLContext *, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( TexCoord1d, FgGLContext *, FgGLdouble ) \
+    FG_GL_FUNCTION_VOID( TexCoord2s, FgGLContext *, FgGLshort, FgGLshort ) \
+    FG_GL_FUNCTION_VOID( TexCoord2i, FgGLContext *, FgGLint, FgGLint ) \
+    FG_GL_FUNCTION_VOID( TexCoord2f, FgGLContext *, FgGLfloat, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( TexCoord2d, FgGLContext *, FgGLdouble, FgGLdouble ) \
+    FG_GL_FUNCTION_VOID( TexCoord3s, FgGLContext *, FgGLshort, FgGLshort, FgGLshort ) \
+    FG_GL_FUNCTION_VOID( TexCoord3i, FgGLContext *, FgGLint, FgGLint, FgGLint ) \
+    FG_GL_FUNCTION_VOID( TexCoord3f, FgGLContext *, FgGLfloat, FgGLfloat, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( TexCoord3d, FgGLContext *, FgGLdouble, FgGLdouble, FgGLdouble ) \
+    FG_GL_FUNCTION_VOID( TexCoord4s, FgGLContext *, FgGLshort, FgGLshort, FgGLshort, FgGLshort ) \
+    FG_GL_FUNCTION_VOID( TexCoord4i, FgGLContext *, FgGLint, FgGLint, FgGLint, FgGLint ) \
+    FG_GL_FUNCTION_VOID( TexCoord4f, FgGLContext *, FgGLfloat, FgGLfloat, FgGLfloat, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( TexCoord4d, FgGLContext *, FgGLdouble, FgGLdouble, FgGLdouble, FgGLdouble ) \
+    FG_GL_FUNCTION_VOID( TexCoord1sv, FgGLContext *, const FgGLshort * ) \
+    FG_GL_FUNCTION_VOID( TexCoord1iv, FgGLContext *, const FgGLint * ) \
+    FG_GL_FUNCTION_VOID( TexCoord1fv, FgGLContext *, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( TexCoord1dv, FgGLContext *, const FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( TexCoord2sv, FgGLContext *, const FgGLshort * ) \
+    FG_GL_FUNCTION_VOID( TexCoord2iv, FgGLContext *, const FgGLint * ) \
+    FG_GL_FUNCTION_VOID( TexCoord2fv, FgGLContext *, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( TexCoord2dv, FgGLContext *, const FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( TexCoord3sv, FgGLContext *, const FgGLshort * ) \
+    FG_GL_FUNCTION_VOID( TexCoord3iv, FgGLContext *, const FgGLint * ) \
+    FG_GL_FUNCTION_VOID( TexCoord3fv, FgGLContext *, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( TexCoord3dv, FgGLContext *, const FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( TexCoord4sv, FgGLContext *, const FgGLshort * ) \
+    FG_GL_FUNCTION_VOID( TexCoord4iv, FgGLContext *, const FgGLint * ) \
+    FG_GL_FUNCTION_VOID( TexCoord4fv, FgGLContext *, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( TexCoord4dv, FgGLContext *, const FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( Normal3b, FgGLContext *, FgGLbyte, FgGLbyte, FgGLbyte ) \
+    FG_GL_FUNCTION_VOID( Normal3s, FgGLContext *, FgGLshort, FgGLshort, FgGLshort ) \
+    FG_GL_FUNCTION_VOID( Normal3i, FgGLContext *, FgGLint, FgGLint, FgGLint ) \
+    FG_GL_FUNCTION_VOID( Normal3f, FgGLContext *, FgGLfloat, FgGLfloat, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( Normal3d, FgGLContext *, FgGLdouble, FgGLdouble, FgGLdouble ) \
+    FG_GL_FUNCTION_VOID( Normal3bv, FgGLContext *, const FgGLbyte * ) \
+    FG_GL_FUNCTION_VOID( Normal3sv, FgGLContext *, const FgGLshort * ) \
+    FG_GL_FUNCTION_VOID( Normal3iv, FgGLContext *, const FgGLint * ) \
+    FG_GL_FUNCTION_VOID( Normal3fv, FgGLContext *, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( Normal3dv, FgGLContext *, const FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( Color3b, FgGLContext *, FgGLbyte, FgGLbyte, FgGLbyte ) \
+    FG_GL_FUNCTION_VOID( Color3s, FgGLContext *, FgGLshort, FgGLshort, FgGLshort ) \
+    FG_GL_FUNCTION_VOID( Color3i, FgGLContext *, FgGLint, FgGLint, FgGLint ) \
+    FG_GL_FUNCTION_VOID( Color3f, FgGLContext *, FgGLfloat, FgGLfloat, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( Color3d, FgGLContext *, FgGLdouble, FgGLdouble, FgGLdouble ) \
+    FG_GL_FUNCTION_VOID( Color3ub, FgGLContext *, FgGLubyte, FgGLubyte, FgGLubyte ) \
+    FG_GL_FUNCTION_VOID( Color3us, FgGLContext *, FgGLushort, FgGLushort, FgGLushort ) \
+    FG_GL_FUNCTION_VOID( Color3ui, FgGLContext *, FgGLuint, FgGLuint, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( Color4b, FgGLContext *, FgGLbyte, FgGLbyte, FgGLbyte, FgGLbyte ) \
+    FG_GL_FUNCTION_VOID( Color4s, FgGLContext *, FgGLshort, FgGLshort, FgGLshort, FgGLshort ) \
+    FG_GL_FUNCTION_VOID( Color4i, FgGLContext *, FgGLint, FgGLint, FgGLint, FgGLint ) \
+    FG_GL_FUNCTION_VOID( Color4f, FgGLContext *, FgGLfloat, FgGLfloat, FgGLfloat, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( Color4d, FgGLContext *, FgGLdouble, FgGLdouble, FgGLdouble, FgGLdouble ) \
+    FG_GL_FUNCTION_VOID( Color4ub, FgGLContext *, FgGLubyte, FgGLubyte, FgGLubyte, FgGLubyte ) \
+    FG_GL_FUNCTION_VOID( Color4us, FgGLContext *, FgGLushort, FgGLushort, FgGLushort, FgGLushort ) \
+    FG_GL_FUNCTION_VOID( Color4ui, FgGLContext *, FgGLuint, FgGLuint, FgGLuint, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( Color3bv, FgGLContext *, const FgGLbyte * ) \
+    FG_GL_FUNCTION_VOID( Color3sv, FgGLContext *, const FgGLshort * ) \
+    FG_GL_FUNCTION_VOID( Color3iv, FgGLContext *, const FgGLint * ) \
+    FG_GL_FUNCTION_VOID( Color3fv, FgGLContext *, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( Color3dv, FgGLContext *, const FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( Color3ubv, FgGLContext *, const FgGLubyte * ) \
+    FG_GL_FUNCTION_VOID( Color3usv, FgGLContext *, const FgGLushort * ) \
+    FG_GL_FUNCTION_VOID( Color3uiv, FgGLContext *, const FgGLuint * ) \
+    FG_GL_FUNCTION_VOID( Color4bv, FgGLContext *, const FgGLbyte * ) \
+    FG_GL_FUNCTION_VOID( Color4sv, FgGLContext *, const FgGLshort * ) \
+    FG_GL_FUNCTION_VOID( Color4iv, FgGLContext *, const FgGLint * ) \
+    FG_GL_FUNCTION_VOID( Color4fv, FgGLContext *, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( Color4dv, FgGLContext *, const FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( Color4ubv, FgGLContext *, const FgGLubyte * ) \
+    FG_GL_FUNCTION_VOID( Color4usv, FgGLContext *, const FgGLushort * ) \
+    FG_GL_FUNCTION_VOID( Color4uiv, FgGLContext *, const FgGLuint * ) \
+    FG_GL_FUNCTION_VOID( Indexs, FgGLContext *, FgGLshort ) \
+    FG_GL_FUNCTION_VOID( Indexi, FgGLContext *, FgGLint ) \
+    FG_GL_FUNCTION_VOID( Indexf, FgGLContext *, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( Indexd, FgGLContext *, FgGLdouble ) \
+    FG_GL_FUNCTION_VOID( Indexsv, FgGLContext *, const FgGLshort * ) \
+    FG_GL_FUNCTION_VOID( Indexiv, FgGLContext *, const FgGLint * ) \
+    FG_GL_FUNCTION_VOID( Indexfv, FgGLContext *, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( Indexdv, FgGLContext *, const FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( Rects, FgGLContext *, FgGLshort, FgGLshort, FgGLshort, FgGLshort ) \
+    FG_GL_FUNCTION_VOID( Recti, FgGLContext *, FgGLint, FgGLint, FgGLint, FgGLint ) \
+    FG_GL_FUNCTION_VOID( Rectf, FgGLContext *, FgGLfloat, FgGLfloat, FgGLfloat, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( Rectd, FgGLContext *, FgGLdouble, FgGLdouble, FgGLdouble, FgGLdouble ) \
+    FG_GL_FUNCTION_VOID( Rectsv, FgGLContext *, const FgGLshort *, const FgGLshort * ) \
+    FG_GL_FUNCTION_VOID( Rectiv, FgGLContext *, const FgGLint *, const FgGLint * ) \
+    FG_GL_FUNCTION_VOID( Rectfv, FgGLContext *, const FgGLfloat *, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( Rectdv, FgGLContext *, const FgGLdouble *, const FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( DepthRange, FgGLContext *, FgGLclampd, FgGLclampd ) \
+    FG_GL_FUNCTION_VOID( Viewport, FgGLContext *, FgGLint, FgGLint, FgGLsizei, FgGLsizei ) \
+    FG_GL_FUNCTION_VOID( MatrixMode, FgGLContext *, FgGLenum ) \
+    FG_GL_FUNCTION_VOID( LoadMatrixf, FgGLContext *, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( LoadMatrixd, FgGLContext *, const FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( MultMatrixf, FgGLContext *, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( MultMatrixd, FgGLContext *, const FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( LoadIdentity, FgGLContext * ) \
+    FG_GL_FUNCTION_VOID( Rotatef, FgGLContext *, FgGLfloat, FgGLfloat, FgGLfloat, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( Rotated, FgGLContext *, FgGLdouble, FgGLdouble, FgGLdouble, FgGLdouble ) \
+    FG_GL_FUNCTION_VOID( Translatef, FgGLContext *, FgGLfloat, FgGLfloat, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( Translated, FgGLContext *, FgGLdouble, FgGLdouble, FgGLdouble ) \
+    FG_GL_FUNCTION_VOID( Scalef, FgGLContext *, FgGLfloat, FgGLfloat, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( Scaled, FgGLContext *, FgGLdouble, FgGLdouble, FgGLdouble ) \
+    FG_GL_FUNCTION_VOID( Frustum, FgGLContext *, FgGLdouble, FgGLdouble, FgGLdouble, FgGLdouble, FgGLdouble, FgGLdouble ) \
+    FG_GL_FUNCTION_VOID( Ortho, FgGLContext *, FgGLdouble, FgGLdouble, FgGLdouble, FgGLdouble, FgGLdouble, FgGLdouble ) \
+    FG_GL_FUNCTION_VOID( PushMatrix, FgGLContext * ) \
+    FG_GL_FUNCTION_VOID( PopMatrix, FgGLContext * ) \
+    FG_GL_FUNCTION_VOID( Enable, FgGLContext *, FgGLenum ) \
+    FG_GL_FUNCTION_VOID( Disable, FgGLContext *, FgGLenum ) \
+    FG_GL_FUNCTION_VOID( TexGeni, FgGLContext *, FgGLenum, FgGLenum, FgGLint ) \
+    FG_GL_FUNCTION_VOID( TexGenf, FgGLContext *, FgGLenum, FgGLenum, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( TexGend, FgGLContext *, FgGLenum, FgGLenum, FgGLdouble ) \
+    FG_GL_FUNCTION_VOID( TexGeniv, FgGLContext *, FgGLenum, FgGLenum, const FgGLint * ) \
+    FG_GL_FUNCTION_VOID( TexGenfv, FgGLContext *, FgGLenum, FgGLenum, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( TexGendv, FgGLContext *, FgGLenum, FgGLenum, const FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( ClipPlane, FgGLContext *, FgGLenum, const FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( RasterPos2s, FgGLContext *, FgGLshort, FgGLshort ) \
+    FG_GL_FUNCTION_VOID( RasterPos2i, FgGLContext *, FgGLint, FgGLint ) \
+    FG_GL_FUNCTION_VOID( RasterPos2f, FgGLContext *, FgGLfloat, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( RasterPos2d, FgGLContext *, FgGLdouble, FgGLdouble ) \
+    FG_GL_FUNCTION_VOID( RasterPos2sv, FgGLContext *, const FgGLshort * ) \
+    FG_GL_FUNCTION_VOID( RasterPos2iv, FgGLContext *, const FgGLint * ) \
+    FG_GL_FUNCTION_VOID( RasterPos2fv, FgGLContext *, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( RasterPos2dv, FgGLContext *, const FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( RasterPos3s, FgGLContext *, FgGLshort, FgGLshort, FgGLshort ) \
+    FG_GL_FUNCTION_VOID( RasterPos3i, FgGLContext *, FgGLint, FgGLint, FgGLint ) \
+    FG_GL_FUNCTION_VOID( RasterPos3f, FgGLContext *, FgGLfloat, FgGLfloat, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( RasterPos3d, FgGLContext *, FgGLdouble, FgGLdouble, FgGLdouble ) \
+    FG_GL_FUNCTION_VOID( RasterPos3sv, FgGLContext *, const FgGLshort * ) \
+    FG_GL_FUNCTION_VOID( RasterPos3iv, FgGLContext *, const FgGLint * ) \
+    FG_GL_FUNCTION_VOID( RasterPos3fv, FgGLContext *, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( RasterPos3dv, FgGLContext *, const FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( RasterPos4s, FgGLContext *, FgGLshort, FgGLshort, FgGLshort, FgGLshort ) \
+    FG_GL_FUNCTION_VOID( RasterPos4i, FgGLContext *, FgGLint, FgGLint, FgGLint, FgGLint ) \
+    FG_GL_FUNCTION_VOID( RasterPos4f, FgGLContext *, FgGLfloat, FgGLfloat, FgGLfloat, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( RasterPos4d, FgGLContext *, FgGLdouble, FgGLdouble, FgGLdouble, FgGLdouble ) \
+    FG_GL_FUNCTION_VOID( RasterPos4sv, FgGLContext *, const FgGLshort * ) \
+    FG_GL_FUNCTION_VOID( RasterPos4iv, FgGLContext *, const FgGLint * ) \
+    FG_GL_FUNCTION_VOID( RasterPos4fv, FgGLContext *, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( RasterPos4dv, FgGLContext *, const FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( FrontFace, FgGLContext *, FgGLenum ) \
+    FG_GL_FUNCTION_VOID( Materiali, FgGLContext *, FgGLenum, FgGLenum, FgGLint ) \
+    FG_GL_FUNCTION_VOID( Materialf, FgGLContext *, FgGLenum, FgGLenum, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( Materialiv, FgGLContext *, FgGLenum, FgGLenum, const FgGLint * ) \
+    FG_GL_FUNCTION_VOID( Materialfv, FgGLContext *, FgGLenum, FgGLenum, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( Lighti, FgGLContext *, FgGLenum, FgGLenum, FgGLint ) \
+    FG_GL_FUNCTION_VOID( Lightf, FgGLContext *, FgGLenum, FgGLenum, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( Lightiv, FgGLContext *, FgGLenum, FgGLenum, const FgGLint * ) \
+    FG_GL_FUNCTION_VOID( Lightfv, FgGLContext *, FgGLenum, FgGLenum, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( LightModeli, FgGLContext *, FgGLenum, FgGLint ) \
+    FG_GL_FUNCTION_VOID( LightModelf, FgGLContext *, FgGLenum, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( LightModeliv, FgGLContext *, FgGLenum, const FgGLint * ) \
+    FG_GL_FUNCTION_VOID( LightModelfv, FgGLContext *, FgGLenum, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( ColorMaterial, FgGLContext *, FgGLenum, FgGLenum ) \
+    FG_GL_FUNCTION_VOID( ShadeModel, FgGLContext *, FgGLenum ) \
+    FG_GL_FUNCTION_VOID( PointSize, FgGLContext *, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( LineWidth, FgGLContext *, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( LineStipple, FgGLContext *, FgGLint, FgGLushort ) \
+    FG_GL_FUNCTION_VOID( CullFace, FgGLContext *, FgGLenum ) \
+    FG_GL_FUNCTION_VOID( PolygonStipple, FgGLContext *, const FgGLubyte * ) \
+    FG_GL_FUNCTION_VOID( PolygonMode, FgGLContext *, FgGLenum, FgGLenum ) \
+    FG_GL_FUNCTION_VOID( PixelStorei, FgGLContext *, FgGLenum, FgGLint ) \
+    FG_GL_FUNCTION_VOID( PixelStoref, FgGLContext *, FgGLenum, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( PixelTransferi, FgGLContext *, FgGLenum, FgGLint ) \
+    FG_GL_FUNCTION_VOID( PixelTransferf, FgGLContext *, FgGLenum, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( PixelMapuiv, FgGLContext *, FgGLenum, FgGLsizei, const FgGLuint * ) \
+    FG_GL_FUNCTION_VOID( PixelMapusv, FgGLContext *, FgGLenum, FgGLsizei, const FgGLushort * ) \
+    FG_GL_FUNCTION_VOID( PixelMapfv, FgGLContext *, FgGLenum, FgGLsizei, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( DrawPixels, FgGLContext *, FgGLsizei, FgGLsizei, FgGLenum, FgGLenum, const FgGLvoid * ) \
+    FG_GL_FUNCTION_VOID( PixelZoom, FgGLContext *, FgGLfloat, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( Bitmap, FgGLContext *, FgGLsizei, FgGLsizei, FgGLfloat, FgGLfloat, FgGLfloat, FgGLfloat, const FgGLubyte * ) \
+    FG_GL_FUNCTION_VOID( TexImage1D, FgGLContext *, FgGLenum, FgGLint, FgGLint, FgGLsizei, FgGLint, FgGLenum, FgGLenum, const FgGLvoid * ) \
+    FG_GL_FUNCTION_VOID( TexImage2D, FgGLContext *, FgGLenum, FgGLint, FgGLint, FgGLsizei, FgGLsizei, FgGLint, FgGLenum, FgGLenum, const FgGLvoid * ) \
+    FG_GL_FUNCTION_VOID( TexParameteri, FgGLContext *, FgGLenum, FgGLenum, FgGLint ) \
+    FG_GL_FUNCTION_VOID( TexParameterf, FgGLContext *, FgGLenum, FgGLenum, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( TexParameteriv, FgGLContext *, FgGLenum, FgGLenum, const FgGLint * ) \
+    FG_GL_FUNCTION_VOID( TexParameterfv, FgGLContext *, FgGLenum, FgGLenum, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( TexEnvi, FgGLContext *, FgGLenum, FgGLenum, FgGLint ) \
+    FG_GL_FUNCTION_VOID( TexEnvf, FgGLContext *, FgGLenum, FgGLenum, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( TexEnviv, FgGLContext *, FgGLenum, FgGLenum, const FgGLint * ) \
+    FG_GL_FUNCTION_VOID( TexEnvfv, FgGLContext *, FgGLenum, FgGLenum, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( Fogi, FgGLContext *, FgGLenum, FgGLint ) \
+    FG_GL_FUNCTION_VOID( Fogf, FgGLContext *, FgGLenum, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( Fogiv, FgGLContext *, FgGLenum, const FgGLint * ) \
+    FG_GL_FUNCTION_VOID( Fogfv, FgGLContext *, FgGLenum, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( Scissor, FgGLContext *, FgGLint, FgGLint, FgGLsizei, FgGLsizei ) \
+    FG_GL_FUNCTION_VOID( AlphaFunc, FgGLContext *, FgGLenum, FgGLclampf ) \
+    FG_GL_FUNCTION_VOID( StencilFunc, FgGLContext *, FgGLenum, FgGLint, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( StencilOp, FgGLContext *, FgGLenum, FgGLenum, FgGLenum ) \
+    FG_GL_FUNCTION_VOID( DepthFunc, FgGLContext *, FgGLenum ) \
+    FG_GL_FUNCTION_VOID( BlendFunc, FgGLContext *, FgGLenum, FgGLenum ) \
+    FG_GL_FUNCTION_VOID( LogicOp, FgGLContext *, FgGLenum ) \
+    FG_GL_FUNCTION_VOID( DrawBuffer, FgGLContext *, FgGLenum ) \
+    FG_GL_FUNCTION_VOID( IndexMask, FgGLContext *, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( ColorMask, FgGLContext *, FgGLboolean, FgGLboolean, FgGLboolean, FgGLboolean ) \
+    FG_GL_FUNCTION_VOID( DepthMask, FgGLContext *, FgGLboolean ) \
+    FG_GL_FUNCTION_VOID( StencilMask, FgGLContext *, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( Clear, FgGLContext *, FgGLbitfield ) \
+    FG_GL_FUNCTION_VOID( ClearColor, FgGLContext *, FgGLclampf, FgGLclampf, FgGLclampf, FgGLclampf ) \
+    FG_GL_FUNCTION_VOID( ClearIndex, FgGLContext *, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( ClearDepth, FgGLContext *, FgGLclampd ) \
+    FG_GL_FUNCTION_VOID( ClearStencil, FgGLContext *, FgGLint ) \
+    FG_GL_FUNCTION_VOID( ClearAccum, FgGLContext *, FgGLfloat, FgGLfloat, FgGLfloat, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( Accum, FgGLContext *, FgGLenum, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( ReadPixels, FgGLContext *, FgGLint, FgGLint, FgGLsizei, FgGLsizei, FgGLenum, FgGLenum, FgGLvoid * ) \
+    FG_GL_FUNCTION_VOID( ReadBuffer, FgGLContext *, FgGLenum ) \
+    FG_GL_FUNCTION_VOID( CopyPixels, FgGLContext *, FgGLint, FgGLint, FgGLsizei, FgGLsizei, FgGLenum ) \
+    FG_GL_FUNCTION_VOID( Map1f, FgGLContext *, FgGLenum, FgGLfloat, FgGLfloat, FgGLint, FgGLint, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( Map1d, FgGLContext *, FgGLenum, FgGLdouble, FgGLdouble, FgGLint, FgGLint, const FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( Map2f, FgGLContext *, FgGLenum, FgGLfloat, FgGLfloat, FgGLint, FgGLint, FgGLfloat, FgGLfloat, FgGLint, FgGLint, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( Map2d, FgGLContext *, FgGLenum, FgGLdouble, FgGLdouble, FgGLint, FgGLint, FgGLdouble, FgGLdouble, FgGLint, FgGLint, const FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( EvalCoord1f, FgGLContext *, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( EvalCoord1d, FgGLContext *, FgGLdouble ) \
+    FG_GL_FUNCTION_VOID( EvalCoord2f, FgGLContext *, FgGLfloat, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( EvalCoord2d, FgGLContext *, FgGLdouble, FgGLdouble ) \
+    FG_GL_FUNCTION_VOID( EvalCoord1fv, FgGLContext *, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( EvalCoord1dv, FgGLContext *, const FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( EvalCoord2fv, FgGLContext *, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( EvalCoord2dv, FgGLContext *, const FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( MapGrid1f, FgGLContext *, FgGLint, FgGLfloat, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( MapGrid1d, FgGLContext *, FgGLint, FgGLdouble, FgGLdouble ) \
+    FG_GL_FUNCTION_VOID( MapGrid2f, FgGLContext *, FgGLint, FgGLfloat, FgGLfloat, FgGLint, FgGLfloat, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( MapGrid2d, FgGLContext *, FgGLint, FgGLdouble, FgGLdouble, FgGLint, FgGLdouble, FgGLdouble ) \
+    FG_GL_FUNCTION_VOID( EvalMesh1, FgGLContext *, FgGLenum, FgGLint, FgGLint ) \
+    FG_GL_FUNCTION_VOID( EvalMesh2, FgGLContext *, FgGLenum, FgGLint, FgGLint, FgGLint, FgGLint ) \
+    FG_GL_FUNCTION_VOID( EvalPoint1, FgGLContext *, FgGLint ) \
+    FG_GL_FUNCTION_VOID( EvalPoint2, FgGLContext *, FgGLint, FgGLint ) \
+    FG_GL_FUNCTION_VOID( InitNames, FgGLContext * ) \
+    FG_GL_FUNCTION_VOID( PopName, FgGLContext * ) \
+    FG_GL_FUNCTION_VOID( PushName, FgGLContext *, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( LoadName, FgGLContext *, FgGLuint ) \
+    FG_GL_FUNCTION_NUM( RenderMode, FgGLint, FgGLContext *, FgGLenum ) \
+    FG_GL_FUNCTION_VOID( SelectBuffer, FgGLContext *, FgGLsizei, FgGLuint * ) \
+    FG_GL_FUNCTION_VOID( FeedbackBuffer, FgGLContext *, FgGLsizei, FgGLenum, FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( PassThrough, FgGLContext *, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( NewList, FgGLContext *, FgGLuint, FgGLenum ) \
+    FG_GL_FUNCTION_VOID( EndList, FgGLContext * ) \
+    FG_GL_FUNCTION_VOID( CallList, FgGLContext *, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( CallLists, FgGLContext *, FgGLsizei, FgGLenum, const FgGLvoid * ) \
+    FG_GL_FUNCTION_VOID( ListBase, FgGLContext *, FgGLuint ) \
+    FG_GL_FUNCTION_NUM( GenLists, FgGLuint, FgGLContext *, FgGLsizei ) \
+    FG_GL_FUNCTION_NUM( IsList, FgGLboolean, FgGLContext *, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( DeleteLists, FgGLContext *, FgGLuint, FgGLsizei ) \
+    FG_GL_FUNCTION_VOID( Flush, FgGLContext * ) \
+    FG_GL_FUNCTION_VOID( Finish, FgGLContext * ) \
+    FG_GL_FUNCTION_VOID( Hint, FgGLContext *, FgGLenum, FgGLenum ) \
+    FG_GL_FUNCTION_VOID( GetBooleanv, FgGLContext *, FgGLenum, FgGLboolean * ) \
+    FG_GL_FUNCTION_VOID( GetIntegerv, FgGLContext *, FgGLenum, FgGLint * ) \
+    FG_GL_FUNCTION_VOID( GetFloatv, FgGLContext *, FgGLenum, FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( GetDoublev, FgGLContext *, FgGLenum, FgGLdouble * ) \
+    FG_GL_FUNCTION_NUM( IsEnabled, FgGLboolean, FgGLContext *, FgGLenum ) \
+    FG_GL_FUNCTION_VOID( GetClipPlane, FgGLContext *, FgGLenum, FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( GetLightiv, FgGLContext *, FgGLenum, FgGLenum, FgGLint * ) \
+    FG_GL_FUNCTION_VOID( GetLightfv, FgGLContext *, FgGLenum, FgGLenum, FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( GetMaterialiv, FgGLContext *, FgGLenum, FgGLenum, FgGLint * ) \
+    FG_GL_FUNCTION_VOID( GetMaterialfv, FgGLContext *, FgGLenum, FgGLenum, FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( GetTexEnviv, FgGLContext *, FgGLenum, FgGLenum, FgGLint * ) \
+    FG_GL_FUNCTION_VOID( GetTexEnvfv, FgGLContext *, FgGLenum, FgGLenum, FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( GetTexGeniv, FgGLContext *, FgGLenum, FgGLenum, FgGLint * ) \
+    FG_GL_FUNCTION_VOID( GetTexGenfv, FgGLContext *, FgGLenum, FgGLenum, FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( GetTexParameteriv, FgGLContext *, FgGLenum, FgGLenum, FgGLint * ) \
+    FG_GL_FUNCTION_VOID( GetTexParameterfv, FgGLContext *, FgGLenum, FgGLenum, FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( GetTexLevelParameteriv, FgGLContext *, FgGLenum, FgGLint, FgGLenum, FgGLint * ) \
+    FG_GL_FUNCTION_VOID( GetTexLevelParameterfv, FgGLContext *, FgGLenum, FgGLint, FgGLenum, FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( GetPixelMapuiv, FgGLContext *, FgGLenum, FgGLuint * ) \
+    FG_GL_FUNCTION_VOID( GetPixelMapusv, FgGLContext *, FgGLenum, FgGLushort * ) \
+    FG_GL_FUNCTION_VOID( GetPixelMapfv, FgGLContext *, FgGLenum, FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( GetMapiv, FgGLContext *, FgGLenum, FgGLenum, FgGLint * ) \
+    FG_GL_FUNCTION_VOID( GetMapfv, FgGLContext *, FgGLenum, FgGLenum, FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( GetMapdv, FgGLContext *, FgGLenum, FgGLenum, FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( GetTexImage, FgGLContext *, FgGLenum, FgGLint, FgGLenum, FgGLenum, FgGLvoid * ) \
+    FG_GL_FUNCTION_VOID( GetPolygonStipple, FgGLContext *, FgGLubyte * ) \
+    FG_GL_FUNCTION_PTR( GetString, const FgGLubyte *, FgGLContext *, FgGLenum ) \
+    FG_GL_FUNCTION_VOID( PushAttrib, FgGLContext *, FgGLbitfield ) \
+    FG_GL_FUNCTION_VOID( PopAttrib, FgGLContext * ) \
 \
     /* GL_VERSION_1_1 */ \
-    FG_GL_VOID_FUNCTION( Indexub, ( FgGLubyte _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( Indexubv, ( const FgGLubyte * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( EdgeFlagPointer, ( FgGLsizei _1, const FgGLvoid * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( TexCoordPointer, ( FgGLint _1, FgGLenum _2, FgGLsizei _3, const FgGLvoid * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( ColorPointer, ( FgGLint _1, FgGLenum _2, FgGLsizei _3, const FgGLvoid * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( IndexPointer, ( FgGLenum _1, FgGLsizei _2, const FgGLvoid * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( NormalPointer, ( FgGLenum _1, FgGLsizei _2, const FgGLvoid * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( VertexPointer, ( FgGLint _1, FgGLenum _2, FgGLsizei _3, const FgGLvoid * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( EnableClientState, ( FgGLenum _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( DisableClientState, ( FgGLenum _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( ArrayElement, ( FgGLint _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( DrawArrays, ( FgGLenum _1, FgGLint _2, FgGLsizei _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( DrawElements, ( FgGLenum _1, FgGLsizei _2, FgGLenum _3, const FgGLvoid * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( InterleavedArrays, ( FgGLenum _1, FgGLsizei _2, const FgGLvoid * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( PolygonOffset, ( FgGLfloat _1, FgGLfloat _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( CopyTexImage1D, ( FgGLenum _1, FgGLint _2, FgGLenum _3, FgGLint _4, FgGLint _5, FgGLsizei _6, FgGLint _7 ), ( _1, _2, _3, _4, _5, _6, _7 ) ) \
-    FG_GL_VOID_FUNCTION( CopyTexImage2D, ( FgGLenum _1, FgGLint _2, FgGLenum _3, FgGLint _4, FgGLint _5, FgGLsizei _6, FgGLsizei _7, FgGLint _8 ), ( _1, _2, _3, _4, _5, _6, _7, _8 ) ) \
-    FG_GL_VOID_FUNCTION( TexSubImage1D, ( FgGLenum _1, FgGLint _2, FgGLint _3, FgGLsizei _4, FgGLenum _5, FgGLenum _6, const FgGLvoid * _7 ), ( _1, _2, _3, _4, _5, _6, _7 ) ) \
-    FG_GL_VOID_FUNCTION( TexSubImage2D, ( FgGLenum _1, FgGLint _2, FgGLint _3, FgGLint _4, FgGLsizei _5, FgGLsizei _6, FgGLenum _7, FgGLenum _8, const FgGLvoid * _9 ), ( _1, _2, _3, _4, _5, _6, _7, _8, _9 ) ) \
-    FG_GL_VOID_FUNCTION( CopyTexSubImage1D, ( FgGLenum _1, FgGLint _2, FgGLint _3, FgGLint _4, FgGLint _5, FgGLsizei _6 ), ( _1, _2, _3, _4, _5, _6 ) ) \
-    FG_GL_VOID_FUNCTION( CopyTexSubImage2D, ( FgGLenum _1, FgGLint _2, FgGLint _3, FgGLint _4, FgGLint _5, FgGLint _6, FgGLsizei _7, FgGLsizei _8 ), ( _1, _2, _3, _4, _5, _6, _7, _8 ) ) \
-    FG_GL_VOID_FUNCTION( BindTexture, ( FgGLenum _1, FgGLuint _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( DeleteTextures, ( FgGLsizei _1, const FgGLuint * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( GenTextures, ( FgGLsizei _1, FgGLuint * _2 ), ( _1, _2 ) ) \
-    FG_GL_FUNCTION( 0, FgGLboolean, AreTexturesResident, ( FgGLsizei _1, const FgGLuint * _2, FgGLboolean * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( PrioritizeTextures, ( FgGLsizei _1, const FgGLuint * _2, const FgGLclampf * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_FUNCTION( 0, FgGLboolean, IsTexture, ( FgGLuint _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( GetPointerv, ( FgGLenum _1, FgGLvoid ** _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( PushClientAttrib, ( FgGLbitfield _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( PopClientAttrib, (), () ) \
+    FG_GL_FUNCTION_VOID( Indexub, FgGLContext *, FgGLubyte ) \
+    FG_GL_FUNCTION_VOID( Indexubv, FgGLContext *, const FgGLubyte * ) \
+    FG_GL_FUNCTION_VOID( EdgeFlagPointer, FgGLContext *, FgGLsizei, const FgGLvoid * ) \
+    FG_GL_FUNCTION_VOID( TexCoordPointer, FgGLContext *, FgGLint, FgGLenum, FgGLsizei, const FgGLvoid * ) \
+    FG_GL_FUNCTION_VOID( ColorPointer, FgGLContext *, FgGLint, FgGLenum, FgGLsizei, const FgGLvoid * ) \
+    FG_GL_FUNCTION_VOID( IndexPointer, FgGLContext *, FgGLenum, FgGLsizei, const FgGLvoid * ) \
+    FG_GL_FUNCTION_VOID( NormalPointer, FgGLContext *, FgGLenum, FgGLsizei, const FgGLvoid * ) \
+    FG_GL_FUNCTION_VOID( VertexPointer, FgGLContext *, FgGLint, FgGLenum, FgGLsizei, const FgGLvoid * ) \
+    FG_GL_FUNCTION_VOID( EnableClientState, FgGLContext *, FgGLenum ) \
+    FG_GL_FUNCTION_VOID( DisableClientState, FgGLContext *, FgGLenum ) \
+    FG_GL_FUNCTION_VOID( ArrayElement, FgGLContext *, FgGLint ) \
+    FG_GL_FUNCTION_VOID( DrawArrays, FgGLContext *, FgGLenum, FgGLint, FgGLsizei ) \
+    FG_GL_FUNCTION_VOID( DrawElements, FgGLContext *, FgGLenum, FgGLsizei, FgGLenum, const FgGLvoid * ) \
+    FG_GL_FUNCTION_VOID( InterleavedArrays, FgGLContext *, FgGLenum, FgGLsizei, const FgGLvoid * ) \
+    FG_GL_FUNCTION_VOID( PolygonOffset, FgGLContext *, FgGLfloat, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( CopyTexImage1D, FgGLContext *, FgGLenum, FgGLint, FgGLenum, FgGLint, FgGLint, FgGLsizei, FgGLint ) \
+    FG_GL_FUNCTION_VOID( CopyTexImage2D, FgGLContext *, FgGLenum, FgGLint, FgGLenum, FgGLint, FgGLint, FgGLsizei, FgGLsizei, FgGLint ) \
+    FG_GL_FUNCTION_VOID( TexSubImage1D, FgGLContext *, FgGLenum, FgGLint, FgGLint, FgGLsizei, FgGLenum, FgGLenum, const FgGLvoid * ) \
+    FG_GL_FUNCTION_VOID( TexSubImage2D, FgGLContext *, FgGLenum, FgGLint, FgGLint, FgGLint, FgGLsizei, FgGLsizei, FgGLenum, FgGLenum, const FgGLvoid * ) \
+    FG_GL_FUNCTION_VOID( CopyTexSubImage1D, FgGLContext *, FgGLenum, FgGLint, FgGLint, FgGLint, FgGLint, FgGLsizei ) \
+    FG_GL_FUNCTION_VOID( CopyTexSubImage2D, FgGLContext *, FgGLenum, FgGLint, FgGLint, FgGLint, FgGLint, FgGLint, FgGLsizei, FgGLsizei ) \
+    FG_GL_FUNCTION_VOID( BindTexture, FgGLContext *, FgGLenum, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( DeleteTextures, FgGLContext *, FgGLsizei, const FgGLuint * ) \
+    FG_GL_FUNCTION_VOID( GenTextures, FgGLContext *, FgGLsizei, FgGLuint * ) \
+    FG_GL_FUNCTION_NUM( AreTexturesResident, FgGLboolean, FgGLContext *, FgGLsizei, const FgGLuint *, FgGLboolean * ) \
+    FG_GL_FUNCTION_VOID( PrioritizeTextures, FgGLContext *, FgGLsizei, const FgGLuint *, const FgGLclampf * ) \
+    FG_GL_FUNCTION_NUM( IsTexture, FgGLboolean, FgGLContext *, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( GetPointerv, FgGLContext *, FgGLenum, FgGLvoid ** ) \
+    FG_GL_FUNCTION_VOID( PushClientAttrib, FgGLContext *, FgGLbitfield ) \
+    FG_GL_FUNCTION_VOID( PopClientAttrib, FgGLContext * ) \
 \
     /* GL_VERSION_1_2 */ \
-    FG_GL_VOID_FUNCTION( DrawRangeElements, ( FgGLenum _1, FgGLuint _2, FgGLuint _3, FgGLsizei _4, FgGLenum _5, const FgGLvoid * _6 ), ( _1, _2, _3, _4, _5, _6 ) ) \
-    FG_GL_VOID_FUNCTION( TexImage3D, ( FgGLenum _1, FgGLint _2, FgGLint _3, FgGLsizei _4, FgGLsizei _5, FgGLsizei _6, FgGLint _7, FgGLenum _8, FgGLenum _9, const FgGLvoid * _10 ), ( _1, _2, _3, _4, _5, _6, _7, _8, _9, _10 ) ) \
-    FG_GL_VOID_FUNCTION( TexSubImage3D, ( FgGLenum _1, FgGLint _2, FgGLint _3, FgGLint _4, FgGLint _5, FgGLsizei _6, FgGLsizei _7, FgGLsizei _8, FgGLenum _9, FgGLenum _10, const FgGLvoid * _11 ), ( _1, _2, _3, _4, _5, _6, _7, _8, _9, _10, _11 ) ) \
-    FG_GL_VOID_FUNCTION( CopyTexSubImage3D, ( FgGLenum _1, FgGLint _2, FgGLint _3, FgGLint _4, FgGLint _5, FgGLint _6, FgGLint _7, FgGLsizei _8, FgGLsizei _9 ), ( _1, _2, _3, _4, _5, _6, _7, _8, _9 ) ) \
+    FG_GL_FUNCTION_VOID( DrawRangeElements, FgGLContext *, FgGLenum, FgGLuint, FgGLuint, FgGLsizei, FgGLenum, const FgGLvoid * ) \
+    FG_GL_FUNCTION_VOID( TexImage3D, FgGLContext *, FgGLenum, FgGLint, FgGLint, FgGLsizei, FgGLsizei, FgGLsizei, FgGLint, FgGLenum, FgGLenum, const FgGLvoid * ) \
+    FG_GL_FUNCTION_VOID( TexSubImage3D, FgGLContext *, FgGLenum, FgGLint, FgGLint, FgGLint, FgGLint, FgGLsizei, FgGLsizei, FgGLsizei, FgGLenum, FgGLenum, const FgGLvoid * ) \
+    FG_GL_FUNCTION_VOID( CopyTexSubImage3D, FgGLContext *, FgGLenum, FgGLint, FgGLint, FgGLint, FgGLint, FgGLint, FgGLint, FgGLsizei, FgGLsizei ) \
 \
     /* GL_VERSION_1_3 */ \
-    FG_GL_VOID_FUNCTION( ActiveTexture, ( FgGLenum _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( SampleCoverage, ( FgGLfloat _1, FgGLboolean _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( CompressedTexImage3D, ( FgGLenum _1, FgGLint _2, FgGLenum _3, FgGLsizei _4, FgGLsizei _5, FgGLsizei _6, FgGLint _7, FgGLsizei _8, const FgGLvoid * _9 ), ( _1, _2, _3, _4, _5, _6, _7, _8, _9 ) ) \
-    FG_GL_VOID_FUNCTION( CompressedTexImage2D, ( FgGLenum _1, FgGLint _2, FgGLenum _3, FgGLsizei _4, FgGLsizei _5, FgGLint _6, FgGLsizei _7, const FgGLvoid * _8 ), ( _1, _2, _3, _4, _5, _6, _7, _8 ) ) \
-    FG_GL_VOID_FUNCTION( CompressedTexImage1D, ( FgGLenum _1, FgGLint _2, FgGLenum _3, FgGLsizei _4, FgGLint _5, FgGLsizei _6, const FgGLvoid * _7 ), ( _1, _2, _3, _4, _5, _6, _7 ) ) \
-    FG_GL_VOID_FUNCTION( CompressedTexSubImage3D, ( FgGLenum _1, FgGLint _2, FgGLint _3, FgGLint _4, FgGLint _5, FgGLsizei _6, FgGLsizei _7, FgGLsizei _8, FgGLenum _9, FgGLsizei _10, const FgGLvoid * _11 ), ( _1, _2, _3, _4, _5, _6, _7, _8, _9, _10, _11 ) ) \
-    FG_GL_VOID_FUNCTION( CompressedTexSubImage2D, ( FgGLenum _1, FgGLint _2, FgGLint _3, FgGLint _4, FgGLsizei _5, FgGLsizei _6, FgGLenum _7, FgGLsizei _8, const FgGLvoid * _9 ), ( _1, _2, _3, _4, _5, _6, _7, _8, _9 ) ) \
-    FG_GL_VOID_FUNCTION( CompressedTexSubImage1D, ( FgGLenum _1, FgGLint _2, FgGLint _3, FgGLsizei _4, FgGLenum _5, FgGLsizei _6, const FgGLvoid * _7 ), ( _1, _2, _3, _4, _5, _6, _7 ) ) \
-    FG_GL_VOID_FUNCTION( GetCompressedTexImage, ( FgGLenum _1, FgGLint _2, FgGLvoid * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( ClientActiveTexture, ( FgGLenum _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( MultiTexCoord1d, ( FgGLenum _1, FgGLdouble _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( MultiTexCoord1dv, ( FgGLenum _1, const FgGLdouble * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( MultiTexCoord1f, ( FgGLenum _1, FgGLfloat _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( MultiTexCoord1fv, ( FgGLenum _1, const FgGLfloat * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( MultiTexCoord1i, ( FgGLenum _1, FgGLint _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( MultiTexCoord1iv, ( FgGLenum _1, const FgGLint * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( MultiTexCoord1s, ( FgGLenum _1, FgGLshort _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( MultiTexCoord1sv, ( FgGLenum _1, const FgGLshort * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( MultiTexCoord2d, ( FgGLenum _1, FgGLdouble _2, FgGLdouble _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( MultiTexCoord2dv, ( FgGLenum _1, const FgGLdouble * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( MultiTexCoord2f, ( FgGLenum _1, FgGLfloat _2, FgGLfloat _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( MultiTexCoord2fv, ( FgGLenum _1, const FgGLfloat * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( MultiTexCoord2i, ( FgGLenum _1, FgGLint _2, FgGLint _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( MultiTexCoord2iv, ( FgGLenum _1, const FgGLint * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( MultiTexCoord2s, ( FgGLenum _1, FgGLshort _2, FgGLshort _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( MultiTexCoord2sv, ( FgGLenum _1, const FgGLshort * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( MultiTexCoord3d, ( FgGLenum _1, FgGLdouble _2, FgGLdouble _3, FgGLdouble _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( MultiTexCoord3dv, ( FgGLenum _1, const FgGLdouble * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( MultiTexCoord3f, ( FgGLenum _1, FgGLfloat _2, FgGLfloat _3, FgGLfloat _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( MultiTexCoord3fv, ( FgGLenum _1, const FgGLfloat * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( MultiTexCoord3i, ( FgGLenum _1, FgGLint _2, FgGLint _3, FgGLint _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( MultiTexCoord3iv, ( FgGLenum _1, const FgGLint * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( MultiTexCoord3s, ( FgGLenum _1, FgGLshort _2, FgGLshort _3, FgGLshort _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( MultiTexCoord3sv, ( FgGLenum _1, const FgGLshort * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( MultiTexCoord4d, ( FgGLenum _1, FgGLdouble _2, FgGLdouble _3, FgGLdouble _4, FgGLdouble _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( MultiTexCoord4dv, ( FgGLenum _1, const FgGLdouble * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( MultiTexCoord4f, ( FgGLenum _1, FgGLfloat _2, FgGLfloat _3, FgGLfloat _4, FgGLfloat _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( MultiTexCoord4fv, ( FgGLenum _1, const FgGLfloat * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( MultiTexCoord4i, ( FgGLenum _1, FgGLint _2, FgGLint _3, FgGLint _4, FgGLint _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( MultiTexCoord4iv, ( FgGLenum _1, const FgGLint * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( MultiTexCoord4s, ( FgGLenum _1, FgGLshort _2, FgGLshort _3, FgGLshort _4, FgGLshort _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( MultiTexCoord4sv, ( FgGLenum _1, const FgGLshort * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( LoadTransposeMatrixf, ( const FgGLfloat * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( LoadTransposeMatrixd, ( const FgGLdouble * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( MultTransposeMatrixf, ( const FgGLfloat * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( MultTransposeMatrixd, ( const FgGLdouble * _1 ), ( _1 ) ) \
+    FG_GL_FUNCTION_VOID( ActiveTexture, FgGLContext *, FgGLenum ) \
+    FG_GL_FUNCTION_VOID( SampleCoverage, FgGLContext *, FgGLfloat, FgGLboolean ) \
+    FG_GL_FUNCTION_VOID( CompressedTexImage3D, FgGLContext *, FgGLenum, FgGLint, FgGLenum, FgGLsizei, FgGLsizei, FgGLsizei, FgGLint, FgGLsizei, const FgGLvoid * ) \
+    FG_GL_FUNCTION_VOID( CompressedTexImage2D, FgGLContext *, FgGLenum, FgGLint, FgGLenum, FgGLsizei, FgGLsizei, FgGLint, FgGLsizei, const FgGLvoid * ) \
+    FG_GL_FUNCTION_VOID( CompressedTexImage1D, FgGLContext *, FgGLenum, FgGLint, FgGLenum, FgGLsizei, FgGLint, FgGLsizei, const FgGLvoid * ) \
+    FG_GL_FUNCTION_VOID( CompressedTexSubImage3D, FgGLContext *, FgGLenum, FgGLint, FgGLint, FgGLint, FgGLint, FgGLsizei, FgGLsizei, FgGLsizei, FgGLenum, FgGLsizei, const FgGLvoid * ) \
+    FG_GL_FUNCTION_VOID( CompressedTexSubImage2D, FgGLContext *, FgGLenum, FgGLint, FgGLint, FgGLint, FgGLsizei, FgGLsizei, FgGLenum, FgGLsizei, const FgGLvoid * ) \
+    FG_GL_FUNCTION_VOID( CompressedTexSubImage1D, FgGLContext *, FgGLenum, FgGLint, FgGLint, FgGLsizei, FgGLenum, FgGLsizei, const FgGLvoid * ) \
+    FG_GL_FUNCTION_VOID( GetCompressedTexImage, FgGLContext *, FgGLenum, FgGLint, FgGLvoid * ) \
+    FG_GL_FUNCTION_VOID( ClientActiveTexture, FgGLContext *, FgGLenum ) \
+    FG_GL_FUNCTION_VOID( MultiTexCoord1d, FgGLContext *, FgGLenum, FgGLdouble ) \
+    FG_GL_FUNCTION_VOID( MultiTexCoord1dv, FgGLContext *, FgGLenum, const FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( MultiTexCoord1f, FgGLContext *, FgGLenum, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( MultiTexCoord1fv, FgGLContext *, FgGLenum, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( MultiTexCoord1i, FgGLContext *, FgGLenum, FgGLint ) \
+    FG_GL_FUNCTION_VOID( MultiTexCoord1iv, FgGLContext *, FgGLenum, const FgGLint * ) \
+    FG_GL_FUNCTION_VOID( MultiTexCoord1s, FgGLContext *, FgGLenum, FgGLshort ) \
+    FG_GL_FUNCTION_VOID( MultiTexCoord1sv, FgGLContext *, FgGLenum, const FgGLshort * ) \
+    FG_GL_FUNCTION_VOID( MultiTexCoord2d, FgGLContext *, FgGLenum, FgGLdouble, FgGLdouble ) \
+    FG_GL_FUNCTION_VOID( MultiTexCoord2dv, FgGLContext *, FgGLenum, const FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( MultiTexCoord2f, FgGLContext *, FgGLenum, FgGLfloat, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( MultiTexCoord2fv, FgGLContext *, FgGLenum, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( MultiTexCoord2i, FgGLContext *, FgGLenum, FgGLint, FgGLint ) \
+    FG_GL_FUNCTION_VOID( MultiTexCoord2iv, FgGLContext *, FgGLenum, const FgGLint * ) \
+    FG_GL_FUNCTION_VOID( MultiTexCoord2s, FgGLContext *, FgGLenum, FgGLshort, FgGLshort ) \
+    FG_GL_FUNCTION_VOID( MultiTexCoord2sv, FgGLContext *, FgGLenum, const FgGLshort * ) \
+    FG_GL_FUNCTION_VOID( MultiTexCoord3d, FgGLContext *, FgGLenum, FgGLdouble, FgGLdouble, FgGLdouble ) \
+    FG_GL_FUNCTION_VOID( MultiTexCoord3dv, FgGLContext *, FgGLenum, const FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( MultiTexCoord3f, FgGLContext *, FgGLenum, FgGLfloat, FgGLfloat, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( MultiTexCoord3fv, FgGLContext *, FgGLenum, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( MultiTexCoord3i, FgGLContext *, FgGLenum, FgGLint, FgGLint, FgGLint ) \
+    FG_GL_FUNCTION_VOID( MultiTexCoord3iv, FgGLContext *, FgGLenum, const FgGLint * ) \
+    FG_GL_FUNCTION_VOID( MultiTexCoord3s, FgGLContext *, FgGLenum, FgGLshort, FgGLshort, FgGLshort ) \
+    FG_GL_FUNCTION_VOID( MultiTexCoord3sv, FgGLContext *, FgGLenum, const FgGLshort * ) \
+    FG_GL_FUNCTION_VOID( MultiTexCoord4d, FgGLContext *, FgGLenum, FgGLdouble, FgGLdouble, FgGLdouble, FgGLdouble ) \
+    FG_GL_FUNCTION_VOID( MultiTexCoord4dv, FgGLContext *, FgGLenum, const FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( MultiTexCoord4f, FgGLContext *, FgGLenum, FgGLfloat, FgGLfloat, FgGLfloat, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( MultiTexCoord4fv, FgGLContext *, FgGLenum, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( MultiTexCoord4i, FgGLContext *, FgGLenum, FgGLint, FgGLint, FgGLint, FgGLint ) \
+    FG_GL_FUNCTION_VOID( MultiTexCoord4iv, FgGLContext *, FgGLenum, const FgGLint * ) \
+    FG_GL_FUNCTION_VOID( MultiTexCoord4s, FgGLContext *, FgGLenum, FgGLshort, FgGLshort, FgGLshort, FgGLshort ) \
+    FG_GL_FUNCTION_VOID( MultiTexCoord4sv, FgGLContext *, FgGLenum, const FgGLshort * ) \
+    FG_GL_FUNCTION_VOID( LoadTransposeMatrixf, FgGLContext *, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( LoadTransposeMatrixd, FgGLContext *, const FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( MultTransposeMatrixf, FgGLContext *, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( MultTransposeMatrixd, FgGLContext *, const FgGLdouble * ) \
 \
     /* GL_VERSION_1_4 */ \
-    FG_GL_VOID_FUNCTION( BlendFuncSeparate, ( FgGLenum _1, FgGLenum _2, FgGLenum _3, FgGLenum _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( MultiDrawArrays, ( FgGLenum _1, const FgGLint * _2, const FgGLsizei * _3, FgGLsizei _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( MultiDrawElements, ( FgGLenum _1, const FgGLsizei * _2, FgGLenum _3, const FgGLvoid *const* _4, FgGLsizei _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( PointParameterf, ( FgGLenum _1, FgGLfloat _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( PointParameterfv, ( FgGLenum _1, const FgGLfloat * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( PointParameteri, ( FgGLenum _1, FgGLint _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( PointParameteriv, ( FgGLenum _1, const FgGLint * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( FogCoordf, ( FgGLfloat _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( FogCoordfv, ( const FgGLfloat * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( FogCoordd, ( FgGLdouble _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( FogCoorddv, ( const FgGLdouble * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( FogCoordPointer, ( FgGLenum _1, FgGLsizei _2, const FgGLvoid * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( SecondaryColor3b, ( FgGLbyte _1, FgGLbyte _2, FgGLbyte _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( SecondaryColor3bv, ( const FgGLbyte * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( SecondaryColor3d, ( FgGLdouble _1, FgGLdouble _2, FgGLdouble _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( SecondaryColor3dv, ( const FgGLdouble * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( SecondaryColor3f, ( FgGLfloat _1, FgGLfloat _2, FgGLfloat _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( SecondaryColor3fv, ( const FgGLfloat * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( SecondaryColor3i, ( FgGLint _1, FgGLint _2, FgGLint _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( SecondaryColor3iv, ( const FgGLint * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( SecondaryColor3s, ( FgGLshort _1, FgGLshort _2, FgGLshort _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( SecondaryColor3sv, ( const FgGLshort * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( SecondaryColor3ub, ( FgGLubyte _1, FgGLubyte _2, FgGLubyte _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( SecondaryColor3ubv, ( const FgGLubyte * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( SecondaryColor3ui, ( FgGLuint _1, FgGLuint _2, FgGLuint _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( SecondaryColor3uiv, ( const FgGLuint * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( SecondaryColor3us, ( FgGLushort _1, FgGLushort _2, FgGLushort _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( SecondaryColor3usv, ( const FgGLushort * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( SecondaryColorPointer, ( FgGLint _1, FgGLenum _2, FgGLsizei _3, const FgGLvoid * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( WindowPos2d, ( FgGLdouble _1, FgGLdouble _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( WindowPos2dv, ( const FgGLdouble * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( WindowPos2f, ( FgGLfloat _1, FgGLfloat _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( WindowPos2fv, ( const FgGLfloat * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( WindowPos2i, ( FgGLint _1, FgGLint _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( WindowPos2iv, ( const FgGLint * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( WindowPos2s, ( FgGLshort _1, FgGLshort _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( WindowPos2sv, ( const FgGLshort * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( WindowPos3d, ( FgGLdouble _1, FgGLdouble _2, FgGLdouble _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( WindowPos3dv, ( const FgGLdouble * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( WindowPos3f, ( FgGLfloat _1, FgGLfloat _2, FgGLfloat _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( WindowPos3fv, ( const FgGLfloat * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( WindowPos3i, ( FgGLint _1, FgGLint _2, FgGLint _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( WindowPos3iv, ( const FgGLint * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( WindowPos3s, ( FgGLshort _1, FgGLshort _2, FgGLshort _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( WindowPos3sv, ( const FgGLshort * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( BlendColor, ( FgGLfloat _1, FgGLfloat _2, FgGLfloat _3, FgGLfloat _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( BlendEquation, ( FgGLenum _1 ), ( _1 ) ) \
+    FG_GL_FUNCTION_VOID( BlendFuncSeparate, FgGLContext *, FgGLenum, FgGLenum, FgGLenum, FgGLenum ) \
+    FG_GL_FUNCTION_VOID( MultiDrawArrays, FgGLContext *, FgGLenum, const FgGLint *, const FgGLsizei *, FgGLsizei ) \
+    FG_GL_FUNCTION_VOID( MultiDrawElements, FgGLContext *, FgGLenum, const FgGLsizei *, FgGLenum, const FgGLvoid *const*, FgGLsizei ) \
+    FG_GL_FUNCTION_VOID( PointParameterf, FgGLContext *, FgGLenum, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( PointParameterfv, FgGLContext *, FgGLenum, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( PointParameteri, FgGLContext *, FgGLenum, FgGLint ) \
+    FG_GL_FUNCTION_VOID( PointParameteriv, FgGLContext *, FgGLenum, const FgGLint * ) \
+    FG_GL_FUNCTION_VOID( FogCoordf, FgGLContext *, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( FogCoordfv, FgGLContext *, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( FogCoordd, FgGLContext *, FgGLdouble ) \
+    FG_GL_FUNCTION_VOID( FogCoorddv, FgGLContext *, const FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( FogCoordPointer, FgGLContext *, FgGLenum, FgGLsizei, const FgGLvoid * ) \
+    FG_GL_FUNCTION_VOID( SecondaryColor3b, FgGLContext *, FgGLbyte, FgGLbyte, FgGLbyte ) \
+    FG_GL_FUNCTION_VOID( SecondaryColor3bv, FgGLContext *, const FgGLbyte * ) \
+    FG_GL_FUNCTION_VOID( SecondaryColor3d, FgGLContext *, FgGLdouble, FgGLdouble, FgGLdouble ) \
+    FG_GL_FUNCTION_VOID( SecondaryColor3dv, FgGLContext *, const FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( SecondaryColor3f, FgGLContext *, FgGLfloat, FgGLfloat, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( SecondaryColor3fv, FgGLContext *, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( SecondaryColor3i, FgGLContext *, FgGLint, FgGLint, FgGLint ) \
+    FG_GL_FUNCTION_VOID( SecondaryColor3iv, FgGLContext *, const FgGLint * ) \
+    FG_GL_FUNCTION_VOID( SecondaryColor3s, FgGLContext *, FgGLshort, FgGLshort, FgGLshort ) \
+    FG_GL_FUNCTION_VOID( SecondaryColor3sv, FgGLContext *, const FgGLshort * ) \
+    FG_GL_FUNCTION_VOID( SecondaryColor3ub, FgGLContext *, FgGLubyte, FgGLubyte, FgGLubyte ) \
+    FG_GL_FUNCTION_VOID( SecondaryColor3ubv, FgGLContext *, const FgGLubyte * ) \
+    FG_GL_FUNCTION_VOID( SecondaryColor3ui, FgGLContext *, FgGLuint, FgGLuint, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( SecondaryColor3uiv, FgGLContext *, const FgGLuint * ) \
+    FG_GL_FUNCTION_VOID( SecondaryColor3us, FgGLContext *, FgGLushort, FgGLushort, FgGLushort ) \
+    FG_GL_FUNCTION_VOID( SecondaryColor3usv, FgGLContext *, const FgGLushort * ) \
+    FG_GL_FUNCTION_VOID( SecondaryColorPointer, FgGLContext *, FgGLint, FgGLenum, FgGLsizei, const FgGLvoid * ) \
+    FG_GL_FUNCTION_VOID( WindowPos2d, FgGLContext *, FgGLdouble, FgGLdouble ) \
+    FG_GL_FUNCTION_VOID( WindowPos2dv, FgGLContext *, const FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( WindowPos2f, FgGLContext *, FgGLfloat, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( WindowPos2fv, FgGLContext *, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( WindowPos2i, FgGLContext *, FgGLint, FgGLint ) \
+    FG_GL_FUNCTION_VOID( WindowPos2iv, FgGLContext *, const FgGLint * ) \
+    FG_GL_FUNCTION_VOID( WindowPos2s, FgGLContext *, FgGLshort, FgGLshort ) \
+    FG_GL_FUNCTION_VOID( WindowPos2sv, FgGLContext *, const FgGLshort * ) \
+    FG_GL_FUNCTION_VOID( WindowPos3d, FgGLContext *, FgGLdouble, FgGLdouble, FgGLdouble ) \
+    FG_GL_FUNCTION_VOID( WindowPos3dv, FgGLContext *, const FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( WindowPos3f, FgGLContext *, FgGLfloat, FgGLfloat, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( WindowPos3fv, FgGLContext *, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( WindowPos3i, FgGLContext *, FgGLint, FgGLint, FgGLint ) \
+    FG_GL_FUNCTION_VOID( WindowPos3iv, FgGLContext *, const FgGLint * ) \
+    FG_GL_FUNCTION_VOID( WindowPos3s, FgGLContext *, FgGLshort, FgGLshort, FgGLshort ) \
+    FG_GL_FUNCTION_VOID( WindowPos3sv, FgGLContext *, const FgGLshort * ) \
+    FG_GL_FUNCTION_VOID( BlendColor, FgGLContext *, FgGLfloat, FgGLfloat, FgGLfloat, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( BlendEquation, FgGLContext *, FgGLenum ) \
 \
     /* GL_VERSION_1_5 */ \
-    FG_GL_VOID_FUNCTION( GenQueries, ( FgGLsizei _1, FgGLuint * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( DeleteQueries, ( FgGLsizei _1, const FgGLuint * _2 ), ( _1, _2 ) ) \
-    FG_GL_FUNCTION( 0, FgGLboolean, IsQuery, ( FgGLuint _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( BeginQuery, ( FgGLenum _1, FgGLuint _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( EndQuery, ( FgGLenum _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( GetQueryiv, ( FgGLenum _1, FgGLenum _2, FgGLint * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetQueryObjectiv, ( FgGLuint _1, FgGLenum _2, FgGLint * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetQueryObjectuiv, ( FgGLuint _1, FgGLenum _2, FgGLuint * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( BindBuffer, ( FgGLenum _1, FgGLuint _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( DeleteBuffers, ( FgGLsizei _1, const FgGLuint * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( GenBuffers, ( FgGLsizei _1, FgGLuint * _2 ), ( _1, _2 ) ) \
-    FG_GL_FUNCTION( 0, FgGLboolean, IsBuffer, ( FgGLuint _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( BufferData, ( FgGLenum _1, FgGLsizeiptr _2, const FgGLvoid * _3, FgGLenum _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( BufferSubData, ( FgGLenum _1, FgGLintptr _2, FgGLsizeiptr _3, const FgGLvoid * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( GetBufferSubData, ( FgGLenum _1, FgGLintptr _2, FgGLsizeiptr _3, FgGLvoid * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_FUNCTION( NULL, void *, MapBuffer, ( FgGLenum _1, FgGLenum _2 ), ( _1, _2 ) ) \
-    FG_GL_FUNCTION( 0, FgGLboolean, UnmapBuffer, ( FgGLenum _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( GetBufferParameteriv, ( FgGLenum _1, FgGLenum _2, FgGLint * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetBufferPointerv, ( FgGLenum _1, FgGLenum _2, FgGLvoid ** _3 ), ( _1, _2, _3 ) ) \
+    FG_GL_FUNCTION_VOID( GenQueries, FgGLContext *, FgGLsizei, FgGLuint * ) \
+    FG_GL_FUNCTION_VOID( DeleteQueries, FgGLContext *, FgGLsizei, const FgGLuint * ) \
+    FG_GL_FUNCTION_NUM( IsQuery, FgGLboolean, FgGLContext *, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( BeginQuery, FgGLContext *, FgGLenum, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( EndQuery, FgGLContext *, FgGLenum ) \
+    FG_GL_FUNCTION_VOID( GetQueryiv, FgGLContext *, FgGLenum, FgGLenum, FgGLint * ) \
+    FG_GL_FUNCTION_VOID( GetQueryObjectiv, FgGLContext *, FgGLuint, FgGLenum, FgGLint * ) \
+    FG_GL_FUNCTION_VOID( GetQueryObjectuiv, FgGLContext *, FgGLuint, FgGLenum, FgGLuint * ) \
+    FG_GL_FUNCTION_VOID( BindBuffer, FgGLContext *, FgGLenum, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( DeleteBuffers, FgGLContext *, FgGLsizei, const FgGLuint * ) \
+    FG_GL_FUNCTION_VOID( GenBuffers, FgGLContext *, FgGLsizei, FgGLuint * ) \
+    FG_GL_FUNCTION_NUM( IsBuffer, FgGLboolean, FgGLContext *, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( BufferData, FgGLContext *, FgGLenum, FgGLsizeiptr, const FgGLvoid *, FgGLenum ) \
+    FG_GL_FUNCTION_VOID( BufferSubData, FgGLContext *, FgGLenum, FgGLintptr, FgGLsizeiptr, const FgGLvoid * ) \
+    FG_GL_FUNCTION_VOID( GetBufferSubData, FgGLContext *, FgGLenum, FgGLintptr, FgGLsizeiptr, FgGLvoid * ) \
+    FG_GL_FUNCTION_PTR( MapBuffer, void *, FgGLContext *, FgGLenum, FgGLenum ) \
+    FG_GL_FUNCTION_NUM( UnmapBuffer, FgGLboolean, FgGLContext *, FgGLenum ) \
+    FG_GL_FUNCTION_VOID( GetBufferParameteriv, FgGLContext *, FgGLenum, FgGLenum, FgGLint * ) \
+    FG_GL_FUNCTION_VOID( GetBufferPointerv, FgGLContext *, FgGLenum, FgGLenum, FgGLvoid ** ) \
 \
     /* GL_VERSION_2_0 */ \
-    FG_GL_VOID_FUNCTION( BlendEquationSeparate, ( FgGLenum _1, FgGLenum _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( DrawBuffers, ( FgGLsizei _1, const FgGLenum * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( StencilOpSeparate, ( FgGLenum _1, FgGLenum _2, FgGLenum _3, FgGLenum _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( StencilFuncSeparate, ( FgGLenum _1, FgGLenum _2, FgGLint _3, FgGLuint _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( StencilMaskSeparate, ( FgGLenum _1, FgGLuint _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( AttachShader, ( FgGLuint _1, FgGLuint _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( BindAttribLocation, ( FgGLuint _1, FgGLuint _2, const FgGLchar * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( CompileShader, ( FgGLuint _1 ), ( _1 ) ) \
-    FG_GL_FUNCTION( 0, FgGLuint, CreateProgram, ( ), ( ) ) \
-    FG_GL_FUNCTION( 0, FgGLuint, CreateShader, ( FgGLenum _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( DeleteProgram, ( FgGLuint _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( DeleteShader, ( FgGLuint _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( DetachShader, ( FgGLuint _1, FgGLuint _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( DisableVertexAttribArray, ( FgGLuint _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( EnableVertexAttribArray, ( FgGLuint _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( GetActiveAttrib, ( FgGLuint _1, FgGLuint _2, FgGLsizei _3, FgGLsizei * _4, FgGLint * _5, FgGLenum * _6, FgGLchar * _7 ), ( _1, _2, _3, _4, _5, _6, _7 ) ) \
-    FG_GL_VOID_FUNCTION( GetActiveUniform, ( FgGLuint _1, FgGLuint _2, FgGLsizei _3, FgGLsizei * _4, FgGLint * _5, FgGLenum * _6, FgGLchar * _7 ), ( _1, _2, _3, _4, _5, _6, _7 ) ) \
-    FG_GL_VOID_FUNCTION( GetAttachedShaders, ( FgGLuint _1, FgGLsizei _2, FgGLsizei * _3, FgGLuint * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_FUNCTION( 0, FgGLint, GetAttribLocation, ( FgGLuint _1, const FgGLchar * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( GetProgramiv, ( FgGLuint _1, FgGLenum _2, FgGLint * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetProgramInfoLog, ( FgGLuint _1, FgGLsizei _2, FgGLsizei * _3, FgGLchar * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( GetShaderiv, ( FgGLuint _1, FgGLenum _2, FgGLint * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetShaderInfoLog, ( FgGLuint _1, FgGLsizei _2, FgGLsizei * _3, FgGLchar * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( GetShaderSource, ( FgGLuint _1, FgGLsizei _2, FgGLsizei * _3, FgGLchar * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_FUNCTION( 0, FgGLint, GetUniformLocation, ( FgGLuint _1, const FgGLchar * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( GetUniformfv, ( FgGLuint _1, FgGLint _2, FgGLfloat * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetUniformiv, ( FgGLuint _1, FgGLint _2, FgGLint * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetVertexAttribdv, ( FgGLuint _1, FgGLenum _2, FgGLdouble * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetVertexAttribfv, ( FgGLuint _1, FgGLenum _2, FgGLfloat * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetVertexAttribiv, ( FgGLuint _1, FgGLenum _2, FgGLint * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetVertexAttribPointerv, ( FgGLuint _1, FgGLenum _2, FgGLvoid ** _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_FUNCTION( 0, FgGLboolean, IsProgram, ( FgGLuint _1 ), ( _1 ) ) \
-    FG_GL_FUNCTION( 0, FgGLboolean, IsShader, ( FgGLuint _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( LinkProgram, ( FgGLuint _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( ShaderSource, ( FgGLuint _1, FgGLsizei _2, const FgGLchar *const* _3, const FgGLint * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( UseProgram, ( FgGLuint _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( Uniform1f, ( FgGLint _1, FgGLfloat _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( Uniform2f, ( FgGLint _1, FgGLfloat _2, FgGLfloat _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( Uniform3f, ( FgGLint _1, FgGLfloat _2, FgGLfloat _3, FgGLfloat _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( Uniform4f, ( FgGLint _1, FgGLfloat _2, FgGLfloat _3, FgGLfloat _4, FgGLfloat _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( Uniform1i, ( FgGLint _1, FgGLint _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( Uniform2i, ( FgGLint _1, FgGLint _2, FgGLint _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( Uniform3i, ( FgGLint _1, FgGLint _2, FgGLint _3, FgGLint _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( Uniform4i, ( FgGLint _1, FgGLint _2, FgGLint _3, FgGLint _4, FgGLint _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( Uniform1fv, ( FgGLint _1, FgGLsizei _2, const FgGLfloat * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( Uniform2fv, ( FgGLint _1, FgGLsizei _2, const FgGLfloat * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( Uniform3fv, ( FgGLint _1, FgGLsizei _2, const FgGLfloat * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( Uniform4fv, ( FgGLint _1, FgGLsizei _2, const FgGLfloat * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( Uniform1iv, ( FgGLint _1, FgGLsizei _2, const FgGLint * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( Uniform2iv, ( FgGLint _1, FgGLsizei _2, const FgGLint * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( Uniform3iv, ( FgGLint _1, FgGLsizei _2, const FgGLint * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( Uniform4iv, ( FgGLint _1, FgGLsizei _2, const FgGLint * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( UniformMatrix2fv, ( FgGLint _1, FgGLsizei _2, FgGLboolean _3, const FgGLfloat * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( UniformMatrix3fv, ( FgGLint _1, FgGLsizei _2, FgGLboolean _3, const FgGLfloat * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( UniformMatrix4fv, ( FgGLint _1, FgGLsizei _2, FgGLboolean _3, const FgGLfloat * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( ValidateProgram, ( FgGLuint _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttrib1d, ( FgGLuint _1, FgGLdouble _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttrib1dv, ( FgGLuint _1, const FgGLdouble * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttrib1f, ( FgGLuint _1, FgGLfloat _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttrib1fv, ( FgGLuint _1, const FgGLfloat * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttrib1s, ( FgGLuint _1, FgGLshort _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttrib1sv, ( FgGLuint _1, const FgGLshort * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttrib2d, ( FgGLuint _1, FgGLdouble _2, FgGLdouble _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttrib2dv, ( FgGLuint _1, const FgGLdouble * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttrib2f, ( FgGLuint _1, FgGLfloat _2, FgGLfloat _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttrib2fv, ( FgGLuint _1, const FgGLfloat * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttrib2s, ( FgGLuint _1, FgGLshort _2, FgGLshort _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttrib2sv, ( FgGLuint _1, const FgGLshort * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttrib3d, ( FgGLuint _1, FgGLdouble _2, FgGLdouble _3, FgGLdouble _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttrib3dv, ( FgGLuint _1, const FgGLdouble * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttrib3f, ( FgGLuint _1, FgGLfloat _2, FgGLfloat _3, FgGLfloat _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttrib3fv, ( FgGLuint _1, const FgGLfloat * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttrib3s, ( FgGLuint _1, FgGLshort _2, FgGLshort _3, FgGLshort _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttrib3sv, ( FgGLuint _1, const FgGLshort * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttrib4Nbv, ( FgGLuint _1, const FgGLbyte * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttrib4Niv, ( FgGLuint _1, const FgGLint * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttrib4Nsv, ( FgGLuint _1, const FgGLshort * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttrib4Nub, ( FgGLuint _1, FgGLubyte _2, FgGLubyte _3, FgGLubyte _4, FgGLubyte _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttrib4Nubv, ( FgGLuint _1, const FgGLubyte * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttrib4Nuiv, ( FgGLuint _1, const FgGLuint * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttrib4Nusv, ( FgGLuint _1, const FgGLushort * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttrib4bv, ( FgGLuint _1, const FgGLbyte * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttrib4d, ( FgGLuint _1, FgGLdouble _2, FgGLdouble _3, FgGLdouble _4, FgGLdouble _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttrib4dv, ( FgGLuint _1, const FgGLdouble * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttrib4f, ( FgGLuint _1, FgGLfloat _2, FgGLfloat _3, FgGLfloat _4, FgGLfloat _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttrib4fv, ( FgGLuint _1, const FgGLfloat * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttrib4iv, ( FgGLuint _1, const FgGLint * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttrib4s, ( FgGLuint _1, FgGLshort _2, FgGLshort _3, FgGLshort _4, FgGLshort _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttrib4sv, ( FgGLuint _1, const FgGLshort * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttrib4ubv, ( FgGLuint _1, const FgGLubyte * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttrib4uiv, ( FgGLuint _1, const FgGLuint * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttrib4usv, ( FgGLuint _1, const FgGLushort * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttribPointer, ( FgGLuint _1, FgGLint _2, FgGLenum _3, FgGLboolean _4, FgGLsizei _5, const FgGLvoid * _6 ), ( _1, _2, _3, _4, _5, _6 ) ) \
+    FG_GL_FUNCTION_VOID( BlendEquationSeparate, FgGLContext *, FgGLenum, FgGLenum ) \
+    FG_GL_FUNCTION_VOID( DrawBuffers, FgGLContext *, FgGLsizei, const FgGLenum * ) \
+    FG_GL_FUNCTION_VOID( StencilOpSeparate, FgGLContext *, FgGLenum, FgGLenum, FgGLenum, FgGLenum ) \
+    FG_GL_FUNCTION_VOID( StencilFuncSeparate, FgGLContext *, FgGLenum, FgGLenum, FgGLint, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( StencilMaskSeparate, FgGLContext *, FgGLenum, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( AttachShader, FgGLContext *, FgGLuint, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( BindAttribLocation, FgGLContext *, FgGLuint, FgGLuint, const FgGLchar * ) \
+    FG_GL_FUNCTION_VOID( CompileShader, FgGLContext *, FgGLuint ) \
+    FG_GL_FUNCTION_NUM( CreateProgram, FgGLuint, FgGLContext * ) \
+    FG_GL_FUNCTION_NUM( CreateShader, FgGLuint, FgGLContext *, FgGLenum ) \
+    FG_GL_FUNCTION_VOID( DeleteProgram, FgGLContext *, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( DeleteShader, FgGLContext *, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( DetachShader, FgGLContext *, FgGLuint, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( DisableVertexAttribArray, FgGLContext *, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( EnableVertexAttribArray, FgGLContext *, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( GetActiveAttrib, FgGLContext *, FgGLuint, FgGLuint, FgGLsizei, FgGLsizei *, FgGLint *, FgGLenum *, FgGLchar * ) \
+    FG_GL_FUNCTION_VOID( GetActiveUniform, FgGLContext *, FgGLuint, FgGLuint, FgGLsizei, FgGLsizei *, FgGLint *, FgGLenum *, FgGLchar * ) \
+    FG_GL_FUNCTION_VOID( GetAttachedShaders, FgGLContext *, FgGLuint, FgGLsizei, FgGLsizei *, FgGLuint * ) \
+    FG_GL_FUNCTION_NUM( GetAttribLocation, FgGLint, FgGLContext *, FgGLuint, const FgGLchar * ) \
+    FG_GL_FUNCTION_VOID( GetProgramiv, FgGLContext *, FgGLuint, FgGLenum, FgGLint * ) \
+    FG_GL_FUNCTION_VOID( GetProgramInfoLog, FgGLContext *, FgGLuint, FgGLsizei, FgGLsizei *, FgGLchar * ) \
+    FG_GL_FUNCTION_VOID( GetShaderiv, FgGLContext *, FgGLuint, FgGLenum, FgGLint * ) \
+    FG_GL_FUNCTION_VOID( GetShaderInfoLog, FgGLContext *, FgGLuint, FgGLsizei, FgGLsizei *, FgGLchar * ) \
+    FG_GL_FUNCTION_VOID( GetShaderSource, FgGLContext *, FgGLuint, FgGLsizei, FgGLsizei *, FgGLchar * ) \
+    FG_GL_FUNCTION_NUM( GetUniformLocation, FgGLint, FgGLContext *, FgGLuint, const FgGLchar * ) \
+    FG_GL_FUNCTION_VOID( GetUniformfv, FgGLContext *, FgGLuint, FgGLint, FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( GetUniformiv, FgGLContext *, FgGLuint, FgGLint, FgGLint * ) \
+    FG_GL_FUNCTION_VOID( GetVertexAttribdv, FgGLContext *, FgGLuint, FgGLenum, FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( GetVertexAttribfv, FgGLContext *, FgGLuint, FgGLenum, FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( GetVertexAttribiv, FgGLContext *, FgGLuint, FgGLenum, FgGLint * ) \
+    FG_GL_FUNCTION_VOID( GetVertexAttribPointerv, FgGLContext *, FgGLuint, FgGLenum, FgGLvoid ** ) \
+    FG_GL_FUNCTION_NUM( IsProgram, FgGLboolean, FgGLContext *, FgGLuint ) \
+    FG_GL_FUNCTION_NUM( IsShader, FgGLboolean, FgGLContext *, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( LinkProgram, FgGLContext *, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( ShaderSource, FgGLContext *, FgGLuint, FgGLsizei, const FgGLchar *const*, const FgGLint * ) \
+    FG_GL_FUNCTION_VOID( UseProgram, FgGLContext *, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( Uniform1f, FgGLContext *, FgGLint, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( Uniform2f, FgGLContext *, FgGLint, FgGLfloat, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( Uniform3f, FgGLContext *, FgGLint, FgGLfloat, FgGLfloat, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( Uniform4f, FgGLContext *, FgGLint, FgGLfloat, FgGLfloat, FgGLfloat, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( Uniform1i, FgGLContext *, FgGLint, FgGLint ) \
+    FG_GL_FUNCTION_VOID( Uniform2i, FgGLContext *, FgGLint, FgGLint, FgGLint ) \
+    FG_GL_FUNCTION_VOID( Uniform3i, FgGLContext *, FgGLint, FgGLint, FgGLint, FgGLint ) \
+    FG_GL_FUNCTION_VOID( Uniform4i, FgGLContext *, FgGLint, FgGLint, FgGLint, FgGLint, FgGLint ) \
+    FG_GL_FUNCTION_VOID( Uniform1fv, FgGLContext *, FgGLint, FgGLsizei, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( Uniform2fv, FgGLContext *, FgGLint, FgGLsizei, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( Uniform3fv, FgGLContext *, FgGLint, FgGLsizei, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( Uniform4fv, FgGLContext *, FgGLint, FgGLsizei, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( Uniform1iv, FgGLContext *, FgGLint, FgGLsizei, const FgGLint * ) \
+    FG_GL_FUNCTION_VOID( Uniform2iv, FgGLContext *, FgGLint, FgGLsizei, const FgGLint * ) \
+    FG_GL_FUNCTION_VOID( Uniform3iv, FgGLContext *, FgGLint, FgGLsizei, const FgGLint * ) \
+    FG_GL_FUNCTION_VOID( Uniform4iv, FgGLContext *, FgGLint, FgGLsizei, const FgGLint * ) \
+    FG_GL_FUNCTION_VOID( UniformMatrix2fv, FgGLContext *, FgGLint, FgGLsizei, FgGLboolean, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( UniformMatrix3fv, FgGLContext *, FgGLint, FgGLsizei, FgGLboolean, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( UniformMatrix4fv, FgGLContext *, FgGLint, FgGLsizei, FgGLboolean, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( ValidateProgram, FgGLContext *, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( VertexAttrib1d, FgGLContext *, FgGLuint, FgGLdouble ) \
+    FG_GL_FUNCTION_VOID( VertexAttrib1dv, FgGLContext *, FgGLuint, const FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( VertexAttrib1f, FgGLContext *, FgGLuint, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( VertexAttrib1fv, FgGLContext *, FgGLuint, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( VertexAttrib1s, FgGLContext *, FgGLuint, FgGLshort ) \
+    FG_GL_FUNCTION_VOID( VertexAttrib1sv, FgGLContext *, FgGLuint, const FgGLshort * ) \
+    FG_GL_FUNCTION_VOID( VertexAttrib2d, FgGLContext *, FgGLuint, FgGLdouble, FgGLdouble ) \
+    FG_GL_FUNCTION_VOID( VertexAttrib2dv, FgGLContext *, FgGLuint, const FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( VertexAttrib2f, FgGLContext *, FgGLuint, FgGLfloat, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( VertexAttrib2fv, FgGLContext *, FgGLuint, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( VertexAttrib2s, FgGLContext *, FgGLuint, FgGLshort, FgGLshort ) \
+    FG_GL_FUNCTION_VOID( VertexAttrib2sv, FgGLContext *, FgGLuint, const FgGLshort * ) \
+    FG_GL_FUNCTION_VOID( VertexAttrib3d, FgGLContext *, FgGLuint, FgGLdouble, FgGLdouble, FgGLdouble ) \
+    FG_GL_FUNCTION_VOID( VertexAttrib3dv, FgGLContext *, FgGLuint, const FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( VertexAttrib3f, FgGLContext *, FgGLuint, FgGLfloat, FgGLfloat, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( VertexAttrib3fv, FgGLContext *, FgGLuint, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( VertexAttrib3s, FgGLContext *, FgGLuint, FgGLshort, FgGLshort, FgGLshort ) \
+    FG_GL_FUNCTION_VOID( VertexAttrib3sv, FgGLContext *, FgGLuint, const FgGLshort * ) \
+    FG_GL_FUNCTION_VOID( VertexAttrib4Nbv, FgGLContext *, FgGLuint, const FgGLbyte * ) \
+    FG_GL_FUNCTION_VOID( VertexAttrib4Niv, FgGLContext *, FgGLuint, const FgGLint * ) \
+    FG_GL_FUNCTION_VOID( VertexAttrib4Nsv, FgGLContext *, FgGLuint, const FgGLshort * ) \
+    FG_GL_FUNCTION_VOID( VertexAttrib4Nub, FgGLContext *, FgGLuint, FgGLubyte, FgGLubyte, FgGLubyte, FgGLubyte ) \
+    FG_GL_FUNCTION_VOID( VertexAttrib4Nubv, FgGLContext *, FgGLuint, const FgGLubyte * ) \
+    FG_GL_FUNCTION_VOID( VertexAttrib4Nuiv, FgGLContext *, FgGLuint, const FgGLuint * ) \
+    FG_GL_FUNCTION_VOID( VertexAttrib4Nusv, FgGLContext *, FgGLuint, const FgGLushort * ) \
+    FG_GL_FUNCTION_VOID( VertexAttrib4bv, FgGLContext *, FgGLuint, const FgGLbyte * ) \
+    FG_GL_FUNCTION_VOID( VertexAttrib4d, FgGLContext *, FgGLuint, FgGLdouble, FgGLdouble, FgGLdouble, FgGLdouble ) \
+    FG_GL_FUNCTION_VOID( VertexAttrib4dv, FgGLContext *, FgGLuint, const FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( VertexAttrib4f, FgGLContext *, FgGLuint, FgGLfloat, FgGLfloat, FgGLfloat, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( VertexAttrib4fv, FgGLContext *, FgGLuint, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( VertexAttrib4iv, FgGLContext *, FgGLuint, const FgGLint * ) \
+    FG_GL_FUNCTION_VOID( VertexAttrib4s, FgGLContext *, FgGLuint, FgGLshort, FgGLshort, FgGLshort, FgGLshort ) \
+    FG_GL_FUNCTION_VOID( VertexAttrib4sv, FgGLContext *, FgGLuint, const FgGLshort * ) \
+    FG_GL_FUNCTION_VOID( VertexAttrib4ubv, FgGLContext *, FgGLuint, const FgGLubyte * ) \
+    FG_GL_FUNCTION_VOID( VertexAttrib4uiv, FgGLContext *, FgGLuint, const FgGLuint * ) \
+    FG_GL_FUNCTION_VOID( VertexAttrib4usv, FgGLContext *, FgGLuint, const FgGLushort * ) \
+    FG_GL_FUNCTION_VOID( VertexAttribPointer, FgGLContext *, FgGLuint, FgGLint, FgGLenum, FgGLboolean, FgGLsizei, const FgGLvoid * ) \
 \
     /* GL_VERSION_2_1 */ \
-    FG_GL_VOID_FUNCTION( UniformMatrix2x3fv, ( FgGLint _1, FgGLsizei _2, FgGLboolean _3, const FgGLfloat * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( UniformMatrix3x2fv, ( FgGLint _1, FgGLsizei _2, FgGLboolean _3, const FgGLfloat * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( UniformMatrix2x4fv, ( FgGLint _1, FgGLsizei _2, FgGLboolean _3, const FgGLfloat * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( UniformMatrix4x2fv, ( FgGLint _1, FgGLsizei _2, FgGLboolean _3, const FgGLfloat * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( UniformMatrix3x4fv, ( FgGLint _1, FgGLsizei _2, FgGLboolean _3, const FgGLfloat * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( UniformMatrix4x3fv, ( FgGLint _1, FgGLsizei _2, FgGLboolean _3, const FgGLfloat * _4 ), ( _1, _2, _3, _4 ) ) \
+    FG_GL_FUNCTION_VOID( UniformMatrix2x3fv, FgGLContext *, FgGLint, FgGLsizei, FgGLboolean, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( UniformMatrix3x2fv, FgGLContext *, FgGLint, FgGLsizei, FgGLboolean, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( UniformMatrix2x4fv, FgGLContext *, FgGLint, FgGLsizei, FgGLboolean, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( UniformMatrix4x2fv, FgGLContext *, FgGLint, FgGLsizei, FgGLboolean, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( UniformMatrix3x4fv, FgGLContext *, FgGLint, FgGLsizei, FgGLboolean, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( UniformMatrix4x3fv, FgGLContext *, FgGLint, FgGLsizei, FgGLboolean, const FgGLfloat * ) \
 \
     /* GL_VERSION_3_0 */ \
-    FG_GL_VOID_FUNCTION( ColorMaski, ( FgGLuint _1, FgGLboolean _2, FgGLboolean _3, FgGLboolean _4, FgGLboolean _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( GetBooleani_v, ( FgGLenum _1, FgGLuint _2, FgGLboolean * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetIntegeri_v, ( FgGLenum _1, FgGLuint _2, FgGLint * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( Enablei, ( FgGLenum _1, FgGLuint _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( Disablei, ( FgGLenum _1, FgGLuint _2 ), ( _1, _2 ) ) \
-    FG_GL_FUNCTION( 0, FgGLboolean, IsEnabledi, ( FgGLenum _1, FgGLuint _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( BeginTransformFeedback, ( FgGLenum _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( EndTransformFeedback, ( ), ( ) ) \
-    FG_GL_VOID_FUNCTION( BindBufferRange, ( FgGLenum _1, FgGLuint _2, FgGLuint _3, FgGLintptr _4, FgGLsizeiptr _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( BindBufferBase, ( FgGLenum _1, FgGLuint _2, FgGLuint _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( TransformFeedbackVaryings, ( FgGLuint _1, FgGLsizei _2, const FgGLchar *const* _3, FgGLenum _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( GetTransformFeedbackVarying, ( FgGLuint _1, FgGLuint _2, FgGLsizei _3, FgGLsizei * _4, FgGLsizei * _5, FgGLenum * _6, FgGLchar * _7 ), ( _1, _2, _3, _4, _5, _6, _7 ) ) \
-    FG_GL_VOID_FUNCTION( ClampColor, ( FgGLenum _1, FgGLenum _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( BeginConditionalRender, ( FgGLuint _1, FgGLenum _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( EndConditionalRender, ( ), ( ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttribIPointer, ( FgGLuint _1, FgGLint _2, FgGLenum _3, FgGLsizei _4, const FgGLvoid * _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( GetVertexAttribIiv, ( FgGLuint _1, FgGLenum _2, FgGLint * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetVertexAttribIuiv, ( FgGLuint _1, FgGLenum _2, FgGLuint * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttribI1i, ( FgGLuint _1, FgGLint _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttribI2i, ( FgGLuint _1, FgGLint _2, FgGLint _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttribI3i, ( FgGLuint _1, FgGLint _2, FgGLint _3, FgGLint _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttribI4i, ( FgGLuint _1, FgGLint _2, FgGLint _3, FgGLint _4, FgGLint _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttribI1ui, ( FgGLuint _1, FgGLuint _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttribI2ui, ( FgGLuint _1, FgGLuint _2, FgGLuint _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttribI3ui, ( FgGLuint _1, FgGLuint _2, FgGLuint _3, FgGLuint _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttribI4ui, ( FgGLuint _1, FgGLuint _2, FgGLuint _3, FgGLuint _4, FgGLuint _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttribI1iv, ( FgGLuint _1, const FgGLint * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttribI2iv, ( FgGLuint _1, const FgGLint * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttribI3iv, ( FgGLuint _1, const FgGLint * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttribI4iv, ( FgGLuint _1, const FgGLint * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttribI1uiv, ( FgGLuint _1, const FgGLuint * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttribI2uiv, ( FgGLuint _1, const FgGLuint * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttribI3uiv, ( FgGLuint _1, const FgGLuint * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttribI4uiv, ( FgGLuint _1, const FgGLuint * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttribI4bv, ( FgGLuint _1, const FgGLbyte * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttribI4sv, ( FgGLuint _1, const FgGLshort * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttribI4ubv, ( FgGLuint _1, const FgGLubyte * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttribI4usv, ( FgGLuint _1, const FgGLushort * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( GetUniformuiv, ( FgGLuint _1, FgGLint _2, FgGLuint * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( BindFragDataLocation, ( FgGLuint _1, FgGLuint _2, const FgGLchar * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_FUNCTION( 0, FgGLint, GetFragDataLocation, ( FgGLuint _1, const FgGLchar * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( Uniform1ui, ( FgGLint _1, FgGLuint _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( Uniform2ui, ( FgGLint _1, FgGLuint _2, FgGLuint _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( Uniform3ui, ( FgGLint _1, FgGLuint _2, FgGLuint _3, FgGLuint _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( Uniform4ui, ( FgGLint _1, FgGLuint _2, FgGLuint _3, FgGLuint _4, FgGLuint _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( Uniform1uiv, ( FgGLint _1, FgGLsizei _2, const FgGLuint * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( Uniform2uiv, ( FgGLint _1, FgGLsizei _2, const FgGLuint * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( Uniform3uiv, ( FgGLint _1, FgGLsizei _2, const FgGLuint * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( Uniform4uiv, ( FgGLint _1, FgGLsizei _2, const FgGLuint * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( TexParameterIiv, ( FgGLenum _1, FgGLenum _2, const FgGLint * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( TexParameterIuiv, ( FgGLenum _1, FgGLenum _2, const FgGLuint * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetTexParameterIiv, ( FgGLenum _1, FgGLenum _2, FgGLint * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetTexParameterIuiv, ( FgGLenum _1, FgGLenum _2, FgGLuint * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( ClearBufferiv, ( FgGLenum _1, FgGLint _2, const FgGLint * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( ClearBufferuiv, ( FgGLenum _1, FgGLint _2, const FgGLuint * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( ClearBufferfv, ( FgGLenum _1, FgGLint _2, const FgGLfloat * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( ClearBufferfi, ( FgGLenum _1, FgGLint _2, FgGLfloat _3, FgGLint _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_FUNCTION( NULL, const FgGLubyte *, GetStringi, ( FgGLenum _1, FgGLuint _2 ), ( _1, _2 ) ) \
-    FG_GL_FUNCTION( 0, FgGLboolean, IsRenderbuffer, ( FgGLuint _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( BindRenderbuffer, ( FgGLenum _1, FgGLuint _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( DeleteRenderbuffers, ( FgGLsizei _1, const FgGLuint * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( GenRenderbuffers, ( FgGLsizei _1, FgGLuint * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( RenderbufferStorage, ( FgGLenum _1, FgGLenum _2, FgGLsizei _3, FgGLsizei _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( GetRenderbufferParameteriv, ( FgGLenum _1, FgGLenum _2, FgGLint * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_FUNCTION( 0, FgGLboolean, IsFramebuffer, ( FgGLuint _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( BindFramebuffer, ( FgGLenum _1, FgGLuint _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( DeleteFramebuffers, ( FgGLsizei _1, const FgGLuint * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( GenFramebuffers, ( FgGLsizei _1, FgGLuint * _2 ), ( _1, _2 ) ) \
-    FG_GL_FUNCTION( 0, FgGLenum, CheckFramebufferStatus, ( FgGLenum _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( FramebufferTexture1D, ( FgGLenum _1, FgGLenum _2, FgGLenum _3, FgGLuint _4, FgGLint _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( FramebufferTexture2D, ( FgGLenum _1, FgGLenum _2, FgGLenum _3, FgGLuint _4, FgGLint _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( FramebufferTexture3D, ( FgGLenum _1, FgGLenum _2, FgGLenum _3, FgGLuint _4, FgGLint _5, FgGLint _6 ), ( _1, _2, _3, _4, _5, _6 ) ) \
-    FG_GL_VOID_FUNCTION( FramebufferRenderbuffer, ( FgGLenum _1, FgGLenum _2, FgGLenum _3, FgGLuint _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( GetFramebufferAttachmentParameteriv, ( FgGLenum _1, FgGLenum _2, FgGLenum _3, FgGLint * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( GenerateMipmap, ( FgGLenum _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( BlitFramebuffer, ( FgGLint _1, FgGLint _2, FgGLint _3, FgGLint _4, FgGLint _5, FgGLint _6, FgGLint _7, FgGLint _8, FgGLbitfield _9, FgGLenum _10 ), ( _1, _2, _3, _4, _5, _6, _7, _8, _9, _10 ) ) \
-    FG_GL_VOID_FUNCTION( RenderbufferStorageMultisample, ( FgGLenum _1, FgGLsizei _2, FgGLenum _3, FgGLsizei _4, FgGLsizei _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( FramebufferTextureLayer, ( FgGLenum _1, FgGLenum _2, FgGLuint _3, FgGLint _4, FgGLint _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_FUNCTION( NULL, void *, MapBufferRange, ( FgGLenum _1, FgGLintptr _2, FgGLsizeiptr _3, FgGLbitfield _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( FlushMappedBufferRange, ( FgGLenum _1, FgGLintptr _2, FgGLsizeiptr _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( BindVertexArray, ( FgGLuint _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( DeleteVertexArrays, ( FgGLsizei _1, const FgGLuint * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( GenVertexArrays, ( FgGLsizei _1, FgGLuint * _2 ), ( _1, _2 ) ) \
-    FG_GL_FUNCTION( 0, FgGLboolean, IsVertexArray, ( FgGLuint _1 ), ( _1 ) ) \
+    FG_GL_FUNCTION_VOID( ColorMaski, FgGLContext *, FgGLuint, FgGLboolean, FgGLboolean, FgGLboolean, FgGLboolean ) \
+    FG_GL_FUNCTION_VOID( GetBooleani_v, FgGLContext *, FgGLenum, FgGLuint, FgGLboolean * ) \
+    FG_GL_FUNCTION_VOID( GetIntegeri_v, FgGLContext *, FgGLenum, FgGLuint, FgGLint * ) \
+    FG_GL_FUNCTION_VOID( Enablei, FgGLContext *, FgGLenum, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( Disablei, FgGLContext *, FgGLenum, FgGLuint ) \
+    FG_GL_FUNCTION_NUM( IsEnabledi, FgGLboolean, FgGLContext *, FgGLenum, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( BeginTransformFeedback, FgGLContext *, FgGLenum ) \
+    FG_GL_FUNCTION_VOID( EndTransformFeedback, FgGLContext * ) \
+    FG_GL_FUNCTION_VOID( BindBufferRange, FgGLContext *, FgGLenum, FgGLuint, FgGLuint, FgGLintptr, FgGLsizeiptr ) \
+    FG_GL_FUNCTION_VOID( BindBufferBase, FgGLContext *, FgGLenum, FgGLuint, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( TransformFeedbackVaryings, FgGLContext *, FgGLuint, FgGLsizei, const FgGLchar *const*, FgGLenum ) \
+    FG_GL_FUNCTION_VOID( GetTransformFeedbackVarying, FgGLContext *, FgGLuint, FgGLuint, FgGLsizei, FgGLsizei *, FgGLsizei *, FgGLenum *, FgGLchar * ) \
+    FG_GL_FUNCTION_VOID( ClampColor, FgGLContext *, FgGLenum, FgGLenum ) \
+    FG_GL_FUNCTION_VOID( BeginConditionalRender, FgGLContext *, FgGLuint, FgGLenum ) \
+    FG_GL_FUNCTION_VOID( EndConditionalRender, FgGLContext * ) \
+    FG_GL_FUNCTION_VOID( VertexAttribIPointer, FgGLContext *, FgGLuint, FgGLint, FgGLenum, FgGLsizei, const FgGLvoid * ) \
+    FG_GL_FUNCTION_VOID( GetVertexAttribIiv, FgGLContext *, FgGLuint, FgGLenum, FgGLint * ) \
+    FG_GL_FUNCTION_VOID( GetVertexAttribIuiv, FgGLContext *, FgGLuint, FgGLenum, FgGLuint * ) \
+    FG_GL_FUNCTION_VOID( VertexAttribI1i, FgGLContext *, FgGLuint, FgGLint ) \
+    FG_GL_FUNCTION_VOID( VertexAttribI2i, FgGLContext *, FgGLuint, FgGLint, FgGLint ) \
+    FG_GL_FUNCTION_VOID( VertexAttribI3i, FgGLContext *, FgGLuint, FgGLint, FgGLint, FgGLint ) \
+    FG_GL_FUNCTION_VOID( VertexAttribI4i, FgGLContext *, FgGLuint, FgGLint, FgGLint, FgGLint, FgGLint ) \
+    FG_GL_FUNCTION_VOID( VertexAttribI1ui, FgGLContext *, FgGLuint, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( VertexAttribI2ui, FgGLContext *, FgGLuint, FgGLuint, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( VertexAttribI3ui, FgGLContext *, FgGLuint, FgGLuint, FgGLuint, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( VertexAttribI4ui, FgGLContext *, FgGLuint, FgGLuint, FgGLuint, FgGLuint, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( VertexAttribI1iv, FgGLContext *, FgGLuint, const FgGLint * ) \
+    FG_GL_FUNCTION_VOID( VertexAttribI2iv, FgGLContext *, FgGLuint, const FgGLint * ) \
+    FG_GL_FUNCTION_VOID( VertexAttribI3iv, FgGLContext *, FgGLuint, const FgGLint * ) \
+    FG_GL_FUNCTION_VOID( VertexAttribI4iv, FgGLContext *, FgGLuint, const FgGLint * ) \
+    FG_GL_FUNCTION_VOID( VertexAttribI1uiv, FgGLContext *, FgGLuint, const FgGLuint * ) \
+    FG_GL_FUNCTION_VOID( VertexAttribI2uiv, FgGLContext *, FgGLuint, const FgGLuint * ) \
+    FG_GL_FUNCTION_VOID( VertexAttribI3uiv, FgGLContext *, FgGLuint, const FgGLuint * ) \
+    FG_GL_FUNCTION_VOID( VertexAttribI4uiv, FgGLContext *, FgGLuint, const FgGLuint * ) \
+    FG_GL_FUNCTION_VOID( VertexAttribI4bv, FgGLContext *, FgGLuint, const FgGLbyte * ) \
+    FG_GL_FUNCTION_VOID( VertexAttribI4sv, FgGLContext *, FgGLuint, const FgGLshort * ) \
+    FG_GL_FUNCTION_VOID( VertexAttribI4ubv, FgGLContext *, FgGLuint, const FgGLubyte * ) \
+    FG_GL_FUNCTION_VOID( VertexAttribI4usv, FgGLContext *, FgGLuint, const FgGLushort * ) \
+    FG_GL_FUNCTION_VOID( GetUniformuiv, FgGLContext *, FgGLuint, FgGLint, FgGLuint * ) \
+    FG_GL_FUNCTION_VOID( BindFragDataLocation, FgGLContext *, FgGLuint, FgGLuint, const FgGLchar * ) \
+    FG_GL_FUNCTION_NUM( GetFragDataLocation, FgGLint, FgGLContext *, FgGLuint, const FgGLchar * ) \
+    FG_GL_FUNCTION_VOID( Uniform1ui, FgGLContext *, FgGLint, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( Uniform2ui, FgGLContext *, FgGLint, FgGLuint, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( Uniform3ui, FgGLContext *, FgGLint, FgGLuint, FgGLuint, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( Uniform4ui, FgGLContext *, FgGLint, FgGLuint, FgGLuint, FgGLuint, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( Uniform1uiv, FgGLContext *, FgGLint, FgGLsizei, const FgGLuint * ) \
+    FG_GL_FUNCTION_VOID( Uniform2uiv, FgGLContext *, FgGLint, FgGLsizei, const FgGLuint * ) \
+    FG_GL_FUNCTION_VOID( Uniform3uiv, FgGLContext *, FgGLint, FgGLsizei, const FgGLuint * ) \
+    FG_GL_FUNCTION_VOID( Uniform4uiv, FgGLContext *, FgGLint, FgGLsizei, const FgGLuint * ) \
+    FG_GL_FUNCTION_VOID( TexParameterIiv, FgGLContext *, FgGLenum, FgGLenum, const FgGLint * ) \
+    FG_GL_FUNCTION_VOID( TexParameterIuiv, FgGLContext *, FgGLenum, FgGLenum, const FgGLuint * ) \
+    FG_GL_FUNCTION_VOID( GetTexParameterIiv, FgGLContext *, FgGLenum, FgGLenum, FgGLint * ) \
+    FG_GL_FUNCTION_VOID( GetTexParameterIuiv, FgGLContext *, FgGLenum, FgGLenum, FgGLuint * ) \
+    FG_GL_FUNCTION_VOID( ClearBufferiv, FgGLContext *, FgGLenum, FgGLint, const FgGLint * ) \
+    FG_GL_FUNCTION_VOID( ClearBufferuiv, FgGLContext *, FgGLenum, FgGLint, const FgGLuint * ) \
+    FG_GL_FUNCTION_VOID( ClearBufferfv, FgGLContext *, FgGLenum, FgGLint, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( ClearBufferfi, FgGLContext *, FgGLenum, FgGLint, FgGLfloat, FgGLint ) \
+    FG_GL_FUNCTION_PTR( GetStringi, const FgGLubyte *, FgGLContext *, FgGLenum, FgGLuint ) \
+    FG_GL_FUNCTION_NUM( IsRenderbuffer, FgGLboolean, FgGLContext *, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( BindRenderbuffer, FgGLContext *, FgGLenum, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( DeleteRenderbuffers, FgGLContext *, FgGLsizei, const FgGLuint * ) \
+    FG_GL_FUNCTION_VOID( GenRenderbuffers, FgGLContext *, FgGLsizei, FgGLuint * ) \
+    FG_GL_FUNCTION_VOID( RenderbufferStorage, FgGLContext *, FgGLenum, FgGLenum, FgGLsizei, FgGLsizei ) \
+    FG_GL_FUNCTION_VOID( GetRenderbufferParameteriv, FgGLContext *, FgGLenum, FgGLenum, FgGLint * ) \
+    FG_GL_FUNCTION_NUM( IsFramebuffer, FgGLboolean, FgGLContext *, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( BindFramebuffer, FgGLContext *, FgGLenum, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( DeleteFramebuffers, FgGLContext *, FgGLsizei, const FgGLuint * ) \
+    FG_GL_FUNCTION_VOID( GenFramebuffers, FgGLContext *, FgGLsizei, FgGLuint * ) \
+    FG_GL_FUNCTION_NUM( CheckFramebufferStatus, FgGLenum, FgGLContext *, FgGLenum ) \
+    FG_GL_FUNCTION_VOID( FramebufferTexture1D, FgGLContext *, FgGLenum, FgGLenum, FgGLenum, FgGLuint, FgGLint ) \
+    FG_GL_FUNCTION_VOID( FramebufferTexture2D, FgGLContext *, FgGLenum, FgGLenum, FgGLenum, FgGLuint, FgGLint ) \
+    FG_GL_FUNCTION_VOID( FramebufferTexture3D, FgGLContext *, FgGLenum, FgGLenum, FgGLenum, FgGLuint, FgGLint, FgGLint ) \
+    FG_GL_FUNCTION_VOID( FramebufferRenderbuffer, FgGLContext *, FgGLenum, FgGLenum, FgGLenum, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( GetFramebufferAttachmentParameteriv, FgGLContext *, FgGLenum, FgGLenum, FgGLenum, FgGLint * ) \
+    FG_GL_FUNCTION_VOID( GenerateMipmap, FgGLContext *, FgGLenum ) \
+    FG_GL_FUNCTION_VOID( BlitFramebuffer, FgGLContext *, FgGLint, FgGLint, FgGLint, FgGLint, FgGLint, FgGLint, FgGLint, FgGLint, FgGLbitfield, FgGLenum ) \
+    FG_GL_FUNCTION_VOID( RenderbufferStorageMultisample, FgGLContext *, FgGLenum, FgGLsizei, FgGLenum, FgGLsizei, FgGLsizei ) \
+    FG_GL_FUNCTION_VOID( FramebufferTextureLayer, FgGLContext *, FgGLenum, FgGLenum, FgGLuint, FgGLint, FgGLint ) \
+    FG_GL_FUNCTION_PTR( MapBufferRange, void *, FgGLContext *, FgGLenum, FgGLintptr, FgGLsizeiptr, FgGLbitfield ) \
+    FG_GL_FUNCTION_VOID( FlushMappedBufferRange, FgGLContext *, FgGLenum, FgGLintptr, FgGLsizeiptr ) \
+    FG_GL_FUNCTION_VOID( BindVertexArray, FgGLContext *, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( DeleteVertexArrays, FgGLContext *, FgGLsizei, const FgGLuint * ) \
+    FG_GL_FUNCTION_VOID( GenVertexArrays, FgGLContext *, FgGLsizei, FgGLuint * ) \
+    FG_GL_FUNCTION_NUM( IsVertexArray, FgGLboolean, FgGLContext *, FgGLuint ) \
 \
     /* GL_VERSION_3_1 */ \
-    FG_GL_VOID_FUNCTION( DrawArraysInstanced, ( FgGLenum _1, FgGLint _2, FgGLsizei _3, FgGLsizei _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( DrawElementsInstanced, ( FgGLenum _1, FgGLsizei _2, FgGLenum _3, const FgGLvoid * _4, FgGLsizei _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( TexBuffer, ( FgGLenum _1, FgGLenum _2, FgGLuint _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( PrimitiveRestartIndex, ( FgGLuint _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( CopyBufferSubData, ( FgGLenum _1, FgGLenum _2, FgGLintptr _3, FgGLintptr _4, FgGLsizeiptr _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( GetUniformIndices, ( FgGLuint _1, FgGLsizei _2, const FgGLchar *const* _3, FgGLuint * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( GetActiveUniformsiv, ( FgGLuint _1, FgGLsizei _2, const FgGLuint * _3, FgGLenum _4, FgGLint * _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( GetActiveUniformName, ( FgGLuint _1, FgGLuint _2, FgGLsizei _3, FgGLsizei * _4, FgGLchar * _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_FUNCTION( 0, FgGLuint, GetUniformBlockIndex, ( FgGLuint _1, const FgGLchar * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( GetActiveUniformBlockiv, ( FgGLuint _1, FgGLuint _2, FgGLenum _3, FgGLint * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( GetActiveUniformBlockName, ( FgGLuint _1, FgGLuint _2, FgGLsizei _3, FgGLsizei * _4, FgGLchar * _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( UniformBlockBinding, ( FgGLuint _1, FgGLuint _2, FgGLuint _3 ), ( _1, _2, _3 ) ) \
+    FG_GL_FUNCTION_VOID( DrawArraysInstanced, FgGLContext *, FgGLenum, FgGLint, FgGLsizei, FgGLsizei ) \
+    FG_GL_FUNCTION_VOID( DrawElementsInstanced, FgGLContext *, FgGLenum, FgGLsizei, FgGLenum, const FgGLvoid *, FgGLsizei ) \
+    FG_GL_FUNCTION_VOID( TexBuffer, FgGLContext *, FgGLenum, FgGLenum, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( PrimitiveRestartIndex, FgGLContext *, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( CopyBufferSubData, FgGLContext *, FgGLenum, FgGLenum, FgGLintptr, FgGLintptr, FgGLsizeiptr ) \
+    FG_GL_FUNCTION_VOID( GetUniformIndices, FgGLContext *, FgGLuint, FgGLsizei, const FgGLchar *const*, FgGLuint * ) \
+    FG_GL_FUNCTION_VOID( GetActiveUniformsiv, FgGLContext *, FgGLuint, FgGLsizei, const FgGLuint *, FgGLenum, FgGLint * ) \
+    FG_GL_FUNCTION_VOID( GetActiveUniformName, FgGLContext *, FgGLuint, FgGLuint, FgGLsizei, FgGLsizei *, FgGLchar * ) \
+    FG_GL_FUNCTION_NUM( GetUniformBlockIndex, FgGLuint, FgGLContext *, FgGLuint, const FgGLchar * ) \
+    FG_GL_FUNCTION_VOID( GetActiveUniformBlockiv, FgGLContext *, FgGLuint, FgGLuint, FgGLenum, FgGLint * ) \
+    FG_GL_FUNCTION_VOID( GetActiveUniformBlockName, FgGLContext *, FgGLuint, FgGLuint, FgGLsizei, FgGLsizei *, FgGLchar * ) \
+    FG_GL_FUNCTION_VOID( UniformBlockBinding, FgGLContext *, FgGLuint, FgGLuint, FgGLuint ) \
 \
     /* GL_VERSION_3_2 */ \
-    FG_GL_VOID_FUNCTION( DrawElementsBaseVertex, ( FgGLenum _1, FgGLsizei _2, FgGLenum _3, const FgGLvoid * _4, FgGLint _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( DrawRangeElementsBaseVertex, ( FgGLenum _1, FgGLuint _2, FgGLuint _3, FgGLsizei _4, FgGLenum _5, const FgGLvoid * _6, FgGLint _7 ), ( _1, _2, _3, _4, _5, _6, _7 ) ) \
-    FG_GL_VOID_FUNCTION( DrawElementsInstancedBaseVertex, ( FgGLenum _1, FgGLsizei _2, FgGLenum _3, const FgGLvoid * _4, FgGLsizei _5, FgGLint _6 ), ( _1, _2, _3, _4, _5, _6 ) ) \
-    FG_GL_VOID_FUNCTION( MultiDrawElementsBaseVertex, ( FgGLenum _1, const FgGLsizei * _2, FgGLenum _3, const FgGLvoid *const* _4, FgGLsizei _5, const FgGLint * _6 ), ( _1, _2, _3, _4, _5, _6 ) ) \
-    FG_GL_VOID_FUNCTION( ProvokingVertex, ( FgGLenum _1 ), ( _1 ) ) \
-    FG_GL_FUNCTION( NULL, FgGLsync, FenceSync, ( FgGLenum _1, FgGLbitfield _2 ), ( _1, _2 ) ) \
-    FG_GL_FUNCTION( 0, FgGLboolean, IsSync, ( FgGLsync _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( DeleteSync, ( FgGLsync _1 ), ( _1 ) ) \
-    FG_GL_FUNCTION( 0, FgGLenum, ClientWaitSync, ( FgGLsync _1, FgGLbitfield _2, FgGLuint64 _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( WaitSync, ( FgGLsync _1, FgGLbitfield _2, FgGLuint64 _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetInteger64v, ( FgGLenum _1, FgGLint64 * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( GetSynciv, ( FgGLsync _1, FgGLenum _2, FgGLsizei _3, FgGLsizei * _4, FgGLint * _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( GetInteger64i_v, ( FgGLenum _1, FgGLuint _2, FgGLint64 * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetBufferParameteri64v, ( FgGLenum _1, FgGLenum _2, FgGLint64 * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( FramebufferTexture, ( FgGLenum _1, FgGLenum _2, FgGLuint _3, FgGLint _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( TexImage2DMultisample, ( FgGLenum _1, FgGLsizei _2, FgGLint _3, FgGLsizei _4, FgGLsizei _5, FgGLboolean _6 ), ( _1, _2, _3, _4, _5, _6 ) ) \
-    FG_GL_VOID_FUNCTION( TexImage3DMultisample, ( FgGLenum _1, FgGLsizei _2, FgGLint _3, FgGLsizei _4, FgGLsizei _5, FgGLsizei _6, FgGLboolean _7 ), ( _1, _2, _3, _4, _5, _6, _7 ) ) \
-    FG_GL_VOID_FUNCTION( GetMultisamplefv, ( FgGLenum _1, FgGLuint _2, FgGLfloat * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( SampleMaski, ( FgGLuint _1, FgGLbitfield _2 ), ( _1, _2 ) ) \
+    FG_GL_FUNCTION_VOID( DrawElementsBaseVertex, FgGLContext *, FgGLenum, FgGLsizei, FgGLenum, const FgGLvoid *, FgGLint ) \
+    FG_GL_FUNCTION_VOID( DrawRangeElementsBaseVertex, FgGLContext *, FgGLenum, FgGLuint, FgGLuint, FgGLsizei, FgGLenum, const FgGLvoid *, FgGLint ) \
+    FG_GL_FUNCTION_VOID( DrawElementsInstancedBaseVertex, FgGLContext *, FgGLenum, FgGLsizei, FgGLenum, const FgGLvoid *, FgGLsizei, FgGLint ) \
+    FG_GL_FUNCTION_VOID( MultiDrawElementsBaseVertex, FgGLContext *, FgGLenum, const FgGLsizei *, FgGLenum, const FgGLvoid *const*, FgGLsizei, const FgGLint * ) \
+    FG_GL_FUNCTION_VOID( ProvokingVertex, FgGLContext *, FgGLenum ) \
+    FG_GL_FUNCTION_PTR( FenceSync, FgGLsync, FgGLContext *, FgGLenum, FgGLbitfield ) \
+    FG_GL_FUNCTION_NUM( IsSync, FgGLboolean, FgGLContext *, FgGLsync ) \
+    FG_GL_FUNCTION_VOID( DeleteSync, FgGLContext *, FgGLsync ) \
+    FG_GL_FUNCTION_NUM( ClientWaitSync, FgGLenum, FgGLContext *, FgGLsync, FgGLbitfield, FgGLuint64 ) \
+    FG_GL_FUNCTION_VOID( WaitSync, FgGLContext *, FgGLsync, FgGLbitfield, FgGLuint64 ) \
+    FG_GL_FUNCTION_VOID( GetInteger64v, FgGLContext *, FgGLenum, FgGLint64 * ) \
+    FG_GL_FUNCTION_VOID( GetSynciv, FgGLContext *, FgGLsync, FgGLenum, FgGLsizei, FgGLsizei *, FgGLint * ) \
+    FG_GL_FUNCTION_VOID( GetInteger64i_v, FgGLContext *, FgGLenum, FgGLuint, FgGLint64 * ) \
+    FG_GL_FUNCTION_VOID( GetBufferParameteri64v, FgGLContext *, FgGLenum, FgGLenum, FgGLint64 * ) \
+    FG_GL_FUNCTION_VOID( FramebufferTexture, FgGLContext *, FgGLenum, FgGLenum, FgGLuint, FgGLint ) \
+    FG_GL_FUNCTION_VOID( TexImage2DMultisample, FgGLContext *, FgGLenum, FgGLsizei, FgGLint, FgGLsizei, FgGLsizei, FgGLboolean ) \
+    FG_GL_FUNCTION_VOID( TexImage3DMultisample, FgGLContext *, FgGLenum, FgGLsizei, FgGLint, FgGLsizei, FgGLsizei, FgGLsizei, FgGLboolean ) \
+    FG_GL_FUNCTION_VOID( GetMultisamplefv, FgGLContext *, FgGLenum, FgGLuint, FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( SampleMaski, FgGLContext *, FgGLuint, FgGLbitfield ) \
 \
     /* GL_VERSION_3_3 */ \
-    FG_GL_VOID_FUNCTION( BindFragDataLocationIndexed, ( FgGLuint _1, FgGLuint _2, FgGLuint _3, const FgGLchar * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_FUNCTION( 0, FgGLint, GetFragDataIndex, ( FgGLuint _1, const FgGLchar * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( GenSamplers, ( FgGLsizei _1, FgGLuint * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( DeleteSamplers, ( FgGLsizei _1, const FgGLuint * _2 ), ( _1, _2 ) ) \
-    FG_GL_FUNCTION( 0, FgGLboolean, IsSampler, ( FgGLuint _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( BindSampler, ( FgGLuint _1, FgGLuint _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( SamplerParameteri, ( FgGLuint _1, FgGLenum _2, FgGLint _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( SamplerParameteriv, ( FgGLuint _1, FgGLenum _2, const FgGLint * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( SamplerParameterf, ( FgGLuint _1, FgGLenum _2, FgGLfloat _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( SamplerParameterfv, ( FgGLuint _1, FgGLenum _2, const FgGLfloat * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( SamplerParameterIiv, ( FgGLuint _1, FgGLenum _2, const FgGLint * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( SamplerParameterIuiv, ( FgGLuint _1, FgGLenum _2, const FgGLuint * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetSamplerParameteriv, ( FgGLuint _1, FgGLenum _2, FgGLint * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetSamplerParameterIiv, ( FgGLuint _1, FgGLenum _2, FgGLint * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetSamplerParameterfv, ( FgGLuint _1, FgGLenum _2, FgGLfloat * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetSamplerParameterIuiv, ( FgGLuint _1, FgGLenum _2, FgGLuint * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( QueryCounter, ( FgGLuint _1, FgGLenum _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( GetQueryObjecti64v, ( FgGLuint _1, FgGLenum _2, FgGLint64 * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetQueryObjectui64v, ( FgGLuint _1, FgGLenum _2, FgGLuint64 * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttribDivisor, ( FgGLuint _1, FgGLuint _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttribP1ui, ( FgGLuint _1, FgGLenum _2, FgGLboolean _3, FgGLuint _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttribP1uiv, ( FgGLuint _1, FgGLenum _2, FgGLboolean _3, const FgGLuint * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttribP2ui, ( FgGLuint _1, FgGLenum _2, FgGLboolean _3, FgGLuint _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttribP2uiv, ( FgGLuint _1, FgGLenum _2, FgGLboolean _3, const FgGLuint * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttribP3ui, ( FgGLuint _1, FgGLenum _2, FgGLboolean _3, FgGLuint _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttribP3uiv, ( FgGLuint _1, FgGLenum _2, FgGLboolean _3, const FgGLuint * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttribP4ui, ( FgGLuint _1, FgGLenum _2, FgGLboolean _3, FgGLuint _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttribP4uiv, ( FgGLuint _1, FgGLenum _2, FgGLboolean _3, const FgGLuint * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( VertexP2ui, ( FgGLenum _1, FgGLuint _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexP2uiv, ( FgGLenum _1, const FgGLuint * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexP3ui, ( FgGLenum _1, FgGLuint _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexP3uiv, ( FgGLenum _1, const FgGLuint * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexP4ui, ( FgGLenum _1, FgGLuint _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexP4uiv, ( FgGLenum _1, const FgGLuint * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( TexCoordP1ui, ( FgGLenum _1, FgGLuint _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( TexCoordP1uiv, ( FgGLenum _1, const FgGLuint * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( TexCoordP2ui, ( FgGLenum _1, FgGLuint _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( TexCoordP2uiv, ( FgGLenum _1, const FgGLuint * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( TexCoordP3ui, ( FgGLenum _1, FgGLuint _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( TexCoordP3uiv, ( FgGLenum _1, const FgGLuint * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( TexCoordP4ui, ( FgGLenum _1, FgGLuint _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( TexCoordP4uiv, ( FgGLenum _1, const FgGLuint * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( MultiTexCoordP1ui, ( FgGLenum _1, FgGLenum _2, FgGLuint _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( MultiTexCoordP1uiv, ( FgGLenum _1, FgGLenum _2, const FgGLuint * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( MultiTexCoordP2ui, ( FgGLenum _1, FgGLenum _2, FgGLuint _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( MultiTexCoordP2uiv, ( FgGLenum _1, FgGLenum _2, const FgGLuint * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( MultiTexCoordP3ui, ( FgGLenum _1, FgGLenum _2, FgGLuint _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( MultiTexCoordP3uiv, ( FgGLenum _1, FgGLenum _2, const FgGLuint * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( MultiTexCoordP4ui, ( FgGLenum _1, FgGLenum _2, FgGLuint _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( MultiTexCoordP4uiv, ( FgGLenum _1, FgGLenum _2, const FgGLuint * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( NormalP3ui, ( FgGLenum _1, FgGLuint _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( NormalP3uiv, ( FgGLenum _1, const FgGLuint * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( ColorP3ui, ( FgGLenum _1, FgGLuint _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( ColorP3uiv, ( FgGLenum _1, const FgGLuint * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( ColorP4ui, ( FgGLenum _1, FgGLuint _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( ColorP4uiv, ( FgGLenum _1, const FgGLuint * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( SecondaryColorP3ui, ( FgGLenum _1, FgGLuint _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( SecondaryColorP3uiv, ( FgGLenum _1, const FgGLuint * _2 ), ( _1, _2 ) ) \
+    FG_GL_FUNCTION_VOID( BindFragDataLocationIndexed, FgGLContext *, FgGLuint, FgGLuint, FgGLuint, const FgGLchar * ) \
+    FG_GL_FUNCTION_NUM( GetFragDataIndex, FgGLint, FgGLContext *, FgGLuint, const FgGLchar * ) \
+    FG_GL_FUNCTION_VOID( GenSamplers, FgGLContext *, FgGLsizei, FgGLuint * ) \
+    FG_GL_FUNCTION_VOID( DeleteSamplers, FgGLContext *, FgGLsizei, const FgGLuint * ) \
+    FG_GL_FUNCTION_NUM( IsSampler, FgGLboolean, FgGLContext *, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( BindSampler, FgGLContext *, FgGLuint, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( SamplerParameteri, FgGLContext *, FgGLuint, FgGLenum, FgGLint ) \
+    FG_GL_FUNCTION_VOID( SamplerParameteriv, FgGLContext *, FgGLuint, FgGLenum, const FgGLint * ) \
+    FG_GL_FUNCTION_VOID( SamplerParameterf, FgGLContext *, FgGLuint, FgGLenum, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( SamplerParameterfv, FgGLContext *, FgGLuint, FgGLenum, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( SamplerParameterIiv, FgGLContext *, FgGLuint, FgGLenum, const FgGLint * ) \
+    FG_GL_FUNCTION_VOID( SamplerParameterIuiv, FgGLContext *, FgGLuint, FgGLenum, const FgGLuint * ) \
+    FG_GL_FUNCTION_VOID( GetSamplerParameteriv, FgGLContext *, FgGLuint, FgGLenum, FgGLint * ) \
+    FG_GL_FUNCTION_VOID( GetSamplerParameterIiv, FgGLContext *, FgGLuint, FgGLenum, FgGLint * ) \
+    FG_GL_FUNCTION_VOID( GetSamplerParameterfv, FgGLContext *, FgGLuint, FgGLenum, FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( GetSamplerParameterIuiv, FgGLContext *, FgGLuint, FgGLenum, FgGLuint * ) \
+    FG_GL_FUNCTION_VOID( QueryCounter, FgGLContext *, FgGLuint, FgGLenum ) \
+    FG_GL_FUNCTION_VOID( GetQueryObjecti64v, FgGLContext *, FgGLuint, FgGLenum, FgGLint64 * ) \
+    FG_GL_FUNCTION_VOID( GetQueryObjectui64v, FgGLContext *, FgGLuint, FgGLenum, FgGLuint64 * ) \
+    FG_GL_FUNCTION_VOID( VertexAttribDivisor, FgGLContext *, FgGLuint, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( VertexAttribP1ui, FgGLContext *, FgGLuint, FgGLenum, FgGLboolean, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( VertexAttribP1uiv, FgGLContext *, FgGLuint, FgGLenum, FgGLboolean, const FgGLuint * ) \
+    FG_GL_FUNCTION_VOID( VertexAttribP2ui, FgGLContext *, FgGLuint, FgGLenum, FgGLboolean, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( VertexAttribP2uiv, FgGLContext *, FgGLuint, FgGLenum, FgGLboolean, const FgGLuint * ) \
+    FG_GL_FUNCTION_VOID( VertexAttribP3ui, FgGLContext *, FgGLuint, FgGLenum, FgGLboolean, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( VertexAttribP3uiv, FgGLContext *, FgGLuint, FgGLenum, FgGLboolean, const FgGLuint * ) \
+    FG_GL_FUNCTION_VOID( VertexAttribP4ui, FgGLContext *, FgGLuint, FgGLenum, FgGLboolean, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( VertexAttribP4uiv, FgGLContext *, FgGLuint, FgGLenum, FgGLboolean, const FgGLuint * ) \
+    FG_GL_FUNCTION_VOID( VertexP2ui, FgGLContext *, FgGLenum, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( VertexP2uiv, FgGLContext *, FgGLenum, const FgGLuint * ) \
+    FG_GL_FUNCTION_VOID( VertexP3ui, FgGLContext *, FgGLenum, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( VertexP3uiv, FgGLContext *, FgGLenum, const FgGLuint * ) \
+    FG_GL_FUNCTION_VOID( VertexP4ui, FgGLContext *, FgGLenum, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( VertexP4uiv, FgGLContext *, FgGLenum, const FgGLuint * ) \
+    FG_GL_FUNCTION_VOID( TexCoordP1ui, FgGLContext *, FgGLenum, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( TexCoordP1uiv, FgGLContext *, FgGLenum, const FgGLuint * ) \
+    FG_GL_FUNCTION_VOID( TexCoordP2ui, FgGLContext *, FgGLenum, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( TexCoordP2uiv, FgGLContext *, FgGLenum, const FgGLuint * ) \
+    FG_GL_FUNCTION_VOID( TexCoordP3ui, FgGLContext *, FgGLenum, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( TexCoordP3uiv, FgGLContext *, FgGLenum, const FgGLuint * ) \
+    FG_GL_FUNCTION_VOID( TexCoordP4ui, FgGLContext *, FgGLenum, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( TexCoordP4uiv, FgGLContext *, FgGLenum, const FgGLuint * ) \
+    FG_GL_FUNCTION_VOID( MultiTexCoordP1ui, FgGLContext *, FgGLenum, FgGLenum, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( MultiTexCoordP1uiv, FgGLContext *, FgGLenum, FgGLenum, const FgGLuint * ) \
+    FG_GL_FUNCTION_VOID( MultiTexCoordP2ui, FgGLContext *, FgGLenum, FgGLenum, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( MultiTexCoordP2uiv, FgGLContext *, FgGLenum, FgGLenum, const FgGLuint * ) \
+    FG_GL_FUNCTION_VOID( MultiTexCoordP3ui, FgGLContext *, FgGLenum, FgGLenum, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( MultiTexCoordP3uiv, FgGLContext *, FgGLenum, FgGLenum, const FgGLuint * ) \
+    FG_GL_FUNCTION_VOID( MultiTexCoordP4ui, FgGLContext *, FgGLenum, FgGLenum, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( MultiTexCoordP4uiv, FgGLContext *, FgGLenum, FgGLenum, const FgGLuint * ) \
+    FG_GL_FUNCTION_VOID( NormalP3ui, FgGLContext *, FgGLenum, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( NormalP3uiv, FgGLContext *, FgGLenum, const FgGLuint * ) \
+    FG_GL_FUNCTION_VOID( ColorP3ui, FgGLContext *, FgGLenum, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( ColorP3uiv, FgGLContext *, FgGLenum, const FgGLuint * ) \
+    FG_GL_FUNCTION_VOID( ColorP4ui, FgGLContext *, FgGLenum, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( ColorP4uiv, FgGLContext *, FgGLenum, const FgGLuint * ) \
+    FG_GL_FUNCTION_VOID( SecondaryColorP3ui, FgGLContext *, FgGLenum, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( SecondaryColorP3uiv, FgGLContext *, FgGLenum, const FgGLuint * ) \
 \
     /* GL_VERSION_4_0 */ \
-    FG_GL_VOID_FUNCTION( MinSampleShading, ( FgGLfloat _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( BlendEquationi, ( FgGLuint _1, FgGLenum _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( BlendEquationSeparatei, ( FgGLuint _1, FgGLenum _2, FgGLenum _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( BlendFunci, ( FgGLuint _1, FgGLenum _2, FgGLenum _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( BlendFuncSeparatei, ( FgGLuint _1, FgGLenum _2, FgGLenum _3, FgGLenum _4, FgGLenum _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( DrawArraysIndirect, ( FgGLenum _1, const FgGLvoid * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( DrawElementsIndirect, ( FgGLenum _1, FgGLenum _2, const FgGLvoid * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( Uniform1d, ( FgGLint _1, FgGLdouble _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( Uniform2d, ( FgGLint _1, FgGLdouble _2, FgGLdouble _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( Uniform3d, ( FgGLint _1, FgGLdouble _2, FgGLdouble _3, FgGLdouble _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( Uniform4d, ( FgGLint _1, FgGLdouble _2, FgGLdouble _3, FgGLdouble _4, FgGLdouble _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( Uniform1dv, ( FgGLint _1, FgGLsizei _2, const FgGLdouble * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( Uniform2dv, ( FgGLint _1, FgGLsizei _2, const FgGLdouble * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( Uniform3dv, ( FgGLint _1, FgGLsizei _2, const FgGLdouble * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( Uniform4dv, ( FgGLint _1, FgGLsizei _2, const FgGLdouble * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( UniformMatrix2dv, ( FgGLint _1, FgGLsizei _2, FgGLboolean _3, const FgGLdouble * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( UniformMatrix3dv, ( FgGLint _1, FgGLsizei _2, FgGLboolean _3, const FgGLdouble * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( UniformMatrix4dv, ( FgGLint _1, FgGLsizei _2, FgGLboolean _3, const FgGLdouble * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( UniformMatrix2x3dv, ( FgGLint _1, FgGLsizei _2, FgGLboolean _3, const FgGLdouble * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( UniformMatrix2x4dv, ( FgGLint _1, FgGLsizei _2, FgGLboolean _3, const FgGLdouble * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( UniformMatrix3x2dv, ( FgGLint _1, FgGLsizei _2, FgGLboolean _3, const FgGLdouble * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( UniformMatrix3x4dv, ( FgGLint _1, FgGLsizei _2, FgGLboolean _3, const FgGLdouble * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( UniformMatrix4x2dv, ( FgGLint _1, FgGLsizei _2, FgGLboolean _3, const FgGLdouble * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( UniformMatrix4x3dv, ( FgGLint _1, FgGLsizei _2, FgGLboolean _3, const FgGLdouble * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( GetUniformdv, ( FgGLuint _1, FgGLint _2, FgGLdouble * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_FUNCTION( 0, FgGLint, GetSubroutineUniformLocation, ( FgGLuint _1, FgGLenum _2, const FgGLchar * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_FUNCTION( 0, FgGLuint, GetSubroutineIndex, ( FgGLuint _1, FgGLenum _2, const FgGLchar * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetActiveSubroutineUniformiv, ( FgGLuint _1, FgGLenum _2, FgGLuint _3, FgGLenum _4, FgGLint * _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( GetActiveSubroutineUniformName, ( FgGLuint _1, FgGLenum _2, FgGLuint _3, FgGLsizei _4, FgGLsizei * _5, FgGLchar * _6 ), ( _1, _2, _3, _4, _5, _6 ) ) \
-    FG_GL_VOID_FUNCTION( GetActiveSubroutineName, ( FgGLuint _1, FgGLenum _2, FgGLuint _3, FgGLsizei _4, FgGLsizei * _5, FgGLchar * _6 ), ( _1, _2, _3, _4, _5, _6 ) ) \
-    FG_GL_VOID_FUNCTION( UniformSubroutinesuiv, ( FgGLenum _1, FgGLsizei _2, const FgGLuint * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetUniformSubroutineuiv, ( FgGLenum _1, FgGLint _2, FgGLuint * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetProgramStageiv, ( FgGLuint _1, FgGLenum _2, FgGLenum _3, FgGLint * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( PatchParameteri, ( FgGLenum _1, FgGLint _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( PatchParameterfv, ( FgGLenum _1, const FgGLfloat * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( BindTransformFeedback, ( FgGLenum _1, FgGLuint _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( DeleteTransformFeedbacks, ( FgGLsizei _1, const FgGLuint * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( GenTransformFeedbacks, ( FgGLsizei _1, FgGLuint * _2 ), ( _1, _2 ) ) \
-    FG_GL_FUNCTION( 0, FgGLboolean, IsTransformFeedback, ( FgGLuint _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( PauseTransformFeedback, ( ), ( ) ) \
-    FG_GL_VOID_FUNCTION( ResumeTransformFeedback, ( ), ( ) ) \
-    FG_GL_VOID_FUNCTION( DrawTransformFeedback, ( FgGLenum _1, FgGLuint _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( DrawTransformFeedbackStream, ( FgGLenum _1, FgGLuint _2, FgGLuint _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( BeginQueryIndexed, ( FgGLenum _1, FgGLuint _2, FgGLuint _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( EndQueryIndexed, ( FgGLenum _1, FgGLuint _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( GetQueryIndexediv, ( FgGLenum _1, FgGLuint _2, FgGLenum _3, FgGLint * _4 ), ( _1, _2, _3, _4 ) ) \
+    FG_GL_FUNCTION_VOID( MinSampleShading, FgGLContext *, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( BlendEquationi, FgGLContext *, FgGLuint, FgGLenum ) \
+    FG_GL_FUNCTION_VOID( BlendEquationSeparatei, FgGLContext *, FgGLuint, FgGLenum, FgGLenum ) \
+    FG_GL_FUNCTION_VOID( BlendFunci, FgGLContext *, FgGLuint, FgGLenum, FgGLenum ) \
+    FG_GL_FUNCTION_VOID( BlendFuncSeparatei, FgGLContext *, FgGLuint, FgGLenum, FgGLenum, FgGLenum, FgGLenum ) \
+    FG_GL_FUNCTION_VOID( DrawArraysIndirect, FgGLContext *, FgGLenum, const FgGLvoid * ) \
+    FG_GL_FUNCTION_VOID( DrawElementsIndirect, FgGLContext *, FgGLenum, FgGLenum, const FgGLvoid * ) \
+    FG_GL_FUNCTION_VOID( Uniform1d, FgGLContext *, FgGLint, FgGLdouble ) \
+    FG_GL_FUNCTION_VOID( Uniform2d, FgGLContext *, FgGLint, FgGLdouble, FgGLdouble ) \
+    FG_GL_FUNCTION_VOID( Uniform3d, FgGLContext *, FgGLint, FgGLdouble, FgGLdouble, FgGLdouble ) \
+    FG_GL_FUNCTION_VOID( Uniform4d, FgGLContext *, FgGLint, FgGLdouble, FgGLdouble, FgGLdouble, FgGLdouble ) \
+    FG_GL_FUNCTION_VOID( Uniform1dv, FgGLContext *, FgGLint, FgGLsizei, const FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( Uniform2dv, FgGLContext *, FgGLint, FgGLsizei, const FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( Uniform3dv, FgGLContext *, FgGLint, FgGLsizei, const FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( Uniform4dv, FgGLContext *, FgGLint, FgGLsizei, const FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( UniformMatrix2dv, FgGLContext *, FgGLint, FgGLsizei, FgGLboolean, const FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( UniformMatrix3dv, FgGLContext *, FgGLint, FgGLsizei, FgGLboolean, const FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( UniformMatrix4dv, FgGLContext *, FgGLint, FgGLsizei, FgGLboolean, const FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( UniformMatrix2x3dv, FgGLContext *, FgGLint, FgGLsizei, FgGLboolean, const FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( UniformMatrix2x4dv, FgGLContext *, FgGLint, FgGLsizei, FgGLboolean, const FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( UniformMatrix3x2dv, FgGLContext *, FgGLint, FgGLsizei, FgGLboolean, const FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( UniformMatrix3x4dv, FgGLContext *, FgGLint, FgGLsizei, FgGLboolean, const FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( UniformMatrix4x2dv, FgGLContext *, FgGLint, FgGLsizei, FgGLboolean, const FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( UniformMatrix4x3dv, FgGLContext *, FgGLint, FgGLsizei, FgGLboolean, const FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( GetUniformdv, FgGLContext *, FgGLuint, FgGLint, FgGLdouble * ) \
+    FG_GL_FUNCTION_NUM( GetSubroutineUniformLocation, FgGLint, FgGLContext *, FgGLuint, FgGLenum, const FgGLchar * ) \
+    FG_GL_FUNCTION_NUM( GetSubroutineIndex, FgGLuint, FgGLContext *, FgGLuint, FgGLenum, const FgGLchar * ) \
+    FG_GL_FUNCTION_VOID( GetActiveSubroutineUniformiv, FgGLContext *, FgGLuint, FgGLenum, FgGLuint, FgGLenum, FgGLint * ) \
+    FG_GL_FUNCTION_VOID( GetActiveSubroutineUniformName, FgGLContext *, FgGLuint, FgGLenum, FgGLuint, FgGLsizei, FgGLsizei *, FgGLchar * ) \
+    FG_GL_FUNCTION_VOID( GetActiveSubroutineName, FgGLContext *, FgGLuint, FgGLenum, FgGLuint, FgGLsizei, FgGLsizei *, FgGLchar * ) \
+    FG_GL_FUNCTION_VOID( UniformSubroutinesuiv, FgGLContext *, FgGLenum, FgGLsizei, const FgGLuint * ) \
+    FG_GL_FUNCTION_VOID( GetUniformSubroutineuiv, FgGLContext *, FgGLenum, FgGLint, FgGLuint * ) \
+    FG_GL_FUNCTION_VOID( GetProgramStageiv, FgGLContext *, FgGLuint, FgGLenum, FgGLenum, FgGLint * ) \
+    FG_GL_FUNCTION_VOID( PatchParameteri, FgGLContext *, FgGLenum, FgGLint ) \
+    FG_GL_FUNCTION_VOID( PatchParameterfv, FgGLContext *, FgGLenum, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( BindTransformFeedback, FgGLContext *, FgGLenum, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( DeleteTransformFeedbacks, FgGLContext *, FgGLsizei, const FgGLuint * ) \
+    FG_GL_FUNCTION_VOID( GenTransformFeedbacks, FgGLContext *, FgGLsizei, FgGLuint * ) \
+    FG_GL_FUNCTION_NUM( IsTransformFeedback, FgGLboolean, FgGLContext *, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( PauseTransformFeedback, FgGLContext * ) \
+    FG_GL_FUNCTION_VOID( ResumeTransformFeedback, FgGLContext * ) \
+    FG_GL_FUNCTION_VOID( DrawTransformFeedback, FgGLContext *, FgGLenum, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( DrawTransformFeedbackStream, FgGLContext *, FgGLenum, FgGLuint, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( BeginQueryIndexed, FgGLContext *, FgGLenum, FgGLuint, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( EndQueryIndexed, FgGLContext *, FgGLenum, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( GetQueryIndexediv, FgGLContext *, FgGLenum, FgGLuint, FgGLenum, FgGLint * ) \
 \
     /* GL_VERSION_4_1 */ \
-    FG_GL_VOID_FUNCTION( ReleaseShaderCompiler, ( ), ( ) ) \
-    FG_GL_VOID_FUNCTION( ShaderBinary, ( FgGLsizei _1, const FgGLuint * _2, FgGLenum _3, const FgGLvoid * _4, FgGLsizei _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( GetShaderPrecisionFormat, ( FgGLenum _1, FgGLenum _2, FgGLint * _3, FgGLint * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( DepthRangef, ( FgGLfloat _1, FgGLfloat _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( ClearDepthf, ( FgGLfloat _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( GetProgramBinary, ( FgGLuint _1, FgGLsizei _2, FgGLsizei * _3, FgGLenum * _4, FgGLvoid * _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramBinary, ( FgGLuint _1, FgGLenum _2, const FgGLvoid * _3, FgGLsizei _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramParameteri, ( FgGLuint _1, FgGLenum _2, FgGLint _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( UseProgramStages, ( FgGLuint _1, FgGLbitfield _2, FgGLuint _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( ActiveShaderProgram, ( FgGLuint _1, FgGLuint _2 ), ( _1, _2 ) ) \
-    FG_GL_FUNCTION( 0, FgGLuint, CreateShaderProgramv, ( FgGLenum _1, FgGLsizei _2, const FgGLchar *const* _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( BindProgramPipeline, ( FgGLuint _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( DeleteProgramPipelines, ( FgGLsizei _1, const FgGLuint * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( GenProgramPipelines, ( FgGLsizei _1, FgGLuint * _2 ), ( _1, _2 ) ) \
-    FG_GL_FUNCTION( 0, FgGLboolean, IsProgramPipeline, ( FgGLuint _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( GetProgramPipelineiv, ( FgGLuint _1, FgGLenum _2, FgGLint * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramUniform1i, ( FgGLuint _1, FgGLint _2, FgGLint _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramUniform1iv, ( FgGLuint _1, FgGLint _2, FgGLsizei _3, const FgGLint * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramUniform1f, ( FgGLuint _1, FgGLint _2, FgGLfloat _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramUniform1fv, ( FgGLuint _1, FgGLint _2, FgGLsizei _3, const FgGLfloat * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramUniform1d, ( FgGLuint _1, FgGLint _2, FgGLdouble _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramUniform1dv, ( FgGLuint _1, FgGLint _2, FgGLsizei _3, const FgGLdouble * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramUniform1ui, ( FgGLuint _1, FgGLint _2, FgGLuint _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramUniform1uiv, ( FgGLuint _1, FgGLint _2, FgGLsizei _3, const FgGLuint * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramUniform2i, ( FgGLuint _1, FgGLint _2, FgGLint _3, FgGLint _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramUniform2iv, ( FgGLuint _1, FgGLint _2, FgGLsizei _3, const FgGLint * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramUniform2f, ( FgGLuint _1, FgGLint _2, FgGLfloat _3, FgGLfloat _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramUniform2fv, ( FgGLuint _1, FgGLint _2, FgGLsizei _3, const FgGLfloat * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramUniform2d, ( FgGLuint _1, FgGLint _2, FgGLdouble _3, FgGLdouble _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramUniform2dv, ( FgGLuint _1, FgGLint _2, FgGLsizei _3, const FgGLdouble * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramUniform2ui, ( FgGLuint _1, FgGLint _2, FgGLuint _3, FgGLuint _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramUniform2uiv, ( FgGLuint _1, FgGLint _2, FgGLsizei _3, const FgGLuint * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramUniform3i, ( FgGLuint _1, FgGLint _2, FgGLint _3, FgGLint _4, FgGLint _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramUniform3iv, ( FgGLuint _1, FgGLint _2, FgGLsizei _3, const FgGLint * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramUniform3f, ( FgGLuint _1, FgGLint _2, FgGLfloat _3, FgGLfloat _4, FgGLfloat _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramUniform3fv, ( FgGLuint _1, FgGLint _2, FgGLsizei _3, const FgGLfloat * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramUniform3d, ( FgGLuint _1, FgGLint _2, FgGLdouble _3, FgGLdouble _4, FgGLdouble _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramUniform3dv, ( FgGLuint _1, FgGLint _2, FgGLsizei _3, const FgGLdouble * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramUniform3ui, ( FgGLuint _1, FgGLint _2, FgGLuint _3, FgGLuint _4, FgGLuint _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramUniform3uiv, ( FgGLuint _1, FgGLint _2, FgGLsizei _3, const FgGLuint * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramUniform4i, ( FgGLuint _1, FgGLint _2, FgGLint _3, FgGLint _4, FgGLint _5, FgGLint _6 ), ( _1, _2, _3, _4, _5, _6 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramUniform4iv, ( FgGLuint _1, FgGLint _2, FgGLsizei _3, const FgGLint * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramUniform4f, ( FgGLuint _1, FgGLint _2, FgGLfloat _3, FgGLfloat _4, FgGLfloat _5, FgGLfloat _6 ), ( _1, _2, _3, _4, _5, _6 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramUniform4fv, ( FgGLuint _1, FgGLint _2, FgGLsizei _3, const FgGLfloat * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramUniform4d, ( FgGLuint _1, FgGLint _2, FgGLdouble _3, FgGLdouble _4, FgGLdouble _5, FgGLdouble _6 ), ( _1, _2, _3, _4, _5, _6 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramUniform4dv, ( FgGLuint _1, FgGLint _2, FgGLsizei _3, const FgGLdouble * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramUniform4ui, ( FgGLuint _1, FgGLint _2, FgGLuint _3, FgGLuint _4, FgGLuint _5, FgGLuint _6 ), ( _1, _2, _3, _4, _5, _6 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramUniform4uiv, ( FgGLuint _1, FgGLint _2, FgGLsizei _3, const FgGLuint * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramUniformMatrix2fv, ( FgGLuint _1, FgGLint _2, FgGLsizei _3, FgGLboolean _4, const FgGLfloat * _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramUniformMatrix3fv, ( FgGLuint _1, FgGLint _2, FgGLsizei _3, FgGLboolean _4, const FgGLfloat * _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramUniformMatrix4fv, ( FgGLuint _1, FgGLint _2, FgGLsizei _3, FgGLboolean _4, const FgGLfloat * _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramUniformMatrix2dv, ( FgGLuint _1, FgGLint _2, FgGLsizei _3, FgGLboolean _4, const FgGLdouble * _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramUniformMatrix3dv, ( FgGLuint _1, FgGLint _2, FgGLsizei _3, FgGLboolean _4, const FgGLdouble * _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramUniformMatrix4dv, ( FgGLuint _1, FgGLint _2, FgGLsizei _3, FgGLboolean _4, const FgGLdouble * _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramUniformMatrix2x3fv, ( FgGLuint _1, FgGLint _2, FgGLsizei _3, FgGLboolean _4, const FgGLfloat * _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramUniformMatrix3x2fv, ( FgGLuint _1, FgGLint _2, FgGLsizei _3, FgGLboolean _4, const FgGLfloat * _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramUniformMatrix2x4fv, ( FgGLuint _1, FgGLint _2, FgGLsizei _3, FgGLboolean _4, const FgGLfloat * _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramUniformMatrix4x2fv, ( FgGLuint _1, FgGLint _2, FgGLsizei _3, FgGLboolean _4, const FgGLfloat * _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramUniformMatrix3x4fv, ( FgGLuint _1, FgGLint _2, FgGLsizei _3, FgGLboolean _4, const FgGLfloat * _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramUniformMatrix4x3fv, ( FgGLuint _1, FgGLint _2, FgGLsizei _3, FgGLboolean _4, const FgGLfloat * _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramUniformMatrix2x3dv, ( FgGLuint _1, FgGLint _2, FgGLsizei _3, FgGLboolean _4, const FgGLdouble * _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramUniformMatrix3x2dv, ( FgGLuint _1, FgGLint _2, FgGLsizei _3, FgGLboolean _4, const FgGLdouble * _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramUniformMatrix2x4dv, ( FgGLuint _1, FgGLint _2, FgGLsizei _3, FgGLboolean _4, const FgGLdouble * _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramUniformMatrix4x2dv, ( FgGLuint _1, FgGLint _2, FgGLsizei _3, FgGLboolean _4, const FgGLdouble * _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramUniformMatrix3x4dv, ( FgGLuint _1, FgGLint _2, FgGLsizei _3, FgGLboolean _4, const FgGLdouble * _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramUniformMatrix4x3dv, ( FgGLuint _1, FgGLint _2, FgGLsizei _3, FgGLboolean _4, const FgGLdouble * _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( ValidateProgramPipeline, ( FgGLuint _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( GetProgramPipelineInfoLog, ( FgGLuint _1, FgGLsizei _2, FgGLsizei * _3, FgGLchar * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttribL1d, ( FgGLuint _1, FgGLdouble _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttribL2d, ( FgGLuint _1, FgGLdouble _2, FgGLdouble _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttribL3d, ( FgGLuint _1, FgGLdouble _2, FgGLdouble _3, FgGLdouble _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttribL4d, ( FgGLuint _1, FgGLdouble _2, FgGLdouble _3, FgGLdouble _4, FgGLdouble _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttribL1dv, ( FgGLuint _1, const FgGLdouble * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttribL2dv, ( FgGLuint _1, const FgGLdouble * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttribL3dv, ( FgGLuint _1, const FgGLdouble * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttribL4dv, ( FgGLuint _1, const FgGLdouble * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttribLPointer, ( FgGLuint _1, FgGLint _2, FgGLenum _3, FgGLsizei _4, const FgGLvoid * _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( GetVertexAttribLdv, ( FgGLuint _1, FgGLenum _2, FgGLdouble * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( ViewportArrayv, ( FgGLuint _1, FgGLsizei _2, const FgGLfloat * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( ViewportIndexedf, ( FgGLuint _1, FgGLfloat _2, FgGLfloat _3, FgGLfloat _4, FgGLfloat _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( ViewportIndexedfv, ( FgGLuint _1, const FgGLfloat * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( ScissorArrayv, ( FgGLuint _1, FgGLsizei _2, const FgGLint * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( ScissorIndexed, ( FgGLuint _1, FgGLint _2, FgGLint _3, FgGLsizei _4, FgGLsizei _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( ScissorIndexedv, ( FgGLuint _1, const FgGLint * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( DepthRangeArrayv, ( FgGLuint _1, FgGLsizei _2, const FgGLdouble * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( DepthRangeIndexed, ( FgGLuint _1, FgGLdouble _2, FgGLdouble _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetFloati_v, ( FgGLenum _1, FgGLuint _2, FgGLfloat * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetDoublei_v, ( FgGLenum _1, FgGLuint _2, FgGLdouble * _3 ), ( _1, _2, _3 ) ) \
+    FG_GL_FUNCTION_VOID( ReleaseShaderCompiler, FgGLContext * ) \
+    FG_GL_FUNCTION_VOID( ShaderBinary, FgGLContext *, FgGLsizei, const FgGLuint *, FgGLenum, const FgGLvoid *, FgGLsizei ) \
+    FG_GL_FUNCTION_VOID( GetShaderPrecisionFormat, FgGLContext *, FgGLenum, FgGLenum, FgGLint *, FgGLint * ) \
+    FG_GL_FUNCTION_VOID( DepthRangef, FgGLContext *, FgGLfloat, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( ClearDepthf, FgGLContext *, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( GetProgramBinary, FgGLContext *, FgGLuint, FgGLsizei, FgGLsizei *, FgGLenum *, FgGLvoid * ) \
+    FG_GL_FUNCTION_VOID( ProgramBinary, FgGLContext *, FgGLuint, FgGLenum, const FgGLvoid *, FgGLsizei ) \
+    FG_GL_FUNCTION_VOID( ProgramParameteri, FgGLContext *, FgGLuint, FgGLenum, FgGLint ) \
+    FG_GL_FUNCTION_VOID( UseProgramStages, FgGLContext *, FgGLuint, FgGLbitfield, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( ActiveShaderProgram, FgGLContext *, FgGLuint, FgGLuint ) \
+    FG_GL_FUNCTION_NUM( CreateShaderProgramv, FgGLuint, FgGLContext *, FgGLenum, FgGLsizei, const FgGLchar *const* ) \
+    FG_GL_FUNCTION_VOID( BindProgramPipeline, FgGLContext *, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( DeleteProgramPipelines, FgGLContext *, FgGLsizei, const FgGLuint * ) \
+    FG_GL_FUNCTION_VOID( GenProgramPipelines, FgGLContext *, FgGLsizei, FgGLuint * ) \
+    FG_GL_FUNCTION_NUM( IsProgramPipeline, FgGLboolean, FgGLContext *, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( GetProgramPipelineiv, FgGLContext *, FgGLuint, FgGLenum, FgGLint * ) \
+    FG_GL_FUNCTION_VOID( ProgramUniform1i, FgGLContext *, FgGLuint, FgGLint, FgGLint ) \
+    FG_GL_FUNCTION_VOID( ProgramUniform1iv, FgGLContext *, FgGLuint, FgGLint, FgGLsizei, const FgGLint * ) \
+    FG_GL_FUNCTION_VOID( ProgramUniform1f, FgGLContext *, FgGLuint, FgGLint, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( ProgramUniform1fv, FgGLContext *, FgGLuint, FgGLint, FgGLsizei, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( ProgramUniform1d, FgGLContext *, FgGLuint, FgGLint, FgGLdouble ) \
+    FG_GL_FUNCTION_VOID( ProgramUniform1dv, FgGLContext *, FgGLuint, FgGLint, FgGLsizei, const FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( ProgramUniform1ui, FgGLContext *, FgGLuint, FgGLint, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( ProgramUniform1uiv, FgGLContext *, FgGLuint, FgGLint, FgGLsizei, const FgGLuint * ) \
+    FG_GL_FUNCTION_VOID( ProgramUniform2i, FgGLContext *, FgGLuint, FgGLint, FgGLint, FgGLint ) \
+    FG_GL_FUNCTION_VOID( ProgramUniform2iv, FgGLContext *, FgGLuint, FgGLint, FgGLsizei, const FgGLint * ) \
+    FG_GL_FUNCTION_VOID( ProgramUniform2f, FgGLContext *, FgGLuint, FgGLint, FgGLfloat, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( ProgramUniform2fv, FgGLContext *, FgGLuint, FgGLint, FgGLsizei, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( ProgramUniform2d, FgGLContext *, FgGLuint, FgGLint, FgGLdouble, FgGLdouble ) \
+    FG_GL_FUNCTION_VOID( ProgramUniform2dv, FgGLContext *, FgGLuint, FgGLint, FgGLsizei, const FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( ProgramUniform2ui, FgGLContext *, FgGLuint, FgGLint, FgGLuint, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( ProgramUniform2uiv, FgGLContext *, FgGLuint, FgGLint, FgGLsizei, const FgGLuint * ) \
+    FG_GL_FUNCTION_VOID( ProgramUniform3i, FgGLContext *, FgGLuint, FgGLint, FgGLint, FgGLint, FgGLint ) \
+    FG_GL_FUNCTION_VOID( ProgramUniform3iv, FgGLContext *, FgGLuint, FgGLint, FgGLsizei, const FgGLint * ) \
+    FG_GL_FUNCTION_VOID( ProgramUniform3f, FgGLContext *, FgGLuint, FgGLint, FgGLfloat, FgGLfloat, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( ProgramUniform3fv, FgGLContext *, FgGLuint, FgGLint, FgGLsizei, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( ProgramUniform3d, FgGLContext *, FgGLuint, FgGLint, FgGLdouble, FgGLdouble, FgGLdouble ) \
+    FG_GL_FUNCTION_VOID( ProgramUniform3dv, FgGLContext *, FgGLuint, FgGLint, FgGLsizei, const FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( ProgramUniform3ui, FgGLContext *, FgGLuint, FgGLint, FgGLuint, FgGLuint, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( ProgramUniform3uiv, FgGLContext *, FgGLuint, FgGLint, FgGLsizei, const FgGLuint * ) \
+    FG_GL_FUNCTION_VOID( ProgramUniform4i, FgGLContext *, FgGLuint, FgGLint, FgGLint, FgGLint, FgGLint, FgGLint ) \
+    FG_GL_FUNCTION_VOID( ProgramUniform4iv, FgGLContext *, FgGLuint, FgGLint, FgGLsizei, const FgGLint * ) \
+    FG_GL_FUNCTION_VOID( ProgramUniform4f, FgGLContext *, FgGLuint, FgGLint, FgGLfloat, FgGLfloat, FgGLfloat, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( ProgramUniform4fv, FgGLContext *, FgGLuint, FgGLint, FgGLsizei, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( ProgramUniform4d, FgGLContext *, FgGLuint, FgGLint, FgGLdouble, FgGLdouble, FgGLdouble, FgGLdouble ) \
+    FG_GL_FUNCTION_VOID( ProgramUniform4dv, FgGLContext *, FgGLuint, FgGLint, FgGLsizei, const FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( ProgramUniform4ui, FgGLContext *, FgGLuint, FgGLint, FgGLuint, FgGLuint, FgGLuint, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( ProgramUniform4uiv, FgGLContext *, FgGLuint, FgGLint, FgGLsizei, const FgGLuint * ) \
+    FG_GL_FUNCTION_VOID( ProgramUniformMatrix2fv, FgGLContext *, FgGLuint, FgGLint, FgGLsizei, FgGLboolean, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( ProgramUniformMatrix3fv, FgGLContext *, FgGLuint, FgGLint, FgGLsizei, FgGLboolean, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( ProgramUniformMatrix4fv, FgGLContext *, FgGLuint, FgGLint, FgGLsizei, FgGLboolean, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( ProgramUniformMatrix2dv, FgGLContext *, FgGLuint, FgGLint, FgGLsizei, FgGLboolean, const FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( ProgramUniformMatrix3dv, FgGLContext *, FgGLuint, FgGLint, FgGLsizei, FgGLboolean, const FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( ProgramUniformMatrix4dv, FgGLContext *, FgGLuint, FgGLint, FgGLsizei, FgGLboolean, const FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( ProgramUniformMatrix2x3fv, FgGLContext *, FgGLuint, FgGLint, FgGLsizei, FgGLboolean, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( ProgramUniformMatrix3x2fv, FgGLContext *, FgGLuint, FgGLint, FgGLsizei, FgGLboolean, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( ProgramUniformMatrix2x4fv, FgGLContext *, FgGLuint, FgGLint, FgGLsizei, FgGLboolean, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( ProgramUniformMatrix4x2fv, FgGLContext *, FgGLuint, FgGLint, FgGLsizei, FgGLboolean, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( ProgramUniformMatrix3x4fv, FgGLContext *, FgGLuint, FgGLint, FgGLsizei, FgGLboolean, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( ProgramUniformMatrix4x3fv, FgGLContext *, FgGLuint, FgGLint, FgGLsizei, FgGLboolean, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( ProgramUniformMatrix2x3dv, FgGLContext *, FgGLuint, FgGLint, FgGLsizei, FgGLboolean, const FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( ProgramUniformMatrix3x2dv, FgGLContext *, FgGLuint, FgGLint, FgGLsizei, FgGLboolean, const FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( ProgramUniformMatrix2x4dv, FgGLContext *, FgGLuint, FgGLint, FgGLsizei, FgGLboolean, const FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( ProgramUniformMatrix4x2dv, FgGLContext *, FgGLuint, FgGLint, FgGLsizei, FgGLboolean, const FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( ProgramUniformMatrix3x4dv, FgGLContext *, FgGLuint, FgGLint, FgGLsizei, FgGLboolean, const FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( ProgramUniformMatrix4x3dv, FgGLContext *, FgGLuint, FgGLint, FgGLsizei, FgGLboolean, const FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( ValidateProgramPipeline, FgGLContext *, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( GetProgramPipelineInfoLog, FgGLContext *, FgGLuint, FgGLsizei, FgGLsizei *, FgGLchar * ) \
+    FG_GL_FUNCTION_VOID( VertexAttribL1d, FgGLContext *, FgGLuint, FgGLdouble ) \
+    FG_GL_FUNCTION_VOID( VertexAttribL2d, FgGLContext *, FgGLuint, FgGLdouble, FgGLdouble ) \
+    FG_GL_FUNCTION_VOID( VertexAttribL3d, FgGLContext *, FgGLuint, FgGLdouble, FgGLdouble, FgGLdouble ) \
+    FG_GL_FUNCTION_VOID( VertexAttribL4d, FgGLContext *, FgGLuint, FgGLdouble, FgGLdouble, FgGLdouble, FgGLdouble ) \
+    FG_GL_FUNCTION_VOID( VertexAttribL1dv, FgGLContext *, FgGLuint, const FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( VertexAttribL2dv, FgGLContext *, FgGLuint, const FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( VertexAttribL3dv, FgGLContext *, FgGLuint, const FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( VertexAttribL4dv, FgGLContext *, FgGLuint, const FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( VertexAttribLPointer, FgGLContext *, FgGLuint, FgGLint, FgGLenum, FgGLsizei, const FgGLvoid * ) \
+    FG_GL_FUNCTION_VOID( GetVertexAttribLdv, FgGLContext *, FgGLuint, FgGLenum, FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( ViewportArrayv, FgGLContext *, FgGLuint, FgGLsizei, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( ViewportIndexedf, FgGLContext *, FgGLuint, FgGLfloat, FgGLfloat, FgGLfloat, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( ViewportIndexedfv, FgGLContext *, FgGLuint, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( ScissorArrayv, FgGLContext *, FgGLuint, FgGLsizei, const FgGLint * ) \
+    FG_GL_FUNCTION_VOID( ScissorIndexed, FgGLContext *, FgGLuint, FgGLint, FgGLint, FgGLsizei, FgGLsizei ) \
+    FG_GL_FUNCTION_VOID( ScissorIndexedv, FgGLContext *, FgGLuint, const FgGLint * ) \
+    FG_GL_FUNCTION_VOID( DepthRangeArrayv, FgGLContext *, FgGLuint, FgGLsizei, const FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( DepthRangeIndexed, FgGLContext *, FgGLuint, FgGLdouble, FgGLdouble ) \
+    FG_GL_FUNCTION_VOID( GetFloati_v, FgGLContext *, FgGLenum, FgGLuint, FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( GetDoublei_v, FgGLContext *, FgGLenum, FgGLuint, FgGLdouble * ) \
 \
     /* GL_VERSION_4_2 */ \
-    FG_GL_VOID_FUNCTION( DrawArraysInstancedBaseInstance, ( FgGLenum _1, FgGLint _2, FgGLsizei _3, FgGLsizei _4, FgGLuint _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( DrawElementsInstancedBaseInstance, ( FgGLenum _1, FgGLsizei _2, FgGLenum _3, const void * _4, FgGLsizei _5, FgGLuint _6 ), ( _1, _2, _3, _4, _5, _6 ) ) \
-    FG_GL_VOID_FUNCTION( DrawElementsInstancedBaseVertexBaseInstance, ( FgGLenum _1, FgGLsizei _2, FgGLenum _3, const void * _4, FgGLsizei _5, FgGLint _6, FgGLuint _7 ), ( _1, _2, _3, _4, _5, _6, _7 ) ) \
-    FG_GL_VOID_FUNCTION( GetInternalformativ, ( FgGLenum _1, FgGLenum _2, FgGLenum _3, FgGLsizei _4, FgGLint * _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( GetActiveAtomicCounterBufferiv, ( FgGLuint _1, FgGLuint _2, FgGLenum _3, FgGLint * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( BindImageTexture, ( FgGLuint _1, FgGLuint _2, FgGLint _3, FgGLboolean _4, FgGLint _5, FgGLenum _6, FgGLenum _7 ), ( _1, _2, _3, _4, _5, _6, _7 ) ) \
-    FG_GL_VOID_FUNCTION( MemoryBarrier, ( FgGLbitfield _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( TexStorage1D, ( FgGLenum _1, FgGLsizei _2, FgGLenum _3, FgGLsizei _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( TexStorage2D, ( FgGLenum _1, FgGLsizei _2, FgGLenum _3, FgGLsizei _4, FgGLsizei _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( TexStorage3D, ( FgGLenum _1, FgGLsizei _2, FgGLenum _3, FgGLsizei _4, FgGLsizei _5, FgGLsizei _6 ), ( _1, _2, _3, _4, _5, _6 ) ) \
-    FG_GL_VOID_FUNCTION( DrawTransformFeedbackInstanced, ( FgGLenum _1, FgGLuint _2, FgGLsizei _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( DrawTransformFeedbackStreamInstanced, ( FgGLenum _1, FgGLuint _2, FgGLuint _3, FgGLsizei _4 ), ( _1, _2, _3, _4 ) ) \
+    FG_GL_FUNCTION_VOID( DrawArraysInstancedBaseInstance, FgGLContext *, FgGLenum, FgGLint, FgGLsizei, FgGLsizei, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( DrawElementsInstancedBaseInstance, FgGLContext *, FgGLenum, FgGLsizei, FgGLenum, const void *, FgGLsizei, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( DrawElementsInstancedBaseVertexBaseInstance, FgGLContext *, FgGLenum, FgGLsizei, FgGLenum, const void *, FgGLsizei, FgGLint, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( GetInternalformativ, FgGLContext *, FgGLenum, FgGLenum, FgGLenum, FgGLsizei, FgGLint * ) \
+    FG_GL_FUNCTION_VOID( GetActiveAtomicCounterBufferiv, FgGLContext *, FgGLuint, FgGLuint, FgGLenum, FgGLint * ) \
+    FG_GL_FUNCTION_VOID( BindImageTexture, FgGLContext *, FgGLuint, FgGLuint, FgGLint, FgGLboolean, FgGLint, FgGLenum, FgGLenum ) \
+    FG_GL_FUNCTION_VOID( MemoryBarrier, FgGLContext *, FgGLbitfield ) \
+    FG_GL_FUNCTION_VOID( TexStorage1D, FgGLContext *, FgGLenum, FgGLsizei, FgGLenum, FgGLsizei ) \
+    FG_GL_FUNCTION_VOID( TexStorage2D, FgGLContext *, FgGLenum, FgGLsizei, FgGLenum, FgGLsizei, FgGLsizei ) \
+    FG_GL_FUNCTION_VOID( TexStorage3D, FgGLContext *, FgGLenum, FgGLsizei, FgGLenum, FgGLsizei, FgGLsizei, FgGLsizei ) \
+    FG_GL_FUNCTION_VOID( DrawTransformFeedbackInstanced, FgGLContext *, FgGLenum, FgGLuint, FgGLsizei ) \
+    FG_GL_FUNCTION_VOID( DrawTransformFeedbackStreamInstanced, FgGLContext *, FgGLenum, FgGLuint, FgGLuint, FgGLsizei ) \
 \
     /* GL_VERSION_4_3 */ \
-    FG_GL_VOID_FUNCTION( ClearBufferData, ( FgGLenum _1, FgGLenum _2, FgGLenum _3, FgGLenum _4, const void * _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( ClearBufferSubData, ( FgGLenum _1, FgGLenum _2, FgGLintptr _3, FgGLsizeiptr _4, FgGLenum _5, FgGLenum _6, const void * _7 ), ( _1, _2, _3, _4, _5, _6, _7 ) ) \
-    FG_GL_VOID_FUNCTION( DispatchCompute, ( FgGLuint _1, FgGLuint _2, FgGLuint _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( DispatchComputeIndirect, ( FgGLintptr _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( CopyImageSubData, ( FgGLuint _1, FgGLenum _2, FgGLint _3, FgGLint _4, FgGLint _5, FgGLint _6, FgGLuint _7, FgGLenum _8, FgGLint _9, FgGLint _10, FgGLint _11, FgGLint _12, FgGLsizei _13, FgGLsizei _14, FgGLsizei _15 ), ( _1, _2, _3, _4, _5, _6, _7, _8, _9, _10, _11, _12, _13, _14, _15 ) ) \
-    FG_GL_VOID_FUNCTION( FramebufferParameteri, ( FgGLenum _1, FgGLenum _2, FgGLint _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetFramebufferParameteriv, ( FgGLenum _1, FgGLenum _2, FgGLint * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetInternalformati64v, ( FgGLenum _1, FgGLenum _2, FgGLenum _3, FgGLsizei _4, FgGLint64 * _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( InvalidateTexSubImage, ( FgGLuint _1, FgGLint _2, FgGLint _3, FgGLint _4, FgGLint _5, FgGLsizei _6, FgGLsizei _7, FgGLsizei _8 ), ( _1, _2, _3, _4, _5, _6, _7, _8 ) ) \
-    FG_GL_VOID_FUNCTION( InvalidateTexImage, ( FgGLuint _1, FgGLint _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( InvalidateBufferSubData, ( FgGLuint _1, FgGLintptr _2, FgGLsizeiptr _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( InvalidateBufferData, ( FgGLuint _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( InvalidateFramebuffer, ( FgGLenum _1, FgGLsizei _2, const FgGLenum * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( InvalidateSubFramebuffer, ( FgGLenum _1, FgGLsizei _2, const FgGLenum * _3, FgGLint _4, FgGLint _5, FgGLsizei _6, FgGLsizei _7 ), ( _1, _2, _3, _4, _5, _6, _7 ) ) \
-    FG_GL_VOID_FUNCTION( MultiDrawArraysIndirect, ( FgGLenum _1, const void * _2, FgGLsizei _3, FgGLsizei _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( MultiDrawElementsIndirect, ( FgGLenum _1, FgGLenum _2, const void * _3, FgGLsizei _4, FgGLsizei _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( GetProgramInterfaceiv, ( FgGLuint _1, FgGLenum _2, FgGLenum _3, FgGLint * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_FUNCTION( 0, FgGLuint, GetProgramResourceIndex, ( FgGLuint _1, FgGLenum _2, const FgGLchar * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetProgramResourceName, ( FgGLuint _1, FgGLenum _2, FgGLuint _3, FgGLsizei _4, FgGLsizei * _5, FgGLchar * _6 ), ( _1, _2, _3, _4, _5, _6 ) ) \
-    FG_GL_VOID_FUNCTION( GetProgramResourceiv, ( FgGLuint _1, FgGLenum _2, FgGLuint _3, FgGLsizei _4, const FgGLenum * _5, FgGLsizei _6, FgGLsizei * _7, FgGLint * _8 ), ( _1, _2, _3, _4, _5, _6, _7, _8 ) ) \
-    FG_GL_FUNCTION( 0, FgGLint, GetProgramResourceLocation, ( FgGLuint _1, FgGLenum _2, const FgGLchar * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_FUNCTION( 0, FgGLint, GetProgramResourceLocationIndex, ( FgGLuint _1, FgGLenum _2, const FgGLchar * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( ShaderStorageBlockBinding, ( FgGLuint _1, FgGLuint _2, FgGLuint _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( TexBufferRange, ( FgGLenum _1, FgGLenum _2, FgGLuint _3, FgGLintptr _4, FgGLsizeiptr _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( TexStorage2DMultisample, ( FgGLenum _1, FgGLsizei _2, FgGLenum _3, FgGLsizei _4, FgGLsizei _5, FgGLboolean _6 ), ( _1, _2, _3, _4, _5, _6 ) ) \
-    FG_GL_VOID_FUNCTION( TexStorage3DMultisample, ( FgGLenum _1, FgGLsizei _2, FgGLenum _3, FgGLsizei _4, FgGLsizei _5, FgGLsizei _6, FgGLboolean _7 ), ( _1, _2, _3, _4, _5, _6, _7 ) ) \
-    FG_GL_VOID_FUNCTION( TextureView, ( FgGLuint _1, FgGLenum _2, FgGLuint _3, FgGLenum _4, FgGLuint _5, FgGLuint _6, FgGLuint _7, FgGLuint _8 ), ( _1, _2, _3, _4, _5, _6, _7, _8 ) ) \
-    FG_GL_VOID_FUNCTION( BindVertexBuffer, ( FgGLuint _1, FgGLuint _2, FgGLintptr _3, FgGLsizei _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttribFormat, ( FgGLuint _1, FgGLint _2, FgGLenum _3, FgGLboolean _4, FgGLuint _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttribIFormat, ( FgGLuint _1, FgGLint _2, FgGLenum _3, FgGLuint _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttribLFormat, ( FgGLuint _1, FgGLint _2, FgGLenum _3, FgGLuint _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttribBinding, ( FgGLuint _1, FgGLuint _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexBindingDivisor, ( FgGLuint _1, FgGLuint _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( DebugMessageControl, ( FgGLenum _1, FgGLenum _2, FgGLenum _3, FgGLsizei _4, const FgGLuint * _5, FgGLboolean _6 ), ( _1, _2, _3, _4, _5, _6 ) ) \
-    FG_GL_VOID_FUNCTION( DebugMessageInsert, ( FgGLenum _1, FgGLenum _2, FgGLuint _3, FgGLenum _4, FgGLsizei _5, const FgGLchar * _6 ), ( _1, _2, _3, _4, _5, _6 ) ) \
-    FG_GL_VOID_FUNCTION( DebugMessageCallback, ( FgGLDebugProc _1, const void * _2 ), ( _1, _2 ) ) \
-    FG_GL_FUNCTION( 0, FgGLuint, GetDebugMessageLog, ( FgGLuint _1, FgGLsizei _2, FgGLenum * _3, FgGLenum * _4, FgGLuint * _5, FgGLenum * _6, FgGLsizei * _7, FgGLchar * _8 ), ( _1, _2, _3, _4, _5, _6, _7, _8 ) ) \
-    FG_GL_VOID_FUNCTION( PushDebugGroup, ( FgGLenum _1, FgGLuint _2, FgGLsizei _3, const FgGLchar * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( PopDebugGroup, ( ), ( ) ) \
-    FG_GL_VOID_FUNCTION( ObjectLabel, ( FgGLenum _1, FgGLuint _2, FgGLsizei _3, const FgGLchar * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( GetObjectLabel, ( FgGLenum _1, FgGLuint _2, FgGLsizei _3, FgGLsizei * _4, FgGLchar * _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( ObjectPtrLabel, ( const void * _1, FgGLsizei _2, const FgGLchar * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetObjectPtrLabel, ( const void * _1, FgGLsizei _2, FgGLsizei * _3, FgGLchar * _4 ), ( _1, _2, _3, _4 ) ) \
+    FG_GL_FUNCTION_VOID( ClearBufferData, FgGLContext *, FgGLenum, FgGLenum, FgGLenum, FgGLenum, const void * ) \
+    FG_GL_FUNCTION_VOID( ClearBufferSubData, FgGLContext *, FgGLenum, FgGLenum, FgGLintptr, FgGLsizeiptr, FgGLenum, FgGLenum, const void * ) \
+    FG_GL_FUNCTION_VOID( DispatchCompute, FgGLContext *, FgGLuint, FgGLuint, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( DispatchComputeIndirect, FgGLContext *, FgGLintptr ) \
+    FG_GL_FUNCTION_VOID( CopyImageSubData, FgGLContext *, FgGLuint, FgGLenum, FgGLint, FgGLint, FgGLint, FgGLint, FgGLuint, FgGLenum, FgGLint, FgGLint, FgGLint, FgGLint, FgGLsizei, FgGLsizei, FgGLsizei ) \
+    FG_GL_FUNCTION_VOID( FramebufferParameteri, FgGLContext *, FgGLenum, FgGLenum, FgGLint ) \
+    FG_GL_FUNCTION_VOID( GetFramebufferParameteriv, FgGLContext *, FgGLenum, FgGLenum, FgGLint * ) \
+    FG_GL_FUNCTION_VOID( GetInternalformati64v, FgGLContext *, FgGLenum, FgGLenum, FgGLenum, FgGLsizei, FgGLint64 * ) \
+    FG_GL_FUNCTION_VOID( InvalidateTexSubImage, FgGLContext *, FgGLuint, FgGLint, FgGLint, FgGLint, FgGLint, FgGLsizei, FgGLsizei, FgGLsizei ) \
+    FG_GL_FUNCTION_VOID( InvalidateTexImage, FgGLContext *, FgGLuint, FgGLint ) \
+    FG_GL_FUNCTION_VOID( InvalidateBufferSubData, FgGLContext *, FgGLuint, FgGLintptr, FgGLsizeiptr ) \
+    FG_GL_FUNCTION_VOID( InvalidateBufferData, FgGLContext *, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( InvalidateFramebuffer, FgGLContext *, FgGLenum, FgGLsizei, const FgGLenum * ) \
+    FG_GL_FUNCTION_VOID( InvalidateSubFramebuffer, FgGLContext *, FgGLenum, FgGLsizei, const FgGLenum *, FgGLint, FgGLint, FgGLsizei, FgGLsizei ) \
+    FG_GL_FUNCTION_VOID( MultiDrawArraysIndirect, FgGLContext *, FgGLenum, const void *, FgGLsizei, FgGLsizei ) \
+    FG_GL_FUNCTION_VOID( MultiDrawElementsIndirect, FgGLContext *, FgGLenum, FgGLenum, const void *, FgGLsizei, FgGLsizei ) \
+    FG_GL_FUNCTION_VOID( GetProgramInterfaceiv, FgGLContext *, FgGLuint, FgGLenum, FgGLenum, FgGLint * ) \
+    FG_GL_FUNCTION_NUM( GetProgramResourceIndex, FgGLuint, FgGLContext *, FgGLuint, FgGLenum, const FgGLchar * ) \
+    FG_GL_FUNCTION_VOID( GetProgramResourceName, FgGLContext *, FgGLuint, FgGLenum, FgGLuint, FgGLsizei, FgGLsizei *, FgGLchar * ) \
+    FG_GL_FUNCTION_VOID( GetProgramResourceiv, FgGLContext *, FgGLuint, FgGLenum, FgGLuint, FgGLsizei, const FgGLenum *, FgGLsizei, FgGLsizei *, FgGLint * ) \
+    FG_GL_FUNCTION_NUM( GetProgramResourceLocation, FgGLint, FgGLContext *, FgGLuint, FgGLenum, const FgGLchar * ) \
+    FG_GL_FUNCTION_NUM( GetProgramResourceLocationIndex, FgGLint, FgGLContext *, FgGLuint, FgGLenum, const FgGLchar * ) \
+    FG_GL_FUNCTION_VOID( ShaderStorageBlockBinding, FgGLContext *, FgGLuint, FgGLuint, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( TexBufferRange, FgGLContext *, FgGLenum, FgGLenum, FgGLuint, FgGLintptr, FgGLsizeiptr ) \
+    FG_GL_FUNCTION_VOID( TexStorage2DMultisample, FgGLContext *, FgGLenum, FgGLsizei, FgGLenum, FgGLsizei, FgGLsizei, FgGLboolean ) \
+    FG_GL_FUNCTION_VOID( TexStorage3DMultisample, FgGLContext *, FgGLenum, FgGLsizei, FgGLenum, FgGLsizei, FgGLsizei, FgGLsizei, FgGLboolean ) \
+    FG_GL_FUNCTION_VOID( TextureView, FgGLContext *, FgGLuint, FgGLenum, FgGLuint, FgGLenum, FgGLuint, FgGLuint, FgGLuint, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( BindVertexBuffer, FgGLContext *, FgGLuint, FgGLuint, FgGLintptr, FgGLsizei ) \
+    FG_GL_FUNCTION_VOID( VertexAttribFormat, FgGLContext *, FgGLuint, FgGLint, FgGLenum, FgGLboolean, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( VertexAttribIFormat, FgGLContext *, FgGLuint, FgGLint, FgGLenum, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( VertexAttribLFormat, FgGLContext *, FgGLuint, FgGLint, FgGLenum, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( VertexAttribBinding, FgGLContext *, FgGLuint, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( VertexBindingDivisor, FgGLContext *, FgGLuint, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( DebugMessageControl, FgGLContext *, FgGLenum, FgGLenum, FgGLenum, FgGLsizei, const FgGLuint *, FgGLboolean ) \
+    FG_GL_FUNCTION_VOID( DebugMessageInsert, FgGLContext *, FgGLenum, FgGLenum, FgGLuint, FgGLenum, FgGLsizei, const FgGLchar * ) \
+    FG_GL_FUNCTION_VOID( DebugMessageCallback, FgGLContext *, FgGLDebugProc, const void * ) \
+    FG_GL_FUNCTION_NUM( GetDebugMessageLog, FgGLuint, FgGLContext *, FgGLuint, FgGLsizei, FgGLenum *, FgGLenum *, FgGLuint *, FgGLenum *, FgGLsizei *, FgGLchar * ) \
+    FG_GL_FUNCTION_VOID( PushDebugGroup, FgGLContext *, FgGLenum, FgGLuint, FgGLsizei, const FgGLchar * ) \
+    FG_GL_FUNCTION_VOID( PopDebugGroup, FgGLContext * ) \
+    FG_GL_FUNCTION_VOID( ObjectLabel, FgGLContext *, FgGLenum, FgGLuint, FgGLsizei, const FgGLchar * ) \
+    FG_GL_FUNCTION_VOID( GetObjectLabel, FgGLContext *, FgGLenum, FgGLuint, FgGLsizei, FgGLsizei *, FgGLchar * ) \
+    FG_GL_FUNCTION_VOID( ObjectPtrLabel, FgGLContext *, const void *, FgGLsizei, const FgGLchar * ) \
+    FG_GL_FUNCTION_VOID( GetObjectPtrLabel, FgGLContext *, const void *, FgGLsizei, FgGLsizei *, FgGLchar * ) \
 \
     /* GL_VERSION_4_4 */ \
-    FG_GL_VOID_FUNCTION( BufferStorage, ( FgGLenum _1, FgGLsizeiptr _2, const void * _3, FgGLbitfield _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( ClearTexImage, ( FgGLuint _1, FgGLint _2, FgGLenum _3, FgGLenum _4, const void * _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( ClearTexSubImage, ( FgGLuint _1, FgGLint _2, FgGLint _3, FgGLint _4, FgGLint _5, FgGLsizei _6, FgGLsizei _7, FgGLsizei _8, FgGLenum _9, FgGLenum _10, const void * _11 ), ( _1, _2, _3, _4, _5, _6, _7, _8, _9, _10, _11 ) ) \
-    FG_GL_VOID_FUNCTION( BindBuffersBase, ( FgGLenum _1, FgGLuint _2, FgGLsizei _3, const FgGLuint * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( BindBuffersRange, ( FgGLenum _1, FgGLuint _2, FgGLsizei _3, const FgGLuint * _4, const FgGLintptr * _5, const FgGLsizeiptr * _6 ), ( _1, _2, _3, _4, _5, _6 ) ) \
-    FG_GL_VOID_FUNCTION( BindTextures, ( FgGLuint _1, FgGLsizei _2, const FgGLuint * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( BindSamplers, ( FgGLuint _1, FgGLsizei _2, const FgGLuint * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( BindImageTextures, ( FgGLuint _1, FgGLsizei _2, const FgGLuint * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( BindVertexBuffers, ( FgGLuint _1, FgGLsizei _2, const FgGLuint * _3, const FgGLintptr * _4, const FgGLsizei * _5 ), ( _1, _2, _3, _4, _5 ) ) \
+    FG_GL_FUNCTION_VOID( BufferStorage, FgGLContext *, FgGLenum, FgGLsizeiptr, const void *, FgGLbitfield ) \
+    FG_GL_FUNCTION_VOID( ClearTexImage, FgGLContext *, FgGLuint, FgGLint, FgGLenum, FgGLenum, const void * ) \
+    FG_GL_FUNCTION_VOID( ClearTexSubImage, FgGLContext *, FgGLuint, FgGLint, FgGLint, FgGLint, FgGLint, FgGLsizei, FgGLsizei, FgGLsizei, FgGLenum, FgGLenum, const void * ) \
+    FG_GL_FUNCTION_VOID( BindBuffersBase, FgGLContext *, FgGLenum, FgGLuint, FgGLsizei, const FgGLuint * ) \
+    FG_GL_FUNCTION_VOID( BindBuffersRange, FgGLContext *, FgGLenum, FgGLuint, FgGLsizei, const FgGLuint *, const FgGLintptr *, const FgGLsizeiptr * ) \
+    FG_GL_FUNCTION_VOID( BindTextures, FgGLContext *, FgGLuint, FgGLsizei, const FgGLuint * ) \
+    FG_GL_FUNCTION_VOID( BindSamplers, FgGLContext *, FgGLuint, FgGLsizei, const FgGLuint * ) \
+    FG_GL_FUNCTION_VOID( BindImageTextures, FgGLContext *, FgGLuint, FgGLsizei, const FgGLuint * ) \
+    FG_GL_FUNCTION_VOID( BindVertexBuffers, FgGLContext *, FgGLuint, FgGLsizei, const FgGLuint *, const FgGLintptr *, const FgGLsizei * ) \
 \
     /* GL_ARB_ES2_compatibility */ \
 \
@@ -969,36 +970,36 @@
     /* GL_ARB_base_instance */ \
 \
     /* GL_ARB_bindless_texture */ \
-    FG_GL_FUNCTION( 0, FgGLuint64, GetTextureHandleARB, ( FgGLuint _1 ), ( _1 ) ) \
-    FG_GL_FUNCTION( 0, FgGLuint64, GetTextureSamplerHandleARB, ( FgGLuint _1, FgGLuint _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( MakeTextureHandleResidentARB, ( FgGLuint64 _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( MakeTextureHandleNonResidentARB, ( FgGLuint64 _1 ), ( _1 ) ) \
-    FG_GL_FUNCTION( 0, FgGLuint64, GetImageHandleARB, ( FgGLuint _1, FgGLint _2, FgGLboolean _3, FgGLint _4, FgGLenum _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( MakeImageHandleResidentARB, ( FgGLuint64 _1, FgGLenum _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( MakeImageHandleNonResidentARB, ( FgGLuint64 _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( UniformHandleui64ARB, ( FgGLint _1, FgGLuint64 _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( UniformHandleui64vARB, ( FgGLint _1, FgGLsizei _2, const FgGLuint64 * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramUniformHandleui64ARB, ( FgGLuint _1, FgGLint _2, FgGLuint64 _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramUniformHandleui64vARB, ( FgGLuint _1, FgGLint _2, FgGLsizei _3, const FgGLuint64 * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_FUNCTION( 0, FgGLboolean, IsTextureHandleResidentARB, ( FgGLuint64 _1 ), ( _1 ) ) \
-    FG_GL_FUNCTION( 0, FgGLboolean, IsImageHandleResidentARB, ( FgGLuint64 _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttribL1ui64ARB, ( FgGLuint _1, FgGLuint64EXT _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttribL1ui64vARB, ( FgGLuint _1, const FgGLuint64EXT * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( GetVertexAttribLui64vARB, ( FgGLuint _1, FgGLenum _2, FgGLuint64EXT * _3 ), ( _1, _2, _3 ) ) \
+    FG_GL_FUNCTION_NUM( GetTextureHandleARB, FgGLuint64, FgGLContext *, FgGLuint ) \
+    FG_GL_FUNCTION_NUM( GetTextureSamplerHandleARB, FgGLuint64, FgGLContext *, FgGLuint, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( MakeTextureHandleResidentARB, FgGLContext *, FgGLuint64 ) \
+    FG_GL_FUNCTION_VOID( MakeTextureHandleNonResidentARB, FgGLContext *, FgGLuint64 ) \
+    FG_GL_FUNCTION_NUM( GetImageHandleARB, FgGLuint64, FgGLContext *, FgGLuint, FgGLint, FgGLboolean, FgGLint, FgGLenum ) \
+    FG_GL_FUNCTION_VOID( MakeImageHandleResidentARB, FgGLContext *, FgGLuint64, FgGLenum ) \
+    FG_GL_FUNCTION_VOID( MakeImageHandleNonResidentARB, FgGLContext *, FgGLuint64 ) \
+    FG_GL_FUNCTION_VOID( UniformHandleui64ARB, FgGLContext *, FgGLint, FgGLuint64 ) \
+    FG_GL_FUNCTION_VOID( UniformHandleui64vARB, FgGLContext *, FgGLint, FgGLsizei, const FgGLuint64 * ) \
+    FG_GL_FUNCTION_VOID( ProgramUniformHandleui64ARB, FgGLContext *, FgGLuint, FgGLint, FgGLuint64 ) \
+    FG_GL_FUNCTION_VOID( ProgramUniformHandleui64vARB, FgGLContext *, FgGLuint, FgGLint, FgGLsizei, const FgGLuint64 * ) \
+    FG_GL_FUNCTION_NUM( IsTextureHandleResidentARB, FgGLboolean, FgGLContext *, FgGLuint64 ) \
+    FG_GL_FUNCTION_NUM( IsImageHandleResidentARB, FgGLboolean, FgGLContext *, FgGLuint64 ) \
+    FG_GL_FUNCTION_VOID( VertexAttribL1ui64ARB, FgGLContext *, FgGLuint, FgGLuint64EXT ) \
+    FG_GL_FUNCTION_VOID( VertexAttribL1ui64vARB, FgGLContext *, FgGLuint, const FgGLuint64EXT * ) \
+    FG_GL_FUNCTION_VOID( GetVertexAttribLui64vARB, FgGLContext *, FgGLuint, FgGLenum, FgGLuint64EXT * ) \
 \
     /* GL_ARB_blend_func_extended */ \
 \
     /* GL_ARB_buffer_storage */ \
 \
     /* GL_ARB_cl_event */ \
-    FG_GL_FUNCTION( NULL, FgGLsync, CreateSyncFromCLeventARB, ( FgGLclcontext _1, FgGLclevent _2, FgGLbitfield _3 ), ( _1, _2, _3 ) ) \
+    FG_GL_FUNCTION_PTR( CreateSyncFromCLeventARB, FgGLsync, FgGLContext *, FgGLclcontext, FgGLclevent, FgGLbitfield ) \
 \
     /* GL_ARB_clear_buffer_object */ \
 \
     /* GL_ARB_clear_texture */ \
 \
     /* GL_ARB_color_buffer_float */ \
-    FG_GL_VOID_FUNCTION( ClampColorARB, ( FgGLenum _1, FgGLenum _2 ), ( _1, _2 ) ) \
+    FG_GL_FUNCTION_VOID( ClampColorARB, FgGLContext *, FgGLenum, FgGLenum ) \
 \
     /* GL_ARB_compatibility */ \
 \
@@ -1007,7 +1008,7 @@
     /* GL_ARB_compute_shader */ \
 \
     /* GL_ARB_compute_variable_group_size */ \
-    FG_GL_VOID_FUNCTION( DispatchComputeGroupSizeARB, ( FgGLuint _1, FgGLuint _2, FgGLuint _3, FgGLuint _4, FgGLuint _5, FgGLuint _6 ), ( _1, _2, _3, _4, _5, _6 ) ) \
+    FG_GL_FUNCTION_VOID( DispatchComputeGroupSizeARB, FgGLContext *, FgGLuint, FgGLuint, FgGLuint, FgGLuint, FgGLuint, FgGLuint ) \
 \
     /* GL_ARB_conservative_depth */ \
 \
@@ -1016,10 +1017,10 @@
     /* GL_ARB_copy_image */ \
 \
     /* GL_ARB_debug_output */ \
-    FG_GL_VOID_FUNCTION( DebugMessageControlARB, ( FgGLenum _1, FgGLenum _2, FgGLenum _3, FgGLsizei _4, const FgGLuint * _5, FgGLboolean _6 ), ( _1, _2, _3, _4, _5, _6 ) ) \
-    FG_GL_VOID_FUNCTION( DebugMessageInsertARB, ( FgGLenum _1, FgGLenum _2, FgGLuint _3, FgGLenum _4, FgGLsizei _5, const FgGLchar * _6 ), ( _1, _2, _3, _4, _5, _6 ) ) \
-    FG_GL_VOID_FUNCTION( DebugMessageCallbackARB, ( FgGLDebugProcARB _1, const void * _2 ), ( _1, _2 ) ) \
-    FG_GL_FUNCTION( 0, FgGLuint, GetDebugMessageLogARB, ( FgGLuint _1, FgGLsizei _2, FgGLenum * _3, FgGLenum * _4, FgGLuint * _5, FgGLenum * _6, FgGLsizei * _7, FgGLchar * _8 ), ( _1, _2, _3, _4, _5, _6, _7, _8 ) ) \
+    FG_GL_FUNCTION_VOID( DebugMessageControlARB, FgGLContext *, FgGLenum, FgGLenum, FgGLenum, FgGLsizei, const FgGLuint *, FgGLboolean ) \
+    FG_GL_FUNCTION_VOID( DebugMessageInsertARB, FgGLContext *, FgGLenum, FgGLenum, FgGLuint, FgGLenum, FgGLsizei, const FgGLchar * ) \
+    FG_GL_FUNCTION_VOID( DebugMessageCallbackARB, FgGLContext *, FgGLDebugProcARB, const void * ) \
+    FG_GL_FUNCTION_NUM( GetDebugMessageLogARB, FgGLuint, FgGLContext *, FgGLuint, FgGLsizei, FgGLenum *, FgGLenum *, FgGLuint *, FgGLenum *, FgGLsizei *, FgGLchar * ) \
 \
     /* GL_ARB_depth_buffer_float */ \
 \
@@ -1028,21 +1029,21 @@
     /* GL_ARB_depth_texture */ \
 \
     /* GL_ARB_draw_buffers */ \
-    FG_GL_VOID_FUNCTION( DrawBuffersARB, ( FgGLsizei _1, const FgGLenum * _2 ), ( _1, _2 ) ) \
+    FG_GL_FUNCTION_VOID( DrawBuffersARB, FgGLContext *, FgGLsizei, const FgGLenum * ) \
 \
     /* GL_ARB_draw_buffers_blend */ \
-    FG_GL_VOID_FUNCTION( BlendEquationiARB, ( FgGLuint _1, FgGLenum _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( BlendEquationSeparateiARB, ( FgGLuint _1, FgGLenum _2, FgGLenum _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( BlendFunciARB, ( FgGLuint _1, FgGLenum _2, FgGLenum _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( BlendFuncSeparateiARB, ( FgGLuint _1, FgGLenum _2, FgGLenum _3, FgGLenum _4, FgGLenum _5 ), ( _1, _2, _3, _4, _5 ) ) \
+    FG_GL_FUNCTION_VOID( BlendEquationiARB, FgGLContext *, FgGLuint, FgGLenum ) \
+    FG_GL_FUNCTION_VOID( BlendEquationSeparateiARB, FgGLContext *, FgGLuint, FgGLenum, FgGLenum ) \
+    FG_GL_FUNCTION_VOID( BlendFunciARB, FgGLContext *, FgGLuint, FgGLenum, FgGLenum ) \
+    FG_GL_FUNCTION_VOID( BlendFuncSeparateiARB, FgGLContext *, FgGLuint, FgGLenum, FgGLenum, FgGLenum, FgGLenum ) \
 \
     /* GL_ARB_draw_elements_base_vertex */ \
 \
     /* GL_ARB_draw_indirect */ \
 \
     /* GL_ARB_draw_instanced */ \
-    FG_GL_VOID_FUNCTION( DrawArraysInstancedARB, ( FgGLenum _1, FgGLint _2, FgGLsizei _3, FgGLsizei _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( DrawElementsInstancedARB, ( FgGLenum _1, FgGLsizei _2, FgGLenum _3, const FgGLvoid * _4, FgGLsizei _5 ), ( _1, _2, _3, _4, _5 ) ) \
+    FG_GL_FUNCTION_VOID( DrawArraysInstancedARB, FgGLContext *, FgGLenum, FgGLint, FgGLsizei, FgGLsizei ) \
+    FG_GL_FUNCTION_VOID( DrawElementsInstancedARB, FgGLContext *, FgGLenum, FgGLsizei, FgGLenum, const FgGLvoid *, FgGLsizei ) \
 \
     /* GL_ARB_enhanced_layouts */ \
 \
@@ -1055,25 +1056,25 @@
     /* GL_ARB_fragment_layer_viewport */ \
 \
     /* GL_ARB_fragment_program */ \
-    FG_GL_VOID_FUNCTION( ProgramStringARB, ( FgGLenum _1, FgGLenum _2, FgGLsizei _3, const FgGLvoid * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( BindProgramARB, ( FgGLenum _1, FgGLuint _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( DeleteProgramsARB, ( FgGLsizei _1, const FgGLuint * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( GenProgramsARB, ( FgGLsizei _1, FgGLuint * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramEnvParameter4dARB, ( FgGLenum _1, FgGLuint _2, FgGLdouble _3, FgGLdouble _4, FgGLdouble _5, FgGLdouble _6 ), ( _1, _2, _3, _4, _5, _6 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramEnvParameter4dvARB, ( FgGLenum _1, FgGLuint _2, const FgGLdouble * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramEnvParameter4fARB, ( FgGLenum _1, FgGLuint _2, FgGLfloat _3, FgGLfloat _4, FgGLfloat _5, FgGLfloat _6 ), ( _1, _2, _3, _4, _5, _6 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramEnvParameter4fvARB, ( FgGLenum _1, FgGLuint _2, const FgGLfloat * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramLocalParameter4dARB, ( FgGLenum _1, FgGLuint _2, FgGLdouble _3, FgGLdouble _4, FgGLdouble _5, FgGLdouble _6 ), ( _1, _2, _3, _4, _5, _6 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramLocalParameter4dvARB, ( FgGLenum _1, FgGLuint _2, const FgGLdouble * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramLocalParameter4fARB, ( FgGLenum _1, FgGLuint _2, FgGLfloat _3, FgGLfloat _4, FgGLfloat _5, FgGLfloat _6 ), ( _1, _2, _3, _4, _5, _6 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramLocalParameter4fvARB, ( FgGLenum _1, FgGLuint _2, const FgGLfloat * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetProgramEnvParameterdvARB, ( FgGLenum _1, FgGLuint _2, FgGLdouble * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetProgramEnvParameterfvARB, ( FgGLenum _1, FgGLuint _2, FgGLfloat * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetProgramLocalParameterdvARB, ( FgGLenum _1, FgGLuint _2, FgGLdouble * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetProgramLocalParameterfvARB, ( FgGLenum _1, FgGLuint _2, FgGLfloat * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetProgramivARB, ( FgGLenum _1, FgGLenum _2, FgGLint * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetProgramStringARB, ( FgGLenum _1, FgGLenum _2, FgGLvoid * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_FUNCTION( 0, FgGLboolean, IsProgramARB, ( FgGLuint _1 ), ( _1 ) ) \
+    FG_GL_FUNCTION_VOID( ProgramStringARB, FgGLContext *, FgGLenum, FgGLenum, FgGLsizei, const FgGLvoid * ) \
+    FG_GL_FUNCTION_VOID( BindProgramARB, FgGLContext *, FgGLenum, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( DeleteProgramsARB, FgGLContext *, FgGLsizei, const FgGLuint * ) \
+    FG_GL_FUNCTION_VOID( GenProgramsARB, FgGLContext *, FgGLsizei, FgGLuint * ) \
+    FG_GL_FUNCTION_VOID( ProgramEnvParameter4dARB, FgGLContext *, FgGLenum, FgGLuint, FgGLdouble, FgGLdouble, FgGLdouble, FgGLdouble ) \
+    FG_GL_FUNCTION_VOID( ProgramEnvParameter4dvARB, FgGLContext *, FgGLenum, FgGLuint, const FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( ProgramEnvParameter4fARB, FgGLContext *, FgGLenum, FgGLuint, FgGLfloat, FgGLfloat, FgGLfloat, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( ProgramEnvParameter4fvARB, FgGLContext *, FgGLenum, FgGLuint, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( ProgramLocalParameter4dARB, FgGLContext *, FgGLenum, FgGLuint, FgGLdouble, FgGLdouble, FgGLdouble, FgGLdouble ) \
+    FG_GL_FUNCTION_VOID( ProgramLocalParameter4dvARB, FgGLContext *, FgGLenum, FgGLuint, const FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( ProgramLocalParameter4fARB, FgGLContext *, FgGLenum, FgGLuint, FgGLfloat, FgGLfloat, FgGLfloat, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( ProgramLocalParameter4fvARB, FgGLContext *, FgGLenum, FgGLuint, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( GetProgramEnvParameterdvARB, FgGLContext *, FgGLenum, FgGLuint, FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( GetProgramEnvParameterfvARB, FgGLContext *, FgGLenum, FgGLuint, FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( GetProgramLocalParameterdvARB, FgGLContext *, FgGLenum, FgGLuint, FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( GetProgramLocalParameterfvARB, FgGLContext *, FgGLenum, FgGLuint, FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( GetProgramivARB, FgGLContext *, FgGLenum, FgGLenum, FgGLint * ) \
+    FG_GL_FUNCTION_VOID( GetProgramStringARB, FgGLContext *, FgGLenum, FgGLenum, FgGLvoid * ) \
+    FG_GL_FUNCTION_NUM( IsProgramARB, FgGLboolean, FgGLContext *, FgGLuint ) \
 \
     /* GL_ARB_fragment_program_shadow */ \
 \
@@ -1086,10 +1087,10 @@
     /* GL_ARB_framebuffer_sRGB */ \
 \
     /* GL_ARB_geometry_shader4 */ \
-    FG_GL_VOID_FUNCTION( ProgramParameteriARB, ( FgGLuint _1, FgGLenum _2, FgGLint _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( FramebufferTextureARB, ( FgGLenum _1, FgGLenum _2, FgGLuint _3, FgGLint _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( FramebufferTextureLayerARB, ( FgGLenum _1, FgGLenum _2, FgGLuint _3, FgGLint _4, FgGLint _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( FramebufferTextureFaceARB, ( FgGLenum _1, FgGLenum _2, FgGLuint _3, FgGLint _4, FgGLenum _5 ), ( _1, _2, _3, _4, _5 ) ) \
+    FG_GL_FUNCTION_VOID( ProgramParameteriARB, FgGLContext *, FgGLuint, FgGLenum, FgGLint ) \
+    FG_GL_FUNCTION_VOID( FramebufferTextureARB, FgGLContext *, FgGLenum, FgGLenum, FgGLuint, FgGLint ) \
+    FG_GL_FUNCTION_VOID( FramebufferTextureLayerARB, FgGLContext *, FgGLenum, FgGLenum, FgGLuint, FgGLint, FgGLint ) \
+    FG_GL_FUNCTION_VOID( FramebufferTextureFaceARB, FgGLContext *, FgGLenum, FgGLenum, FgGLuint, FgGLint, FgGLenum ) \
 \
     /* GL_ARB_get_program_binary */ \
 \
@@ -1102,45 +1103,45 @@
     /* GL_ARB_half_float_vertex */ \
 \
     /* GL_ARB_imaging */ \
-    FG_GL_VOID_FUNCTION( ColorTable, ( FgGLenum _1, FgGLenum _2, FgGLsizei _3, FgGLenum _4, FgGLenum _5, const FgGLvoid * _6 ), ( _1, _2, _3, _4, _5, _6 ) ) \
-    FG_GL_VOID_FUNCTION( ColorTableParameterfv, ( FgGLenum _1, FgGLenum _2, const FgGLfloat * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( ColorTableParameteriv, ( FgGLenum _1, FgGLenum _2, const FgGLint * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( CopyColorTable, ( FgGLenum _1, FgGLenum _2, FgGLint _3, FgGLint _4, FgGLsizei _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( GetColorTable, ( FgGLenum _1, FgGLenum _2, FgGLenum _3, FgGLvoid * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( GetColorTableParameterfv, ( FgGLenum _1, FgGLenum _2, FgGLfloat * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetColorTableParameteriv, ( FgGLenum _1, FgGLenum _2, FgGLint * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( ColorSubTable, ( FgGLenum _1, FgGLsizei _2, FgGLsizei _3, FgGLenum _4, FgGLenum _5, const FgGLvoid * _6 ), ( _1, _2, _3, _4, _5, _6 ) ) \
-    FG_GL_VOID_FUNCTION( CopyColorSubTable, ( FgGLenum _1, FgGLsizei _2, FgGLint _3, FgGLint _4, FgGLsizei _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( ConvolutionFilter1D, ( FgGLenum _1, FgGLenum _2, FgGLsizei _3, FgGLenum _4, FgGLenum _5, const FgGLvoid * _6 ), ( _1, _2, _3, _4, _5, _6 ) ) \
-    FG_GL_VOID_FUNCTION( ConvolutionFilter2D, ( FgGLenum _1, FgGLenum _2, FgGLsizei _3, FgGLsizei _4, FgGLenum _5, FgGLenum _6, const FgGLvoid * _7 ), ( _1, _2, _3, _4, _5, _6, _7 ) ) \
-    FG_GL_VOID_FUNCTION( ConvolutionParameterf, ( FgGLenum _1, FgGLenum _2, FgGLfloat _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( ConvolutionParameterfv, ( FgGLenum _1, FgGLenum _2, const FgGLfloat * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( ConvolutionParameteri, ( FgGLenum _1, FgGLenum _2, FgGLint _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( ConvolutionParameteriv, ( FgGLenum _1, FgGLenum _2, const FgGLint * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( CopyConvolutionFilter1D, ( FgGLenum _1, FgGLenum _2, FgGLint _3, FgGLint _4, FgGLsizei _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( CopyConvolutionFilter2D, ( FgGLenum _1, FgGLenum _2, FgGLint _3, FgGLint _4, FgGLsizei _5, FgGLsizei _6 ), ( _1, _2, _3, _4, _5, _6 ) ) \
-    FG_GL_VOID_FUNCTION( GetConvolutionFilter, ( FgGLenum _1, FgGLenum _2, FgGLenum _3, FgGLvoid * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( GetConvolutionParameterfv, ( FgGLenum _1, FgGLenum _2, FgGLfloat * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetConvolutionParameteriv, ( FgGLenum _1, FgGLenum _2, FgGLint * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetSeparableFilter, ( FgGLenum _1, FgGLenum _2, FgGLenum _3, FgGLvoid * _4, FgGLvoid * _5, FgGLvoid * _6 ), ( _1, _2, _3, _4, _5, _6 ) ) \
-    FG_GL_VOID_FUNCTION( SeparableFilter2D, ( FgGLenum _1, FgGLenum _2, FgGLsizei _3, FgGLsizei _4, FgGLenum _5, FgGLenum _6, const FgGLvoid * _7, const FgGLvoid * _8 ), ( _1, _2, _3, _4, _5, _6, _7, _8 ) ) \
-    FG_GL_VOID_FUNCTION( GetHistogram, ( FgGLenum _1, FgGLboolean _2, FgGLenum _3, FgGLenum _4, FgGLvoid * _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( GetHistogramParameterfv, ( FgGLenum _1, FgGLenum _2, FgGLfloat * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetHistogramParameteriv, ( FgGLenum _1, FgGLenum _2, FgGLint * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetMinmax, ( FgGLenum _1, FgGLboolean _2, FgGLenum _3, FgGLenum _4, FgGLvoid * _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( GetMinmaxParameterfv, ( FgGLenum _1, FgGLenum _2, FgGLfloat * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetMinmaxParameteriv, ( FgGLenum _1, FgGLenum _2, FgGLint * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( Histogram, ( FgGLenum _1, FgGLsizei _2, FgGLenum _3, FgGLboolean _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( Minmax, ( FgGLenum _1, FgGLenum _2, FgGLboolean _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( ResetHistogram, ( FgGLenum _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( ResetMinmax, ( FgGLenum _1 ), ( _1 ) ) \
+    FG_GL_FUNCTION_VOID( ColorTable, FgGLContext *, FgGLenum, FgGLenum, FgGLsizei, FgGLenum, FgGLenum, const FgGLvoid * ) \
+    FG_GL_FUNCTION_VOID( ColorTableParameterfv, FgGLContext *, FgGLenum, FgGLenum, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( ColorTableParameteriv, FgGLContext *, FgGLenum, FgGLenum, const FgGLint * ) \
+    FG_GL_FUNCTION_VOID( CopyColorTable, FgGLContext *, FgGLenum, FgGLenum, FgGLint, FgGLint, FgGLsizei ) \
+    FG_GL_FUNCTION_VOID( GetColorTable, FgGLContext *, FgGLenum, FgGLenum, FgGLenum, FgGLvoid * ) \
+    FG_GL_FUNCTION_VOID( GetColorTableParameterfv, FgGLContext *, FgGLenum, FgGLenum, FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( GetColorTableParameteriv, FgGLContext *, FgGLenum, FgGLenum, FgGLint * ) \
+    FG_GL_FUNCTION_VOID( ColorSubTable, FgGLContext *, FgGLenum, FgGLsizei, FgGLsizei, FgGLenum, FgGLenum, const FgGLvoid * ) \
+    FG_GL_FUNCTION_VOID( CopyColorSubTable, FgGLContext *, FgGLenum, FgGLsizei, FgGLint, FgGLint, FgGLsizei ) \
+    FG_GL_FUNCTION_VOID( ConvolutionFilter1D, FgGLContext *, FgGLenum, FgGLenum, FgGLsizei, FgGLenum, FgGLenum, const FgGLvoid * ) \
+    FG_GL_FUNCTION_VOID( ConvolutionFilter2D, FgGLContext *, FgGLenum, FgGLenum, FgGLsizei, FgGLsizei, FgGLenum, FgGLenum, const FgGLvoid * ) \
+    FG_GL_FUNCTION_VOID( ConvolutionParameterf, FgGLContext *, FgGLenum, FgGLenum, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( ConvolutionParameterfv, FgGLContext *, FgGLenum, FgGLenum, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( ConvolutionParameteri, FgGLContext *, FgGLenum, FgGLenum, FgGLint ) \
+    FG_GL_FUNCTION_VOID( ConvolutionParameteriv, FgGLContext *, FgGLenum, FgGLenum, const FgGLint * ) \
+    FG_GL_FUNCTION_VOID( CopyConvolutionFilter1D, FgGLContext *, FgGLenum, FgGLenum, FgGLint, FgGLint, FgGLsizei ) \
+    FG_GL_FUNCTION_VOID( CopyConvolutionFilter2D, FgGLContext *, FgGLenum, FgGLenum, FgGLint, FgGLint, FgGLsizei, FgGLsizei ) \
+    FG_GL_FUNCTION_VOID( GetConvolutionFilter, FgGLContext *, FgGLenum, FgGLenum, FgGLenum, FgGLvoid * ) \
+    FG_GL_FUNCTION_VOID( GetConvolutionParameterfv, FgGLContext *, FgGLenum, FgGLenum, FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( GetConvolutionParameteriv, FgGLContext *, FgGLenum, FgGLenum, FgGLint * ) \
+    FG_GL_FUNCTION_VOID( GetSeparableFilter, FgGLContext *, FgGLenum, FgGLenum, FgGLenum, FgGLvoid *, FgGLvoid *, FgGLvoid * ) \
+    FG_GL_FUNCTION_VOID( SeparableFilter2D, FgGLContext *, FgGLenum, FgGLenum, FgGLsizei, FgGLsizei, FgGLenum, FgGLenum, const FgGLvoid *, const FgGLvoid * ) \
+    FG_GL_FUNCTION_VOID( GetHistogram, FgGLContext *, FgGLenum, FgGLboolean, FgGLenum, FgGLenum, FgGLvoid * ) \
+    FG_GL_FUNCTION_VOID( GetHistogramParameterfv, FgGLContext *, FgGLenum, FgGLenum, FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( GetHistogramParameteriv, FgGLContext *, FgGLenum, FgGLenum, FgGLint * ) \
+    FG_GL_FUNCTION_VOID( GetMinmax, FgGLContext *, FgGLenum, FgGLboolean, FgGLenum, FgGLenum, FgGLvoid * ) \
+    FG_GL_FUNCTION_VOID( GetMinmaxParameterfv, FgGLContext *, FgGLenum, FgGLenum, FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( GetMinmaxParameteriv, FgGLContext *, FgGLenum, FgGLenum, FgGLint * ) \
+    FG_GL_FUNCTION_VOID( Histogram, FgGLContext *, FgGLenum, FgGLsizei, FgGLenum, FgGLboolean ) \
+    FG_GL_FUNCTION_VOID( Minmax, FgGLContext *, FgGLenum, FgGLenum, FgGLboolean ) \
+    FG_GL_FUNCTION_VOID( ResetHistogram, FgGLContext *, FgGLenum ) \
+    FG_GL_FUNCTION_VOID( ResetMinmax, FgGLContext *, FgGLenum ) \
 \
     /* GL_ARB_indirect_parameters */ \
-    FG_GL_VOID_FUNCTION( MultiDrawArraysIndirectCountARB, ( FgGLenum _1, FgGLintptr _2, FgGLintptr _3, FgGLsizei _4, FgGLsizei _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( MultiDrawElementsIndirectCountARB, ( FgGLenum _1, FgGLenum _2, FgGLintptr _3, FgGLintptr _4, FgGLsizei _5, FgGLsizei _6 ), ( _1, _2, _3, _4, _5, _6 ) ) \
+    FG_GL_FUNCTION_VOID( MultiDrawArraysIndirectCountARB, FgGLContext *, FgGLenum, FgGLintptr, FgGLintptr, FgGLsizei, FgGLsizei ) \
+    FG_GL_FUNCTION_VOID( MultiDrawElementsIndirectCountARB, FgGLContext *, FgGLenum, FgGLenum, FgGLintptr, FgGLintptr, FgGLsizei, FgGLsizei ) \
 \
     /* GL_ARB_instanced_arrays */ \
-    FG_GL_VOID_FUNCTION( VertexAttribDivisorARB, ( FgGLuint _1, FgGLuint _2 ), ( _1, _2 ) ) \
+    FG_GL_FUNCTION_VOID( VertexAttribDivisorARB, FgGLContext *, FgGLuint, FgGLuint ) \
 \
     /* GL_ARB_internalformat_query */ \
 \
@@ -1153,72 +1154,72 @@
     /* GL_ARB_map_buffer_range */ \
 \
     /* GL_ARB_matrix_palette */ \
-    FG_GL_VOID_FUNCTION( CurrentPaletteMatrixARB, ( FgGLint _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( MatrixIndexubvARB, ( FgGLint _1, const FgGLubyte * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( MatrixIndexusvARB, ( FgGLint _1, const FgGLushort * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( MatrixIndexuivARB, ( FgGLint _1, const FgGLuint * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( MatrixIndexPointerARB, ( FgGLint _1, FgGLenum _2, FgGLsizei _3, const FgGLvoid * _4 ), ( _1, _2, _3, _4 ) ) \
+    FG_GL_FUNCTION_VOID( CurrentPaletteMatrixARB, FgGLContext *, FgGLint ) \
+    FG_GL_FUNCTION_VOID( MatrixIndexubvARB, FgGLContext *, FgGLint, const FgGLubyte * ) \
+    FG_GL_FUNCTION_VOID( MatrixIndexusvARB, FgGLContext *, FgGLint, const FgGLushort * ) \
+    FG_GL_FUNCTION_VOID( MatrixIndexuivARB, FgGLContext *, FgGLint, const FgGLuint * ) \
+    FG_GL_FUNCTION_VOID( MatrixIndexPointerARB, FgGLContext *, FgGLint, FgGLenum, FgGLsizei, const FgGLvoid * ) \
 \
     /* GL_ARB_multi_bind */ \
 \
     /* GL_ARB_multi_draw_indirect */ \
 \
     /* GL_ARB_multisample */ \
-    FG_GL_VOID_FUNCTION( SampleCoverageARB, ( FgGLfloat _1, FgGLboolean _2 ), ( _1, _2 ) ) \
+    FG_GL_FUNCTION_VOID( SampleCoverageARB, FgGLContext *, FgGLfloat, FgGLboolean ) \
 \
     /* GL_ARB_multitexture */ \
-    FG_GL_VOID_FUNCTION( ActiveTextureARB, ( FgGLenum _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( ClientActiveTextureARB, ( FgGLenum _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( MultiTexCoord1dARB, ( FgGLenum _1, FgGLdouble _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( MultiTexCoord1dvARB, ( FgGLenum _1, const FgGLdouble * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( MultiTexCoord1fARB, ( FgGLenum _1, FgGLfloat _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( MultiTexCoord1fvARB, ( FgGLenum _1, const FgGLfloat * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( MultiTexCoord1iARB, ( FgGLenum _1, FgGLint _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( MultiTexCoord1ivARB, ( FgGLenum _1, const FgGLint * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( MultiTexCoord1sARB, ( FgGLenum _1, FgGLshort _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( MultiTexCoord1svARB, ( FgGLenum _1, const FgGLshort * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( MultiTexCoord2dARB, ( FgGLenum _1, FgGLdouble _2, FgGLdouble _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( MultiTexCoord2dvARB, ( FgGLenum _1, const FgGLdouble * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( MultiTexCoord2fARB, ( FgGLenum _1, FgGLfloat _2, FgGLfloat _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( MultiTexCoord2fvARB, ( FgGLenum _1, const FgGLfloat * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( MultiTexCoord2iARB, ( FgGLenum _1, FgGLint _2, FgGLint _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( MultiTexCoord2ivARB, ( FgGLenum _1, const FgGLint * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( MultiTexCoord2sARB, ( FgGLenum _1, FgGLshort _2, FgGLshort _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( MultiTexCoord2svARB, ( FgGLenum _1, const FgGLshort * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( MultiTexCoord3dARB, ( FgGLenum _1, FgGLdouble _2, FgGLdouble _3, FgGLdouble _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( MultiTexCoord3dvARB, ( FgGLenum _1, const FgGLdouble * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( MultiTexCoord3fARB, ( FgGLenum _1, FgGLfloat _2, FgGLfloat _3, FgGLfloat _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( MultiTexCoord3fvARB, ( FgGLenum _1, const FgGLfloat * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( MultiTexCoord3iARB, ( FgGLenum _1, FgGLint _2, FgGLint _3, FgGLint _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( MultiTexCoord3ivARB, ( FgGLenum _1, const FgGLint * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( MultiTexCoord3sARB, ( FgGLenum _1, FgGLshort _2, FgGLshort _3, FgGLshort _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( MultiTexCoord3svARB, ( FgGLenum _1, const FgGLshort * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( MultiTexCoord4dARB, ( FgGLenum _1, FgGLdouble _2, FgGLdouble _3, FgGLdouble _4, FgGLdouble _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( MultiTexCoord4dvARB, ( FgGLenum _1, const FgGLdouble * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( MultiTexCoord4fARB, ( FgGLenum _1, FgGLfloat _2, FgGLfloat _3, FgGLfloat _4, FgGLfloat _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( MultiTexCoord4fvARB, ( FgGLenum _1, const FgGLfloat * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( MultiTexCoord4iARB, ( FgGLenum _1, FgGLint _2, FgGLint _3, FgGLint _4, FgGLint _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( MultiTexCoord4ivARB, ( FgGLenum _1, const FgGLint * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( MultiTexCoord4sARB, ( FgGLenum _1, FgGLshort _2, FgGLshort _3, FgGLshort _4, FgGLshort _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( MultiTexCoord4svARB, ( FgGLenum _1, const FgGLshort * _2 ), ( _1, _2 ) ) \
+    FG_GL_FUNCTION_VOID( ActiveTextureARB, FgGLContext *, FgGLenum ) \
+    FG_GL_FUNCTION_VOID( ClientActiveTextureARB, FgGLContext *, FgGLenum ) \
+    FG_GL_FUNCTION_VOID( MultiTexCoord1dARB, FgGLContext *, FgGLenum, FgGLdouble ) \
+    FG_GL_FUNCTION_VOID( MultiTexCoord1dvARB, FgGLContext *, FgGLenum, const FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( MultiTexCoord1fARB, FgGLContext *, FgGLenum, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( MultiTexCoord1fvARB, FgGLContext *, FgGLenum, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( MultiTexCoord1iARB, FgGLContext *, FgGLenum, FgGLint ) \
+    FG_GL_FUNCTION_VOID( MultiTexCoord1ivARB, FgGLContext *, FgGLenum, const FgGLint * ) \
+    FG_GL_FUNCTION_VOID( MultiTexCoord1sARB, FgGLContext *, FgGLenum, FgGLshort ) \
+    FG_GL_FUNCTION_VOID( MultiTexCoord1svARB, FgGLContext *, FgGLenum, const FgGLshort * ) \
+    FG_GL_FUNCTION_VOID( MultiTexCoord2dARB, FgGLContext *, FgGLenum, FgGLdouble, FgGLdouble ) \
+    FG_GL_FUNCTION_VOID( MultiTexCoord2dvARB, FgGLContext *, FgGLenum, const FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( MultiTexCoord2fARB, FgGLContext *, FgGLenum, FgGLfloat, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( MultiTexCoord2fvARB, FgGLContext *, FgGLenum, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( MultiTexCoord2iARB, FgGLContext *, FgGLenum, FgGLint, FgGLint ) \
+    FG_GL_FUNCTION_VOID( MultiTexCoord2ivARB, FgGLContext *, FgGLenum, const FgGLint * ) \
+    FG_GL_FUNCTION_VOID( MultiTexCoord2sARB, FgGLContext *, FgGLenum, FgGLshort, FgGLshort ) \
+    FG_GL_FUNCTION_VOID( MultiTexCoord2svARB, FgGLContext *, FgGLenum, const FgGLshort * ) \
+    FG_GL_FUNCTION_VOID( MultiTexCoord3dARB, FgGLContext *, FgGLenum, FgGLdouble, FgGLdouble, FgGLdouble ) \
+    FG_GL_FUNCTION_VOID( MultiTexCoord3dvARB, FgGLContext *, FgGLenum, const FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( MultiTexCoord3fARB, FgGLContext *, FgGLenum, FgGLfloat, FgGLfloat, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( MultiTexCoord3fvARB, FgGLContext *, FgGLenum, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( MultiTexCoord3iARB, FgGLContext *, FgGLenum, FgGLint, FgGLint, FgGLint ) \
+    FG_GL_FUNCTION_VOID( MultiTexCoord3ivARB, FgGLContext *, FgGLenum, const FgGLint * ) \
+    FG_GL_FUNCTION_VOID( MultiTexCoord3sARB, FgGLContext *, FgGLenum, FgGLshort, FgGLshort, FgGLshort ) \
+    FG_GL_FUNCTION_VOID( MultiTexCoord3svARB, FgGLContext *, FgGLenum, const FgGLshort * ) \
+    FG_GL_FUNCTION_VOID( MultiTexCoord4dARB, FgGLContext *, FgGLenum, FgGLdouble, FgGLdouble, FgGLdouble, FgGLdouble ) \
+    FG_GL_FUNCTION_VOID( MultiTexCoord4dvARB, FgGLContext *, FgGLenum, const FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( MultiTexCoord4fARB, FgGLContext *, FgGLenum, FgGLfloat, FgGLfloat, FgGLfloat, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( MultiTexCoord4fvARB, FgGLContext *, FgGLenum, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( MultiTexCoord4iARB, FgGLContext *, FgGLenum, FgGLint, FgGLint, FgGLint, FgGLint ) \
+    FG_GL_FUNCTION_VOID( MultiTexCoord4ivARB, FgGLContext *, FgGLenum, const FgGLint * ) \
+    FG_GL_FUNCTION_VOID( MultiTexCoord4sARB, FgGLContext *, FgGLenum, FgGLshort, FgGLshort, FgGLshort, FgGLshort ) \
+    FG_GL_FUNCTION_VOID( MultiTexCoord4svARB, FgGLContext *, FgGLenum, const FgGLshort * ) \
 \
     /* GL_ARB_occlusion_query */ \
-    FG_GL_VOID_FUNCTION( GenQueriesARB, ( FgGLsizei _1, FgGLuint * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( DeleteQueriesARB, ( FgGLsizei _1, const FgGLuint * _2 ), ( _1, _2 ) ) \
-    FG_GL_FUNCTION( 0, FgGLboolean, IsQueryARB, ( FgGLuint _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( BeginQueryARB, ( FgGLenum _1, FgGLuint _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( EndQueryARB, ( FgGLenum _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( GetQueryivARB, ( FgGLenum _1, FgGLenum _2, FgGLint * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetQueryObjectivARB, ( FgGLuint _1, FgGLenum _2, FgGLint * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetQueryObjectuivARB, ( FgGLuint _1, FgGLenum _2, FgGLuint * _3 ), ( _1, _2, _3 ) ) \
+    FG_GL_FUNCTION_VOID( GenQueriesARB, FgGLContext *, FgGLsizei, FgGLuint * ) \
+    FG_GL_FUNCTION_VOID( DeleteQueriesARB, FgGLContext *, FgGLsizei, const FgGLuint * ) \
+    FG_GL_FUNCTION_NUM( IsQueryARB, FgGLboolean, FgGLContext *, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( BeginQueryARB, FgGLContext *, FgGLenum, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( EndQueryARB, FgGLContext *, FgGLenum ) \
+    FG_GL_FUNCTION_VOID( GetQueryivARB, FgGLContext *, FgGLenum, FgGLenum, FgGLint * ) \
+    FG_GL_FUNCTION_VOID( GetQueryObjectivARB, FgGLContext *, FgGLuint, FgGLenum, FgGLint * ) \
+    FG_GL_FUNCTION_VOID( GetQueryObjectuivARB, FgGLContext *, FgGLuint, FgGLenum, FgGLuint * ) \
 \
     /* GL_ARB_occlusion_query2 */ \
 \
     /* GL_ARB_pixel_buffer_object */ \
 \
     /* GL_ARB_point_parameters */ \
-    FG_GL_VOID_FUNCTION( PointParameterfARB, ( FgGLenum _1, FgGLfloat _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( PointParameterfvARB, ( FgGLenum _1, const FgGLfloat * _2 ), ( _1, _2 ) ) \
+    FG_GL_FUNCTION_VOID( PointParameterfARB, FgGLContext *, FgGLenum, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( PointParameterfvARB, FgGLContext *, FgGLenum, const FgGLfloat * ) \
 \
     /* GL_ARB_point_sprite */ \
 \
@@ -1231,31 +1232,31 @@
     /* GL_ARB_robust_buffer_access_behavior */ \
 \
     /* GL_ARB_robustness */ \
-    FG_GL_FUNCTION( 0, FgGLenum, GetGraphicsResetStatusARB, ( ), ( ) ) \
-    FG_GL_VOID_FUNCTION( GetnTexImageARB, ( FgGLenum _1, FgGLint _2, FgGLenum _3, FgGLenum _4, FgGLsizei _5, FgGLvoid * _6 ), ( _1, _2, _3, _4, _5, _6 ) ) \
-    FG_GL_VOID_FUNCTION( ReadnPixelsARB, ( FgGLint _1, FgGLint _2, FgGLsizei _3, FgGLsizei _4, FgGLenum _5, FgGLenum _6, FgGLsizei _7, FgGLvoid * _8 ), ( _1, _2, _3, _4, _5, _6, _7, _8 ) ) \
-    FG_GL_VOID_FUNCTION( GetnCompressedTexImageARB, ( FgGLenum _1, FgGLint _2, FgGLsizei _3, FgGLvoid * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( GetnUniformfvARB, ( FgGLuint _1, FgGLint _2, FgGLsizei _3, FgGLfloat * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( GetnUniformivARB, ( FgGLuint _1, FgGLint _2, FgGLsizei _3, FgGLint * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( GetnUniformuivARB, ( FgGLuint _1, FgGLint _2, FgGLsizei _3, FgGLuint * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( GetnUniformdvARB, ( FgGLuint _1, FgGLint _2, FgGLsizei _3, FgGLdouble * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( GetnMapdvARB, ( FgGLenum _1, FgGLenum _2, FgGLsizei _3, FgGLdouble * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( GetnMapfvARB, ( FgGLenum _1, FgGLenum _2, FgGLsizei _3, FgGLfloat * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( GetnMapivARB, ( FgGLenum _1, FgGLenum _2, FgGLsizei _3, FgGLint * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( GetnPixelMapfvARB, ( FgGLenum _1, FgGLsizei _2, FgGLfloat * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetnPixelMapuivARB, ( FgGLenum _1, FgGLsizei _2, FgGLuint * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetnPixelMapusvARB, ( FgGLenum _1, FgGLsizei _2, FgGLushort * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetnPolygonStippleARB, ( FgGLsizei _1, FgGLubyte * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( GetnColorTableARB, ( FgGLenum _1, FgGLenum _2, FgGLenum _3, FgGLsizei _4, FgGLvoid * _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( GetnConvolutionFilterARB, ( FgGLenum _1, FgGLenum _2, FgGLenum _3, FgGLsizei _4, FgGLvoid * _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( GetnSeparableFilterARB, ( FgGLenum _1, FgGLenum _2, FgGLenum _3, FgGLsizei _4, FgGLvoid * _5, FgGLsizei _6, FgGLvoid * _7, FgGLvoid * _8 ), ( _1, _2, _3, _4, _5, _6, _7, _8 ) ) \
-    FG_GL_VOID_FUNCTION( GetnHistogramARB, ( FgGLenum _1, FgGLboolean _2, FgGLenum _3, FgGLenum _4, FgGLsizei _5, FgGLvoid * _6 ), ( _1, _2, _3, _4, _5, _6 ) ) \
-    FG_GL_VOID_FUNCTION( GetnMinmaxARB, ( FgGLenum _1, FgGLboolean _2, FgGLenum _3, FgGLenum _4, FgGLsizei _5, FgGLvoid * _6 ), ( _1, _2, _3, _4, _5, _6 ) ) \
+    FG_GL_FUNCTION_NUM( GetGraphicsResetStatusARB, FgGLenum, FgGLContext * ) \
+    FG_GL_FUNCTION_VOID( GetnTexImageARB, FgGLContext *, FgGLenum, FgGLint, FgGLenum, FgGLenum, FgGLsizei, FgGLvoid * ) \
+    FG_GL_FUNCTION_VOID( ReadnPixelsARB, FgGLContext *, FgGLint, FgGLint, FgGLsizei, FgGLsizei, FgGLenum, FgGLenum, FgGLsizei, FgGLvoid * ) \
+    FG_GL_FUNCTION_VOID( GetnCompressedTexImageARB, FgGLContext *, FgGLenum, FgGLint, FgGLsizei, FgGLvoid * ) \
+    FG_GL_FUNCTION_VOID( GetnUniformfvARB, FgGLContext *, FgGLuint, FgGLint, FgGLsizei, FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( GetnUniformivARB, FgGLContext *, FgGLuint, FgGLint, FgGLsizei, FgGLint * ) \
+    FG_GL_FUNCTION_VOID( GetnUniformuivARB, FgGLContext *, FgGLuint, FgGLint, FgGLsizei, FgGLuint * ) \
+    FG_GL_FUNCTION_VOID( GetnUniformdvARB, FgGLContext *, FgGLuint, FgGLint, FgGLsizei, FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( GetnMapdvARB, FgGLContext *, FgGLenum, FgGLenum, FgGLsizei, FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( GetnMapfvARB, FgGLContext *, FgGLenum, FgGLenum, FgGLsizei, FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( GetnMapivARB, FgGLContext *, FgGLenum, FgGLenum, FgGLsizei, FgGLint * ) \
+    FG_GL_FUNCTION_VOID( GetnPixelMapfvARB, FgGLContext *, FgGLenum, FgGLsizei, FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( GetnPixelMapuivARB, FgGLContext *, FgGLenum, FgGLsizei, FgGLuint * ) \
+    FG_GL_FUNCTION_VOID( GetnPixelMapusvARB, FgGLContext *, FgGLenum, FgGLsizei, FgGLushort * ) \
+    FG_GL_FUNCTION_VOID( GetnPolygonStippleARB, FgGLContext *, FgGLsizei, FgGLubyte * ) \
+    FG_GL_FUNCTION_VOID( GetnColorTableARB, FgGLContext *, FgGLenum, FgGLenum, FgGLenum, FgGLsizei, FgGLvoid * ) \
+    FG_GL_FUNCTION_VOID( GetnConvolutionFilterARB, FgGLContext *, FgGLenum, FgGLenum, FgGLenum, FgGLsizei, FgGLvoid * ) \
+    FG_GL_FUNCTION_VOID( GetnSeparableFilterARB, FgGLContext *, FgGLenum, FgGLenum, FgGLenum, FgGLsizei, FgGLvoid *, FgGLsizei, FgGLvoid *, FgGLvoid * ) \
+    FG_GL_FUNCTION_VOID( GetnHistogramARB, FgGLContext *, FgGLenum, FgGLboolean, FgGLenum, FgGLenum, FgGLsizei, FgGLvoid * ) \
+    FG_GL_FUNCTION_VOID( GetnMinmaxARB, FgGLContext *, FgGLenum, FgGLboolean, FgGLenum, FgGLenum, FgGLsizei, FgGLvoid * ) \
 \
     /* GL_ARB_robustness_isolation */ \
 \
     /* GL_ARB_sample_shading */ \
-    FG_GL_VOID_FUNCTION( MinSampleShadingARB, ( FgGLfloat _1 ), ( _1 ) ) \
+    FG_GL_FUNCTION_VOID( MinSampleShadingARB, FgGLContext *, FgGLfloat ) \
 \
     /* GL_ARB_sampler_objects */ \
 \
@@ -1278,45 +1279,45 @@
     /* GL_ARB_shader_image_size */ \
 \
     /* GL_ARB_shader_objects */ \
-    FG_GL_VOID_FUNCTION( DeleteObjectARB, ( FgGLhandleARB _1 ), ( _1 ) ) \
-    FG_GL_FUNCTION( 0, FgGLhandleARB, GetHandleARB, ( FgGLenum _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( DetachObjectARB, ( FgGLhandleARB _1, FgGLhandleARB _2 ), ( _1, _2 ) ) \
-    FG_GL_FUNCTION( 0, FgGLhandleARB, CreateShaderObjectARB, ( FgGLenum _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( ShaderSourceARB, ( FgGLhandleARB _1, FgGLsizei _2, const FgGLcharARB ** _3, const FgGLint * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( CompileShaderARB, ( FgGLhandleARB _1 ), ( _1 ) ) \
-    FG_GL_FUNCTION( 0, FgGLhandleARB, CreateProgramObjectARB, ( ), ( ) ) \
-    FG_GL_VOID_FUNCTION( AttachObjectARB, ( FgGLhandleARB _1, FgGLhandleARB _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( LinkProgramARB, ( FgGLhandleARB _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( UseProgramObjectARB, ( FgGLhandleARB _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( ValidateProgramARB, ( FgGLhandleARB _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( Uniform1fARB, ( FgGLint _1, FgGLfloat _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( Uniform2fARB, ( FgGLint _1, FgGLfloat _2, FgGLfloat _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( Uniform3fARB, ( FgGLint _1, FgGLfloat _2, FgGLfloat _3, FgGLfloat _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( Uniform4fARB, ( FgGLint _1, FgGLfloat _2, FgGLfloat _3, FgGLfloat _4, FgGLfloat _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( Uniform1iARB, ( FgGLint _1, FgGLint _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( Uniform2iARB, ( FgGLint _1, FgGLint _2, FgGLint _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( Uniform3iARB, ( FgGLint _1, FgGLint _2, FgGLint _3, FgGLint _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( Uniform4iARB, ( FgGLint _1, FgGLint _2, FgGLint _3, FgGLint _4, FgGLint _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( Uniform1fvARB, ( FgGLint _1, FgGLsizei _2, const FgGLfloat * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( Uniform2fvARB, ( FgGLint _1, FgGLsizei _2, const FgGLfloat * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( Uniform3fvARB, ( FgGLint _1, FgGLsizei _2, const FgGLfloat * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( Uniform4fvARB, ( FgGLint _1, FgGLsizei _2, const FgGLfloat * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( Uniform1ivARB, ( FgGLint _1, FgGLsizei _2, const FgGLint * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( Uniform2ivARB, ( FgGLint _1, FgGLsizei _2, const FgGLint * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( Uniform3ivARB, ( FgGLint _1, FgGLsizei _2, const FgGLint * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( Uniform4ivARB, ( FgGLint _1, FgGLsizei _2, const FgGLint * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( UniformMatrix2fvARB, ( FgGLint _1, FgGLsizei _2, FgGLboolean _3, const FgGLfloat * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( UniformMatrix3fvARB, ( FgGLint _1, FgGLsizei _2, FgGLboolean _3, const FgGLfloat * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( UniformMatrix4fvARB, ( FgGLint _1, FgGLsizei _2, FgGLboolean _3, const FgGLfloat * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( GetObjectParameterfvARB, ( FgGLhandleARB _1, FgGLenum _2, FgGLfloat * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetObjectParameterivARB, ( FgGLhandleARB _1, FgGLenum _2, FgGLint * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetInfoLogARB, ( FgGLhandleARB _1, FgGLsizei _2, FgGLsizei * _3, FgGLcharARB * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( GetAttachedObjectsARB, ( FgGLhandleARB _1, FgGLsizei _2, FgGLsizei * _3, FgGLhandleARB * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_FUNCTION( 0, FgGLint, GetUniformLocationARB, ( FgGLhandleARB _1, const FgGLcharARB * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( GetActiveUniformARB, ( FgGLhandleARB _1, FgGLuint _2, FgGLsizei _3, FgGLsizei * _4, FgGLint * _5, FgGLenum * _6, FgGLcharARB * _7 ), ( _1, _2, _3, _4, _5, _6, _7 ) ) \
-    FG_GL_VOID_FUNCTION( GetUniformfvARB, ( FgGLhandleARB _1, FgGLint _2, FgGLfloat * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetUniformivARB, ( FgGLhandleARB _1, FgGLint _2, FgGLint * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetShaderSourceARB, ( FgGLhandleARB _1, FgGLsizei _2, FgGLsizei * _3, FgGLcharARB * _4 ), ( _1, _2, _3, _4 ) ) \
+    FG_GL_FUNCTION_VOID( DeleteObjectARB, FgGLContext *, FgGLhandleARB ) \
+    FG_GL_FUNCTION_NUM( GetHandleARB, FgGLhandleARB, FgGLContext *, FgGLenum ) \
+    FG_GL_FUNCTION_VOID( DetachObjectARB, FgGLContext *, FgGLhandleARB, FgGLhandleARB ) \
+    FG_GL_FUNCTION_NUM( CreateShaderObjectARB, FgGLhandleARB, FgGLContext *, FgGLenum ) \
+    FG_GL_FUNCTION_VOID( ShaderSourceARB, FgGLContext *, FgGLhandleARB, FgGLsizei, const FgGLcharARB **, const FgGLint * ) \
+    FG_GL_FUNCTION_VOID( CompileShaderARB, FgGLContext *, FgGLhandleARB ) \
+    FG_GL_FUNCTION_NUM( CreateProgramObjectARB, FgGLhandleARB, FgGLContext * ) \
+    FG_GL_FUNCTION_VOID( AttachObjectARB, FgGLContext *, FgGLhandleARB, FgGLhandleARB ) \
+    FG_GL_FUNCTION_VOID( LinkProgramARB, FgGLContext *, FgGLhandleARB ) \
+    FG_GL_FUNCTION_VOID( UseProgramObjectARB, FgGLContext *, FgGLhandleARB ) \
+    FG_GL_FUNCTION_VOID( ValidateProgramARB, FgGLContext *, FgGLhandleARB ) \
+    FG_GL_FUNCTION_VOID( Uniform1fARB, FgGLContext *, FgGLint, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( Uniform2fARB, FgGLContext *, FgGLint, FgGLfloat, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( Uniform3fARB, FgGLContext *, FgGLint, FgGLfloat, FgGLfloat, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( Uniform4fARB, FgGLContext *, FgGLint, FgGLfloat, FgGLfloat, FgGLfloat, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( Uniform1iARB, FgGLContext *, FgGLint, FgGLint ) \
+    FG_GL_FUNCTION_VOID( Uniform2iARB, FgGLContext *, FgGLint, FgGLint, FgGLint ) \
+    FG_GL_FUNCTION_VOID( Uniform3iARB, FgGLContext *, FgGLint, FgGLint, FgGLint, FgGLint ) \
+    FG_GL_FUNCTION_VOID( Uniform4iARB, FgGLContext *, FgGLint, FgGLint, FgGLint, FgGLint, FgGLint ) \
+    FG_GL_FUNCTION_VOID( Uniform1fvARB, FgGLContext *, FgGLint, FgGLsizei, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( Uniform2fvARB, FgGLContext *, FgGLint, FgGLsizei, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( Uniform3fvARB, FgGLContext *, FgGLint, FgGLsizei, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( Uniform4fvARB, FgGLContext *, FgGLint, FgGLsizei, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( Uniform1ivARB, FgGLContext *, FgGLint, FgGLsizei, const FgGLint * ) \
+    FG_GL_FUNCTION_VOID( Uniform2ivARB, FgGLContext *, FgGLint, FgGLsizei, const FgGLint * ) \
+    FG_GL_FUNCTION_VOID( Uniform3ivARB, FgGLContext *, FgGLint, FgGLsizei, const FgGLint * ) \
+    FG_GL_FUNCTION_VOID( Uniform4ivARB, FgGLContext *, FgGLint, FgGLsizei, const FgGLint * ) \
+    FG_GL_FUNCTION_VOID( UniformMatrix2fvARB, FgGLContext *, FgGLint, FgGLsizei, FgGLboolean, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( UniformMatrix3fvARB, FgGLContext *, FgGLint, FgGLsizei, FgGLboolean, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( UniformMatrix4fvARB, FgGLContext *, FgGLint, FgGLsizei, FgGLboolean, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( GetObjectParameterfvARB, FgGLContext *, FgGLhandleARB, FgGLenum, FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( GetObjectParameterivARB, FgGLContext *, FgGLhandleARB, FgGLenum, FgGLint * ) \
+    FG_GL_FUNCTION_VOID( GetInfoLogARB, FgGLContext *, FgGLhandleARB, FgGLsizei, FgGLsizei *, FgGLcharARB * ) \
+    FG_GL_FUNCTION_VOID( GetAttachedObjectsARB, FgGLContext *, FgGLhandleARB, FgGLsizei, FgGLsizei *, FgGLhandleARB * ) \
+    FG_GL_FUNCTION_NUM( GetUniformLocationARB, FgGLint, FgGLContext *, FgGLhandleARB, const FgGLcharARB * ) \
+    FG_GL_FUNCTION_VOID( GetActiveUniformARB, FgGLContext *, FgGLhandleARB, FgGLuint, FgGLsizei, FgGLsizei *, FgGLint *, FgGLenum *, FgGLcharARB * ) \
+    FG_GL_FUNCTION_VOID( GetUniformfvARB, FgGLContext *, FgGLhandleARB, FgGLint, FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( GetUniformivARB, FgGLContext *, FgGLhandleARB, FgGLint, FgGLint * ) \
+    FG_GL_FUNCTION_VOID( GetShaderSourceARB, FgGLContext *, FgGLhandleARB, FgGLsizei, FgGLsizei *, FgGLcharARB * ) \
 \
     /* GL_ARB_shader_precision */ \
 \
@@ -1333,12 +1334,12 @@
     /* GL_ARB_shading_language_420pack */ \
 \
     /* GL_ARB_shading_language_include */ \
-    FG_GL_VOID_FUNCTION( NamedStringARB, ( FgGLenum _1, FgGLint _2, const FgGLchar * _3, FgGLint _4, const FgGLchar * _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( DeleteNamedStringARB, ( FgGLint _1, const FgGLchar * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( CompileShaderIncludeARB, ( FgGLuint _1, FgGLsizei _2, const FgGLchar *const* _3, const FgGLint * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_FUNCTION( 0, FgGLboolean, IsNamedStringARB, ( FgGLint _1, const FgGLchar * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( GetNamedStringARB, ( FgGLint _1, const FgGLchar * _2, FgGLsizei _3, FgGLint * _4, FgGLchar * _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( GetNamedStringivARB, ( FgGLint _1, const FgGLchar * _2, FgGLenum _3, FgGLint * _4 ), ( _1, _2, _3, _4 ) ) \
+    FG_GL_FUNCTION_VOID( NamedStringARB, FgGLContext *, FgGLenum, FgGLint, const FgGLchar *, FgGLint, const FgGLchar * ) \
+    FG_GL_FUNCTION_VOID( DeleteNamedStringARB, FgGLContext *, FgGLint, const FgGLchar * ) \
+    FG_GL_FUNCTION_VOID( CompileShaderIncludeARB, FgGLContext *, FgGLuint, FgGLsizei, const FgGLchar *const*, const FgGLint * ) \
+    FG_GL_FUNCTION_NUM( IsNamedStringARB, FgGLboolean, FgGLContext *, FgGLint, const FgGLchar * ) \
+    FG_GL_FUNCTION_VOID( GetNamedStringARB, FgGLContext *, FgGLint, const FgGLchar *, FgGLsizei, FgGLint *, FgGLchar * ) \
+    FG_GL_FUNCTION_VOID( GetNamedStringivARB, FgGLContext *, FgGLint, const FgGLchar *, FgGLenum, FgGLint * ) \
 \
     /* GL_ARB_shading_language_packing */ \
 \
@@ -1347,7 +1348,7 @@
     /* GL_ARB_shadow_ambient */ \
 \
     /* GL_ARB_sparse_texture */ \
-    FG_GL_VOID_FUNCTION( TexPageCommitmentARB, ( FgGLenum _1, FgGLint _2, FgGLint _3, FgGLint _4, FgGLint _5, FgGLsizei _6, FgGLsizei _7, FgGLsizei _8, FgGLboolean _9 ), ( _1, _2, _3, _4, _5, _6, _7, _8, _9 ) ) \
+    FG_GL_FUNCTION_VOID( TexPageCommitmentARB, FgGLContext *, FgGLenum, FgGLint, FgGLint, FgGLint, FgGLint, FgGLsizei, FgGLsizei, FgGLsizei, FgGLboolean ) \
 \
     /* GL_ARB_stencil_texturing */ \
 \
@@ -1358,20 +1359,20 @@
     /* GL_ARB_texture_border_clamp */ \
 \
     /* GL_ARB_texture_buffer_object */ \
-    FG_GL_VOID_FUNCTION( TexBufferARB, ( FgGLenum _1, FgGLenum _2, FgGLuint _3 ), ( _1, _2, _3 ) ) \
+    FG_GL_FUNCTION_VOID( TexBufferARB, FgGLContext *, FgGLenum, FgGLenum, FgGLuint ) \
 \
     /* GL_ARB_texture_buffer_object_rgb32 */ \
 \
     /* GL_ARB_texture_buffer_range */ \
 \
     /* GL_ARB_texture_compression */ \
-    FG_GL_VOID_FUNCTION( CompressedTexImage3DARB, ( FgGLenum _1, FgGLint _2, FgGLenum _3, FgGLsizei _4, FgGLsizei _5, FgGLsizei _6, FgGLint _7, FgGLsizei _8, const FgGLvoid * _9 ), ( _1, _2, _3, _4, _5, _6, _7, _8, _9 ) ) \
-    FG_GL_VOID_FUNCTION( CompressedTexImage2DARB, ( FgGLenum _1, FgGLint _2, FgGLenum _3, FgGLsizei _4, FgGLsizei _5, FgGLint _6, FgGLsizei _7, const FgGLvoid * _8 ), ( _1, _2, _3, _4, _5, _6, _7, _8 ) ) \
-    FG_GL_VOID_FUNCTION( CompressedTexImage1DARB, ( FgGLenum _1, FgGLint _2, FgGLenum _3, FgGLsizei _4, FgGLint _5, FgGLsizei _6, const FgGLvoid * _7 ), ( _1, _2, _3, _4, _5, _6, _7 ) ) \
-    FG_GL_VOID_FUNCTION( CompressedTexSubImage3DARB, ( FgGLenum _1, FgGLint _2, FgGLint _3, FgGLint _4, FgGLint _5, FgGLsizei _6, FgGLsizei _7, FgGLsizei _8, FgGLenum _9, FgGLsizei _10, const FgGLvoid * _11 ), ( _1, _2, _3, _4, _5, _6, _7, _8, _9, _10, _11 ) ) \
-    FG_GL_VOID_FUNCTION( CompressedTexSubImage2DARB, ( FgGLenum _1, FgGLint _2, FgGLint _3, FgGLint _4, FgGLsizei _5, FgGLsizei _6, FgGLenum _7, FgGLsizei _8, const FgGLvoid * _9 ), ( _1, _2, _3, _4, _5, _6, _7, _8, _9 ) ) \
-    FG_GL_VOID_FUNCTION( CompressedTexSubImage1DARB, ( FgGLenum _1, FgGLint _2, FgGLint _3, FgGLsizei _4, FgGLenum _5, FgGLsizei _6, const FgGLvoid * _7 ), ( _1, _2, _3, _4, _5, _6, _7 ) ) \
-    FG_GL_VOID_FUNCTION( GetCompressedTexImageARB, ( FgGLenum _1, FgGLint _2, FgGLvoid * _3 ), ( _1, _2, _3 ) ) \
+    FG_GL_FUNCTION_VOID( CompressedTexImage3DARB, FgGLContext *, FgGLenum, FgGLint, FgGLenum, FgGLsizei, FgGLsizei, FgGLsizei, FgGLint, FgGLsizei, const FgGLvoid * ) \
+    FG_GL_FUNCTION_VOID( CompressedTexImage2DARB, FgGLContext *, FgGLenum, FgGLint, FgGLenum, FgGLsizei, FgGLsizei, FgGLint, FgGLsizei, const FgGLvoid * ) \
+    FG_GL_FUNCTION_VOID( CompressedTexImage1DARB, FgGLContext *, FgGLenum, FgGLint, FgGLenum, FgGLsizei, FgGLint, FgGLsizei, const FgGLvoid * ) \
+    FG_GL_FUNCTION_VOID( CompressedTexSubImage3DARB, FgGLContext *, FgGLenum, FgGLint, FgGLint, FgGLint, FgGLint, FgGLsizei, FgGLsizei, FgGLsizei, FgGLenum, FgGLsizei, const FgGLvoid * ) \
+    FG_GL_FUNCTION_VOID( CompressedTexSubImage2DARB, FgGLContext *, FgGLenum, FgGLint, FgGLint, FgGLint, FgGLsizei, FgGLsizei, FgGLenum, FgGLsizei, const FgGLvoid * ) \
+    FG_GL_FUNCTION_VOID( CompressedTexSubImage1DARB, FgGLContext *, FgGLenum, FgGLint, FgGLint, FgGLsizei, FgGLenum, FgGLsizei, const FgGLvoid * ) \
+    FG_GL_FUNCTION_VOID( GetCompressedTexImageARB, FgGLContext *, FgGLenum, FgGLint, FgGLvoid * ) \
 \
     /* GL_ARB_texture_compression_bptc */ \
 \
@@ -1430,10 +1431,10 @@
     /* GL_ARB_transform_feedback_instanced */ \
 \
     /* GL_ARB_transpose_matrix */ \
-    FG_GL_VOID_FUNCTION( LoadTransposeMatrixfARB, ( const FgGLfloat * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( LoadTransposeMatrixdARB, ( const FgGLdouble * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( MultTransposeMatrixfARB, ( const FgGLfloat * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( MultTransposeMatrixdARB, ( const FgGLdouble * _1 ), ( _1 ) ) \
+    FG_GL_FUNCTION_VOID( LoadTransposeMatrixfARB, FgGLContext *, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( LoadTransposeMatrixdARB, FgGLContext *, const FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( MultTransposeMatrixfARB, FgGLContext *, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( MultTransposeMatrixdARB, FgGLContext *, const FgGLdouble * ) \
 \
     /* GL_ARB_uniform_buffer_object */ \
 \
@@ -1446,79 +1447,79 @@
     /* GL_ARB_vertex_attrib_binding */ \
 \
     /* GL_ARB_vertex_blend */ \
-    FG_GL_VOID_FUNCTION( WeightbvARB, ( FgGLint _1, const FgGLbyte * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( WeightsvARB, ( FgGLint _1, const FgGLshort * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( WeightivARB, ( FgGLint _1, const FgGLint * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( WeightfvARB, ( FgGLint _1, const FgGLfloat * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( WeightdvARB, ( FgGLint _1, const FgGLdouble * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( WeightubvARB, ( FgGLint _1, const FgGLubyte * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( WeightusvARB, ( FgGLint _1, const FgGLushort * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( WeightuivARB, ( FgGLint _1, const FgGLuint * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( WeightPointerARB, ( FgGLint _1, FgGLenum _2, FgGLsizei _3, const FgGLvoid * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( VertexBlendARB, ( FgGLint _1 ), ( _1 ) ) \
+    FG_GL_FUNCTION_VOID( WeightbvARB, FgGLContext *, FgGLint, const FgGLbyte * ) \
+    FG_GL_FUNCTION_VOID( WeightsvARB, FgGLContext *, FgGLint, const FgGLshort * ) \
+    FG_GL_FUNCTION_VOID( WeightivARB, FgGLContext *, FgGLint, const FgGLint * ) \
+    FG_GL_FUNCTION_VOID( WeightfvARB, FgGLContext *, FgGLint, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( WeightdvARB, FgGLContext *, FgGLint, const FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( WeightubvARB, FgGLContext *, FgGLint, const FgGLubyte * ) \
+    FG_GL_FUNCTION_VOID( WeightusvARB, FgGLContext *, FgGLint, const FgGLushort * ) \
+    FG_GL_FUNCTION_VOID( WeightuivARB, FgGLContext *, FgGLint, const FgGLuint * ) \
+    FG_GL_FUNCTION_VOID( WeightPointerARB, FgGLContext *, FgGLint, FgGLenum, FgGLsizei, const FgGLvoid * ) \
+    FG_GL_FUNCTION_VOID( VertexBlendARB, FgGLContext *, FgGLint ) \
 \
     /* GL_ARB_vertex_buffer_object */ \
-    FG_GL_VOID_FUNCTION( BindBufferARB, ( FgGLenum _1, FgGLuint _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( DeleteBuffersARB, ( FgGLsizei _1, const FgGLuint * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( GenBuffersARB, ( FgGLsizei _1, FgGLuint * _2 ), ( _1, _2 ) ) \
-    FG_GL_FUNCTION( 0, FgGLboolean, IsBufferARB, ( FgGLuint _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( BufferDataARB, ( FgGLenum _1, FgGLsizeiptrARB _2, const FgGLvoid * _3, FgGLenum _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( BufferSubDataARB, ( FgGLenum _1, FgGLintptrARB _2, FgGLsizeiptrARB _3, const FgGLvoid * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( GetBufferSubDataARB, ( FgGLenum _1, FgGLintptrARB _2, FgGLsizeiptrARB _3, FgGLvoid * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_FUNCTION( NULL, void *, MapBufferARB, ( FgGLenum _1, FgGLenum _2 ), ( _1, _2 ) ) \
-    FG_GL_FUNCTION( 0, FgGLboolean, UnmapBufferARB, ( FgGLenum _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( GetBufferParameterivARB, ( FgGLenum _1, FgGLenum _2, FgGLint * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetBufferPointervARB, ( FgGLenum _1, FgGLenum _2, FgGLvoid ** _3 ), ( _1, _2, _3 ) ) \
+    FG_GL_FUNCTION_VOID( BindBufferARB, FgGLContext *, FgGLenum, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( DeleteBuffersARB, FgGLContext *, FgGLsizei, const FgGLuint * ) \
+    FG_GL_FUNCTION_VOID( GenBuffersARB, FgGLContext *, FgGLsizei, FgGLuint * ) \
+    FG_GL_FUNCTION_NUM( IsBufferARB, FgGLboolean, FgGLContext *, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( BufferDataARB, FgGLContext *, FgGLenum, FgGLsizeiptrARB, const FgGLvoid *, FgGLenum ) \
+    FG_GL_FUNCTION_VOID( BufferSubDataARB, FgGLContext *, FgGLenum, FgGLintptrARB, FgGLsizeiptrARB, const FgGLvoid * ) \
+    FG_GL_FUNCTION_VOID( GetBufferSubDataARB, FgGLContext *, FgGLenum, FgGLintptrARB, FgGLsizeiptrARB, FgGLvoid * ) \
+    FG_GL_FUNCTION_PTR( MapBufferARB, void *, FgGLContext *, FgGLenum, FgGLenum ) \
+    FG_GL_FUNCTION_NUM( UnmapBufferARB, FgGLboolean, FgGLContext *, FgGLenum ) \
+    FG_GL_FUNCTION_VOID( GetBufferParameterivARB, FgGLContext *, FgGLenum, FgGLenum, FgGLint * ) \
+    FG_GL_FUNCTION_VOID( GetBufferPointervARB, FgGLContext *, FgGLenum, FgGLenum, FgGLvoid ** ) \
 \
     /* GL_ARB_vertex_program */ \
-    FG_GL_VOID_FUNCTION( VertexAttrib1dARB, ( FgGLuint _1, FgGLdouble _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttrib1dvARB, ( FgGLuint _1, const FgGLdouble * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttrib1fARB, ( FgGLuint _1, FgGLfloat _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttrib1fvARB, ( FgGLuint _1, const FgGLfloat * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttrib1sARB, ( FgGLuint _1, FgGLshort _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttrib1svARB, ( FgGLuint _1, const FgGLshort * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttrib2dARB, ( FgGLuint _1, FgGLdouble _2, FgGLdouble _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttrib2dvARB, ( FgGLuint _1, const FgGLdouble * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttrib2fARB, ( FgGLuint _1, FgGLfloat _2, FgGLfloat _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttrib2fvARB, ( FgGLuint _1, const FgGLfloat * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttrib2sARB, ( FgGLuint _1, FgGLshort _2, FgGLshort _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttrib2svARB, ( FgGLuint _1, const FgGLshort * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttrib3dARB, ( FgGLuint _1, FgGLdouble _2, FgGLdouble _3, FgGLdouble _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttrib3dvARB, ( FgGLuint _1, const FgGLdouble * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttrib3fARB, ( FgGLuint _1, FgGLfloat _2, FgGLfloat _3, FgGLfloat _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttrib3fvARB, ( FgGLuint _1, const FgGLfloat * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttrib3sARB, ( FgGLuint _1, FgGLshort _2, FgGLshort _3, FgGLshort _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttrib3svARB, ( FgGLuint _1, const FgGLshort * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttrib4NbvARB, ( FgGLuint _1, const FgGLbyte * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttrib4NivARB, ( FgGLuint _1, const FgGLint * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttrib4NsvARB, ( FgGLuint _1, const FgGLshort * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttrib4NubARB, ( FgGLuint _1, FgGLubyte _2, FgGLubyte _3, FgGLubyte _4, FgGLubyte _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttrib4NubvARB, ( FgGLuint _1, const FgGLubyte * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttrib4NuivARB, ( FgGLuint _1, const FgGLuint * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttrib4NusvARB, ( FgGLuint _1, const FgGLushort * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttrib4bvARB, ( FgGLuint _1, const FgGLbyte * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttrib4dARB, ( FgGLuint _1, FgGLdouble _2, FgGLdouble _3, FgGLdouble _4, FgGLdouble _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttrib4dvARB, ( FgGLuint _1, const FgGLdouble * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttrib4fARB, ( FgGLuint _1, FgGLfloat _2, FgGLfloat _3, FgGLfloat _4, FgGLfloat _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttrib4fvARB, ( FgGLuint _1, const FgGLfloat * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttrib4ivARB, ( FgGLuint _1, const FgGLint * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttrib4sARB, ( FgGLuint _1, FgGLshort _2, FgGLshort _3, FgGLshort _4, FgGLshort _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttrib4svARB, ( FgGLuint _1, const FgGLshort * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttrib4ubvARB, ( FgGLuint _1, const FgGLubyte * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttrib4uivARB, ( FgGLuint _1, const FgGLuint * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttrib4usvARB, ( FgGLuint _1, const FgGLushort * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttribPointerARB, ( FgGLuint _1, FgGLint _2, FgGLenum _3, FgGLboolean _4, FgGLsizei _5, const FgGLvoid * _6 ), ( _1, _2, _3, _4, _5, _6 ) ) \
-    FG_GL_VOID_FUNCTION( EnableVertexAttribArrayARB, ( FgGLuint _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( DisableVertexAttribArrayARB, ( FgGLuint _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( GetVertexAttribdvARB, ( FgGLuint _1, FgGLenum _2, FgGLdouble * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetVertexAttribfvARB, ( FgGLuint _1, FgGLenum _2, FgGLfloat * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetVertexAttribivARB, ( FgGLuint _1, FgGLenum _2, FgGLint * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetVertexAttribPointervARB, ( FgGLuint _1, FgGLenum _2, FgGLvoid ** _3 ), ( _1, _2, _3 ) ) \
+    FG_GL_FUNCTION_VOID( VertexAttrib1dARB, FgGLContext *, FgGLuint, FgGLdouble ) \
+    FG_GL_FUNCTION_VOID( VertexAttrib1dvARB, FgGLContext *, FgGLuint, const FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( VertexAttrib1fARB, FgGLContext *, FgGLuint, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( VertexAttrib1fvARB, FgGLContext *, FgGLuint, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( VertexAttrib1sARB, FgGLContext *, FgGLuint, FgGLshort ) \
+    FG_GL_FUNCTION_VOID( VertexAttrib1svARB, FgGLContext *, FgGLuint, const FgGLshort * ) \
+    FG_GL_FUNCTION_VOID( VertexAttrib2dARB, FgGLContext *, FgGLuint, FgGLdouble, FgGLdouble ) \
+    FG_GL_FUNCTION_VOID( VertexAttrib2dvARB, FgGLContext *, FgGLuint, const FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( VertexAttrib2fARB, FgGLContext *, FgGLuint, FgGLfloat, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( VertexAttrib2fvARB, FgGLContext *, FgGLuint, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( VertexAttrib2sARB, FgGLContext *, FgGLuint, FgGLshort, FgGLshort ) \
+    FG_GL_FUNCTION_VOID( VertexAttrib2svARB, FgGLContext *, FgGLuint, const FgGLshort * ) \
+    FG_GL_FUNCTION_VOID( VertexAttrib3dARB, FgGLContext *, FgGLuint, FgGLdouble, FgGLdouble, FgGLdouble ) \
+    FG_GL_FUNCTION_VOID( VertexAttrib3dvARB, FgGLContext *, FgGLuint, const FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( VertexAttrib3fARB, FgGLContext *, FgGLuint, FgGLfloat, FgGLfloat, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( VertexAttrib3fvARB, FgGLContext *, FgGLuint, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( VertexAttrib3sARB, FgGLContext *, FgGLuint, FgGLshort, FgGLshort, FgGLshort ) \
+    FG_GL_FUNCTION_VOID( VertexAttrib3svARB, FgGLContext *, FgGLuint, const FgGLshort * ) \
+    FG_GL_FUNCTION_VOID( VertexAttrib4NbvARB, FgGLContext *, FgGLuint, const FgGLbyte * ) \
+    FG_GL_FUNCTION_VOID( VertexAttrib4NivARB, FgGLContext *, FgGLuint, const FgGLint * ) \
+    FG_GL_FUNCTION_VOID( VertexAttrib4NsvARB, FgGLContext *, FgGLuint, const FgGLshort * ) \
+    FG_GL_FUNCTION_VOID( VertexAttrib4NubARB, FgGLContext *, FgGLuint, FgGLubyte, FgGLubyte, FgGLubyte, FgGLubyte ) \
+    FG_GL_FUNCTION_VOID( VertexAttrib4NubvARB, FgGLContext *, FgGLuint, const FgGLubyte * ) \
+    FG_GL_FUNCTION_VOID( VertexAttrib4NuivARB, FgGLContext *, FgGLuint, const FgGLuint * ) \
+    FG_GL_FUNCTION_VOID( VertexAttrib4NusvARB, FgGLContext *, FgGLuint, const FgGLushort * ) \
+    FG_GL_FUNCTION_VOID( VertexAttrib4bvARB, FgGLContext *, FgGLuint, const FgGLbyte * ) \
+    FG_GL_FUNCTION_VOID( VertexAttrib4dARB, FgGLContext *, FgGLuint, FgGLdouble, FgGLdouble, FgGLdouble, FgGLdouble ) \
+    FG_GL_FUNCTION_VOID( VertexAttrib4dvARB, FgGLContext *, FgGLuint, const FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( VertexAttrib4fARB, FgGLContext *, FgGLuint, FgGLfloat, FgGLfloat, FgGLfloat, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( VertexAttrib4fvARB, FgGLContext *, FgGLuint, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( VertexAttrib4ivARB, FgGLContext *, FgGLuint, const FgGLint * ) \
+    FG_GL_FUNCTION_VOID( VertexAttrib4sARB, FgGLContext *, FgGLuint, FgGLshort, FgGLshort, FgGLshort, FgGLshort ) \
+    FG_GL_FUNCTION_VOID( VertexAttrib4svARB, FgGLContext *, FgGLuint, const FgGLshort * ) \
+    FG_GL_FUNCTION_VOID( VertexAttrib4ubvARB, FgGLContext *, FgGLuint, const FgGLubyte * ) \
+    FG_GL_FUNCTION_VOID( VertexAttrib4uivARB, FgGLContext *, FgGLuint, const FgGLuint * ) \
+    FG_GL_FUNCTION_VOID( VertexAttrib4usvARB, FgGLContext *, FgGLuint, const FgGLushort * ) \
+    FG_GL_FUNCTION_VOID( VertexAttribPointerARB, FgGLContext *, FgGLuint, FgGLint, FgGLenum, FgGLboolean, FgGLsizei, const FgGLvoid * ) \
+    FG_GL_FUNCTION_VOID( EnableVertexAttribArrayARB, FgGLContext *, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( DisableVertexAttribArrayARB, FgGLContext *, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( GetVertexAttribdvARB, FgGLContext *, FgGLuint, FgGLenum, FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( GetVertexAttribfvARB, FgGLContext *, FgGLuint, FgGLenum, FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( GetVertexAttribivARB, FgGLContext *, FgGLuint, FgGLenum, FgGLint * ) \
+    FG_GL_FUNCTION_VOID( GetVertexAttribPointervARB, FgGLContext *, FgGLuint, FgGLenum, FgGLvoid ** ) \
 \
     /* GL_ARB_vertex_shader */ \
-    FG_GL_VOID_FUNCTION( BindAttribLocationARB, ( FgGLhandleARB _1, FgGLuint _2, const FgGLcharARB * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetActiveAttribARB, ( FgGLhandleARB _1, FgGLuint _2, FgGLsizei _3, FgGLsizei * _4, FgGLint * _5, FgGLenum * _6, FgGLcharARB * _7 ), ( _1, _2, _3, _4, _5, _6, _7 ) ) \
-    FG_GL_FUNCTION( 0, FgGLint, GetAttribLocationARB, ( FgGLhandleARB _1, const FgGLcharARB * _2 ), ( _1, _2 ) ) \
+    FG_GL_FUNCTION_VOID( BindAttribLocationARB, FgGLContext *, FgGLhandleARB, FgGLuint, const FgGLcharARB * ) \
+    FG_GL_FUNCTION_VOID( GetActiveAttribARB, FgGLContext *, FgGLhandleARB, FgGLuint, FgGLsizei, FgGLsizei *, FgGLint *, FgGLenum *, FgGLcharARB * ) \
+    FG_GL_FUNCTION_NUM( GetAttribLocationARB, FgGLint, FgGLContext *, FgGLhandleARB, const FgGLcharARB * ) \
 \
     /* GL_ARB_vertex_type_10f_11f_11f_rev */ \
 \
@@ -1527,176 +1528,176 @@
     /* GL_ARB_viewport_array */ \
 \
     /* GL_ARB_window_pos */ \
-    FG_GL_VOID_FUNCTION( WindowPos2dARB, ( FgGLdouble _1, FgGLdouble _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( WindowPos2dvARB, ( const FgGLdouble * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( WindowPos2fARB, ( FgGLfloat _1, FgGLfloat _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( WindowPos2fvARB, ( const FgGLfloat * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( WindowPos2iARB, ( FgGLint _1, FgGLint _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( WindowPos2ivARB, ( const FgGLint * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( WindowPos2sARB, ( FgGLshort _1, FgGLshort _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( WindowPos2svARB, ( const FgGLshort * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( WindowPos3dARB, ( FgGLdouble _1, FgGLdouble _2, FgGLdouble _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( WindowPos3dvARB, ( const FgGLdouble * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( WindowPos3fARB, ( FgGLfloat _1, FgGLfloat _2, FgGLfloat _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( WindowPos3fvARB, ( const FgGLfloat * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( WindowPos3iARB, ( FgGLint _1, FgGLint _2, FgGLint _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( WindowPos3ivARB, ( const FgGLint * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( WindowPos3sARB, ( FgGLshort _1, FgGLshort _2, FgGLshort _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( WindowPos3svARB, ( const FgGLshort * _1 ), ( _1 ) ) \
+    FG_GL_FUNCTION_VOID( WindowPos2dARB, FgGLContext *, FgGLdouble, FgGLdouble ) \
+    FG_GL_FUNCTION_VOID( WindowPos2dvARB, FgGLContext *, const FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( WindowPos2fARB, FgGLContext *, FgGLfloat, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( WindowPos2fvARB, FgGLContext *, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( WindowPos2iARB, FgGLContext *, FgGLint, FgGLint ) \
+    FG_GL_FUNCTION_VOID( WindowPos2ivARB, FgGLContext *, const FgGLint * ) \
+    FG_GL_FUNCTION_VOID( WindowPos2sARB, FgGLContext *, FgGLshort, FgGLshort ) \
+    FG_GL_FUNCTION_VOID( WindowPos2svARB, FgGLContext *, const FgGLshort * ) \
+    FG_GL_FUNCTION_VOID( WindowPos3dARB, FgGLContext *, FgGLdouble, FgGLdouble, FgGLdouble ) \
+    FG_GL_FUNCTION_VOID( WindowPos3dvARB, FgGLContext *, const FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( WindowPos3fARB, FgGLContext *, FgGLfloat, FgGLfloat, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( WindowPos3fvARB, FgGLContext *, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( WindowPos3iARB, FgGLContext *, FgGLint, FgGLint, FgGLint ) \
+    FG_GL_FUNCTION_VOID( WindowPos3ivARB, FgGLContext *, const FgGLint * ) \
+    FG_GL_FUNCTION_VOID( WindowPos3sARB, FgGLContext *, FgGLshort, FgGLshort, FgGLshort ) \
+    FG_GL_FUNCTION_VOID( WindowPos3svARB, FgGLContext *, const FgGLshort * ) \
 \
     /* GL_KHR_debug */ \
 \
     /* GL_KHR_texture_compression_astc_ldr */ \
 \
     /* GL_OES_byte_coordinates */ \
-    FG_GL_VOID_FUNCTION( MultiTexCoord1bOES, ( FgGLenum _1, FgGLbyte _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( MultiTexCoord1bvOES, ( FgGLenum _1, const FgGLbyte * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( MultiTexCoord2bOES, ( FgGLenum _1, FgGLbyte _2, FgGLbyte _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( MultiTexCoord2bvOES, ( FgGLenum _1, const FgGLbyte * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( MultiTexCoord3bOES, ( FgGLenum _1, FgGLbyte _2, FgGLbyte _3, FgGLbyte _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( MultiTexCoord3bvOES, ( FgGLenum _1, const FgGLbyte * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( MultiTexCoord4bOES, ( FgGLenum _1, FgGLbyte _2, FgGLbyte _3, FgGLbyte _4, FgGLbyte _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( MultiTexCoord4bvOES, ( FgGLenum _1, const FgGLbyte * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( TexCoord1bOES, ( FgGLbyte _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( TexCoord1bvOES, ( const FgGLbyte * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( TexCoord2bOES, ( FgGLbyte _1, FgGLbyte _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( TexCoord2bvOES, ( const FgGLbyte * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( TexCoord3bOES, ( FgGLbyte _1, FgGLbyte _2, FgGLbyte _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( TexCoord3bvOES, ( const FgGLbyte * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( TexCoord4bOES, ( FgGLbyte _1, FgGLbyte _2, FgGLbyte _3, FgGLbyte _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( TexCoord4bvOES, ( const FgGLbyte * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( Vertex2bOES, ( FgGLbyte _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( Vertex2bvOES, ( const FgGLbyte * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( Vertex3bOES, ( FgGLbyte _1, FgGLbyte _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( Vertex3bvOES, ( const FgGLbyte * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( Vertex4bOES, ( FgGLbyte _1, FgGLbyte _2, FgGLbyte _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( Vertex4bvOES, ( const FgGLbyte * _1 ), ( _1 ) ) \
+    FG_GL_FUNCTION_VOID( MultiTexCoord1bOES, FgGLContext *, FgGLenum, FgGLbyte ) \
+    FG_GL_FUNCTION_VOID( MultiTexCoord1bvOES, FgGLContext *, FgGLenum, const FgGLbyte * ) \
+    FG_GL_FUNCTION_VOID( MultiTexCoord2bOES, FgGLContext *, FgGLenum, FgGLbyte, FgGLbyte ) \
+    FG_GL_FUNCTION_VOID( MultiTexCoord2bvOES, FgGLContext *, FgGLenum, const FgGLbyte * ) \
+    FG_GL_FUNCTION_VOID( MultiTexCoord3bOES, FgGLContext *, FgGLenum, FgGLbyte, FgGLbyte, FgGLbyte ) \
+    FG_GL_FUNCTION_VOID( MultiTexCoord3bvOES, FgGLContext *, FgGLenum, const FgGLbyte * ) \
+    FG_GL_FUNCTION_VOID( MultiTexCoord4bOES, FgGLContext *, FgGLenum, FgGLbyte, FgGLbyte, FgGLbyte, FgGLbyte ) \
+    FG_GL_FUNCTION_VOID( MultiTexCoord4bvOES, FgGLContext *, FgGLenum, const FgGLbyte * ) \
+    FG_GL_FUNCTION_VOID( TexCoord1bOES, FgGLContext *, FgGLbyte ) \
+    FG_GL_FUNCTION_VOID( TexCoord1bvOES, FgGLContext *, const FgGLbyte * ) \
+    FG_GL_FUNCTION_VOID( TexCoord2bOES, FgGLContext *, FgGLbyte, FgGLbyte ) \
+    FG_GL_FUNCTION_VOID( TexCoord2bvOES, FgGLContext *, const FgGLbyte * ) \
+    FG_GL_FUNCTION_VOID( TexCoord3bOES, FgGLContext *, FgGLbyte, FgGLbyte, FgGLbyte ) \
+    FG_GL_FUNCTION_VOID( TexCoord3bvOES, FgGLContext *, const FgGLbyte * ) \
+    FG_GL_FUNCTION_VOID( TexCoord4bOES, FgGLContext *, FgGLbyte, FgGLbyte, FgGLbyte, FgGLbyte ) \
+    FG_GL_FUNCTION_VOID( TexCoord4bvOES, FgGLContext *, const FgGLbyte * ) \
+    FG_GL_FUNCTION_VOID( Vertex2bOES, FgGLContext *, FgGLbyte ) \
+    FG_GL_FUNCTION_VOID( Vertex2bvOES, FgGLContext *, const FgGLbyte * ) \
+    FG_GL_FUNCTION_VOID( Vertex3bOES, FgGLContext *, FgGLbyte, FgGLbyte ) \
+    FG_GL_FUNCTION_VOID( Vertex3bvOES, FgGLContext *, const FgGLbyte * ) \
+    FG_GL_FUNCTION_VOID( Vertex4bOES, FgGLContext *, FgGLbyte, FgGLbyte, FgGLbyte ) \
+    FG_GL_FUNCTION_VOID( Vertex4bvOES, FgGLContext *, const FgGLbyte * ) \
 \
     /* GL_OES_compressed_paletted_texture */ \
 \
     /* GL_OES_fixed_point */ \
-    FG_GL_VOID_FUNCTION( AlphaFuncxOES, ( FgGLenum _1, FgGLfixed _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( ClearColorxOES, ( FgGLfixed _1, FgGLfixed _2, FgGLfixed _3, FgGLfixed _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( ClearDepthxOES, ( FgGLfixed _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( ClipPlanexOES, ( FgGLenum _1, const FgGLfixed * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( Color4xOES, ( FgGLfixed _1, FgGLfixed _2, FgGLfixed _3, FgGLfixed _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( DepthRangexOES, ( FgGLfixed _1, FgGLfixed _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( FogxOES, ( FgGLenum _1, FgGLfixed _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( FogxvOES, ( FgGLenum _1, const FgGLfixed * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( FrustumxOES, ( FgGLfixed _1, FgGLfixed _2, FgGLfixed _3, FgGLfixed _4, FgGLfixed _5, FgGLfixed _6 ), ( _1, _2, _3, _4, _5, _6 ) ) \
-    FG_GL_VOID_FUNCTION( GetClipPlanexOES, ( FgGLenum _1, FgGLfixed * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( GetFixedvOES, ( FgGLenum _1, FgGLfixed * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( GetTexEnvxvOES, ( FgGLenum _1, FgGLenum _2, FgGLfixed * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetTexParameterxvOES, ( FgGLenum _1, FgGLenum _2, FgGLfixed * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( LightModelxOES, ( FgGLenum _1, FgGLfixed _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( LightModelxvOES, ( FgGLenum _1, const FgGLfixed * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( LightxOES, ( FgGLenum _1, FgGLenum _2, FgGLfixed _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( LightxvOES, ( FgGLenum _1, FgGLenum _2, const FgGLfixed * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( LineWidthxOES, ( FgGLfixed _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( LoadMatrixxOES, ( const FgGLfixed * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( MaterialxOES, ( FgGLenum _1, FgGLenum _2, FgGLfixed _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( MaterialxvOES, ( FgGLenum _1, FgGLenum _2, const FgGLfixed * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( MultMatrixxOES, ( const FgGLfixed * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( MultiTexCoord4xOES, ( FgGLenum _1, FgGLfixed _2, FgGLfixed _3, FgGLfixed _4, FgGLfixed _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( Normal3xOES, ( FgGLfixed _1, FgGLfixed _2, FgGLfixed _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( OrthoxOES, ( FgGLfixed _1, FgGLfixed _2, FgGLfixed _3, FgGLfixed _4, FgGLfixed _5, FgGLfixed _6 ), ( _1, _2, _3, _4, _5, _6 ) ) \
-    FG_GL_VOID_FUNCTION( PointParameterxvOES, ( FgGLenum _1, const FgGLfixed * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( PointSizexOES, ( FgGLfixed _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( PolygonOffsetxOES, ( FgGLfixed _1, FgGLfixed _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( RotatexOES, ( FgGLfixed _1, FgGLfixed _2, FgGLfixed _3, FgGLfixed _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( SampleCoverageOES, ( FgGLfixed _1, FgGLboolean _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( ScalexOES, ( FgGLfixed _1, FgGLfixed _2, FgGLfixed _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( TexEnvxOES, ( FgGLenum _1, FgGLenum _2, FgGLfixed _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( TexEnvxvOES, ( FgGLenum _1, FgGLenum _2, const FgGLfixed * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( TexParameterxOES, ( FgGLenum _1, FgGLenum _2, FgGLfixed _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( TexParameterxvOES, ( FgGLenum _1, FgGLenum _2, const FgGLfixed * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( TranslatexOES, ( FgGLfixed _1, FgGLfixed _2, FgGLfixed _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( AccumxOES, ( FgGLenum _1, FgGLfixed _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( BitmapxOES, ( FgGLsizei _1, FgGLsizei _2, FgGLfixed _3, FgGLfixed _4, FgGLfixed _5, FgGLfixed _6, const FgGLubyte * _7 ), ( _1, _2, _3, _4, _5, _6, _7 ) ) \
-    FG_GL_VOID_FUNCTION( BlendColorxOES, ( FgGLfixed _1, FgGLfixed _2, FgGLfixed _3, FgGLfixed _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( ClearAccumxOES, ( FgGLfixed _1, FgGLfixed _2, FgGLfixed _3, FgGLfixed _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( Color3xOES, ( FgGLfixed _1, FgGLfixed _2, FgGLfixed _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( Color3xvOES, ( const FgGLfixed * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( Color4xvOES, ( const FgGLfixed * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( ConvolutionParameterxOES, ( FgGLenum _1, FgGLenum _2, FgGLfixed _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( ConvolutionParameterxvOES, ( FgGLenum _1, FgGLenum _2, const FgGLfixed * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( EvalCoord1xOES, ( FgGLfixed _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( EvalCoord1xvOES, ( const FgGLfixed * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( EvalCoord2xOES, ( FgGLfixed _1, FgGLfixed _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( EvalCoord2xvOES, ( const FgGLfixed * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( FeedbackBufferxOES, ( FgGLsizei _1, FgGLenum _2, const FgGLfixed * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetConvolutionParameterxvOES, ( FgGLenum _1, FgGLenum _2, FgGLfixed * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetHistogramParameterxvOES, ( FgGLenum _1, FgGLenum _2, FgGLfixed * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetLightxOES, ( FgGLenum _1, FgGLenum _2, FgGLfixed * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetMapxvOES, ( FgGLenum _1, FgGLenum _2, FgGLfixed * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetMaterialxOES, ( FgGLenum _1, FgGLenum _2, FgGLfixed _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetPixelMapxv, ( FgGLenum _1, FgGLint _2, FgGLfixed * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetTexGenxvOES, ( FgGLenum _1, FgGLenum _2, FgGLfixed * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetTexLevelParameterxvOES, ( FgGLenum _1, FgGLint _2, FgGLenum _3, FgGLfixed * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( IndexxOES, ( FgGLfixed _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( IndexxvOES, ( const FgGLfixed * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( LoadTransposeMatrixxOES, ( const FgGLfixed * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( Map1xOES, ( FgGLenum _1, FgGLfixed _2, FgGLfixed _3, FgGLint _4, FgGLint _5, FgGLfixed _6 ), ( _1, _2, _3, _4, _5, _6 ) ) \
-    FG_GL_VOID_FUNCTION( Map2xOES, ( FgGLenum _1, FgGLfixed _2, FgGLfixed _3, FgGLint _4, FgGLint _5, FgGLfixed _6, FgGLfixed _7, FgGLint _8, FgGLint _9, FgGLfixed _10 ), ( _1, _2, _3, _4, _5, _6, _7, _8, _9, _10 ) ) \
-    FG_GL_VOID_FUNCTION( MapGrid1xOES, ( FgGLint _1, FgGLfixed _2, FgGLfixed _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( MapGrid2xOES, ( FgGLint _1, FgGLfixed _2, FgGLfixed _3, FgGLfixed _4, FgGLfixed _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( MultTransposeMatrixxOES, ( const FgGLfixed * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( MultiTexCoord1xOES, ( FgGLenum _1, FgGLfixed _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( MultiTexCoord1xvOES, ( FgGLenum _1, const FgGLfixed * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( MultiTexCoord2xOES, ( FgGLenum _1, FgGLfixed _2, FgGLfixed _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( MultiTexCoord2xvOES, ( FgGLenum _1, const FgGLfixed * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( MultiTexCoord3xOES, ( FgGLenum _1, FgGLfixed _2, FgGLfixed _3, FgGLfixed _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( MultiTexCoord3xvOES, ( FgGLenum _1, const FgGLfixed * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( MultiTexCoord4xvOES, ( FgGLenum _1, const FgGLfixed * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( Normal3xvOES, ( const FgGLfixed * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( PassThroughxOES, ( FgGLfixed _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( PixelMapx, ( FgGLenum _1, FgGLint _2, const FgGLfixed * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( PixelStorex, ( FgGLenum _1, FgGLfixed _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( PixelTransferxOES, ( FgGLenum _1, FgGLfixed _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( PixelZoomxOES, ( FgGLfixed _1, FgGLfixed _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( PrioritizeTexturesxOES, ( FgGLsizei _1, const FgGLuint * _2, const FgGLfixed * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( RasterPos2xOES, ( FgGLfixed _1, FgGLfixed _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( RasterPos2xvOES, ( const FgGLfixed * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( RasterPos3xOES, ( FgGLfixed _1, FgGLfixed _2, FgGLfixed _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( RasterPos3xvOES, ( const FgGLfixed * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( RasterPos4xOES, ( FgGLfixed _1, FgGLfixed _2, FgGLfixed _3, FgGLfixed _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( RasterPos4xvOES, ( const FgGLfixed * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( RectxOES, ( FgGLfixed _1, FgGLfixed _2, FgGLfixed _3, FgGLfixed _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( RectxvOES, ( const FgGLfixed * _1, const FgGLfixed * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( TexCoord1xOES, ( FgGLfixed _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( TexCoord1xvOES, ( const FgGLfixed * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( TexCoord2xOES, ( FgGLfixed _1, FgGLfixed _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( TexCoord2xvOES, ( const FgGLfixed * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( TexCoord3xOES, ( FgGLfixed _1, FgGLfixed _2, FgGLfixed _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( TexCoord3xvOES, ( const FgGLfixed * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( TexCoord4xOES, ( FgGLfixed _1, FgGLfixed _2, FgGLfixed _3, FgGLfixed _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( TexCoord4xvOES, ( const FgGLfixed * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( TexGenxOES, ( FgGLenum _1, FgGLenum _2, FgGLfixed _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( TexGenxvOES, ( FgGLenum _1, FgGLenum _2, const FgGLfixed * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( Vertex2xOES, ( FgGLfixed _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( Vertex2xvOES, ( const FgGLfixed * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( Vertex3xOES, ( FgGLfixed _1, FgGLfixed _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( Vertex3xvOES, ( const FgGLfixed * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( Vertex4xOES, ( FgGLfixed _1, FgGLfixed _2, FgGLfixed _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( Vertex4xvOES, ( const FgGLfixed * _1 ), ( _1 ) ) \
+    FG_GL_FUNCTION_VOID( AlphaFuncxOES, FgGLContext *, FgGLenum, FgGLfixed ) \
+    FG_GL_FUNCTION_VOID( ClearColorxOES, FgGLContext *, FgGLfixed, FgGLfixed, FgGLfixed, FgGLfixed ) \
+    FG_GL_FUNCTION_VOID( ClearDepthxOES, FgGLContext *, FgGLfixed ) \
+    FG_GL_FUNCTION_VOID( ClipPlanexOES, FgGLContext *, FgGLenum, const FgGLfixed * ) \
+    FG_GL_FUNCTION_VOID( Color4xOES, FgGLContext *, FgGLfixed, FgGLfixed, FgGLfixed, FgGLfixed ) \
+    FG_GL_FUNCTION_VOID( DepthRangexOES, FgGLContext *, FgGLfixed, FgGLfixed ) \
+    FG_GL_FUNCTION_VOID( FogxOES, FgGLContext *, FgGLenum, FgGLfixed ) \
+    FG_GL_FUNCTION_VOID( FogxvOES, FgGLContext *, FgGLenum, const FgGLfixed * ) \
+    FG_GL_FUNCTION_VOID( FrustumxOES, FgGLContext *, FgGLfixed, FgGLfixed, FgGLfixed, FgGLfixed, FgGLfixed, FgGLfixed ) \
+    FG_GL_FUNCTION_VOID( GetClipPlanexOES, FgGLContext *, FgGLenum, FgGLfixed * ) \
+    FG_GL_FUNCTION_VOID( GetFixedvOES, FgGLContext *, FgGLenum, FgGLfixed * ) \
+    FG_GL_FUNCTION_VOID( GetTexEnvxvOES, FgGLContext *, FgGLenum, FgGLenum, FgGLfixed * ) \
+    FG_GL_FUNCTION_VOID( GetTexParameterxvOES, FgGLContext *, FgGLenum, FgGLenum, FgGLfixed * ) \
+    FG_GL_FUNCTION_VOID( LightModelxOES, FgGLContext *, FgGLenum, FgGLfixed ) \
+    FG_GL_FUNCTION_VOID( LightModelxvOES, FgGLContext *, FgGLenum, const FgGLfixed * ) \
+    FG_GL_FUNCTION_VOID( LightxOES, FgGLContext *, FgGLenum, FgGLenum, FgGLfixed ) \
+    FG_GL_FUNCTION_VOID( LightxvOES, FgGLContext *, FgGLenum, FgGLenum, const FgGLfixed * ) \
+    FG_GL_FUNCTION_VOID( LineWidthxOES, FgGLContext *, FgGLfixed ) \
+    FG_GL_FUNCTION_VOID( LoadMatrixxOES, FgGLContext *, const FgGLfixed * ) \
+    FG_GL_FUNCTION_VOID( MaterialxOES, FgGLContext *, FgGLenum, FgGLenum, FgGLfixed ) \
+    FG_GL_FUNCTION_VOID( MaterialxvOES, FgGLContext *, FgGLenum, FgGLenum, const FgGLfixed * ) \
+    FG_GL_FUNCTION_VOID( MultMatrixxOES, FgGLContext *, const FgGLfixed * ) \
+    FG_GL_FUNCTION_VOID( MultiTexCoord4xOES, FgGLContext *, FgGLenum, FgGLfixed, FgGLfixed, FgGLfixed, FgGLfixed ) \
+    FG_GL_FUNCTION_VOID( Normal3xOES, FgGLContext *, FgGLfixed, FgGLfixed, FgGLfixed ) \
+    FG_GL_FUNCTION_VOID( OrthoxOES, FgGLContext *, FgGLfixed, FgGLfixed, FgGLfixed, FgGLfixed, FgGLfixed, FgGLfixed ) \
+    FG_GL_FUNCTION_VOID( PointParameterxvOES, FgGLContext *, FgGLenum, const FgGLfixed * ) \
+    FG_GL_FUNCTION_VOID( PointSizexOES, FgGLContext *, FgGLfixed ) \
+    FG_GL_FUNCTION_VOID( PolygonOffsetxOES, FgGLContext *, FgGLfixed, FgGLfixed ) \
+    FG_GL_FUNCTION_VOID( RotatexOES, FgGLContext *, FgGLfixed, FgGLfixed, FgGLfixed, FgGLfixed ) \
+    FG_GL_FUNCTION_VOID( SampleCoverageOES, FgGLContext *, FgGLfixed, FgGLboolean ) \
+    FG_GL_FUNCTION_VOID( ScalexOES, FgGLContext *, FgGLfixed, FgGLfixed, FgGLfixed ) \
+    FG_GL_FUNCTION_VOID( TexEnvxOES, FgGLContext *, FgGLenum, FgGLenum, FgGLfixed ) \
+    FG_GL_FUNCTION_VOID( TexEnvxvOES, FgGLContext *, FgGLenum, FgGLenum, const FgGLfixed * ) \
+    FG_GL_FUNCTION_VOID( TexParameterxOES, FgGLContext *, FgGLenum, FgGLenum, FgGLfixed ) \
+    FG_GL_FUNCTION_VOID( TexParameterxvOES, FgGLContext *, FgGLenum, FgGLenum, const FgGLfixed * ) \
+    FG_GL_FUNCTION_VOID( TranslatexOES, FgGLContext *, FgGLfixed, FgGLfixed, FgGLfixed ) \
+    FG_GL_FUNCTION_VOID( AccumxOES, FgGLContext *, FgGLenum, FgGLfixed ) \
+    FG_GL_FUNCTION_VOID( BitmapxOES, FgGLContext *, FgGLsizei, FgGLsizei, FgGLfixed, FgGLfixed, FgGLfixed, FgGLfixed, const FgGLubyte * ) \
+    FG_GL_FUNCTION_VOID( BlendColorxOES, FgGLContext *, FgGLfixed, FgGLfixed, FgGLfixed, FgGLfixed ) \
+    FG_GL_FUNCTION_VOID( ClearAccumxOES, FgGLContext *, FgGLfixed, FgGLfixed, FgGLfixed, FgGLfixed ) \
+    FG_GL_FUNCTION_VOID( Color3xOES, FgGLContext *, FgGLfixed, FgGLfixed, FgGLfixed ) \
+    FG_GL_FUNCTION_VOID( Color3xvOES, FgGLContext *, const FgGLfixed * ) \
+    FG_GL_FUNCTION_VOID( Color4xvOES, FgGLContext *, const FgGLfixed * ) \
+    FG_GL_FUNCTION_VOID( ConvolutionParameterxOES, FgGLContext *, FgGLenum, FgGLenum, FgGLfixed ) \
+    FG_GL_FUNCTION_VOID( ConvolutionParameterxvOES, FgGLContext *, FgGLenum, FgGLenum, const FgGLfixed * ) \
+    FG_GL_FUNCTION_VOID( EvalCoord1xOES, FgGLContext *, FgGLfixed ) \
+    FG_GL_FUNCTION_VOID( EvalCoord1xvOES, FgGLContext *, const FgGLfixed * ) \
+    FG_GL_FUNCTION_VOID( EvalCoord2xOES, FgGLContext *, FgGLfixed, FgGLfixed ) \
+    FG_GL_FUNCTION_VOID( EvalCoord2xvOES, FgGLContext *, const FgGLfixed * ) \
+    FG_GL_FUNCTION_VOID( FeedbackBufferxOES, FgGLContext *, FgGLsizei, FgGLenum, const FgGLfixed * ) \
+    FG_GL_FUNCTION_VOID( GetConvolutionParameterxvOES, FgGLContext *, FgGLenum, FgGLenum, FgGLfixed * ) \
+    FG_GL_FUNCTION_VOID( GetHistogramParameterxvOES, FgGLContext *, FgGLenum, FgGLenum, FgGLfixed * ) \
+    FG_GL_FUNCTION_VOID( GetLightxOES, FgGLContext *, FgGLenum, FgGLenum, FgGLfixed * ) \
+    FG_GL_FUNCTION_VOID( GetMapxvOES, FgGLContext *, FgGLenum, FgGLenum, FgGLfixed * ) \
+    FG_GL_FUNCTION_VOID( GetMaterialxOES, FgGLContext *, FgGLenum, FgGLenum, FgGLfixed ) \
+    FG_GL_FUNCTION_VOID( GetPixelMapxv, FgGLContext *, FgGLenum, FgGLint, FgGLfixed * ) \
+    FG_GL_FUNCTION_VOID( GetTexGenxvOES, FgGLContext *, FgGLenum, FgGLenum, FgGLfixed * ) \
+    FG_GL_FUNCTION_VOID( GetTexLevelParameterxvOES, FgGLContext *, FgGLenum, FgGLint, FgGLenum, FgGLfixed * ) \
+    FG_GL_FUNCTION_VOID( IndexxOES, FgGLContext *, FgGLfixed ) \
+    FG_GL_FUNCTION_VOID( IndexxvOES, FgGLContext *, const FgGLfixed * ) \
+    FG_GL_FUNCTION_VOID( LoadTransposeMatrixxOES, FgGLContext *, const FgGLfixed * ) \
+    FG_GL_FUNCTION_VOID( Map1xOES, FgGLContext *, FgGLenum, FgGLfixed, FgGLfixed, FgGLint, FgGLint, FgGLfixed ) \
+    FG_GL_FUNCTION_VOID( Map2xOES, FgGLContext *, FgGLenum, FgGLfixed, FgGLfixed, FgGLint, FgGLint, FgGLfixed, FgGLfixed, FgGLint, FgGLint, FgGLfixed ) \
+    FG_GL_FUNCTION_VOID( MapGrid1xOES, FgGLContext *, FgGLint, FgGLfixed, FgGLfixed ) \
+    FG_GL_FUNCTION_VOID( MapGrid2xOES, FgGLContext *, FgGLint, FgGLfixed, FgGLfixed, FgGLfixed, FgGLfixed ) \
+    FG_GL_FUNCTION_VOID( MultTransposeMatrixxOES, FgGLContext *, const FgGLfixed * ) \
+    FG_GL_FUNCTION_VOID( MultiTexCoord1xOES, FgGLContext *, FgGLenum, FgGLfixed ) \
+    FG_GL_FUNCTION_VOID( MultiTexCoord1xvOES, FgGLContext *, FgGLenum, const FgGLfixed * ) \
+    FG_GL_FUNCTION_VOID( MultiTexCoord2xOES, FgGLContext *, FgGLenum, FgGLfixed, FgGLfixed ) \
+    FG_GL_FUNCTION_VOID( MultiTexCoord2xvOES, FgGLContext *, FgGLenum, const FgGLfixed * ) \
+    FG_GL_FUNCTION_VOID( MultiTexCoord3xOES, FgGLContext *, FgGLenum, FgGLfixed, FgGLfixed, FgGLfixed ) \
+    FG_GL_FUNCTION_VOID( MultiTexCoord3xvOES, FgGLContext *, FgGLenum, const FgGLfixed * ) \
+    FG_GL_FUNCTION_VOID( MultiTexCoord4xvOES, FgGLContext *, FgGLenum, const FgGLfixed * ) \
+    FG_GL_FUNCTION_VOID( Normal3xvOES, FgGLContext *, const FgGLfixed * ) \
+    FG_GL_FUNCTION_VOID( PassThroughxOES, FgGLContext *, FgGLfixed ) \
+    FG_GL_FUNCTION_VOID( PixelMapx, FgGLContext *, FgGLenum, FgGLint, const FgGLfixed * ) \
+    FG_GL_FUNCTION_VOID( PixelStorex, FgGLContext *, FgGLenum, FgGLfixed ) \
+    FG_GL_FUNCTION_VOID( PixelTransferxOES, FgGLContext *, FgGLenum, FgGLfixed ) \
+    FG_GL_FUNCTION_VOID( PixelZoomxOES, FgGLContext *, FgGLfixed, FgGLfixed ) \
+    FG_GL_FUNCTION_VOID( PrioritizeTexturesxOES, FgGLContext *, FgGLsizei, const FgGLuint *, const FgGLfixed * ) \
+    FG_GL_FUNCTION_VOID( RasterPos2xOES, FgGLContext *, FgGLfixed, FgGLfixed ) \
+    FG_GL_FUNCTION_VOID( RasterPos2xvOES, FgGLContext *, const FgGLfixed * ) \
+    FG_GL_FUNCTION_VOID( RasterPos3xOES, FgGLContext *, FgGLfixed, FgGLfixed, FgGLfixed ) \
+    FG_GL_FUNCTION_VOID( RasterPos3xvOES, FgGLContext *, const FgGLfixed * ) \
+    FG_GL_FUNCTION_VOID( RasterPos4xOES, FgGLContext *, FgGLfixed, FgGLfixed, FgGLfixed, FgGLfixed ) \
+    FG_GL_FUNCTION_VOID( RasterPos4xvOES, FgGLContext *, const FgGLfixed * ) \
+    FG_GL_FUNCTION_VOID( RectxOES, FgGLContext *, FgGLfixed, FgGLfixed, FgGLfixed, FgGLfixed ) \
+    FG_GL_FUNCTION_VOID( RectxvOES, FgGLContext *, const FgGLfixed *, const FgGLfixed * ) \
+    FG_GL_FUNCTION_VOID( TexCoord1xOES, FgGLContext *, FgGLfixed ) \
+    FG_GL_FUNCTION_VOID( TexCoord1xvOES, FgGLContext *, const FgGLfixed * ) \
+    FG_GL_FUNCTION_VOID( TexCoord2xOES, FgGLContext *, FgGLfixed, FgGLfixed ) \
+    FG_GL_FUNCTION_VOID( TexCoord2xvOES, FgGLContext *, const FgGLfixed * ) \
+    FG_GL_FUNCTION_VOID( TexCoord3xOES, FgGLContext *, FgGLfixed, FgGLfixed, FgGLfixed ) \
+    FG_GL_FUNCTION_VOID( TexCoord3xvOES, FgGLContext *, const FgGLfixed * ) \
+    FG_GL_FUNCTION_VOID( TexCoord4xOES, FgGLContext *, FgGLfixed, FgGLfixed, FgGLfixed, FgGLfixed ) \
+    FG_GL_FUNCTION_VOID( TexCoord4xvOES, FgGLContext *, const FgGLfixed * ) \
+    FG_GL_FUNCTION_VOID( TexGenxOES, FgGLContext *, FgGLenum, FgGLenum, FgGLfixed ) \
+    FG_GL_FUNCTION_VOID( TexGenxvOES, FgGLContext *, FgGLenum, FgGLenum, const FgGLfixed * ) \
+    FG_GL_FUNCTION_VOID( Vertex2xOES, FgGLContext *, FgGLfixed ) \
+    FG_GL_FUNCTION_VOID( Vertex2xvOES, FgGLContext *, const FgGLfixed * ) \
+    FG_GL_FUNCTION_VOID( Vertex3xOES, FgGLContext *, FgGLfixed, FgGLfixed ) \
+    FG_GL_FUNCTION_VOID( Vertex3xvOES, FgGLContext *, const FgGLfixed * ) \
+    FG_GL_FUNCTION_VOID( Vertex4xOES, FgGLContext *, FgGLfixed, FgGLfixed, FgGLfixed ) \
+    FG_GL_FUNCTION_VOID( Vertex4xvOES, FgGLContext *, const FgGLfixed * ) \
 \
     /* GL_OES_query_matrix */ \
-    FG_GL_FUNCTION( 0, FgGLbitfield, QueryMatrixxOES, ( FgGLfixed * _1, FgGLint * _2 ), ( _1, _2 ) ) \
+    FG_GL_FUNCTION_NUM( QueryMatrixxOES, FgGLbitfield, FgGLContext *, FgGLfixed *, FgGLint * ) \
 \
     /* GL_OES_read_format */ \
 \
     /* GL_OES_single_precision */ \
-    FG_GL_VOID_FUNCTION( ClearDepthfOES, ( FgGLclampf _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( ClipPlanefOES, ( FgGLenum _1, const FgGLfloat * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( DepthRangefOES, ( FgGLclampf _1, FgGLclampf _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( FrustumfOES, ( FgGLfloat _1, FgGLfloat _2, FgGLfloat _3, FgGLfloat _4, FgGLfloat _5, FgGLfloat _6 ), ( _1, _2, _3, _4, _5, _6 ) ) \
-    FG_GL_VOID_FUNCTION( GetClipPlanefOES, ( FgGLenum _1, FgGLfloat * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( OrthofOES, ( FgGLfloat _1, FgGLfloat _2, FgGLfloat _3, FgGLfloat _4, FgGLfloat _5, FgGLfloat _6 ), ( _1, _2, _3, _4, _5, _6 ) ) \
+    FG_GL_FUNCTION_VOID( ClearDepthfOES, FgGLContext *, FgGLclampf ) \
+    FG_GL_FUNCTION_VOID( ClipPlanefOES, FgGLContext *, FgGLenum, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( DepthRangefOES, FgGLContext *, FgGLclampf, FgGLclampf ) \
+    FG_GL_FUNCTION_VOID( FrustumfOES, FgGLContext *, FgGLfloat, FgGLfloat, FgGLfloat, FgGLfloat, FgGLfloat, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( GetClipPlanefOES, FgGLContext *, FgGLenum, FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( OrthofOES, FgGLContext *, FgGLfloat, FgGLfloat, FgGLfloat, FgGLfloat, FgGLfloat, FgGLfloat ) \
 \
     /* GL_3DFX_multisample */ \
 \
     /* GL_3DFX_tbuffer */ \
-    FG_GL_VOID_FUNCTION( TbufferMask3DFX, ( FgGLuint _1 ), ( _1 ) ) \
+    FG_GL_FUNCTION_VOID( TbufferMask3DFX, FgGLContext *, FgGLuint ) \
 \
     /* GL_3DFX_texture_compression_FXT1 */ \
 \
@@ -1705,50 +1706,50 @@
     /* GL_AMD_conservative_depth */ \
 \
     /* GL_AMD_debug_output */ \
-    FG_GL_VOID_FUNCTION( DebugMessageEnableAMD, ( FgGLenum _1, FgGLenum _2, FgGLsizei _3, const FgGLuint * _4, FgGLboolean _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( DebugMessageInsertAMD, ( FgGLenum _1, FgGLenum _2, FgGLuint _3, FgGLsizei _4, const FgGLchar * _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( DebugMessageCallbackAMD, ( FgGLDebugProcAMD _1, void * _2 ), ( _1, _2 ) ) \
-    FG_GL_FUNCTION( 0, FgGLuint, GetDebugMessageLogAMD, ( FgGLuint _1, FgGLsizei _2, FgGLenum * _3, FgGLuint * _4, FgGLuint * _5, FgGLsizei * _6, FgGLchar * _7 ), ( _1, _2, _3, _4, _5, _6, _7 ) ) \
+    FG_GL_FUNCTION_VOID( DebugMessageEnableAMD, FgGLContext *, FgGLenum, FgGLenum, FgGLsizei, const FgGLuint *, FgGLboolean ) \
+    FG_GL_FUNCTION_VOID( DebugMessageInsertAMD, FgGLContext *, FgGLenum, FgGLenum, FgGLuint, FgGLsizei, const FgGLchar * ) \
+    FG_GL_FUNCTION_VOID( DebugMessageCallbackAMD, FgGLContext *, FgGLDebugProcAMD, void * ) \
+    FG_GL_FUNCTION_NUM( GetDebugMessageLogAMD, FgGLuint, FgGLContext *, FgGLuint, FgGLsizei, FgGLenum *, FgGLuint *, FgGLuint *, FgGLsizei *, FgGLchar * ) \
 \
     /* GL_AMD_depth_clamp_separate */ \
 \
     /* GL_AMD_draw_buffers_blend */ \
-    FG_GL_VOID_FUNCTION( BlendFuncIndexedAMD, ( FgGLuint _1, FgGLenum _2, FgGLenum _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( BlendFuncSeparateIndexedAMD, ( FgGLuint _1, FgGLenum _2, FgGLenum _3, FgGLenum _4, FgGLenum _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( BlendEquationIndexedAMD, ( FgGLuint _1, FgGLenum _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( BlendEquationSeparateIndexedAMD, ( FgGLuint _1, FgGLenum _2, FgGLenum _3 ), ( _1, _2, _3 ) ) \
+    FG_GL_FUNCTION_VOID( BlendFuncIndexedAMD, FgGLContext *, FgGLuint, FgGLenum, FgGLenum ) \
+    FG_GL_FUNCTION_VOID( BlendFuncSeparateIndexedAMD, FgGLContext *, FgGLuint, FgGLenum, FgGLenum, FgGLenum, FgGLenum ) \
+    FG_GL_FUNCTION_VOID( BlendEquationIndexedAMD, FgGLContext *, FgGLuint, FgGLenum ) \
+    FG_GL_FUNCTION_VOID( BlendEquationSeparateIndexedAMD, FgGLContext *, FgGLuint, FgGLenum, FgGLenum ) \
 \
     /* GL_AMD_interleaved_elements */ \
-    FG_GL_VOID_FUNCTION( VertexAttribParameteriAMD, ( FgGLuint _1, FgGLenum _2, FgGLint _3 ), ( _1, _2, _3 ) ) \
+    FG_GL_FUNCTION_VOID( VertexAttribParameteriAMD, FgGLContext *, FgGLuint, FgGLenum, FgGLint ) \
 \
     /* GL_AMD_multi_draw_indirect */ \
-    FG_GL_VOID_FUNCTION( MultiDrawArraysIndirectAMD, ( FgGLenum _1, const FgGLvoid * _2, FgGLsizei _3, FgGLsizei _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( MultiDrawElementsIndirectAMD, ( FgGLenum _1, FgGLenum _2, const FgGLvoid * _3, FgGLsizei _4, FgGLsizei _5 ), ( _1, _2, _3, _4, _5 ) ) \
+    FG_GL_FUNCTION_VOID( MultiDrawArraysIndirectAMD, FgGLContext *, FgGLenum, const FgGLvoid *, FgGLsizei, FgGLsizei ) \
+    FG_GL_FUNCTION_VOID( MultiDrawElementsIndirectAMD, FgGLContext *, FgGLenum, FgGLenum, const FgGLvoid *, FgGLsizei, FgGLsizei ) \
 \
     /* GL_AMD_name_gen_delete */ \
-    FG_GL_VOID_FUNCTION( GenNamesAMD, ( FgGLenum _1, FgGLuint _2, FgGLuint * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( DeleteNamesAMD, ( FgGLenum _1, FgGLuint _2, const FgGLuint * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_FUNCTION( 0, FgGLboolean, IsNameAMD, ( FgGLenum _1, FgGLuint _2 ), ( _1, _2 ) ) \
+    FG_GL_FUNCTION_VOID( GenNamesAMD, FgGLContext *, FgGLenum, FgGLuint, FgGLuint * ) \
+    FG_GL_FUNCTION_VOID( DeleteNamesAMD, FgGLContext *, FgGLenum, FgGLuint, const FgGLuint * ) \
+    FG_GL_FUNCTION_NUM( IsNameAMD, FgGLboolean, FgGLContext *, FgGLenum, FgGLuint ) \
 \
     /* GL_AMD_performance_monitor */ \
-    FG_GL_VOID_FUNCTION( GetPerfMonitorGroupsAMD, ( FgGLint * _1, FgGLsizei _2, FgGLuint * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetPerfMonitorCountersAMD, ( FgGLuint _1, FgGLint * _2, FgGLint * _3, FgGLsizei _4, FgGLuint * _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( GetPerfMonitorGroupStringAMD, ( FgGLuint _1, FgGLsizei _2, FgGLsizei * _3, FgGLchar * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( GetPerfMonitorCounterStringAMD, ( FgGLuint _1, FgGLuint _2, FgGLsizei _3, FgGLsizei * _4, FgGLchar * _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( GetPerfMonitorCounterInfoAMD, ( FgGLuint _1, FgGLuint _2, FgGLenum _3, FgGLvoid * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( GenPerfMonitorsAMD, ( FgGLsizei _1, FgGLuint * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( DeletePerfMonitorsAMD, ( FgGLsizei _1, FgGLuint * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( SelectPerfMonitorCountersAMD, ( FgGLuint _1, FgGLboolean _2, FgGLuint _3, FgGLint _4, FgGLuint * _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( BeginPerfMonitorAMD, ( FgGLuint _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( EndPerfMonitorAMD, ( FgGLuint _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( GetPerfMonitorCounterDataAMD, ( FgGLuint _1, FgGLenum _2, FgGLsizei _3, FgGLuint * _4, FgGLint * _5 ), ( _1, _2, _3, _4, _5 ) ) \
+    FG_GL_FUNCTION_VOID( GetPerfMonitorGroupsAMD, FgGLContext *, FgGLint *, FgGLsizei, FgGLuint * ) \
+    FG_GL_FUNCTION_VOID( GetPerfMonitorCountersAMD, FgGLContext *, FgGLuint, FgGLint *, FgGLint *, FgGLsizei, FgGLuint * ) \
+    FG_GL_FUNCTION_VOID( GetPerfMonitorGroupStringAMD, FgGLContext *, FgGLuint, FgGLsizei, FgGLsizei *, FgGLchar * ) \
+    FG_GL_FUNCTION_VOID( GetPerfMonitorCounterStringAMD, FgGLContext *, FgGLuint, FgGLuint, FgGLsizei, FgGLsizei *, FgGLchar * ) \
+    FG_GL_FUNCTION_VOID( GetPerfMonitorCounterInfoAMD, FgGLContext *, FgGLuint, FgGLuint, FgGLenum, FgGLvoid * ) \
+    FG_GL_FUNCTION_VOID( GenPerfMonitorsAMD, FgGLContext *, FgGLsizei, FgGLuint * ) \
+    FG_GL_FUNCTION_VOID( DeletePerfMonitorsAMD, FgGLContext *, FgGLsizei, FgGLuint * ) \
+    FG_GL_FUNCTION_VOID( SelectPerfMonitorCountersAMD, FgGLContext *, FgGLuint, FgGLboolean, FgGLuint, FgGLint, FgGLuint * ) \
+    FG_GL_FUNCTION_VOID( BeginPerfMonitorAMD, FgGLContext *, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( EndPerfMonitorAMD, FgGLContext *, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( GetPerfMonitorCounterDataAMD, FgGLContext *, FgGLuint, FgGLenum, FgGLsizei, FgGLuint *, FgGLint * ) \
 \
     /* GL_AMD_pinned_memory */ \
 \
     /* GL_AMD_query_buffer_object */ \
 \
     /* GL_AMD_sample_positions */ \
-    FG_GL_VOID_FUNCTION( SetMultisamplefvAMD, ( FgGLenum _1, FgGLuint _2, const FgGLfloat * _3 ), ( _1, _2, _3 ) ) \
+    FG_GL_FUNCTION_VOID( SetMultisamplefvAMD, FgGLContext *, FgGLenum, FgGLuint, const FgGLfloat * ) \
 \
     /* GL_AMD_seamless_cubemap_per_texture */ \
 \
@@ -1759,11 +1760,11 @@
     /* GL_AMD_shader_trinary_minmax */ \
 \
     /* GL_AMD_sparse_texture */ \
-    FG_GL_VOID_FUNCTION( TexStorageSparseAMD, ( FgGLenum _1, FgGLenum _2, FgGLsizei _3, FgGLsizei _4, FgGLsizei _5, FgGLsizei _6, FgGLbitfield _7 ), ( _1, _2, _3, _4, _5, _6, _7 ) ) \
-    FG_GL_VOID_FUNCTION( TextureStorageSparseAMD, ( FgGLuint _1, FgGLenum _2, FgGLenum _3, FgGLsizei _4, FgGLsizei _5, FgGLsizei _6, FgGLsizei _7, FgGLbitfield _8 ), ( _1, _2, _3, _4, _5, _6, _7, _8 ) ) \
+    FG_GL_FUNCTION_VOID( TexStorageSparseAMD, FgGLContext *, FgGLenum, FgGLenum, FgGLsizei, FgGLsizei, FgGLsizei, FgGLsizei, FgGLbitfield ) \
+    FG_GL_FUNCTION_VOID( TextureStorageSparseAMD, FgGLContext *, FgGLuint, FgGLenum, FgGLenum, FgGLsizei, FgGLsizei, FgGLsizei, FgGLsizei, FgGLbitfield ) \
 \
     /* GL_AMD_stencil_operation_extended */ \
-    FG_GL_VOID_FUNCTION( StencilOpValueAMD, ( FgGLenum _1, FgGLuint _2 ), ( _1, _2 ) ) \
+    FG_GL_FUNCTION_VOID( StencilOpValueAMD, FgGLContext *, FgGLenum, FgGLuint ) \
 \
     /* GL_AMD_texture_texture4 */ \
 \
@@ -1772,8 +1773,8 @@
     /* GL_AMD_vertex_shader_layer */ \
 \
     /* GL_AMD_vertex_shader_tessellator */ \
-    FG_GL_VOID_FUNCTION( TessellationFactorAMD, ( FgGLfloat _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( TessellationModeAMD, ( FgGLenum _1 ), ( _1 ) ) \
+    FG_GL_FUNCTION_VOID( TessellationFactorAMD, FgGLContext *, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( TessellationModeAMD, FgGLContext *, FgGLenum ) \
 \
     /* GL_AMD_vertex_shader_viewport_index */ \
 \
@@ -1782,32 +1783,32 @@
     /* GL_APPLE_client_storage */ \
 \
     /* GL_APPLE_element_array */ \
-    FG_GL_VOID_FUNCTION( ElementPointerAPPLE, ( FgGLenum _1, const FgGLvoid * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( DrawElementArrayAPPLE, ( FgGLenum _1, FgGLint _2, FgGLsizei _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( DrawRangeElementArrayAPPLE, ( FgGLenum _1, FgGLuint _2, FgGLuint _3, FgGLint _4, FgGLsizei _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( MultiDrawElementArrayAPPLE, ( FgGLenum _1, const FgGLint * _2, const FgGLsizei * _3, FgGLsizei _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( MultiDrawRangeElementArrayAPPLE, ( FgGLenum _1, FgGLuint _2, FgGLuint _3, const FgGLint * _4, const FgGLsizei * _5, FgGLsizei _6 ), ( _1, _2, _3, _4, _5, _6 ) ) \
+    FG_GL_FUNCTION_VOID( ElementPointerAPPLE, FgGLContext *, FgGLenum, const FgGLvoid * ) \
+    FG_GL_FUNCTION_VOID( DrawElementArrayAPPLE, FgGLContext *, FgGLenum, FgGLint, FgGLsizei ) \
+    FG_GL_FUNCTION_VOID( DrawRangeElementArrayAPPLE, FgGLContext *, FgGLenum, FgGLuint, FgGLuint, FgGLint, FgGLsizei ) \
+    FG_GL_FUNCTION_VOID( MultiDrawElementArrayAPPLE, FgGLContext *, FgGLenum, const FgGLint *, const FgGLsizei *, FgGLsizei ) \
+    FG_GL_FUNCTION_VOID( MultiDrawRangeElementArrayAPPLE, FgGLContext *, FgGLenum, FgGLuint, FgGLuint, const FgGLint *, const FgGLsizei *, FgGLsizei ) \
 \
     /* GL_APPLE_fence */ \
-    FG_GL_VOID_FUNCTION( GenFencesAPPLE, ( FgGLsizei _1, FgGLuint * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( DeleteFencesAPPLE, ( FgGLsizei _1, const FgGLuint * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( SetFenceAPPLE, ( FgGLuint _1 ), ( _1 ) ) \
-    FG_GL_FUNCTION( 0, FgGLboolean, IsFenceAPPLE, ( FgGLuint _1 ), ( _1 ) ) \
-    FG_GL_FUNCTION( 0, FgGLboolean, TestFenceAPPLE, ( FgGLuint _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( FinishFenceAPPLE, ( FgGLuint _1 ), ( _1 ) ) \
-    FG_GL_FUNCTION( 0, FgGLboolean, TestObjectAPPLE, ( FgGLenum _1, FgGLuint _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( FinishObjectAPPLE, ( FgGLenum _1, FgGLint _2 ), ( _1, _2 ) ) \
+    FG_GL_FUNCTION_VOID( GenFencesAPPLE, FgGLContext *, FgGLsizei, FgGLuint * ) \
+    FG_GL_FUNCTION_VOID( DeleteFencesAPPLE, FgGLContext *, FgGLsizei, const FgGLuint * ) \
+    FG_GL_FUNCTION_VOID( SetFenceAPPLE, FgGLContext *, FgGLuint ) \
+    FG_GL_FUNCTION_NUM( IsFenceAPPLE, FgGLboolean, FgGLContext *, FgGLuint ) \
+    FG_GL_FUNCTION_NUM( TestFenceAPPLE, FgGLboolean, FgGLContext *, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( FinishFenceAPPLE, FgGLContext *, FgGLuint ) \
+    FG_GL_FUNCTION_NUM( TestObjectAPPLE, FgGLboolean, FgGLContext *, FgGLenum, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( FinishObjectAPPLE, FgGLContext *, FgGLenum, FgGLint ) \
 \
     /* GL_APPLE_float_pixels */ \
 \
     /* GL_APPLE_flush_buffer_range */ \
-    FG_GL_VOID_FUNCTION( BufferParameteriAPPLE, ( FgGLenum _1, FgGLenum _2, FgGLint _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( FlushMappedBufferRangeAPPLE, ( FgGLenum _1, FgGLintptr _2, FgGLsizeiptr _3 ), ( _1, _2, _3 ) ) \
+    FG_GL_FUNCTION_VOID( BufferParameteriAPPLE, FgGLContext *, FgGLenum, FgGLenum, FgGLint ) \
+    FG_GL_FUNCTION_VOID( FlushMappedBufferRangeAPPLE, FgGLContext *, FgGLenum, FgGLintptr, FgGLsizeiptr ) \
 \
     /* GL_APPLE_object_purgeable */ \
-    FG_GL_FUNCTION( 0, FgGLenum, ObjectPurgeableAPPLE, ( FgGLenum _1, FgGLuint _2, FgGLenum _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_FUNCTION( 0, FgGLenum, ObjectUnpurgeableAPPLE, ( FgGLenum _1, FgGLuint _2, FgGLenum _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetObjectParameterivAPPLE, ( FgGLenum _1, FgGLuint _2, FgGLenum _3, FgGLint * _4 ), ( _1, _2, _3, _4 ) ) \
+    FG_GL_FUNCTION_NUM( ObjectPurgeableAPPLE, FgGLenum, FgGLContext *, FgGLenum, FgGLuint, FgGLenum ) \
+    FG_GL_FUNCTION_NUM( ObjectUnpurgeableAPPLE, FgGLenum, FgGLContext *, FgGLenum, FgGLuint, FgGLenum ) \
+    FG_GL_FUNCTION_VOID( GetObjectParameterivAPPLE, FgGLContext *, FgGLenum, FgGLuint, FgGLenum, FgGLint * ) \
 \
     /* GL_APPLE_rgb_422 */ \
 \
@@ -1816,78 +1817,78 @@
     /* GL_APPLE_specular_vector */ \
 \
     /* GL_APPLE_texture_range */ \
-    FG_GL_VOID_FUNCTION( TextureRangeAPPLE, ( FgGLenum _1, FgGLsizei _2, const FgGLvoid * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetTexParameterPointervAPPLE, ( FgGLenum _1, FgGLenum _2, FgGLvoid ** _3 ), ( _1, _2, _3 ) ) \
+    FG_GL_FUNCTION_VOID( TextureRangeAPPLE, FgGLContext *, FgGLenum, FgGLsizei, const FgGLvoid * ) \
+    FG_GL_FUNCTION_VOID( GetTexParameterPointervAPPLE, FgGLContext *, FgGLenum, FgGLenum, FgGLvoid ** ) \
 \
     /* GL_APPLE_transform_hint */ \
 \
     /* GL_APPLE_vertex_array_object */ \
-    FG_GL_VOID_FUNCTION( BindVertexArrayAPPLE, ( FgGLuint _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( DeleteVertexArraysAPPLE, ( FgGLsizei _1, const FgGLuint * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( GenVertexArraysAPPLE, ( FgGLsizei _1, FgGLuint * _2 ), ( _1, _2 ) ) \
-    FG_GL_FUNCTION( 0, FgGLboolean, IsVertexArrayAPPLE, ( FgGLuint _1 ), ( _1 ) ) \
+    FG_GL_FUNCTION_VOID( BindVertexArrayAPPLE, FgGLContext *, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( DeleteVertexArraysAPPLE, FgGLContext *, FgGLsizei, const FgGLuint * ) \
+    FG_GL_FUNCTION_VOID( GenVertexArraysAPPLE, FgGLContext *, FgGLsizei, FgGLuint * ) \
+    FG_GL_FUNCTION_NUM( IsVertexArrayAPPLE, FgGLboolean, FgGLContext *, FgGLuint ) \
 \
     /* GL_APPLE_vertex_array_range */ \
-    FG_GL_VOID_FUNCTION( VertexArrayRangeAPPLE, ( FgGLsizei _1, FgGLvoid * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( FlushVertexArrayRangeAPPLE, ( FgGLsizei _1, FgGLvoid * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexArrayParameteriAPPLE, ( FgGLenum _1, FgGLint _2 ), ( _1, _2 ) ) \
+    FG_GL_FUNCTION_VOID( VertexArrayRangeAPPLE, FgGLContext *, FgGLsizei, FgGLvoid * ) \
+    FG_GL_FUNCTION_VOID( FlushVertexArrayRangeAPPLE, FgGLContext *, FgGLsizei, FgGLvoid * ) \
+    FG_GL_FUNCTION_VOID( VertexArrayParameteriAPPLE, FgGLContext *, FgGLenum, FgGLint ) \
 \
     /* GL_APPLE_vertex_program_evaluators */ \
-    FG_GL_VOID_FUNCTION( EnableVertexAttribAPPLE, ( FgGLuint _1, FgGLenum _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( DisableVertexAttribAPPLE, ( FgGLuint _1, FgGLenum _2 ), ( _1, _2 ) ) \
-    FG_GL_FUNCTION( 0, FgGLboolean, IsVertexAttribEnabledAPPLE, ( FgGLuint _1, FgGLenum _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( MapVertexAttrib1dAPPLE, ( FgGLuint _1, FgGLuint _2, FgGLdouble _3, FgGLdouble _4, FgGLint _5, FgGLint _6, const FgGLdouble * _7 ), ( _1, _2, _3, _4, _5, _6, _7 ) ) \
-    FG_GL_VOID_FUNCTION( MapVertexAttrib1fAPPLE, ( FgGLuint _1, FgGLuint _2, FgGLfloat _3, FgGLfloat _4, FgGLint _5, FgGLint _6, const FgGLfloat * _7 ), ( _1, _2, _3, _4, _5, _6, _7 ) ) \
-    FG_GL_VOID_FUNCTION( MapVertexAttrib2dAPPLE, ( FgGLuint _1, FgGLuint _2, FgGLdouble _3, FgGLdouble _4, FgGLint _5, FgGLint _6, FgGLdouble _7, FgGLdouble _8, FgGLint _9, FgGLint _10, const FgGLdouble * _11 ), ( _1, _2, _3, _4, _5, _6, _7, _8, _9, _10, _11 ) ) \
-    FG_GL_VOID_FUNCTION( MapVertexAttrib2fAPPLE, ( FgGLuint _1, FgGLuint _2, FgGLfloat _3, FgGLfloat _4, FgGLint _5, FgGLint _6, FgGLfloat _7, FgGLfloat _8, FgGLint _9, FgGLint _10, const FgGLfloat * _11 ), ( _1, _2, _3, _4, _5, _6, _7, _8, _9, _10, _11 ) ) \
+    FG_GL_FUNCTION_VOID( EnableVertexAttribAPPLE, FgGLContext *, FgGLuint, FgGLenum ) \
+    FG_GL_FUNCTION_VOID( DisableVertexAttribAPPLE, FgGLContext *, FgGLuint, FgGLenum ) \
+    FG_GL_FUNCTION_NUM( IsVertexAttribEnabledAPPLE, FgGLboolean, FgGLContext *, FgGLuint, FgGLenum ) \
+    FG_GL_FUNCTION_VOID( MapVertexAttrib1dAPPLE, FgGLContext *, FgGLuint, FgGLuint, FgGLdouble, FgGLdouble, FgGLint, FgGLint, const FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( MapVertexAttrib1fAPPLE, FgGLContext *, FgGLuint, FgGLuint, FgGLfloat, FgGLfloat, FgGLint, FgGLint, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( MapVertexAttrib2dAPPLE, FgGLContext *, FgGLuint, FgGLuint, FgGLdouble, FgGLdouble, FgGLint, FgGLint, FgGLdouble, FgGLdouble, FgGLint, FgGLint, const FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( MapVertexAttrib2fAPPLE, FgGLContext *, FgGLuint, FgGLuint, FgGLfloat, FgGLfloat, FgGLint, FgGLint, FgGLfloat, FgGLfloat, FgGLint, FgGLint, const FgGLfloat * ) \
 \
     /* GL_APPLE_ycbcr_422 */ \
 \
     /* GL_ATI_draw_buffers */ \
-    FG_GL_VOID_FUNCTION( DrawBuffersATI, ( FgGLsizei _1, const FgGLenum * _2 ), ( _1, _2 ) ) \
+    FG_GL_FUNCTION_VOID( DrawBuffersATI, FgGLContext *, FgGLsizei, const FgGLenum * ) \
 \
     /* GL_ATI_element_array */ \
-    FG_GL_VOID_FUNCTION( ElementPointerATI, ( FgGLenum _1, const FgGLvoid * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( DrawElementArrayATI, ( FgGLenum _1, FgGLsizei _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( DrawRangeElementArrayATI, ( FgGLenum _1, FgGLuint _2, FgGLuint _3, FgGLsizei _4 ), ( _1, _2, _3, _4 ) ) \
+    FG_GL_FUNCTION_VOID( ElementPointerATI, FgGLContext *, FgGLenum, const FgGLvoid * ) \
+    FG_GL_FUNCTION_VOID( DrawElementArrayATI, FgGLContext *, FgGLenum, FgGLsizei ) \
+    FG_GL_FUNCTION_VOID( DrawRangeElementArrayATI, FgGLContext *, FgGLenum, FgGLuint, FgGLuint, FgGLsizei ) \
 \
     /* GL_ATI_envmap_bumpmap */ \
-    FG_GL_VOID_FUNCTION( TexBumpParameterivATI, ( FgGLenum _1, const FgGLint * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( TexBumpParameterfvATI, ( FgGLenum _1, const FgGLfloat * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( GetTexBumpParameterivATI, ( FgGLenum _1, FgGLint * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( GetTexBumpParameterfvATI, ( FgGLenum _1, FgGLfloat * _2 ), ( _1, _2 ) ) \
+    FG_GL_FUNCTION_VOID( TexBumpParameterivATI, FgGLContext *, FgGLenum, const FgGLint * ) \
+    FG_GL_FUNCTION_VOID( TexBumpParameterfvATI, FgGLContext *, FgGLenum, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( GetTexBumpParameterivATI, FgGLContext *, FgGLenum, FgGLint * ) \
+    FG_GL_FUNCTION_VOID( GetTexBumpParameterfvATI, FgGLContext *, FgGLenum, FgGLfloat * ) \
 \
     /* GL_ATI_fragment_shader */ \
-    FG_GL_FUNCTION( 0, FgGLuint, GenFragmentShadersATI, ( FgGLuint _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( BindFragmentShaderATI, ( FgGLuint _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( DeleteFragmentShaderATI, ( FgGLuint _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( BeginFragmentShaderATI, ( ), ( ) ) \
-    FG_GL_VOID_FUNCTION( EndFragmentShaderATI, ( ), ( ) ) \
-    FG_GL_VOID_FUNCTION( PassTexCoordATI, ( FgGLuint _1, FgGLuint _2, FgGLenum _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( SampleMapATI, ( FgGLuint _1, FgGLuint _2, FgGLenum _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( ColorFragmentOp1ATI, ( FgGLenum _1, FgGLuint _2, FgGLuint _3, FgGLuint _4, FgGLuint _5, FgGLuint _6, FgGLuint _7 ), ( _1, _2, _3, _4, _5, _6, _7 ) ) \
-    FG_GL_VOID_FUNCTION( ColorFragmentOp2ATI, ( FgGLenum _1, FgGLuint _2, FgGLuint _3, FgGLuint _4, FgGLuint _5, FgGLuint _6, FgGLuint _7, FgGLuint _8, FgGLuint _9, FgGLuint _10 ), ( _1, _2, _3, _4, _5, _6, _7, _8, _9, _10 ) ) \
-    FG_GL_VOID_FUNCTION( ColorFragmentOp3ATI, ( FgGLenum _1, FgGLuint _2, FgGLuint _3, FgGLuint _4, FgGLuint _5, FgGLuint _6, FgGLuint _7, FgGLuint _8, FgGLuint _9, FgGLuint _10, FgGLuint _11, FgGLuint _12, FgGLuint _13 ), ( _1, _2, _3, _4, _5, _6, _7, _8, _9, _10, _11, _12, _13 ) ) \
-    FG_GL_VOID_FUNCTION( AlphaFragmentOp1ATI, ( FgGLenum _1, FgGLuint _2, FgGLuint _3, FgGLuint _4, FgGLuint _5, FgGLuint _6 ), ( _1, _2, _3, _4, _5, _6 ) ) \
-    FG_GL_VOID_FUNCTION( AlphaFragmentOp2ATI, ( FgGLenum _1, FgGLuint _2, FgGLuint _3, FgGLuint _4, FgGLuint _5, FgGLuint _6, FgGLuint _7, FgGLuint _8, FgGLuint _9 ), ( _1, _2, _3, _4, _5, _6, _7, _8, _9 ) ) \
-    FG_GL_VOID_FUNCTION( AlphaFragmentOp3ATI, ( FgGLenum _1, FgGLuint _2, FgGLuint _3, FgGLuint _4, FgGLuint _5, FgGLuint _6, FgGLuint _7, FgGLuint _8, FgGLuint _9, FgGLuint _10, FgGLuint _11, FgGLuint _12 ), ( _1, _2, _3, _4, _5, _6, _7, _8, _9, _10, _11, _12 ) ) \
-    FG_GL_VOID_FUNCTION( SetFragmentShaderConstantATI, ( FgGLuint _1, const FgGLfloat * _2 ), ( _1, _2 ) ) \
+    FG_GL_FUNCTION_NUM( GenFragmentShadersATI, FgGLuint, FgGLContext *, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( BindFragmentShaderATI, FgGLContext *, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( DeleteFragmentShaderATI, FgGLContext *, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( BeginFragmentShaderATI, FgGLContext * ) \
+    FG_GL_FUNCTION_VOID( EndFragmentShaderATI, FgGLContext * ) \
+    FG_GL_FUNCTION_VOID( PassTexCoordATI, FgGLContext *, FgGLuint, FgGLuint, FgGLenum ) \
+    FG_GL_FUNCTION_VOID( SampleMapATI, FgGLContext *, FgGLuint, FgGLuint, FgGLenum ) \
+    FG_GL_FUNCTION_VOID( ColorFragmentOp1ATI, FgGLContext *, FgGLenum, FgGLuint, FgGLuint, FgGLuint, FgGLuint, FgGLuint, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( ColorFragmentOp2ATI, FgGLContext *, FgGLenum, FgGLuint, FgGLuint, FgGLuint, FgGLuint, FgGLuint, FgGLuint, FgGLuint, FgGLuint, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( ColorFragmentOp3ATI, FgGLContext *, FgGLenum, FgGLuint, FgGLuint, FgGLuint, FgGLuint, FgGLuint, FgGLuint, FgGLuint, FgGLuint, FgGLuint, FgGLuint, FgGLuint, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( AlphaFragmentOp1ATI, FgGLContext *, FgGLenum, FgGLuint, FgGLuint, FgGLuint, FgGLuint, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( AlphaFragmentOp2ATI, FgGLContext *, FgGLenum, FgGLuint, FgGLuint, FgGLuint, FgGLuint, FgGLuint, FgGLuint, FgGLuint, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( AlphaFragmentOp3ATI, FgGLContext *, FgGLenum, FgGLuint, FgGLuint, FgGLuint, FgGLuint, FgGLuint, FgGLuint, FgGLuint, FgGLuint, FgGLuint, FgGLuint, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( SetFragmentShaderConstantATI, FgGLContext *, FgGLuint, const FgGLfloat * ) \
 \
     /* GL_ATI_map_object_buffer */ \
-    FG_GL_FUNCTION( NULL, void *, MapObjectBufferATI, ( FgGLuint _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( UnmapObjectBufferATI, ( FgGLuint _1 ), ( _1 ) ) \
+    FG_GL_FUNCTION_PTR( MapObjectBufferATI, void *, FgGLContext *, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( UnmapObjectBufferATI, FgGLContext *, FgGLuint ) \
 \
     /* GL_ATI_meminfo */ \
 \
     /* GL_ATI_pixel_format_float */ \
 \
     /* GL_ATI_pn_triangles */ \
-    FG_GL_VOID_FUNCTION( PNTrianglesiATI, ( FgGLenum _1, FgGLint _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( PNTrianglesfATI, ( FgGLenum _1, FgGLfloat _2 ), ( _1, _2 ) ) \
+    FG_GL_FUNCTION_VOID( PNTrianglesiATI, FgGLContext *, FgGLenum, FgGLint ) \
+    FG_GL_FUNCTION_VOID( PNTrianglesfATI, FgGLContext *, FgGLenum, FgGLfloat ) \
 \
     /* GL_ATI_separate_stencil */ \
-    FG_GL_VOID_FUNCTION( StencilOpSeparateATI, ( FgGLenum _1, FgGLenum _2, FgGLenum _3, FgGLenum _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( StencilFuncSeparateATI, ( FgGLenum _1, FgGLenum _2, FgGLint _3, FgGLuint _4 ), ( _1, _2, _3, _4 ) ) \
+    FG_GL_FUNCTION_VOID( StencilOpSeparateATI, FgGLContext *, FgGLenum, FgGLenum, FgGLenum, FgGLenum ) \
+    FG_GL_FUNCTION_VOID( StencilFuncSeparateATI, FgGLContext *, FgGLenum, FgGLenum, FgGLint, FgGLuint ) \
 \
     /* GL_ATI_text_fragment_shader */ \
 \
@@ -1898,70 +1899,70 @@
     /* GL_ATI_texture_mirror_once */ \
 \
     /* GL_ATI_vertex_array_object */ \
-    FG_GL_FUNCTION( 0, FgGLuint, NewObjectBufferATI, ( FgGLsizei _1, const FgGLvoid * _2, FgGLenum _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_FUNCTION( 0, FgGLboolean, IsObjectBufferATI, ( FgGLuint _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( UpdateObjectBufferATI, ( FgGLuint _1, FgGLuint _2, FgGLsizei _3, const FgGLvoid * _4, FgGLenum _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( GetObjectBufferfvATI, ( FgGLuint _1, FgGLenum _2, FgGLfloat * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetObjectBufferivATI, ( FgGLuint _1, FgGLenum _2, FgGLint * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( FreeObjectBufferATI, ( FgGLuint _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( ArrayObjectATI, ( FgGLenum _1, FgGLint _2, FgGLenum _3, FgGLsizei _4, FgGLuint _5, FgGLuint _6 ), ( _1, _2, _3, _4, _5, _6 ) ) \
-    FG_GL_VOID_FUNCTION( GetArrayObjectfvATI, ( FgGLenum _1, FgGLenum _2, FgGLfloat * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetArrayObjectivATI, ( FgGLenum _1, FgGLenum _2, FgGLint * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( VariantArrayObjectATI, ( FgGLuint _1, FgGLenum _2, FgGLsizei _3, FgGLuint _4, FgGLuint _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( GetVariantArrayObjectfvATI, ( FgGLuint _1, FgGLenum _2, FgGLfloat * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetVariantArrayObjectivATI, ( FgGLuint _1, FgGLenum _2, FgGLint * _3 ), ( _1, _2, _3 ) ) \
+    FG_GL_FUNCTION_NUM( NewObjectBufferATI, FgGLuint, FgGLContext *, FgGLsizei, const FgGLvoid *, FgGLenum ) \
+    FG_GL_FUNCTION_NUM( IsObjectBufferATI, FgGLboolean, FgGLContext *, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( UpdateObjectBufferATI, FgGLContext *, FgGLuint, FgGLuint, FgGLsizei, const FgGLvoid *, FgGLenum ) \
+    FG_GL_FUNCTION_VOID( GetObjectBufferfvATI, FgGLContext *, FgGLuint, FgGLenum, FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( GetObjectBufferivATI, FgGLContext *, FgGLuint, FgGLenum, FgGLint * ) \
+    FG_GL_FUNCTION_VOID( FreeObjectBufferATI, FgGLContext *, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( ArrayObjectATI, FgGLContext *, FgGLenum, FgGLint, FgGLenum, FgGLsizei, FgGLuint, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( GetArrayObjectfvATI, FgGLContext *, FgGLenum, FgGLenum, FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( GetArrayObjectivATI, FgGLContext *, FgGLenum, FgGLenum, FgGLint * ) \
+    FG_GL_FUNCTION_VOID( VariantArrayObjectATI, FgGLContext *, FgGLuint, FgGLenum, FgGLsizei, FgGLuint, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( GetVariantArrayObjectfvATI, FgGLContext *, FgGLuint, FgGLenum, FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( GetVariantArrayObjectivATI, FgGLContext *, FgGLuint, FgGLenum, FgGLint * ) \
 \
     /* GL_ATI_vertex_attrib_array_object */ \
-    FG_GL_VOID_FUNCTION( VertexAttribArrayObjectATI, ( FgGLuint _1, FgGLint _2, FgGLenum _3, FgGLboolean _4, FgGLsizei _5, FgGLuint _6, FgGLuint _7 ), ( _1, _2, _3, _4, _5, _6, _7 ) ) \
-    FG_GL_VOID_FUNCTION( GetVertexAttribArrayObjectfvATI, ( FgGLuint _1, FgGLenum _2, FgGLfloat * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetVertexAttribArrayObjectivATI, ( FgGLuint _1, FgGLenum _2, FgGLint * _3 ), ( _1, _2, _3 ) ) \
+    FG_GL_FUNCTION_VOID( VertexAttribArrayObjectATI, FgGLContext *, FgGLuint, FgGLint, FgGLenum, FgGLboolean, FgGLsizei, FgGLuint, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( GetVertexAttribArrayObjectfvATI, FgGLContext *, FgGLuint, FgGLenum, FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( GetVertexAttribArrayObjectivATI, FgGLContext *, FgGLuint, FgGLenum, FgGLint * ) \
 \
     /* GL_ATI_vertex_streams */ \
-    FG_GL_VOID_FUNCTION( VertexStream1sATI, ( FgGLenum _1, FgGLshort _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexStream1svATI, ( FgGLenum _1, const FgGLshort * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexStream1iATI, ( FgGLenum _1, FgGLint _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexStream1ivATI, ( FgGLenum _1, const FgGLint * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexStream1fATI, ( FgGLenum _1, FgGLfloat _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexStream1fvATI, ( FgGLenum _1, const FgGLfloat * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexStream1dATI, ( FgGLenum _1, FgGLdouble _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexStream1dvATI, ( FgGLenum _1, const FgGLdouble * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexStream2sATI, ( FgGLenum _1, FgGLshort _2, FgGLshort _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( VertexStream2svATI, ( FgGLenum _1, const FgGLshort * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexStream2iATI, ( FgGLenum _1, FgGLint _2, FgGLint _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( VertexStream2ivATI, ( FgGLenum _1, const FgGLint * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexStream2fATI, ( FgGLenum _1, FgGLfloat _2, FgGLfloat _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( VertexStream2fvATI, ( FgGLenum _1, const FgGLfloat * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexStream2dATI, ( FgGLenum _1, FgGLdouble _2, FgGLdouble _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( VertexStream2dvATI, ( FgGLenum _1, const FgGLdouble * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexStream3sATI, ( FgGLenum _1, FgGLshort _2, FgGLshort _3, FgGLshort _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( VertexStream3svATI, ( FgGLenum _1, const FgGLshort * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexStream3iATI, ( FgGLenum _1, FgGLint _2, FgGLint _3, FgGLint _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( VertexStream3ivATI, ( FgGLenum _1, const FgGLint * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexStream3fATI, ( FgGLenum _1, FgGLfloat _2, FgGLfloat _3, FgGLfloat _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( VertexStream3fvATI, ( FgGLenum _1, const FgGLfloat * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexStream3dATI, ( FgGLenum _1, FgGLdouble _2, FgGLdouble _3, FgGLdouble _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( VertexStream3dvATI, ( FgGLenum _1, const FgGLdouble * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexStream4sATI, ( FgGLenum _1, FgGLshort _2, FgGLshort _3, FgGLshort _4, FgGLshort _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( VertexStream4svATI, ( FgGLenum _1, const FgGLshort * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexStream4iATI, ( FgGLenum _1, FgGLint _2, FgGLint _3, FgGLint _4, FgGLint _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( VertexStream4ivATI, ( FgGLenum _1, const FgGLint * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexStream4fATI, ( FgGLenum _1, FgGLfloat _2, FgGLfloat _3, FgGLfloat _4, FgGLfloat _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( VertexStream4fvATI, ( FgGLenum _1, const FgGLfloat * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexStream4dATI, ( FgGLenum _1, FgGLdouble _2, FgGLdouble _3, FgGLdouble _4, FgGLdouble _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( VertexStream4dvATI, ( FgGLenum _1, const FgGLdouble * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( NormalStream3bATI, ( FgGLenum _1, FgGLbyte _2, FgGLbyte _3, FgGLbyte _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( NormalStream3bvATI, ( FgGLenum _1, const FgGLbyte * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( NormalStream3sATI, ( FgGLenum _1, FgGLshort _2, FgGLshort _3, FgGLshort _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( NormalStream3svATI, ( FgGLenum _1, const FgGLshort * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( NormalStream3iATI, ( FgGLenum _1, FgGLint _2, FgGLint _3, FgGLint _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( NormalStream3ivATI, ( FgGLenum _1, const FgGLint * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( NormalStream3fATI, ( FgGLenum _1, FgGLfloat _2, FgGLfloat _3, FgGLfloat _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( NormalStream3fvATI, ( FgGLenum _1, const FgGLfloat * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( NormalStream3dATI, ( FgGLenum _1, FgGLdouble _2, FgGLdouble _3, FgGLdouble _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( NormalStream3dvATI, ( FgGLenum _1, const FgGLdouble * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( ClientActiveVertexStreamATI, ( FgGLenum _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( VertexBlendEnviATI, ( FgGLenum _1, FgGLint _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexBlendEnvfATI, ( FgGLenum _1, FgGLfloat _2 ), ( _1, _2 ) ) \
+    FG_GL_FUNCTION_VOID( VertexStream1sATI, FgGLContext *, FgGLenum, FgGLshort ) \
+    FG_GL_FUNCTION_VOID( VertexStream1svATI, FgGLContext *, FgGLenum, const FgGLshort * ) \
+    FG_GL_FUNCTION_VOID( VertexStream1iATI, FgGLContext *, FgGLenum, FgGLint ) \
+    FG_GL_FUNCTION_VOID( VertexStream1ivATI, FgGLContext *, FgGLenum, const FgGLint * ) \
+    FG_GL_FUNCTION_VOID( VertexStream1fATI, FgGLContext *, FgGLenum, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( VertexStream1fvATI, FgGLContext *, FgGLenum, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( VertexStream1dATI, FgGLContext *, FgGLenum, FgGLdouble ) \
+    FG_GL_FUNCTION_VOID( VertexStream1dvATI, FgGLContext *, FgGLenum, const FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( VertexStream2sATI, FgGLContext *, FgGLenum, FgGLshort, FgGLshort ) \
+    FG_GL_FUNCTION_VOID( VertexStream2svATI, FgGLContext *, FgGLenum, const FgGLshort * ) \
+    FG_GL_FUNCTION_VOID( VertexStream2iATI, FgGLContext *, FgGLenum, FgGLint, FgGLint ) \
+    FG_GL_FUNCTION_VOID( VertexStream2ivATI, FgGLContext *, FgGLenum, const FgGLint * ) \
+    FG_GL_FUNCTION_VOID( VertexStream2fATI, FgGLContext *, FgGLenum, FgGLfloat, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( VertexStream2fvATI, FgGLContext *, FgGLenum, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( VertexStream2dATI, FgGLContext *, FgGLenum, FgGLdouble, FgGLdouble ) \
+    FG_GL_FUNCTION_VOID( VertexStream2dvATI, FgGLContext *, FgGLenum, const FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( VertexStream3sATI, FgGLContext *, FgGLenum, FgGLshort, FgGLshort, FgGLshort ) \
+    FG_GL_FUNCTION_VOID( VertexStream3svATI, FgGLContext *, FgGLenum, const FgGLshort * ) \
+    FG_GL_FUNCTION_VOID( VertexStream3iATI, FgGLContext *, FgGLenum, FgGLint, FgGLint, FgGLint ) \
+    FG_GL_FUNCTION_VOID( VertexStream3ivATI, FgGLContext *, FgGLenum, const FgGLint * ) \
+    FG_GL_FUNCTION_VOID( VertexStream3fATI, FgGLContext *, FgGLenum, FgGLfloat, FgGLfloat, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( VertexStream3fvATI, FgGLContext *, FgGLenum, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( VertexStream3dATI, FgGLContext *, FgGLenum, FgGLdouble, FgGLdouble, FgGLdouble ) \
+    FG_GL_FUNCTION_VOID( VertexStream3dvATI, FgGLContext *, FgGLenum, const FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( VertexStream4sATI, FgGLContext *, FgGLenum, FgGLshort, FgGLshort, FgGLshort, FgGLshort ) \
+    FG_GL_FUNCTION_VOID( VertexStream4svATI, FgGLContext *, FgGLenum, const FgGLshort * ) \
+    FG_GL_FUNCTION_VOID( VertexStream4iATI, FgGLContext *, FgGLenum, FgGLint, FgGLint, FgGLint, FgGLint ) \
+    FG_GL_FUNCTION_VOID( VertexStream4ivATI, FgGLContext *, FgGLenum, const FgGLint * ) \
+    FG_GL_FUNCTION_VOID( VertexStream4fATI, FgGLContext *, FgGLenum, FgGLfloat, FgGLfloat, FgGLfloat, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( VertexStream4fvATI, FgGLContext *, FgGLenum, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( VertexStream4dATI, FgGLContext *, FgGLenum, FgGLdouble, FgGLdouble, FgGLdouble, FgGLdouble ) \
+    FG_GL_FUNCTION_VOID( VertexStream4dvATI, FgGLContext *, FgGLenum, const FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( NormalStream3bATI, FgGLContext *, FgGLenum, FgGLbyte, FgGLbyte, FgGLbyte ) \
+    FG_GL_FUNCTION_VOID( NormalStream3bvATI, FgGLContext *, FgGLenum, const FgGLbyte * ) \
+    FG_GL_FUNCTION_VOID( NormalStream3sATI, FgGLContext *, FgGLenum, FgGLshort, FgGLshort, FgGLshort ) \
+    FG_GL_FUNCTION_VOID( NormalStream3svATI, FgGLContext *, FgGLenum, const FgGLshort * ) \
+    FG_GL_FUNCTION_VOID( NormalStream3iATI, FgGLContext *, FgGLenum, FgGLint, FgGLint, FgGLint ) \
+    FG_GL_FUNCTION_VOID( NormalStream3ivATI, FgGLContext *, FgGLenum, const FgGLint * ) \
+    FG_GL_FUNCTION_VOID( NormalStream3fATI, FgGLContext *, FgGLenum, FgGLfloat, FgGLfloat, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( NormalStream3fvATI, FgGLContext *, FgGLenum, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( NormalStream3dATI, FgGLContext *, FgGLenum, FgGLdouble, FgGLdouble, FgGLdouble ) \
+    FG_GL_FUNCTION_VOID( NormalStream3dvATI, FgGLContext *, FgGLenum, const FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( ClientActiveVertexStreamATI, FgGLContext *, FgGLenum ) \
+    FG_GL_FUNCTION_VOID( VertexBlendEnviATI, FgGLContext *, FgGLenum, FgGLint ) \
+    FG_GL_FUNCTION_VOID( VertexBlendEnvfATI, FgGLContext *, FgGLenum, FgGLfloat ) \
 \
     /* GL_EXT_422_pixels */ \
 \
@@ -1970,23 +1971,23 @@
     /* GL_EXT_bgra */ \
 \
     /* GL_EXT_bindable_uniform */ \
-    FG_GL_VOID_FUNCTION( UniformBufferEXT, ( FgGLuint _1, FgGLint _2, FgGLuint _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_FUNCTION( 0, FgGLint, GetUniformBufferSizeEXT, ( FgGLuint _1, FgGLint _2 ), ( _1, _2 ) ) \
-    FG_GL_FUNCTION( 0, FgGLintptr, GetUniformOffsetEXT, ( FgGLuint _1, FgGLint _2 ), ( _1, _2 ) ) \
+    FG_GL_FUNCTION_VOID( UniformBufferEXT, FgGLContext *, FgGLuint, FgGLint, FgGLuint ) \
+    FG_GL_FUNCTION_NUM( GetUniformBufferSizeEXT, FgGLint, FgGLContext *, FgGLuint, FgGLint ) \
+    FG_GL_FUNCTION_NUM( GetUniformOffsetEXT, FgGLintptr, FgGLContext *, FgGLuint, FgGLint ) \
 \
     /* GL_EXT_blend_color */ \
-    FG_GL_VOID_FUNCTION( BlendColorEXT, ( FgGLfloat _1, FgGLfloat _2, FgGLfloat _3, FgGLfloat _4 ), ( _1, _2, _3, _4 ) ) \
+    FG_GL_FUNCTION_VOID( BlendColorEXT, FgGLContext *, FgGLfloat, FgGLfloat, FgGLfloat, FgGLfloat ) \
 \
     /* GL_EXT_blend_equation_separate */ \
-    FG_GL_VOID_FUNCTION( BlendEquationSeparateEXT, ( FgGLenum _1, FgGLenum _2 ), ( _1, _2 ) ) \
+    FG_GL_FUNCTION_VOID( BlendEquationSeparateEXT, FgGLContext *, FgGLenum, FgGLenum ) \
 \
     /* GL_EXT_blend_func_separate */ \
-    FG_GL_VOID_FUNCTION( BlendFuncSeparateEXT, ( FgGLenum _1, FgGLenum _2, FgGLenum _3, FgGLenum _4 ), ( _1, _2, _3, _4 ) ) \
+    FG_GL_FUNCTION_VOID( BlendFuncSeparateEXT, FgGLContext *, FgGLenum, FgGLenum, FgGLenum, FgGLenum ) \
 \
     /* GL_EXT_blend_logic_op */ \
 \
     /* GL_EXT_blend_minmax */ \
-    FG_GL_VOID_FUNCTION( BlendEquationEXT, ( FgGLenum _1 ), ( _1 ) ) \
+    FG_GL_FUNCTION_VOID( BlendEquationEXT, FgGLContext *, FgGLenum ) \
 \
     /* GL_EXT_blend_subtract */ \
 \
@@ -1995,425 +1996,425 @@
     /* GL_EXT_cmyka */ \
 \
     /* GL_EXT_color_subtable */ \
-    FG_GL_VOID_FUNCTION( ColorSubTableEXT, ( FgGLenum _1, FgGLsizei _2, FgGLsizei _3, FgGLenum _4, FgGLenum _5, const FgGLvoid * _6 ), ( _1, _2, _3, _4, _5, _6 ) ) \
-    FG_GL_VOID_FUNCTION( CopyColorSubTableEXT, ( FgGLenum _1, FgGLsizei _2, FgGLint _3, FgGLint _4, FgGLsizei _5 ), ( _1, _2, _3, _4, _5 ) ) \
+    FG_GL_FUNCTION_VOID( ColorSubTableEXT, FgGLContext *, FgGLenum, FgGLsizei, FgGLsizei, FgGLenum, FgGLenum, const FgGLvoid * ) \
+    FG_GL_FUNCTION_VOID( CopyColorSubTableEXT, FgGLContext *, FgGLenum, FgGLsizei, FgGLint, FgGLint, FgGLsizei ) \
 \
     /* GL_EXT_compiled_vertex_array */ \
-    FG_GL_VOID_FUNCTION( LockArraysEXT, ( FgGLint _1, FgGLsizei _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( UnlockArraysEXT, ( ), ( ) ) \
+    FG_GL_FUNCTION_VOID( LockArraysEXT, FgGLContext *, FgGLint, FgGLsizei ) \
+    FG_GL_FUNCTION_VOID( UnlockArraysEXT, FgGLContext * ) \
 \
     /* GL_EXT_convolution */ \
-    FG_GL_VOID_FUNCTION( ConvolutionFilter1DEXT, ( FgGLenum _1, FgGLenum _2, FgGLsizei _3, FgGLenum _4, FgGLenum _5, const FgGLvoid * _6 ), ( _1, _2, _3, _4, _5, _6 ) ) \
-    FG_GL_VOID_FUNCTION( ConvolutionFilter2DEXT, ( FgGLenum _1, FgGLenum _2, FgGLsizei _3, FgGLsizei _4, FgGLenum _5, FgGLenum _6, const FgGLvoid * _7 ), ( _1, _2, _3, _4, _5, _6, _7 ) ) \
-    FG_GL_VOID_FUNCTION( ConvolutionParameterfEXT, ( FgGLenum _1, FgGLenum _2, FgGLfloat _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( ConvolutionParameterfvEXT, ( FgGLenum _1, FgGLenum _2, const FgGLfloat * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( ConvolutionParameteriEXT, ( FgGLenum _1, FgGLenum _2, FgGLint _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( ConvolutionParameterivEXT, ( FgGLenum _1, FgGLenum _2, const FgGLint * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( CopyConvolutionFilter1DEXT, ( FgGLenum _1, FgGLenum _2, FgGLint _3, FgGLint _4, FgGLsizei _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( CopyConvolutionFilter2DEXT, ( FgGLenum _1, FgGLenum _2, FgGLint _3, FgGLint _4, FgGLsizei _5, FgGLsizei _6 ), ( _1, _2, _3, _4, _5, _6 ) ) \
-    FG_GL_VOID_FUNCTION( GetConvolutionFilterEXT, ( FgGLenum _1, FgGLenum _2, FgGLenum _3, FgGLvoid * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( GetConvolutionParameterfvEXT, ( FgGLenum _1, FgGLenum _2, FgGLfloat * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetConvolutionParameterivEXT, ( FgGLenum _1, FgGLenum _2, FgGLint * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetSeparableFilterEXT, ( FgGLenum _1, FgGLenum _2, FgGLenum _3, FgGLvoid * _4, FgGLvoid * _5, FgGLvoid * _6 ), ( _1, _2, _3, _4, _5, _6 ) ) \
-    FG_GL_VOID_FUNCTION( SeparableFilter2DEXT, ( FgGLenum _1, FgGLenum _2, FgGLsizei _3, FgGLsizei _4, FgGLenum _5, FgGLenum _6, const FgGLvoid * _7, const FgGLvoid * _8 ), ( _1, _2, _3, _4, _5, _6, _7, _8 ) ) \
+    FG_GL_FUNCTION_VOID( ConvolutionFilter1DEXT, FgGLContext *, FgGLenum, FgGLenum, FgGLsizei, FgGLenum, FgGLenum, const FgGLvoid * ) \
+    FG_GL_FUNCTION_VOID( ConvolutionFilter2DEXT, FgGLContext *, FgGLenum, FgGLenum, FgGLsizei, FgGLsizei, FgGLenum, FgGLenum, const FgGLvoid * ) \
+    FG_GL_FUNCTION_VOID( ConvolutionParameterfEXT, FgGLContext *, FgGLenum, FgGLenum, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( ConvolutionParameterfvEXT, FgGLContext *, FgGLenum, FgGLenum, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( ConvolutionParameteriEXT, FgGLContext *, FgGLenum, FgGLenum, FgGLint ) \
+    FG_GL_FUNCTION_VOID( ConvolutionParameterivEXT, FgGLContext *, FgGLenum, FgGLenum, const FgGLint * ) \
+    FG_GL_FUNCTION_VOID( CopyConvolutionFilter1DEXT, FgGLContext *, FgGLenum, FgGLenum, FgGLint, FgGLint, FgGLsizei ) \
+    FG_GL_FUNCTION_VOID( CopyConvolutionFilter2DEXT, FgGLContext *, FgGLenum, FgGLenum, FgGLint, FgGLint, FgGLsizei, FgGLsizei ) \
+    FG_GL_FUNCTION_VOID( GetConvolutionFilterEXT, FgGLContext *, FgGLenum, FgGLenum, FgGLenum, FgGLvoid * ) \
+    FG_GL_FUNCTION_VOID( GetConvolutionParameterfvEXT, FgGLContext *, FgGLenum, FgGLenum, FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( GetConvolutionParameterivEXT, FgGLContext *, FgGLenum, FgGLenum, FgGLint * ) \
+    FG_GL_FUNCTION_VOID( GetSeparableFilterEXT, FgGLContext *, FgGLenum, FgGLenum, FgGLenum, FgGLvoid *, FgGLvoid *, FgGLvoid * ) \
+    FG_GL_FUNCTION_VOID( SeparableFilter2DEXT, FgGLContext *, FgGLenum, FgGLenum, FgGLsizei, FgGLsizei, FgGLenum, FgGLenum, const FgGLvoid *, const FgGLvoid * ) \
 \
     /* GL_EXT_coordinate_frame */ \
-    FG_GL_VOID_FUNCTION( Tangent3bEXT, ( FgGLbyte _1, FgGLbyte _2, FgGLbyte _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( Tangent3bvEXT, ( const FgGLbyte * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( Tangent3dEXT, ( FgGLdouble _1, FgGLdouble _2, FgGLdouble _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( Tangent3dvEXT, ( const FgGLdouble * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( Tangent3fEXT, ( FgGLfloat _1, FgGLfloat _2, FgGLfloat _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( Tangent3fvEXT, ( const FgGLfloat * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( Tangent3iEXT, ( FgGLint _1, FgGLint _2, FgGLint _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( Tangent3ivEXT, ( const FgGLint * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( Tangent3sEXT, ( FgGLshort _1, FgGLshort _2, FgGLshort _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( Tangent3svEXT, ( const FgGLshort * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( Binormal3bEXT, ( FgGLbyte _1, FgGLbyte _2, FgGLbyte _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( Binormal3bvEXT, ( const FgGLbyte * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( Binormal3dEXT, ( FgGLdouble _1, FgGLdouble _2, FgGLdouble _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( Binormal3dvEXT, ( const FgGLdouble * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( Binormal3fEXT, ( FgGLfloat _1, FgGLfloat _2, FgGLfloat _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( Binormal3fvEXT, ( const FgGLfloat * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( Binormal3iEXT, ( FgGLint _1, FgGLint _2, FgGLint _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( Binormal3ivEXT, ( const FgGLint * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( Binormal3sEXT, ( FgGLshort _1, FgGLshort _2, FgGLshort _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( Binormal3svEXT, ( const FgGLshort * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( TangentPointerEXT, ( FgGLenum _1, FgGLsizei _2, const FgGLvoid * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( BinormalPointerEXT, ( FgGLenum _1, FgGLsizei _2, const FgGLvoid * _3 ), ( _1, _2, _3 ) ) \
+    FG_GL_FUNCTION_VOID( Tangent3bEXT, FgGLContext *, FgGLbyte, FgGLbyte, FgGLbyte ) \
+    FG_GL_FUNCTION_VOID( Tangent3bvEXT, FgGLContext *, const FgGLbyte * ) \
+    FG_GL_FUNCTION_VOID( Tangent3dEXT, FgGLContext *, FgGLdouble, FgGLdouble, FgGLdouble ) \
+    FG_GL_FUNCTION_VOID( Tangent3dvEXT, FgGLContext *, const FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( Tangent3fEXT, FgGLContext *, FgGLfloat, FgGLfloat, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( Tangent3fvEXT, FgGLContext *, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( Tangent3iEXT, FgGLContext *, FgGLint, FgGLint, FgGLint ) \
+    FG_GL_FUNCTION_VOID( Tangent3ivEXT, FgGLContext *, const FgGLint * ) \
+    FG_GL_FUNCTION_VOID( Tangent3sEXT, FgGLContext *, FgGLshort, FgGLshort, FgGLshort ) \
+    FG_GL_FUNCTION_VOID( Tangent3svEXT, FgGLContext *, const FgGLshort * ) \
+    FG_GL_FUNCTION_VOID( Binormal3bEXT, FgGLContext *, FgGLbyte, FgGLbyte, FgGLbyte ) \
+    FG_GL_FUNCTION_VOID( Binormal3bvEXT, FgGLContext *, const FgGLbyte * ) \
+    FG_GL_FUNCTION_VOID( Binormal3dEXT, FgGLContext *, FgGLdouble, FgGLdouble, FgGLdouble ) \
+    FG_GL_FUNCTION_VOID( Binormal3dvEXT, FgGLContext *, const FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( Binormal3fEXT, FgGLContext *, FgGLfloat, FgGLfloat, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( Binormal3fvEXT, FgGLContext *, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( Binormal3iEXT, FgGLContext *, FgGLint, FgGLint, FgGLint ) \
+    FG_GL_FUNCTION_VOID( Binormal3ivEXT, FgGLContext *, const FgGLint * ) \
+    FG_GL_FUNCTION_VOID( Binormal3sEXT, FgGLContext *, FgGLshort, FgGLshort, FgGLshort ) \
+    FG_GL_FUNCTION_VOID( Binormal3svEXT, FgGLContext *, const FgGLshort * ) \
+    FG_GL_FUNCTION_VOID( TangentPointerEXT, FgGLContext *, FgGLenum, FgGLsizei, const FgGLvoid * ) \
+    FG_GL_FUNCTION_VOID( BinormalPointerEXT, FgGLContext *, FgGLenum, FgGLsizei, const FgGLvoid * ) \
 \
     /* GL_EXT_copy_texture */ \
-    FG_GL_VOID_FUNCTION( CopyTexImage1DEXT, ( FgGLenum _1, FgGLint _2, FgGLenum _3, FgGLint _4, FgGLint _5, FgGLsizei _6, FgGLint _7 ), ( _1, _2, _3, _4, _5, _6, _7 ) ) \
-    FG_GL_VOID_FUNCTION( CopyTexImage2DEXT, ( FgGLenum _1, FgGLint _2, FgGLenum _3, FgGLint _4, FgGLint _5, FgGLsizei _6, FgGLsizei _7, FgGLint _8 ), ( _1, _2, _3, _4, _5, _6, _7, _8 ) ) \
-    FG_GL_VOID_FUNCTION( CopyTexSubImage1DEXT, ( FgGLenum _1, FgGLint _2, FgGLint _3, FgGLint _4, FgGLint _5, FgGLsizei _6 ), ( _1, _2, _3, _4, _5, _6 ) ) \
-    FG_GL_VOID_FUNCTION( CopyTexSubImage2DEXT, ( FgGLenum _1, FgGLint _2, FgGLint _3, FgGLint _4, FgGLint _5, FgGLint _6, FgGLsizei _7, FgGLsizei _8 ), ( _1, _2, _3, _4, _5, _6, _7, _8 ) ) \
-    FG_GL_VOID_FUNCTION( CopyTexSubImage3DEXT, ( FgGLenum _1, FgGLint _2, FgGLint _3, FgGLint _4, FgGLint _5, FgGLint _6, FgGLint _7, FgGLsizei _8, FgGLsizei _9 ), ( _1, _2, _3, _4, _5, _6, _7, _8, _9 ) ) \
+    FG_GL_FUNCTION_VOID( CopyTexImage1DEXT, FgGLContext *, FgGLenum, FgGLint, FgGLenum, FgGLint, FgGLint, FgGLsizei, FgGLint ) \
+    FG_GL_FUNCTION_VOID( CopyTexImage2DEXT, FgGLContext *, FgGLenum, FgGLint, FgGLenum, FgGLint, FgGLint, FgGLsizei, FgGLsizei, FgGLint ) \
+    FG_GL_FUNCTION_VOID( CopyTexSubImage1DEXT, FgGLContext *, FgGLenum, FgGLint, FgGLint, FgGLint, FgGLint, FgGLsizei ) \
+    FG_GL_FUNCTION_VOID( CopyTexSubImage2DEXT, FgGLContext *, FgGLenum, FgGLint, FgGLint, FgGLint, FgGLint, FgGLint, FgGLsizei, FgGLsizei ) \
+    FG_GL_FUNCTION_VOID( CopyTexSubImage3DEXT, FgGLContext *, FgGLenum, FgGLint, FgGLint, FgGLint, FgGLint, FgGLint, FgGLint, FgGLsizei, FgGLsizei ) \
 \
     /* GL_EXT_cull_vertex */ \
-    FG_GL_VOID_FUNCTION( CullParameterdvEXT, ( FgGLenum _1, FgGLdouble * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( CullParameterfvEXT, ( FgGLenum _1, FgGLfloat * _2 ), ( _1, _2 ) ) \
+    FG_GL_FUNCTION_VOID( CullParameterdvEXT, FgGLContext *, FgGLenum, FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( CullParameterfvEXT, FgGLContext *, FgGLenum, FgGLfloat * ) \
 \
     /* GL_EXT_depth_bounds_test */ \
-    FG_GL_VOID_FUNCTION( DepthBoundsEXT, ( FgGLclampd _1, FgGLclampd _2 ), ( _1, _2 ) ) \
+    FG_GL_FUNCTION_VOID( DepthBoundsEXT, FgGLContext *, FgGLclampd, FgGLclampd ) \
 \
     /* GL_EXT_direct_state_access */ \
-    FG_GL_VOID_FUNCTION( MatrixLoadfEXT, ( FgGLenum _1, const FgGLfloat * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( MatrixLoaddEXT, ( FgGLenum _1, const FgGLdouble * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( MatrixMultfEXT, ( FgGLenum _1, const FgGLfloat * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( MatrixMultdEXT, ( FgGLenum _1, const FgGLdouble * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( MatrixLoadIdentityEXT, ( FgGLenum _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( MatrixRotatefEXT, ( FgGLenum _1, FgGLfloat _2, FgGLfloat _3, FgGLfloat _4, FgGLfloat _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( MatrixRotatedEXT, ( FgGLenum _1, FgGLdouble _2, FgGLdouble _3, FgGLdouble _4, FgGLdouble _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( MatrixScalefEXT, ( FgGLenum _1, FgGLfloat _2, FgGLfloat _3, FgGLfloat _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( MatrixScaledEXT, ( FgGLenum _1, FgGLdouble _2, FgGLdouble _3, FgGLdouble _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( MatrixTranslatefEXT, ( FgGLenum _1, FgGLfloat _2, FgGLfloat _3, FgGLfloat _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( MatrixTranslatedEXT, ( FgGLenum _1, FgGLdouble _2, FgGLdouble _3, FgGLdouble _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( MatrixFrustumEXT, ( FgGLenum _1, FgGLdouble _2, FgGLdouble _3, FgGLdouble _4, FgGLdouble _5, FgGLdouble _6, FgGLdouble _7 ), ( _1, _2, _3, _4, _5, _6, _7 ) ) \
-    FG_GL_VOID_FUNCTION( MatrixOrthoEXT, ( FgGLenum _1, FgGLdouble _2, FgGLdouble _3, FgGLdouble _4, FgGLdouble _5, FgGLdouble _6, FgGLdouble _7 ), ( _1, _2, _3, _4, _5, _6, _7 ) ) \
-    FG_GL_VOID_FUNCTION( MatrixPopEXT, ( FgGLenum _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( MatrixPushEXT, ( FgGLenum _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( ClientAttribDefaultEXT, ( FgGLbitfield _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( PushClientAttribDefaultEXT, ( FgGLbitfield _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( TextureParameterfEXT, ( FgGLuint _1, FgGLenum _2, FgGLenum _3, FgGLfloat _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( TextureParameterfvEXT, ( FgGLuint _1, FgGLenum _2, FgGLenum _3, const FgGLfloat * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( TextureParameteriEXT, ( FgGLuint _1, FgGLenum _2, FgGLenum _3, FgGLint _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( TextureParameterivEXT, ( FgGLuint _1, FgGLenum _2, FgGLenum _3, const FgGLint * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( TextureImage1DEXT, ( FgGLuint _1, FgGLenum _2, FgGLint _3, FgGLint _4, FgGLsizei _5, FgGLint _6, FgGLenum _7, FgGLenum _8, const FgGLvoid * _9 ), ( _1, _2, _3, _4, _5, _6, _7, _8, _9 ) ) \
-    FG_GL_VOID_FUNCTION( TextureImage2DEXT, ( FgGLuint _1, FgGLenum _2, FgGLint _3, FgGLint _4, FgGLsizei _5, FgGLsizei _6, FgGLint _7, FgGLenum _8, FgGLenum _9, const FgGLvoid * _10 ), ( _1, _2, _3, _4, _5, _6, _7, _8, _9, _10 ) ) \
-    FG_GL_VOID_FUNCTION( TextureSubImage1DEXT, ( FgGLuint _1, FgGLenum _2, FgGLint _3, FgGLint _4, FgGLsizei _5, FgGLenum _6, FgGLenum _7, const FgGLvoid * _8 ), ( _1, _2, _3, _4, _5, _6, _7, _8 ) ) \
-    FG_GL_VOID_FUNCTION( TextureSubImage2DEXT, ( FgGLuint _1, FgGLenum _2, FgGLint _3, FgGLint _4, FgGLint _5, FgGLsizei _6, FgGLsizei _7, FgGLenum _8, FgGLenum _9, const FgGLvoid * _10 ), ( _1, _2, _3, _4, _5, _6, _7, _8, _9, _10 ) ) \
-    FG_GL_VOID_FUNCTION( CopyTextureImage1DEXT, ( FgGLuint _1, FgGLenum _2, FgGLint _3, FgGLenum _4, FgGLint _5, FgGLint _6, FgGLsizei _7, FgGLint _8 ), ( _1, _2, _3, _4, _5, _6, _7, _8 ) ) \
-    FG_GL_VOID_FUNCTION( CopyTextureImage2DEXT, ( FgGLuint _1, FgGLenum _2, FgGLint _3, FgGLenum _4, FgGLint _5, FgGLint _6, FgGLsizei _7, FgGLsizei _8, FgGLint _9 ), ( _1, _2, _3, _4, _5, _6, _7, _8, _9 ) ) \
-    FG_GL_VOID_FUNCTION( CopyTextureSubImage1DEXT, ( FgGLuint _1, FgGLenum _2, FgGLint _3, FgGLint _4, FgGLint _5, FgGLint _6, FgGLsizei _7 ), ( _1, _2, _3, _4, _5, _6, _7 ) ) \
-    FG_GL_VOID_FUNCTION( CopyTextureSubImage2DEXT, ( FgGLuint _1, FgGLenum _2, FgGLint _3, FgGLint _4, FgGLint _5, FgGLint _6, FgGLint _7, FgGLsizei _8, FgGLsizei _9 ), ( _1, _2, _3, _4, _5, _6, _7, _8, _9 ) ) \
-    FG_GL_VOID_FUNCTION( GetTextureImageEXT, ( FgGLuint _1, FgGLenum _2, FgGLint _3, FgGLenum _4, FgGLenum _5, FgGLvoid * _6 ), ( _1, _2, _3, _4, _5, _6 ) ) \
-    FG_GL_VOID_FUNCTION( GetTextureParameterfvEXT, ( FgGLuint _1, FgGLenum _2, FgGLenum _3, FgGLfloat * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( GetTextureParameterivEXT, ( FgGLuint _1, FgGLenum _2, FgGLenum _3, FgGLint * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( GetTextureLevelParameterfvEXT, ( FgGLuint _1, FgGLenum _2, FgGLint _3, FgGLenum _4, FgGLfloat * _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( GetTextureLevelParameterivEXT, ( FgGLuint _1, FgGLenum _2, FgGLint _3, FgGLenum _4, FgGLint * _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( TextureImage3DEXT, ( FgGLuint _1, FgGLenum _2, FgGLint _3, FgGLint _4, FgGLsizei _5, FgGLsizei _6, FgGLsizei _7, FgGLint _8, FgGLenum _9, FgGLenum _10, const FgGLvoid * _11 ), ( _1, _2, _3, _4, _5, _6, _7, _8, _9, _10, _11 ) ) \
-    FG_GL_VOID_FUNCTION( TextureSubImage3DEXT, ( FgGLuint _1, FgGLenum _2, FgGLint _3, FgGLint _4, FgGLint _5, FgGLint _6, FgGLsizei _7, FgGLsizei _8, FgGLsizei _9, FgGLenum _10, FgGLenum _11, const FgGLvoid * _12 ), ( _1, _2, _3, _4, _5, _6, _7, _8, _9, _10, _11, _12 ) ) \
-    FG_GL_VOID_FUNCTION( CopyTextureSubImage3DEXT, ( FgGLuint _1, FgGLenum _2, FgGLint _3, FgGLint _4, FgGLint _5, FgGLint _6, FgGLint _7, FgGLint _8, FgGLsizei _9, FgGLsizei _10 ), ( _1, _2, _3, _4, _5, _6, _7, _8, _9, _10 ) ) \
-    FG_GL_VOID_FUNCTION( BindMultiTextureEXT, ( FgGLenum _1, FgGLenum _2, FgGLuint _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( MultiTexCoordPointerEXT, ( FgGLenum _1, FgGLint _2, FgGLenum _3, FgGLsizei _4, const FgGLvoid * _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( MultiTexEnvfEXT, ( FgGLenum _1, FgGLenum _2, FgGLenum _3, FgGLfloat _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( MultiTexEnvfvEXT, ( FgGLenum _1, FgGLenum _2, FgGLenum _3, const FgGLfloat * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( MultiTexEnviEXT, ( FgGLenum _1, FgGLenum _2, FgGLenum _3, FgGLint _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( MultiTexEnvivEXT, ( FgGLenum _1, FgGLenum _2, FgGLenum _3, const FgGLint * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( MultiTexGendEXT, ( FgGLenum _1, FgGLenum _2, FgGLenum _3, FgGLdouble _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( MultiTexGendvEXT, ( FgGLenum _1, FgGLenum _2, FgGLenum _3, const FgGLdouble * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( MultiTexGenfEXT, ( FgGLenum _1, FgGLenum _2, FgGLenum _3, FgGLfloat _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( MultiTexGenfvEXT, ( FgGLenum _1, FgGLenum _2, FgGLenum _3, const FgGLfloat * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( MultiTexGeniEXT, ( FgGLenum _1, FgGLenum _2, FgGLenum _3, FgGLint _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( MultiTexGenivEXT, ( FgGLenum _1, FgGLenum _2, FgGLenum _3, const FgGLint * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( GetMultiTexEnvfvEXT, ( FgGLenum _1, FgGLenum _2, FgGLenum _3, FgGLfloat * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( GetMultiTexEnvivEXT, ( FgGLenum _1, FgGLenum _2, FgGLenum _3, FgGLint * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( GetMultiTexGendvEXT, ( FgGLenum _1, FgGLenum _2, FgGLenum _3, FgGLdouble * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( GetMultiTexGenfvEXT, ( FgGLenum _1, FgGLenum _2, FgGLenum _3, FgGLfloat * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( GetMultiTexGenivEXT, ( FgGLenum _1, FgGLenum _2, FgGLenum _3, FgGLint * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( MultiTexParameteriEXT, ( FgGLenum _1, FgGLenum _2, FgGLenum _3, FgGLint _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( MultiTexParameterivEXT, ( FgGLenum _1, FgGLenum _2, FgGLenum _3, const FgGLint * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( MultiTexParameterfEXT, ( FgGLenum _1, FgGLenum _2, FgGLenum _3, FgGLfloat _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( MultiTexParameterfvEXT, ( FgGLenum _1, FgGLenum _2, FgGLenum _3, const FgGLfloat * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( MultiTexImage1DEXT, ( FgGLenum _1, FgGLenum _2, FgGLint _3, FgGLint _4, FgGLsizei _5, FgGLint _6, FgGLenum _7, FgGLenum _8, const FgGLvoid * _9 ), ( _1, _2, _3, _4, _5, _6, _7, _8, _9 ) ) \
-    FG_GL_VOID_FUNCTION( MultiTexImage2DEXT, ( FgGLenum _1, FgGLenum _2, FgGLint _3, FgGLint _4, FgGLsizei _5, FgGLsizei _6, FgGLint _7, FgGLenum _8, FgGLenum _9, const FgGLvoid * _10 ), ( _1, _2, _3, _4, _5, _6, _7, _8, _9, _10 ) ) \
-    FG_GL_VOID_FUNCTION( MultiTexSubImage1DEXT, ( FgGLenum _1, FgGLenum _2, FgGLint _3, FgGLint _4, FgGLsizei _5, FgGLenum _6, FgGLenum _7, const FgGLvoid * _8 ), ( _1, _2, _3, _4, _5, _6, _7, _8 ) ) \
-    FG_GL_VOID_FUNCTION( MultiTexSubImage2DEXT, ( FgGLenum _1, FgGLenum _2, FgGLint _3, FgGLint _4, FgGLint _5, FgGLsizei _6, FgGLsizei _7, FgGLenum _8, FgGLenum _9, const FgGLvoid * _10 ), ( _1, _2, _3, _4, _5, _6, _7, _8, _9, _10 ) ) \
-    FG_GL_VOID_FUNCTION( CopyMultiTexImage1DEXT, ( FgGLenum _1, FgGLenum _2, FgGLint _3, FgGLenum _4, FgGLint _5, FgGLint _6, FgGLsizei _7, FgGLint _8 ), ( _1, _2, _3, _4, _5, _6, _7, _8 ) ) \
-    FG_GL_VOID_FUNCTION( CopyMultiTexImage2DEXT, ( FgGLenum _1, FgGLenum _2, FgGLint _3, FgGLenum _4, FgGLint _5, FgGLint _6, FgGLsizei _7, FgGLsizei _8, FgGLint _9 ), ( _1, _2, _3, _4, _5, _6, _7, _8, _9 ) ) \
-    FG_GL_VOID_FUNCTION( CopyMultiTexSubImage1DEXT, ( FgGLenum _1, FgGLenum _2, FgGLint _3, FgGLint _4, FgGLint _5, FgGLint _6, FgGLsizei _7 ), ( _1, _2, _3, _4, _5, _6, _7 ) ) \
-    FG_GL_VOID_FUNCTION( CopyMultiTexSubImage2DEXT, ( FgGLenum _1, FgGLenum _2, FgGLint _3, FgGLint _4, FgGLint _5, FgGLint _6, FgGLint _7, FgGLsizei _8, FgGLsizei _9 ), ( _1, _2, _3, _4, _5, _6, _7, _8, _9 ) ) \
-    FG_GL_VOID_FUNCTION( GetMultiTexImageEXT, ( FgGLenum _1, FgGLenum _2, FgGLint _3, FgGLenum _4, FgGLenum _5, FgGLvoid * _6 ), ( _1, _2, _3, _4, _5, _6 ) ) \
-    FG_GL_VOID_FUNCTION( GetMultiTexParameterfvEXT, ( FgGLenum _1, FgGLenum _2, FgGLenum _3, FgGLfloat * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( GetMultiTexParameterivEXT, ( FgGLenum _1, FgGLenum _2, FgGLenum _3, FgGLint * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( GetMultiTexLevelParameterfvEXT, ( FgGLenum _1, FgGLenum _2, FgGLint _3, FgGLenum _4, FgGLfloat * _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( GetMultiTexLevelParameterivEXT, ( FgGLenum _1, FgGLenum _2, FgGLint _3, FgGLenum _4, FgGLint * _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( MultiTexImage3DEXT, ( FgGLenum _1, FgGLenum _2, FgGLint _3, FgGLint _4, FgGLsizei _5, FgGLsizei _6, FgGLsizei _7, FgGLint _8, FgGLenum _9, FgGLenum _10, const FgGLvoid * _11 ), ( _1, _2, _3, _4, _5, _6, _7, _8, _9, _10, _11 ) ) \
-    FG_GL_VOID_FUNCTION( MultiTexSubImage3DEXT, ( FgGLenum _1, FgGLenum _2, FgGLint _3, FgGLint _4, FgGLint _5, FgGLint _6, FgGLsizei _7, FgGLsizei _8, FgGLsizei _9, FgGLenum _10, FgGLenum _11, const FgGLvoid * _12 ), ( _1, _2, _3, _4, _5, _6, _7, _8, _9, _10, _11, _12 ) ) \
-    FG_GL_VOID_FUNCTION( CopyMultiTexSubImage3DEXT, ( FgGLenum _1, FgGLenum _2, FgGLint _3, FgGLint _4, FgGLint _5, FgGLint _6, FgGLint _7, FgGLint _8, FgGLsizei _9, FgGLsizei _10 ), ( _1, _2, _3, _4, _5, _6, _7, _8, _9, _10 ) ) \
-    FG_GL_VOID_FUNCTION( EnableClientStateIndexedEXT, ( FgGLenum _1, FgGLuint _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( DisableClientStateIndexedEXT, ( FgGLenum _1, FgGLuint _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( GetFloatIndexedvEXT, ( FgGLenum _1, FgGLuint _2, FgGLfloat * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetDoubleIndexedvEXT, ( FgGLenum _1, FgGLuint _2, FgGLdouble * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetPointerIndexedvEXT, ( FgGLenum _1, FgGLuint _2, FgGLvoid ** _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( EnableIndexedEXT, ( FgGLenum _1, FgGLuint _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( DisableIndexedEXT, ( FgGLenum _1, FgGLuint _2 ), ( _1, _2 ) ) \
-    FG_GL_FUNCTION( 0, FgGLboolean, IsEnabledIndexedEXT, ( FgGLenum _1, FgGLuint _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( GetIntegerIndexedvEXT, ( FgGLenum _1, FgGLuint _2, FgGLint * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetBooleanIndexedvEXT, ( FgGLenum _1, FgGLuint _2, FgGLboolean * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( CompressedTextureImage3DEXT, ( FgGLuint _1, FgGLenum _2, FgGLint _3, FgGLenum _4, FgGLsizei _5, FgGLsizei _6, FgGLsizei _7, FgGLint _8, FgGLsizei _9, const FgGLvoid * _10 ), ( _1, _2, _3, _4, _5, _6, _7, _8, _9, _10 ) ) \
-    FG_GL_VOID_FUNCTION( CompressedTextureImage2DEXT, ( FgGLuint _1, FgGLenum _2, FgGLint _3, FgGLenum _4, FgGLsizei _5, FgGLsizei _6, FgGLint _7, FgGLsizei _8, const FgGLvoid * _9 ), ( _1, _2, _3, _4, _5, _6, _7, _8, _9 ) ) \
-    FG_GL_VOID_FUNCTION( CompressedTextureImage1DEXT, ( FgGLuint _1, FgGLenum _2, FgGLint _3, FgGLenum _4, FgGLsizei _5, FgGLint _6, FgGLsizei _7, const FgGLvoid * _8 ), ( _1, _2, _3, _4, _5, _6, _7, _8 ) ) \
-    FG_GL_VOID_FUNCTION( CompressedTextureSubImage3DEXT, ( FgGLuint _1, FgGLenum _2, FgGLint _3, FgGLint _4, FgGLint _5, FgGLint _6, FgGLsizei _7, FgGLsizei _8, FgGLsizei _9, FgGLenum _10, FgGLsizei _11, const FgGLvoid * _12 ), ( _1, _2, _3, _4, _5, _6, _7, _8, _9, _10, _11, _12 ) ) \
-    FG_GL_VOID_FUNCTION( CompressedTextureSubImage2DEXT, ( FgGLuint _1, FgGLenum _2, FgGLint _3, FgGLint _4, FgGLint _5, FgGLsizei _6, FgGLsizei _7, FgGLenum _8, FgGLsizei _9, const FgGLvoid * _10 ), ( _1, _2, _3, _4, _5, _6, _7, _8, _9, _10 ) ) \
-    FG_GL_VOID_FUNCTION( CompressedTextureSubImage1DEXT, ( FgGLuint _1, FgGLenum _2, FgGLint _3, FgGLint _4, FgGLsizei _5, FgGLenum _6, FgGLsizei _7, const FgGLvoid * _8 ), ( _1, _2, _3, _4, _5, _6, _7, _8 ) ) \
-    FG_GL_VOID_FUNCTION( GetCompressedTextureImageEXT, ( FgGLuint _1, FgGLenum _2, FgGLint _3, FgGLvoid * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( CompressedMultiTexImage3DEXT, ( FgGLenum _1, FgGLenum _2, FgGLint _3, FgGLenum _4, FgGLsizei _5, FgGLsizei _6, FgGLsizei _7, FgGLint _8, FgGLsizei _9, const FgGLvoid * _10 ), ( _1, _2, _3, _4, _5, _6, _7, _8, _9, _10 ) ) \
-    FG_GL_VOID_FUNCTION( CompressedMultiTexImage2DEXT, ( FgGLenum _1, FgGLenum _2, FgGLint _3, FgGLenum _4, FgGLsizei _5, FgGLsizei _6, FgGLint _7, FgGLsizei _8, const FgGLvoid * _9 ), ( _1, _2, _3, _4, _5, _6, _7, _8, _9 ) ) \
-    FG_GL_VOID_FUNCTION( CompressedMultiTexImage1DEXT, ( FgGLenum _1, FgGLenum _2, FgGLint _3, FgGLenum _4, FgGLsizei _5, FgGLint _6, FgGLsizei _7, const FgGLvoid * _8 ), ( _1, _2, _3, _4, _5, _6, _7, _8 ) ) \
-    FG_GL_VOID_FUNCTION( CompressedMultiTexSubImage3DEXT, ( FgGLenum _1, FgGLenum _2, FgGLint _3, FgGLint _4, FgGLint _5, FgGLint _6, FgGLsizei _7, FgGLsizei _8, FgGLsizei _9, FgGLenum _10, FgGLsizei _11, const FgGLvoid * _12 ), ( _1, _2, _3, _4, _5, _6, _7, _8, _9, _10, _11, _12 ) ) \
-    FG_GL_VOID_FUNCTION( CompressedMultiTexSubImage2DEXT, ( FgGLenum _1, FgGLenum _2, FgGLint _3, FgGLint _4, FgGLint _5, FgGLsizei _6, FgGLsizei _7, FgGLenum _8, FgGLsizei _9, const FgGLvoid * _10 ), ( _1, _2, _3, _4, _5, _6, _7, _8, _9, _10 ) ) \
-    FG_GL_VOID_FUNCTION( CompressedMultiTexSubImage1DEXT, ( FgGLenum _1, FgGLenum _2, FgGLint _3, FgGLint _4, FgGLsizei _5, FgGLenum _6, FgGLsizei _7, const FgGLvoid * _8 ), ( _1, _2, _3, _4, _5, _6, _7, _8 ) ) \
-    FG_GL_VOID_FUNCTION( GetCompressedMultiTexImageEXT, ( FgGLenum _1, FgGLenum _2, FgGLint _3, FgGLvoid * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( MatrixLoadTransposefEXT, ( FgGLenum _1, const FgGLfloat * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( MatrixLoadTransposedEXT, ( FgGLenum _1, const FgGLdouble * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( MatrixMultTransposefEXT, ( FgGLenum _1, const FgGLfloat * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( MatrixMultTransposedEXT, ( FgGLenum _1, const FgGLdouble * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( NamedBufferDataEXT, ( FgGLuint _1, FgGLsizeiptr _2, const FgGLvoid * _3, FgGLenum _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( NamedBufferSubDataEXT, ( FgGLuint _1, FgGLintptr _2, FgGLsizeiptr _3, const FgGLvoid * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_FUNCTION( NULL, void *, MapNamedBufferEXT, ( FgGLuint _1, FgGLenum _2 ), ( _1, _2 ) ) \
-    FG_GL_FUNCTION( 0, FgGLboolean, UnmapNamedBufferEXT, ( FgGLuint _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( GetNamedBufferParameterivEXT, ( FgGLuint _1, FgGLenum _2, FgGLint * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetNamedBufferPointervEXT, ( FgGLuint _1, FgGLenum _2, FgGLvoid ** _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetNamedBufferSubDataEXT, ( FgGLuint _1, FgGLintptr _2, FgGLsizeiptr _3, FgGLvoid * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramUniform1fEXT, ( FgGLuint _1, FgGLint _2, FgGLfloat _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramUniform2fEXT, ( FgGLuint _1, FgGLint _2, FgGLfloat _3, FgGLfloat _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramUniform3fEXT, ( FgGLuint _1, FgGLint _2, FgGLfloat _3, FgGLfloat _4, FgGLfloat _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramUniform4fEXT, ( FgGLuint _1, FgGLint _2, FgGLfloat _3, FgGLfloat _4, FgGLfloat _5, FgGLfloat _6 ), ( _1, _2, _3, _4, _5, _6 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramUniform1iEXT, ( FgGLuint _1, FgGLint _2, FgGLint _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramUniform2iEXT, ( FgGLuint _1, FgGLint _2, FgGLint _3, FgGLint _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramUniform3iEXT, ( FgGLuint _1, FgGLint _2, FgGLint _3, FgGLint _4, FgGLint _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramUniform4iEXT, ( FgGLuint _1, FgGLint _2, FgGLint _3, FgGLint _4, FgGLint _5, FgGLint _6 ), ( _1, _2, _3, _4, _5, _6 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramUniform1fvEXT, ( FgGLuint _1, FgGLint _2, FgGLsizei _3, const FgGLfloat * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramUniform2fvEXT, ( FgGLuint _1, FgGLint _2, FgGLsizei _3, const FgGLfloat * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramUniform3fvEXT, ( FgGLuint _1, FgGLint _2, FgGLsizei _3, const FgGLfloat * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramUniform4fvEXT, ( FgGLuint _1, FgGLint _2, FgGLsizei _3, const FgGLfloat * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramUniform1ivEXT, ( FgGLuint _1, FgGLint _2, FgGLsizei _3, const FgGLint * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramUniform2ivEXT, ( FgGLuint _1, FgGLint _2, FgGLsizei _3, const FgGLint * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramUniform3ivEXT, ( FgGLuint _1, FgGLint _2, FgGLsizei _3, const FgGLint * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramUniform4ivEXT, ( FgGLuint _1, FgGLint _2, FgGLsizei _3, const FgGLint * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramUniformMatrix2fvEXT, ( FgGLuint _1, FgGLint _2, FgGLsizei _3, FgGLboolean _4, const FgGLfloat * _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramUniformMatrix3fvEXT, ( FgGLuint _1, FgGLint _2, FgGLsizei _3, FgGLboolean _4, const FgGLfloat * _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramUniformMatrix4fvEXT, ( FgGLuint _1, FgGLint _2, FgGLsizei _3, FgGLboolean _4, const FgGLfloat * _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramUniformMatrix2x3fvEXT, ( FgGLuint _1, FgGLint _2, FgGLsizei _3, FgGLboolean _4, const FgGLfloat * _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramUniformMatrix3x2fvEXT, ( FgGLuint _1, FgGLint _2, FgGLsizei _3, FgGLboolean _4, const FgGLfloat * _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramUniformMatrix2x4fvEXT, ( FgGLuint _1, FgGLint _2, FgGLsizei _3, FgGLboolean _4, const FgGLfloat * _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramUniformMatrix4x2fvEXT, ( FgGLuint _1, FgGLint _2, FgGLsizei _3, FgGLboolean _4, const FgGLfloat * _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramUniformMatrix3x4fvEXT, ( FgGLuint _1, FgGLint _2, FgGLsizei _3, FgGLboolean _4, const FgGLfloat * _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramUniformMatrix4x3fvEXT, ( FgGLuint _1, FgGLint _2, FgGLsizei _3, FgGLboolean _4, const FgGLfloat * _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( TextureBufferEXT, ( FgGLuint _1, FgGLenum _2, FgGLenum _3, FgGLuint _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( MultiTexBufferEXT, ( FgGLenum _1, FgGLenum _2, FgGLenum _3, FgGLuint _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( TextureParameterIivEXT, ( FgGLuint _1, FgGLenum _2, FgGLenum _3, const FgGLint * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( TextureParameterIuivEXT, ( FgGLuint _1, FgGLenum _2, FgGLenum _3, const FgGLuint * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( GetTextureParameterIivEXT, ( FgGLuint _1, FgGLenum _2, FgGLenum _3, FgGLint * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( GetTextureParameterIuivEXT, ( FgGLuint _1, FgGLenum _2, FgGLenum _3, FgGLuint * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( MultiTexParameterIivEXT, ( FgGLenum _1, FgGLenum _2, FgGLenum _3, const FgGLint * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( MultiTexParameterIuivEXT, ( FgGLenum _1, FgGLenum _2, FgGLenum _3, const FgGLuint * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( GetMultiTexParameterIivEXT, ( FgGLenum _1, FgGLenum _2, FgGLenum _3, FgGLint * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( GetMultiTexParameterIuivEXT, ( FgGLenum _1, FgGLenum _2, FgGLenum _3, FgGLuint * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramUniform1uiEXT, ( FgGLuint _1, FgGLint _2, FgGLuint _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramUniform2uiEXT, ( FgGLuint _1, FgGLint _2, FgGLuint _3, FgGLuint _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramUniform3uiEXT, ( FgGLuint _1, FgGLint _2, FgGLuint _3, FgGLuint _4, FgGLuint _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramUniform4uiEXT, ( FgGLuint _1, FgGLint _2, FgGLuint _3, FgGLuint _4, FgGLuint _5, FgGLuint _6 ), ( _1, _2, _3, _4, _5, _6 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramUniform1uivEXT, ( FgGLuint _1, FgGLint _2, FgGLsizei _3, const FgGLuint * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramUniform2uivEXT, ( FgGLuint _1, FgGLint _2, FgGLsizei _3, const FgGLuint * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramUniform3uivEXT, ( FgGLuint _1, FgGLint _2, FgGLsizei _3, const FgGLuint * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramUniform4uivEXT, ( FgGLuint _1, FgGLint _2, FgGLsizei _3, const FgGLuint * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( NamedProgramLocalParameters4fvEXT, ( FgGLuint _1, FgGLenum _2, FgGLuint _3, FgGLsizei _4, const FgGLfloat * _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( NamedProgramLocalParameterI4iEXT, ( FgGLuint _1, FgGLenum _2, FgGLuint _3, FgGLint _4, FgGLint _5, FgGLint _6, FgGLint _7 ), ( _1, _2, _3, _4, _5, _6, _7 ) ) \
-    FG_GL_VOID_FUNCTION( NamedProgramLocalParameterI4ivEXT, ( FgGLuint _1, FgGLenum _2, FgGLuint _3, const FgGLint * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( NamedProgramLocalParametersI4ivEXT, ( FgGLuint _1, FgGLenum _2, FgGLuint _3, FgGLsizei _4, const FgGLint * _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( NamedProgramLocalParameterI4uiEXT, ( FgGLuint _1, FgGLenum _2, FgGLuint _3, FgGLuint _4, FgGLuint _5, FgGLuint _6, FgGLuint _7 ), ( _1, _2, _3, _4, _5, _6, _7 ) ) \
-    FG_GL_VOID_FUNCTION( NamedProgramLocalParameterI4uivEXT, ( FgGLuint _1, FgGLenum _2, FgGLuint _3, const FgGLuint * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( NamedProgramLocalParametersI4uivEXT, ( FgGLuint _1, FgGLenum _2, FgGLuint _3, FgGLsizei _4, const FgGLuint * _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( GetNamedProgramLocalParameterIivEXT, ( FgGLuint _1, FgGLenum _2, FgGLuint _3, FgGLint * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( GetNamedProgramLocalParameterIuivEXT, ( FgGLuint _1, FgGLenum _2, FgGLuint _3, FgGLuint * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( EnableClientStateiEXT, ( FgGLenum _1, FgGLuint _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( DisableClientStateiEXT, ( FgGLenum _1, FgGLuint _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( GetFloati_vEXT, ( FgGLenum _1, FgGLuint _2, FgGLfloat * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetDoublei_vEXT, ( FgGLenum _1, FgGLuint _2, FgGLdouble * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetPointeri_vEXT, ( FgGLenum _1, FgGLuint _2, FgGLvoid ** _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( NamedProgramStringEXT, ( FgGLuint _1, FgGLenum _2, FgGLenum _3, FgGLsizei _4, const FgGLvoid * _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( NamedProgramLocalParameter4dEXT, ( FgGLuint _1, FgGLenum _2, FgGLuint _3, FgGLdouble _4, FgGLdouble _5, FgGLdouble _6, FgGLdouble _7 ), ( _1, _2, _3, _4, _5, _6, _7 ) ) \
-    FG_GL_VOID_FUNCTION( NamedProgramLocalParameter4dvEXT, ( FgGLuint _1, FgGLenum _2, FgGLuint _3, const FgGLdouble * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( NamedProgramLocalParameter4fEXT, ( FgGLuint _1, FgGLenum _2, FgGLuint _3, FgGLfloat _4, FgGLfloat _5, FgGLfloat _6, FgGLfloat _7 ), ( _1, _2, _3, _4, _5, _6, _7 ) ) \
-    FG_GL_VOID_FUNCTION( NamedProgramLocalParameter4fvEXT, ( FgGLuint _1, FgGLenum _2, FgGLuint _3, const FgGLfloat * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( GetNamedProgramLocalParameterdvEXT, ( FgGLuint _1, FgGLenum _2, FgGLuint _3, FgGLdouble * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( GetNamedProgramLocalParameterfvEXT, ( FgGLuint _1, FgGLenum _2, FgGLuint _3, FgGLfloat * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( GetNamedProgramivEXT, ( FgGLuint _1, FgGLenum _2, FgGLenum _3, FgGLint * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( GetNamedProgramStringEXT, ( FgGLuint _1, FgGLenum _2, FgGLenum _3, FgGLvoid * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( NamedRenderbufferStorageEXT, ( FgGLuint _1, FgGLenum _2, FgGLsizei _3, FgGLsizei _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( GetNamedRenderbufferParameterivEXT, ( FgGLuint _1, FgGLenum _2, FgGLint * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( NamedRenderbufferStorageMultisampleEXT, ( FgGLuint _1, FgGLsizei _2, FgGLenum _3, FgGLsizei _4, FgGLsizei _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( NamedRenderbufferStorageMultisampleCoverageEXT, ( FgGLuint _1, FgGLsizei _2, FgGLsizei _3, FgGLenum _4, FgGLsizei _5, FgGLsizei _6 ), ( _1, _2, _3, _4, _5, _6 ) ) \
-    FG_GL_FUNCTION( 0, FgGLenum, CheckNamedFramebufferStatusEXT, ( FgGLuint _1, FgGLenum _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( NamedFramebufferTexture1DEXT, ( FgGLuint _1, FgGLenum _2, FgGLenum _3, FgGLuint _4, FgGLint _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( NamedFramebufferTexture2DEXT, ( FgGLuint _1, FgGLenum _2, FgGLenum _3, FgGLuint _4, FgGLint _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( NamedFramebufferTexture3DEXT, ( FgGLuint _1, FgGLenum _2, FgGLenum _3, FgGLuint _4, FgGLint _5, FgGLint _6 ), ( _1, _2, _3, _4, _5, _6 ) ) \
-    FG_GL_VOID_FUNCTION( NamedFramebufferRenderbufferEXT, ( FgGLuint _1, FgGLenum _2, FgGLenum _3, FgGLuint _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( GetNamedFramebufferAttachmentParameterivEXT, ( FgGLuint _1, FgGLenum _2, FgGLenum _3, FgGLint * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( GenerateTextureMipmapEXT, ( FgGLuint _1, FgGLenum _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( GenerateMultiTexMipmapEXT, ( FgGLenum _1, FgGLenum _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( FramebufferDrawBufferEXT, ( FgGLuint _1, FgGLenum _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( FramebufferDrawBuffersEXT, ( FgGLuint _1, FgGLsizei _2, const FgGLenum * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( FramebufferReadBufferEXT, ( FgGLuint _1, FgGLenum _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( GetFramebufferParameterivEXT, ( FgGLuint _1, FgGLenum _2, FgGLint * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( NamedCopyBufferSubDataEXT, ( FgGLuint _1, FgGLuint _2, FgGLintptr _3, FgGLintptr _4, FgGLsizeiptr _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( NamedFramebufferTextureEXT, ( FgGLuint _1, FgGLenum _2, FgGLuint _3, FgGLint _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( NamedFramebufferTextureLayerEXT, ( FgGLuint _1, FgGLenum _2, FgGLuint _3, FgGLint _4, FgGLint _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( NamedFramebufferTextureFaceEXT, ( FgGLuint _1, FgGLenum _2, FgGLuint _3, FgGLint _4, FgGLenum _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( TextureRenderbufferEXT, ( FgGLuint _1, FgGLenum _2, FgGLuint _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( MultiTexRenderbufferEXT, ( FgGLenum _1, FgGLenum _2, FgGLuint _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( VertexArrayVertexOffsetEXT, ( FgGLuint _1, FgGLuint _2, FgGLint _3, FgGLenum _4, FgGLsizei _5, FgGLintptr _6 ), ( _1, _2, _3, _4, _5, _6 ) ) \
-    FG_GL_VOID_FUNCTION( VertexArrayColorOffsetEXT, ( FgGLuint _1, FgGLuint _2, FgGLint _3, FgGLenum _4, FgGLsizei _5, FgGLintptr _6 ), ( _1, _2, _3, _4, _5, _6 ) ) \
-    FG_GL_VOID_FUNCTION( VertexArrayEdgeFlagOffsetEXT, ( FgGLuint _1, FgGLuint _2, FgGLsizei _3, FgGLintptr _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( VertexArrayIndexOffsetEXT, ( FgGLuint _1, FgGLuint _2, FgGLenum _3, FgGLsizei _4, FgGLintptr _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( VertexArrayNormalOffsetEXT, ( FgGLuint _1, FgGLuint _2, FgGLenum _3, FgGLsizei _4, FgGLintptr _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( VertexArrayTexCoordOffsetEXT, ( FgGLuint _1, FgGLuint _2, FgGLint _3, FgGLenum _4, FgGLsizei _5, FgGLintptr _6 ), ( _1, _2, _3, _4, _5, _6 ) ) \
-    FG_GL_VOID_FUNCTION( VertexArrayMultiTexCoordOffsetEXT, ( FgGLuint _1, FgGLuint _2, FgGLenum _3, FgGLint _4, FgGLenum _5, FgGLsizei _6, FgGLintptr _7 ), ( _1, _2, _3, _4, _5, _6, _7 ) ) \
-    FG_GL_VOID_FUNCTION( VertexArrayFogCoordOffsetEXT, ( FgGLuint _1, FgGLuint _2, FgGLenum _3, FgGLsizei _4, FgGLintptr _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( VertexArraySecondaryColorOffsetEXT, ( FgGLuint _1, FgGLuint _2, FgGLint _3, FgGLenum _4, FgGLsizei _5, FgGLintptr _6 ), ( _1, _2, _3, _4, _5, _6 ) ) \
-    FG_GL_VOID_FUNCTION( VertexArrayVertexAttribOffsetEXT, ( FgGLuint _1, FgGLuint _2, FgGLuint _3, FgGLint _4, FgGLenum _5, FgGLboolean _6, FgGLsizei _7, FgGLintptr _8 ), ( _1, _2, _3, _4, _5, _6, _7, _8 ) ) \
-    FG_GL_VOID_FUNCTION( VertexArrayVertexAttribIOffsetEXT, ( FgGLuint _1, FgGLuint _2, FgGLuint _3, FgGLint _4, FgGLenum _5, FgGLsizei _6, FgGLintptr _7 ), ( _1, _2, _3, _4, _5, _6, _7 ) ) \
-    FG_GL_VOID_FUNCTION( EnableVertexArrayEXT, ( FgGLuint _1, FgGLenum _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( DisableVertexArrayEXT, ( FgGLuint _1, FgGLenum _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( EnableVertexArrayAttribEXT, ( FgGLuint _1, FgGLuint _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( DisableVertexArrayAttribEXT, ( FgGLuint _1, FgGLuint _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( GetVertexArrayIntegervEXT, ( FgGLuint _1, FgGLenum _2, FgGLint * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetVertexArrayPointervEXT, ( FgGLuint _1, FgGLenum _2, FgGLvoid ** _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetVertexArrayIntegeri_vEXT, ( FgGLuint _1, FgGLuint _2, FgGLenum _3, FgGLint * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( GetVertexArrayPointeri_vEXT, ( FgGLuint _1, FgGLuint _2, FgGLenum _3, FgGLvoid ** _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_FUNCTION( NULL, void *, MapNamedBufferRangeEXT, ( FgGLuint _1, FgGLintptr _2, FgGLsizeiptr _3, FgGLbitfield _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( FlushMappedNamedBufferRangeEXT, ( FgGLuint _1, FgGLintptr _2, FgGLsizeiptr _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( NamedBufferStorageEXT, ( FgGLuint _1, FgGLsizeiptr _2, const void * _3, FgGLbitfield _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( ClearNamedBufferDataEXT, ( FgGLuint _1, FgGLenum _2, FgGLenum _3, FgGLenum _4, const void * _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( ClearNamedBufferSubDataEXT, ( FgGLuint _1, FgGLenum _2, FgGLenum _3, FgGLenum _4, FgGLsizeiptr _5, FgGLsizeiptr _6, const void * _7 ), ( _1, _2, _3, _4, _5, _6, _7 ) ) \
-    FG_GL_VOID_FUNCTION( NamedFramebufferParameteriEXT, ( FgGLuint _1, FgGLenum _2, FgGLint _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetNamedFramebufferParameterivEXT, ( FgGLuint _1, FgGLenum _2, FgGLint * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramUniform1dEXT, ( FgGLuint _1, FgGLint _2, FgGLdouble _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramUniform2dEXT, ( FgGLuint _1, FgGLint _2, FgGLdouble _3, FgGLdouble _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramUniform3dEXT, ( FgGLuint _1, FgGLint _2, FgGLdouble _3, FgGLdouble _4, FgGLdouble _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramUniform4dEXT, ( FgGLuint _1, FgGLint _2, FgGLdouble _3, FgGLdouble _4, FgGLdouble _5, FgGLdouble _6 ), ( _1, _2, _3, _4, _5, _6 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramUniform1dvEXT, ( FgGLuint _1, FgGLint _2, FgGLsizei _3, const FgGLdouble * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramUniform2dvEXT, ( FgGLuint _1, FgGLint _2, FgGLsizei _3, const FgGLdouble * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramUniform3dvEXT, ( FgGLuint _1, FgGLint _2, FgGLsizei _3, const FgGLdouble * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramUniform4dvEXT, ( FgGLuint _1, FgGLint _2, FgGLsizei _3, const FgGLdouble * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramUniformMatrix2dvEXT, ( FgGLuint _1, FgGLint _2, FgGLsizei _3, FgGLboolean _4, const FgGLdouble * _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramUniformMatrix3dvEXT, ( FgGLuint _1, FgGLint _2, FgGLsizei _3, FgGLboolean _4, const FgGLdouble * _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramUniformMatrix4dvEXT, ( FgGLuint _1, FgGLint _2, FgGLsizei _3, FgGLboolean _4, const FgGLdouble * _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramUniformMatrix2x3dvEXT, ( FgGLuint _1, FgGLint _2, FgGLsizei _3, FgGLboolean _4, const FgGLdouble * _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramUniformMatrix2x4dvEXT, ( FgGLuint _1, FgGLint _2, FgGLsizei _3, FgGLboolean _4, const FgGLdouble * _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramUniformMatrix3x2dvEXT, ( FgGLuint _1, FgGLint _2, FgGLsizei _3, FgGLboolean _4, const FgGLdouble * _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramUniformMatrix3x4dvEXT, ( FgGLuint _1, FgGLint _2, FgGLsizei _3, FgGLboolean _4, const FgGLdouble * _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramUniformMatrix4x2dvEXT, ( FgGLuint _1, FgGLint _2, FgGLsizei _3, FgGLboolean _4, const FgGLdouble * _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramUniformMatrix4x3dvEXT, ( FgGLuint _1, FgGLint _2, FgGLsizei _3, FgGLboolean _4, const FgGLdouble * _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( TextureBufferRangeEXT, ( FgGLuint _1, FgGLenum _2, FgGLenum _3, FgGLuint _4, FgGLintptr _5, FgGLsizeiptr _6 ), ( _1, _2, _3, _4, _5, _6 ) ) \
-    FG_GL_VOID_FUNCTION( TextureStorage1DEXT, ( FgGLuint _1, FgGLenum _2, FgGLsizei _3, FgGLenum _4, FgGLsizei _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( TextureStorage2DEXT, ( FgGLuint _1, FgGLenum _2, FgGLsizei _3, FgGLenum _4, FgGLsizei _5, FgGLsizei _6 ), ( _1, _2, _3, _4, _5, _6 ) ) \
-    FG_GL_VOID_FUNCTION( TextureStorage3DEXT, ( FgGLuint _1, FgGLenum _2, FgGLsizei _3, FgGLenum _4, FgGLsizei _5, FgGLsizei _6, FgGLsizei _7 ), ( _1, _2, _3, _4, _5, _6, _7 ) ) \
-    FG_GL_VOID_FUNCTION( TextureStorage2DMultisampleEXT, ( FgGLuint _1, FgGLenum _2, FgGLsizei _3, FgGLenum _4, FgGLsizei _5, FgGLsizei _6, FgGLboolean _7 ), ( _1, _2, _3, _4, _5, _6, _7 ) ) \
-    FG_GL_VOID_FUNCTION( TextureStorage3DMultisampleEXT, ( FgGLuint _1, FgGLenum _2, FgGLsizei _3, FgGLenum _4, FgGLsizei _5, FgGLsizei _6, FgGLsizei _7, FgGLboolean _8 ), ( _1, _2, _3, _4, _5, _6, _7, _8 ) ) \
-    FG_GL_VOID_FUNCTION( VertexArrayBindVertexBufferEXT, ( FgGLuint _1, FgGLuint _2, FgGLuint _3, FgGLintptr _4, FgGLsizei _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( VertexArrayVertexAttribFormatEXT, ( FgGLuint _1, FgGLuint _2, FgGLint _3, FgGLenum _4, FgGLboolean _5, FgGLuint _6 ), ( _1, _2, _3, _4, _5, _6 ) ) \
-    FG_GL_VOID_FUNCTION( VertexArrayVertexAttribIFormatEXT, ( FgGLuint _1, FgGLuint _2, FgGLint _3, FgGLenum _4, FgGLuint _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( VertexArrayVertexAttribLFormatEXT, ( FgGLuint _1, FgGLuint _2, FgGLint _3, FgGLenum _4, FgGLuint _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( VertexArrayVertexAttribBindingEXT, ( FgGLuint _1, FgGLuint _2, FgGLuint _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( VertexArrayVertexBindingDivisorEXT, ( FgGLuint _1, FgGLuint _2, FgGLuint _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( VertexArrayVertexAttribLOffsetEXT, ( FgGLuint _1, FgGLuint _2, FgGLuint _3, FgGLint _4, FgGLenum _5, FgGLsizei _6, FgGLintptr _7 ), ( _1, _2, _3, _4, _5, _6, _7 ) ) \
-    FG_GL_VOID_FUNCTION( TexturePageCommitmentEXT, ( FgGLuint _1, FgGLint _2, FgGLint _3, FgGLint _4, FgGLint _5, FgGLsizei _6, FgGLsizei _7, FgGLsizei _8, FgGLboolean _9 ), ( _1, _2, _3, _4, _5, _6, _7, _8, _9 ) ) \
-    FG_GL_VOID_FUNCTION( VertexArrayVertexAttribDivisorEXT, ( FgGLuint _1, FgGLuint _2, FgGLuint _3 ), ( _1, _2, _3 ) ) \
+    FG_GL_FUNCTION_VOID( MatrixLoadfEXT, FgGLContext *, FgGLenum, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( MatrixLoaddEXT, FgGLContext *, FgGLenum, const FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( MatrixMultfEXT, FgGLContext *, FgGLenum, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( MatrixMultdEXT, FgGLContext *, FgGLenum, const FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( MatrixLoadIdentityEXT, FgGLContext *, FgGLenum ) \
+    FG_GL_FUNCTION_VOID( MatrixRotatefEXT, FgGLContext *, FgGLenum, FgGLfloat, FgGLfloat, FgGLfloat, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( MatrixRotatedEXT, FgGLContext *, FgGLenum, FgGLdouble, FgGLdouble, FgGLdouble, FgGLdouble ) \
+    FG_GL_FUNCTION_VOID( MatrixScalefEXT, FgGLContext *, FgGLenum, FgGLfloat, FgGLfloat, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( MatrixScaledEXT, FgGLContext *, FgGLenum, FgGLdouble, FgGLdouble, FgGLdouble ) \
+    FG_GL_FUNCTION_VOID( MatrixTranslatefEXT, FgGLContext *, FgGLenum, FgGLfloat, FgGLfloat, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( MatrixTranslatedEXT, FgGLContext *, FgGLenum, FgGLdouble, FgGLdouble, FgGLdouble ) \
+    FG_GL_FUNCTION_VOID( MatrixFrustumEXT, FgGLContext *, FgGLenum, FgGLdouble, FgGLdouble, FgGLdouble, FgGLdouble, FgGLdouble, FgGLdouble ) \
+    FG_GL_FUNCTION_VOID( MatrixOrthoEXT, FgGLContext *, FgGLenum, FgGLdouble, FgGLdouble, FgGLdouble, FgGLdouble, FgGLdouble, FgGLdouble ) \
+    FG_GL_FUNCTION_VOID( MatrixPopEXT, FgGLContext *, FgGLenum ) \
+    FG_GL_FUNCTION_VOID( MatrixPushEXT, FgGLContext *, FgGLenum ) \
+    FG_GL_FUNCTION_VOID( ClientAttribDefaultEXT, FgGLContext *, FgGLbitfield ) \
+    FG_GL_FUNCTION_VOID( PushClientAttribDefaultEXT, FgGLContext *, FgGLbitfield ) \
+    FG_GL_FUNCTION_VOID( TextureParameterfEXT, FgGLContext *, FgGLuint, FgGLenum, FgGLenum, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( TextureParameterfvEXT, FgGLContext *, FgGLuint, FgGLenum, FgGLenum, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( TextureParameteriEXT, FgGLContext *, FgGLuint, FgGLenum, FgGLenum, FgGLint ) \
+    FG_GL_FUNCTION_VOID( TextureParameterivEXT, FgGLContext *, FgGLuint, FgGLenum, FgGLenum, const FgGLint * ) \
+    FG_GL_FUNCTION_VOID( TextureImage1DEXT, FgGLContext *, FgGLuint, FgGLenum, FgGLint, FgGLint, FgGLsizei, FgGLint, FgGLenum, FgGLenum, const FgGLvoid * ) \
+    FG_GL_FUNCTION_VOID( TextureImage2DEXT, FgGLContext *, FgGLuint, FgGLenum, FgGLint, FgGLint, FgGLsizei, FgGLsizei, FgGLint, FgGLenum, FgGLenum, const FgGLvoid * ) \
+    FG_GL_FUNCTION_VOID( TextureSubImage1DEXT, FgGLContext *, FgGLuint, FgGLenum, FgGLint, FgGLint, FgGLsizei, FgGLenum, FgGLenum, const FgGLvoid * ) \
+    FG_GL_FUNCTION_VOID( TextureSubImage2DEXT, FgGLContext *, FgGLuint, FgGLenum, FgGLint, FgGLint, FgGLint, FgGLsizei, FgGLsizei, FgGLenum, FgGLenum, const FgGLvoid * ) \
+    FG_GL_FUNCTION_VOID( CopyTextureImage1DEXT, FgGLContext *, FgGLuint, FgGLenum, FgGLint, FgGLenum, FgGLint, FgGLint, FgGLsizei, FgGLint ) \
+    FG_GL_FUNCTION_VOID( CopyTextureImage2DEXT, FgGLContext *, FgGLuint, FgGLenum, FgGLint, FgGLenum, FgGLint, FgGLint, FgGLsizei, FgGLsizei, FgGLint ) \
+    FG_GL_FUNCTION_VOID( CopyTextureSubImage1DEXT, FgGLContext *, FgGLuint, FgGLenum, FgGLint, FgGLint, FgGLint, FgGLint, FgGLsizei ) \
+    FG_GL_FUNCTION_VOID( CopyTextureSubImage2DEXT, FgGLContext *, FgGLuint, FgGLenum, FgGLint, FgGLint, FgGLint, FgGLint, FgGLint, FgGLsizei, FgGLsizei ) \
+    FG_GL_FUNCTION_VOID( GetTextureImageEXT, FgGLContext *, FgGLuint, FgGLenum, FgGLint, FgGLenum, FgGLenum, FgGLvoid * ) \
+    FG_GL_FUNCTION_VOID( GetTextureParameterfvEXT, FgGLContext *, FgGLuint, FgGLenum, FgGLenum, FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( GetTextureParameterivEXT, FgGLContext *, FgGLuint, FgGLenum, FgGLenum, FgGLint * ) \
+    FG_GL_FUNCTION_VOID( GetTextureLevelParameterfvEXT, FgGLContext *, FgGLuint, FgGLenum, FgGLint, FgGLenum, FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( GetTextureLevelParameterivEXT, FgGLContext *, FgGLuint, FgGLenum, FgGLint, FgGLenum, FgGLint * ) \
+    FG_GL_FUNCTION_VOID( TextureImage3DEXT, FgGLContext *, FgGLuint, FgGLenum, FgGLint, FgGLint, FgGLsizei, FgGLsizei, FgGLsizei, FgGLint, FgGLenum, FgGLenum, const FgGLvoid * ) \
+    FG_GL_FUNCTION_VOID( TextureSubImage3DEXT, FgGLContext *, FgGLuint, FgGLenum, FgGLint, FgGLint, FgGLint, FgGLint, FgGLsizei, FgGLsizei, FgGLsizei, FgGLenum, FgGLenum, const FgGLvoid * ) \
+    FG_GL_FUNCTION_VOID( CopyTextureSubImage3DEXT, FgGLContext *, FgGLuint, FgGLenum, FgGLint, FgGLint, FgGLint, FgGLint, FgGLint, FgGLint, FgGLsizei, FgGLsizei ) \
+    FG_GL_FUNCTION_VOID( BindMultiTextureEXT, FgGLContext *, FgGLenum, FgGLenum, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( MultiTexCoordPointerEXT, FgGLContext *, FgGLenum, FgGLint, FgGLenum, FgGLsizei, const FgGLvoid * ) \
+    FG_GL_FUNCTION_VOID( MultiTexEnvfEXT, FgGLContext *, FgGLenum, FgGLenum, FgGLenum, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( MultiTexEnvfvEXT, FgGLContext *, FgGLenum, FgGLenum, FgGLenum, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( MultiTexEnviEXT, FgGLContext *, FgGLenum, FgGLenum, FgGLenum, FgGLint ) \
+    FG_GL_FUNCTION_VOID( MultiTexEnvivEXT, FgGLContext *, FgGLenum, FgGLenum, FgGLenum, const FgGLint * ) \
+    FG_GL_FUNCTION_VOID( MultiTexGendEXT, FgGLContext *, FgGLenum, FgGLenum, FgGLenum, FgGLdouble ) \
+    FG_GL_FUNCTION_VOID( MultiTexGendvEXT, FgGLContext *, FgGLenum, FgGLenum, FgGLenum, const FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( MultiTexGenfEXT, FgGLContext *, FgGLenum, FgGLenum, FgGLenum, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( MultiTexGenfvEXT, FgGLContext *, FgGLenum, FgGLenum, FgGLenum, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( MultiTexGeniEXT, FgGLContext *, FgGLenum, FgGLenum, FgGLenum, FgGLint ) \
+    FG_GL_FUNCTION_VOID( MultiTexGenivEXT, FgGLContext *, FgGLenum, FgGLenum, FgGLenum, const FgGLint * ) \
+    FG_GL_FUNCTION_VOID( GetMultiTexEnvfvEXT, FgGLContext *, FgGLenum, FgGLenum, FgGLenum, FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( GetMultiTexEnvivEXT, FgGLContext *, FgGLenum, FgGLenum, FgGLenum, FgGLint * ) \
+    FG_GL_FUNCTION_VOID( GetMultiTexGendvEXT, FgGLContext *, FgGLenum, FgGLenum, FgGLenum, FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( GetMultiTexGenfvEXT, FgGLContext *, FgGLenum, FgGLenum, FgGLenum, FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( GetMultiTexGenivEXT, FgGLContext *, FgGLenum, FgGLenum, FgGLenum, FgGLint * ) \
+    FG_GL_FUNCTION_VOID( MultiTexParameteriEXT, FgGLContext *, FgGLenum, FgGLenum, FgGLenum, FgGLint ) \
+    FG_GL_FUNCTION_VOID( MultiTexParameterivEXT, FgGLContext *, FgGLenum, FgGLenum, FgGLenum, const FgGLint * ) \
+    FG_GL_FUNCTION_VOID( MultiTexParameterfEXT, FgGLContext *, FgGLenum, FgGLenum, FgGLenum, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( MultiTexParameterfvEXT, FgGLContext *, FgGLenum, FgGLenum, FgGLenum, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( MultiTexImage1DEXT, FgGLContext *, FgGLenum, FgGLenum, FgGLint, FgGLint, FgGLsizei, FgGLint, FgGLenum, FgGLenum, const FgGLvoid * ) \
+    FG_GL_FUNCTION_VOID( MultiTexImage2DEXT, FgGLContext *, FgGLenum, FgGLenum, FgGLint, FgGLint, FgGLsizei, FgGLsizei, FgGLint, FgGLenum, FgGLenum, const FgGLvoid * ) \
+    FG_GL_FUNCTION_VOID( MultiTexSubImage1DEXT, FgGLContext *, FgGLenum, FgGLenum, FgGLint, FgGLint, FgGLsizei, FgGLenum, FgGLenum, const FgGLvoid * ) \
+    FG_GL_FUNCTION_VOID( MultiTexSubImage2DEXT, FgGLContext *, FgGLenum, FgGLenum, FgGLint, FgGLint, FgGLint, FgGLsizei, FgGLsizei, FgGLenum, FgGLenum, const FgGLvoid * ) \
+    FG_GL_FUNCTION_VOID( CopyMultiTexImage1DEXT, FgGLContext *, FgGLenum, FgGLenum, FgGLint, FgGLenum, FgGLint, FgGLint, FgGLsizei, FgGLint ) \
+    FG_GL_FUNCTION_VOID( CopyMultiTexImage2DEXT, FgGLContext *, FgGLenum, FgGLenum, FgGLint, FgGLenum, FgGLint, FgGLint, FgGLsizei, FgGLsizei, FgGLint ) \
+    FG_GL_FUNCTION_VOID( CopyMultiTexSubImage1DEXT, FgGLContext *, FgGLenum, FgGLenum, FgGLint, FgGLint, FgGLint, FgGLint, FgGLsizei ) \
+    FG_GL_FUNCTION_VOID( CopyMultiTexSubImage2DEXT, FgGLContext *, FgGLenum, FgGLenum, FgGLint, FgGLint, FgGLint, FgGLint, FgGLint, FgGLsizei, FgGLsizei ) \
+    FG_GL_FUNCTION_VOID( GetMultiTexImageEXT, FgGLContext *, FgGLenum, FgGLenum, FgGLint, FgGLenum, FgGLenum, FgGLvoid * ) \
+    FG_GL_FUNCTION_VOID( GetMultiTexParameterfvEXT, FgGLContext *, FgGLenum, FgGLenum, FgGLenum, FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( GetMultiTexParameterivEXT, FgGLContext *, FgGLenum, FgGLenum, FgGLenum, FgGLint * ) \
+    FG_GL_FUNCTION_VOID( GetMultiTexLevelParameterfvEXT, FgGLContext *, FgGLenum, FgGLenum, FgGLint, FgGLenum, FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( GetMultiTexLevelParameterivEXT, FgGLContext *, FgGLenum, FgGLenum, FgGLint, FgGLenum, FgGLint * ) \
+    FG_GL_FUNCTION_VOID( MultiTexImage3DEXT, FgGLContext *, FgGLenum, FgGLenum, FgGLint, FgGLint, FgGLsizei, FgGLsizei, FgGLsizei, FgGLint, FgGLenum, FgGLenum, const FgGLvoid * ) \
+    FG_GL_FUNCTION_VOID( MultiTexSubImage3DEXT, FgGLContext *, FgGLenum, FgGLenum, FgGLint, FgGLint, FgGLint, FgGLint, FgGLsizei, FgGLsizei, FgGLsizei, FgGLenum, FgGLenum, const FgGLvoid * ) \
+    FG_GL_FUNCTION_VOID( CopyMultiTexSubImage3DEXT, FgGLContext *, FgGLenum, FgGLenum, FgGLint, FgGLint, FgGLint, FgGLint, FgGLint, FgGLint, FgGLsizei, FgGLsizei ) \
+    FG_GL_FUNCTION_VOID( EnableClientStateIndexedEXT, FgGLContext *, FgGLenum, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( DisableClientStateIndexedEXT, FgGLContext *, FgGLenum, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( GetFloatIndexedvEXT, FgGLContext *, FgGLenum, FgGLuint, FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( GetDoubleIndexedvEXT, FgGLContext *, FgGLenum, FgGLuint, FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( GetPointerIndexedvEXT, FgGLContext *, FgGLenum, FgGLuint, FgGLvoid ** ) \
+    FG_GL_FUNCTION_VOID( EnableIndexedEXT, FgGLContext *, FgGLenum, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( DisableIndexedEXT, FgGLContext *, FgGLenum, FgGLuint ) \
+    FG_GL_FUNCTION_NUM( IsEnabledIndexedEXT, FgGLboolean, FgGLContext *, FgGLenum, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( GetIntegerIndexedvEXT, FgGLContext *, FgGLenum, FgGLuint, FgGLint * ) \
+    FG_GL_FUNCTION_VOID( GetBooleanIndexedvEXT, FgGLContext *, FgGLenum, FgGLuint, FgGLboolean * ) \
+    FG_GL_FUNCTION_VOID( CompressedTextureImage3DEXT, FgGLContext *, FgGLuint, FgGLenum, FgGLint, FgGLenum, FgGLsizei, FgGLsizei, FgGLsizei, FgGLint, FgGLsizei, const FgGLvoid * ) \
+    FG_GL_FUNCTION_VOID( CompressedTextureImage2DEXT, FgGLContext *, FgGLuint, FgGLenum, FgGLint, FgGLenum, FgGLsizei, FgGLsizei, FgGLint, FgGLsizei, const FgGLvoid * ) \
+    FG_GL_FUNCTION_VOID( CompressedTextureImage1DEXT, FgGLContext *, FgGLuint, FgGLenum, FgGLint, FgGLenum, FgGLsizei, FgGLint, FgGLsizei, const FgGLvoid * ) \
+    FG_GL_FUNCTION_VOID( CompressedTextureSubImage3DEXT, FgGLContext *, FgGLuint, FgGLenum, FgGLint, FgGLint, FgGLint, FgGLint, FgGLsizei, FgGLsizei, FgGLsizei, FgGLenum, FgGLsizei, const FgGLvoid * ) \
+    FG_GL_FUNCTION_VOID( CompressedTextureSubImage2DEXT, FgGLContext *, FgGLuint, FgGLenum, FgGLint, FgGLint, FgGLint, FgGLsizei, FgGLsizei, FgGLenum, FgGLsizei, const FgGLvoid * ) \
+    FG_GL_FUNCTION_VOID( CompressedTextureSubImage1DEXT, FgGLContext *, FgGLuint, FgGLenum, FgGLint, FgGLint, FgGLsizei, FgGLenum, FgGLsizei, const FgGLvoid * ) \
+    FG_GL_FUNCTION_VOID( GetCompressedTextureImageEXT, FgGLContext *, FgGLuint, FgGLenum, FgGLint, FgGLvoid * ) \
+    FG_GL_FUNCTION_VOID( CompressedMultiTexImage3DEXT, FgGLContext *, FgGLenum, FgGLenum, FgGLint, FgGLenum, FgGLsizei, FgGLsizei, FgGLsizei, FgGLint, FgGLsizei, const FgGLvoid * ) \
+    FG_GL_FUNCTION_VOID( CompressedMultiTexImage2DEXT, FgGLContext *, FgGLenum, FgGLenum, FgGLint, FgGLenum, FgGLsizei, FgGLsizei, FgGLint, FgGLsizei, const FgGLvoid * ) \
+    FG_GL_FUNCTION_VOID( CompressedMultiTexImage1DEXT, FgGLContext *, FgGLenum, FgGLenum, FgGLint, FgGLenum, FgGLsizei, FgGLint, FgGLsizei, const FgGLvoid * ) \
+    FG_GL_FUNCTION_VOID( CompressedMultiTexSubImage3DEXT, FgGLContext *, FgGLenum, FgGLenum, FgGLint, FgGLint, FgGLint, FgGLint, FgGLsizei, FgGLsizei, FgGLsizei, FgGLenum, FgGLsizei, const FgGLvoid * ) \
+    FG_GL_FUNCTION_VOID( CompressedMultiTexSubImage2DEXT, FgGLContext *, FgGLenum, FgGLenum, FgGLint, FgGLint, FgGLint, FgGLsizei, FgGLsizei, FgGLenum, FgGLsizei, const FgGLvoid * ) \
+    FG_GL_FUNCTION_VOID( CompressedMultiTexSubImage1DEXT, FgGLContext *, FgGLenum, FgGLenum, FgGLint, FgGLint, FgGLsizei, FgGLenum, FgGLsizei, const FgGLvoid * ) \
+    FG_GL_FUNCTION_VOID( GetCompressedMultiTexImageEXT, FgGLContext *, FgGLenum, FgGLenum, FgGLint, FgGLvoid * ) \
+    FG_GL_FUNCTION_VOID( MatrixLoadTransposefEXT, FgGLContext *, FgGLenum, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( MatrixLoadTransposedEXT, FgGLContext *, FgGLenum, const FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( MatrixMultTransposefEXT, FgGLContext *, FgGLenum, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( MatrixMultTransposedEXT, FgGLContext *, FgGLenum, const FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( NamedBufferDataEXT, FgGLContext *, FgGLuint, FgGLsizeiptr, const FgGLvoid *, FgGLenum ) \
+    FG_GL_FUNCTION_VOID( NamedBufferSubDataEXT, FgGLContext *, FgGLuint, FgGLintptr, FgGLsizeiptr, const FgGLvoid * ) \
+    FG_GL_FUNCTION_PTR( MapNamedBufferEXT, void *, FgGLContext *, FgGLuint, FgGLenum ) \
+    FG_GL_FUNCTION_NUM( UnmapNamedBufferEXT, FgGLboolean, FgGLContext *, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( GetNamedBufferParameterivEXT, FgGLContext *, FgGLuint, FgGLenum, FgGLint * ) \
+    FG_GL_FUNCTION_VOID( GetNamedBufferPointervEXT, FgGLContext *, FgGLuint, FgGLenum, FgGLvoid ** ) \
+    FG_GL_FUNCTION_VOID( GetNamedBufferSubDataEXT, FgGLContext *, FgGLuint, FgGLintptr, FgGLsizeiptr, FgGLvoid * ) \
+    FG_GL_FUNCTION_VOID( ProgramUniform1fEXT, FgGLContext *, FgGLuint, FgGLint, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( ProgramUniform2fEXT, FgGLContext *, FgGLuint, FgGLint, FgGLfloat, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( ProgramUniform3fEXT, FgGLContext *, FgGLuint, FgGLint, FgGLfloat, FgGLfloat, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( ProgramUniform4fEXT, FgGLContext *, FgGLuint, FgGLint, FgGLfloat, FgGLfloat, FgGLfloat, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( ProgramUniform1iEXT, FgGLContext *, FgGLuint, FgGLint, FgGLint ) \
+    FG_GL_FUNCTION_VOID( ProgramUniform2iEXT, FgGLContext *, FgGLuint, FgGLint, FgGLint, FgGLint ) \
+    FG_GL_FUNCTION_VOID( ProgramUniform3iEXT, FgGLContext *, FgGLuint, FgGLint, FgGLint, FgGLint, FgGLint ) \
+    FG_GL_FUNCTION_VOID( ProgramUniform4iEXT, FgGLContext *, FgGLuint, FgGLint, FgGLint, FgGLint, FgGLint, FgGLint ) \
+    FG_GL_FUNCTION_VOID( ProgramUniform1fvEXT, FgGLContext *, FgGLuint, FgGLint, FgGLsizei, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( ProgramUniform2fvEXT, FgGLContext *, FgGLuint, FgGLint, FgGLsizei, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( ProgramUniform3fvEXT, FgGLContext *, FgGLuint, FgGLint, FgGLsizei, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( ProgramUniform4fvEXT, FgGLContext *, FgGLuint, FgGLint, FgGLsizei, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( ProgramUniform1ivEXT, FgGLContext *, FgGLuint, FgGLint, FgGLsizei, const FgGLint * ) \
+    FG_GL_FUNCTION_VOID( ProgramUniform2ivEXT, FgGLContext *, FgGLuint, FgGLint, FgGLsizei, const FgGLint * ) \
+    FG_GL_FUNCTION_VOID( ProgramUniform3ivEXT, FgGLContext *, FgGLuint, FgGLint, FgGLsizei, const FgGLint * ) \
+    FG_GL_FUNCTION_VOID( ProgramUniform4ivEXT, FgGLContext *, FgGLuint, FgGLint, FgGLsizei, const FgGLint * ) \
+    FG_GL_FUNCTION_VOID( ProgramUniformMatrix2fvEXT, FgGLContext *, FgGLuint, FgGLint, FgGLsizei, FgGLboolean, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( ProgramUniformMatrix3fvEXT, FgGLContext *, FgGLuint, FgGLint, FgGLsizei, FgGLboolean, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( ProgramUniformMatrix4fvEXT, FgGLContext *, FgGLuint, FgGLint, FgGLsizei, FgGLboolean, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( ProgramUniformMatrix2x3fvEXT, FgGLContext *, FgGLuint, FgGLint, FgGLsizei, FgGLboolean, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( ProgramUniformMatrix3x2fvEXT, FgGLContext *, FgGLuint, FgGLint, FgGLsizei, FgGLboolean, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( ProgramUniformMatrix2x4fvEXT, FgGLContext *, FgGLuint, FgGLint, FgGLsizei, FgGLboolean, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( ProgramUniformMatrix4x2fvEXT, FgGLContext *, FgGLuint, FgGLint, FgGLsizei, FgGLboolean, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( ProgramUniformMatrix3x4fvEXT, FgGLContext *, FgGLuint, FgGLint, FgGLsizei, FgGLboolean, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( ProgramUniformMatrix4x3fvEXT, FgGLContext *, FgGLuint, FgGLint, FgGLsizei, FgGLboolean, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( TextureBufferEXT, FgGLContext *, FgGLuint, FgGLenum, FgGLenum, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( MultiTexBufferEXT, FgGLContext *, FgGLenum, FgGLenum, FgGLenum, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( TextureParameterIivEXT, FgGLContext *, FgGLuint, FgGLenum, FgGLenum, const FgGLint * ) \
+    FG_GL_FUNCTION_VOID( TextureParameterIuivEXT, FgGLContext *, FgGLuint, FgGLenum, FgGLenum, const FgGLuint * ) \
+    FG_GL_FUNCTION_VOID( GetTextureParameterIivEXT, FgGLContext *, FgGLuint, FgGLenum, FgGLenum, FgGLint * ) \
+    FG_GL_FUNCTION_VOID( GetTextureParameterIuivEXT, FgGLContext *, FgGLuint, FgGLenum, FgGLenum, FgGLuint * ) \
+    FG_GL_FUNCTION_VOID( MultiTexParameterIivEXT, FgGLContext *, FgGLenum, FgGLenum, FgGLenum, const FgGLint * ) \
+    FG_GL_FUNCTION_VOID( MultiTexParameterIuivEXT, FgGLContext *, FgGLenum, FgGLenum, FgGLenum, const FgGLuint * ) \
+    FG_GL_FUNCTION_VOID( GetMultiTexParameterIivEXT, FgGLContext *, FgGLenum, FgGLenum, FgGLenum, FgGLint * ) \
+    FG_GL_FUNCTION_VOID( GetMultiTexParameterIuivEXT, FgGLContext *, FgGLenum, FgGLenum, FgGLenum, FgGLuint * ) \
+    FG_GL_FUNCTION_VOID( ProgramUniform1uiEXT, FgGLContext *, FgGLuint, FgGLint, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( ProgramUniform2uiEXT, FgGLContext *, FgGLuint, FgGLint, FgGLuint, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( ProgramUniform3uiEXT, FgGLContext *, FgGLuint, FgGLint, FgGLuint, FgGLuint, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( ProgramUniform4uiEXT, FgGLContext *, FgGLuint, FgGLint, FgGLuint, FgGLuint, FgGLuint, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( ProgramUniform1uivEXT, FgGLContext *, FgGLuint, FgGLint, FgGLsizei, const FgGLuint * ) \
+    FG_GL_FUNCTION_VOID( ProgramUniform2uivEXT, FgGLContext *, FgGLuint, FgGLint, FgGLsizei, const FgGLuint * ) \
+    FG_GL_FUNCTION_VOID( ProgramUniform3uivEXT, FgGLContext *, FgGLuint, FgGLint, FgGLsizei, const FgGLuint * ) \
+    FG_GL_FUNCTION_VOID( ProgramUniform4uivEXT, FgGLContext *, FgGLuint, FgGLint, FgGLsizei, const FgGLuint * ) \
+    FG_GL_FUNCTION_VOID( NamedProgramLocalParameters4fvEXT, FgGLContext *, FgGLuint, FgGLenum, FgGLuint, FgGLsizei, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( NamedProgramLocalParameterI4iEXT, FgGLContext *, FgGLuint, FgGLenum, FgGLuint, FgGLint, FgGLint, FgGLint, FgGLint ) \
+    FG_GL_FUNCTION_VOID( NamedProgramLocalParameterI4ivEXT, FgGLContext *, FgGLuint, FgGLenum, FgGLuint, const FgGLint * ) \
+    FG_GL_FUNCTION_VOID( NamedProgramLocalParametersI4ivEXT, FgGLContext *, FgGLuint, FgGLenum, FgGLuint, FgGLsizei, const FgGLint * ) \
+    FG_GL_FUNCTION_VOID( NamedProgramLocalParameterI4uiEXT, FgGLContext *, FgGLuint, FgGLenum, FgGLuint, FgGLuint, FgGLuint, FgGLuint, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( NamedProgramLocalParameterI4uivEXT, FgGLContext *, FgGLuint, FgGLenum, FgGLuint, const FgGLuint * ) \
+    FG_GL_FUNCTION_VOID( NamedProgramLocalParametersI4uivEXT, FgGLContext *, FgGLuint, FgGLenum, FgGLuint, FgGLsizei, const FgGLuint * ) \
+    FG_GL_FUNCTION_VOID( GetNamedProgramLocalParameterIivEXT, FgGLContext *, FgGLuint, FgGLenum, FgGLuint, FgGLint * ) \
+    FG_GL_FUNCTION_VOID( GetNamedProgramLocalParameterIuivEXT, FgGLContext *, FgGLuint, FgGLenum, FgGLuint, FgGLuint * ) \
+    FG_GL_FUNCTION_VOID( EnableClientStateiEXT, FgGLContext *, FgGLenum, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( DisableClientStateiEXT, FgGLContext *, FgGLenum, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( GetFloati_vEXT, FgGLContext *, FgGLenum, FgGLuint, FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( GetDoublei_vEXT, FgGLContext *, FgGLenum, FgGLuint, FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( GetPointeri_vEXT, FgGLContext *, FgGLenum, FgGLuint, FgGLvoid ** ) \
+    FG_GL_FUNCTION_VOID( NamedProgramStringEXT, FgGLContext *, FgGLuint, FgGLenum, FgGLenum, FgGLsizei, const FgGLvoid * ) \
+    FG_GL_FUNCTION_VOID( NamedProgramLocalParameter4dEXT, FgGLContext *, FgGLuint, FgGLenum, FgGLuint, FgGLdouble, FgGLdouble, FgGLdouble, FgGLdouble ) \
+    FG_GL_FUNCTION_VOID( NamedProgramLocalParameter4dvEXT, FgGLContext *, FgGLuint, FgGLenum, FgGLuint, const FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( NamedProgramLocalParameter4fEXT, FgGLContext *, FgGLuint, FgGLenum, FgGLuint, FgGLfloat, FgGLfloat, FgGLfloat, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( NamedProgramLocalParameter4fvEXT, FgGLContext *, FgGLuint, FgGLenum, FgGLuint, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( GetNamedProgramLocalParameterdvEXT, FgGLContext *, FgGLuint, FgGLenum, FgGLuint, FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( GetNamedProgramLocalParameterfvEXT, FgGLContext *, FgGLuint, FgGLenum, FgGLuint, FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( GetNamedProgramivEXT, FgGLContext *, FgGLuint, FgGLenum, FgGLenum, FgGLint * ) \
+    FG_GL_FUNCTION_VOID( GetNamedProgramStringEXT, FgGLContext *, FgGLuint, FgGLenum, FgGLenum, FgGLvoid * ) \
+    FG_GL_FUNCTION_VOID( NamedRenderbufferStorageEXT, FgGLContext *, FgGLuint, FgGLenum, FgGLsizei, FgGLsizei ) \
+    FG_GL_FUNCTION_VOID( GetNamedRenderbufferParameterivEXT, FgGLContext *, FgGLuint, FgGLenum, FgGLint * ) \
+    FG_GL_FUNCTION_VOID( NamedRenderbufferStorageMultisampleEXT, FgGLContext *, FgGLuint, FgGLsizei, FgGLenum, FgGLsizei, FgGLsizei ) \
+    FG_GL_FUNCTION_VOID( NamedRenderbufferStorageMultisampleCoverageEXT, FgGLContext *, FgGLuint, FgGLsizei, FgGLsizei, FgGLenum, FgGLsizei, FgGLsizei ) \
+    FG_GL_FUNCTION_NUM( CheckNamedFramebufferStatusEXT, FgGLenum, FgGLContext *, FgGLuint, FgGLenum ) \
+    FG_GL_FUNCTION_VOID( NamedFramebufferTexture1DEXT, FgGLContext *, FgGLuint, FgGLenum, FgGLenum, FgGLuint, FgGLint ) \
+    FG_GL_FUNCTION_VOID( NamedFramebufferTexture2DEXT, FgGLContext *, FgGLuint, FgGLenum, FgGLenum, FgGLuint, FgGLint ) \
+    FG_GL_FUNCTION_VOID( NamedFramebufferTexture3DEXT, FgGLContext *, FgGLuint, FgGLenum, FgGLenum, FgGLuint, FgGLint, FgGLint ) \
+    FG_GL_FUNCTION_VOID( NamedFramebufferRenderbufferEXT, FgGLContext *, FgGLuint, FgGLenum, FgGLenum, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( GetNamedFramebufferAttachmentParameterivEXT, FgGLContext *, FgGLuint, FgGLenum, FgGLenum, FgGLint * ) \
+    FG_GL_FUNCTION_VOID( GenerateTextureMipmapEXT, FgGLContext *, FgGLuint, FgGLenum ) \
+    FG_GL_FUNCTION_VOID( GenerateMultiTexMipmapEXT, FgGLContext *, FgGLenum, FgGLenum ) \
+    FG_GL_FUNCTION_VOID( FramebufferDrawBufferEXT, FgGLContext *, FgGLuint, FgGLenum ) \
+    FG_GL_FUNCTION_VOID( FramebufferDrawBuffersEXT, FgGLContext *, FgGLuint, FgGLsizei, const FgGLenum * ) \
+    FG_GL_FUNCTION_VOID( FramebufferReadBufferEXT, FgGLContext *, FgGLuint, FgGLenum ) \
+    FG_GL_FUNCTION_VOID( GetFramebufferParameterivEXT, FgGLContext *, FgGLuint, FgGLenum, FgGLint * ) \
+    FG_GL_FUNCTION_VOID( NamedCopyBufferSubDataEXT, FgGLContext *, FgGLuint, FgGLuint, FgGLintptr, FgGLintptr, FgGLsizeiptr ) \
+    FG_GL_FUNCTION_VOID( NamedFramebufferTextureEXT, FgGLContext *, FgGLuint, FgGLenum, FgGLuint, FgGLint ) \
+    FG_GL_FUNCTION_VOID( NamedFramebufferTextureLayerEXT, FgGLContext *, FgGLuint, FgGLenum, FgGLuint, FgGLint, FgGLint ) \
+    FG_GL_FUNCTION_VOID( NamedFramebufferTextureFaceEXT, FgGLContext *, FgGLuint, FgGLenum, FgGLuint, FgGLint, FgGLenum ) \
+    FG_GL_FUNCTION_VOID( TextureRenderbufferEXT, FgGLContext *, FgGLuint, FgGLenum, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( MultiTexRenderbufferEXT, FgGLContext *, FgGLenum, FgGLenum, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( VertexArrayVertexOffsetEXT, FgGLContext *, FgGLuint, FgGLuint, FgGLint, FgGLenum, FgGLsizei, FgGLintptr ) \
+    FG_GL_FUNCTION_VOID( VertexArrayColorOffsetEXT, FgGLContext *, FgGLuint, FgGLuint, FgGLint, FgGLenum, FgGLsizei, FgGLintptr ) \
+    FG_GL_FUNCTION_VOID( VertexArrayEdgeFlagOffsetEXT, FgGLContext *, FgGLuint, FgGLuint, FgGLsizei, FgGLintptr ) \
+    FG_GL_FUNCTION_VOID( VertexArrayIndexOffsetEXT, FgGLContext *, FgGLuint, FgGLuint, FgGLenum, FgGLsizei, FgGLintptr ) \
+    FG_GL_FUNCTION_VOID( VertexArrayNormalOffsetEXT, FgGLContext *, FgGLuint, FgGLuint, FgGLenum, FgGLsizei, FgGLintptr ) \
+    FG_GL_FUNCTION_VOID( VertexArrayTexCoordOffsetEXT, FgGLContext *, FgGLuint, FgGLuint, FgGLint, FgGLenum, FgGLsizei, FgGLintptr ) \
+    FG_GL_FUNCTION_VOID( VertexArrayMultiTexCoordOffsetEXT, FgGLContext *, FgGLuint, FgGLuint, FgGLenum, FgGLint, FgGLenum, FgGLsizei, FgGLintptr ) \
+    FG_GL_FUNCTION_VOID( VertexArrayFogCoordOffsetEXT, FgGLContext *, FgGLuint, FgGLuint, FgGLenum, FgGLsizei, FgGLintptr ) \
+    FG_GL_FUNCTION_VOID( VertexArraySecondaryColorOffsetEXT, FgGLContext *, FgGLuint, FgGLuint, FgGLint, FgGLenum, FgGLsizei, FgGLintptr ) \
+    FG_GL_FUNCTION_VOID( VertexArrayVertexAttribOffsetEXT, FgGLContext *, FgGLuint, FgGLuint, FgGLuint, FgGLint, FgGLenum, FgGLboolean, FgGLsizei, FgGLintptr ) \
+    FG_GL_FUNCTION_VOID( VertexArrayVertexAttribIOffsetEXT, FgGLContext *, FgGLuint, FgGLuint, FgGLuint, FgGLint, FgGLenum, FgGLsizei, FgGLintptr ) \
+    FG_GL_FUNCTION_VOID( EnableVertexArrayEXT, FgGLContext *, FgGLuint, FgGLenum ) \
+    FG_GL_FUNCTION_VOID( DisableVertexArrayEXT, FgGLContext *, FgGLuint, FgGLenum ) \
+    FG_GL_FUNCTION_VOID( EnableVertexArrayAttribEXT, FgGLContext *, FgGLuint, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( DisableVertexArrayAttribEXT, FgGLContext *, FgGLuint, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( GetVertexArrayIntegervEXT, FgGLContext *, FgGLuint, FgGLenum, FgGLint * ) \
+    FG_GL_FUNCTION_VOID( GetVertexArrayPointervEXT, FgGLContext *, FgGLuint, FgGLenum, FgGLvoid ** ) \
+    FG_GL_FUNCTION_VOID( GetVertexArrayIntegeri_vEXT, FgGLContext *, FgGLuint, FgGLuint, FgGLenum, FgGLint * ) \
+    FG_GL_FUNCTION_VOID( GetVertexArrayPointeri_vEXT, FgGLContext *, FgGLuint, FgGLuint, FgGLenum, FgGLvoid ** ) \
+    FG_GL_FUNCTION_PTR( MapNamedBufferRangeEXT, void *, FgGLContext *, FgGLuint, FgGLintptr, FgGLsizeiptr, FgGLbitfield ) \
+    FG_GL_FUNCTION_VOID( FlushMappedNamedBufferRangeEXT, FgGLContext *, FgGLuint, FgGLintptr, FgGLsizeiptr ) \
+    FG_GL_FUNCTION_VOID( NamedBufferStorageEXT, FgGLContext *, FgGLuint, FgGLsizeiptr, const void *, FgGLbitfield ) \
+    FG_GL_FUNCTION_VOID( ClearNamedBufferDataEXT, FgGLContext *, FgGLuint, FgGLenum, FgGLenum, FgGLenum, const void * ) \
+    FG_GL_FUNCTION_VOID( ClearNamedBufferSubDataEXT, FgGLContext *, FgGLuint, FgGLenum, FgGLenum, FgGLenum, FgGLsizeiptr, FgGLsizeiptr, const void * ) \
+    FG_GL_FUNCTION_VOID( NamedFramebufferParameteriEXT, FgGLContext *, FgGLuint, FgGLenum, FgGLint ) \
+    FG_GL_FUNCTION_VOID( GetNamedFramebufferParameterivEXT, FgGLContext *, FgGLuint, FgGLenum, FgGLint * ) \
+    FG_GL_FUNCTION_VOID( ProgramUniform1dEXT, FgGLContext *, FgGLuint, FgGLint, FgGLdouble ) \
+    FG_GL_FUNCTION_VOID( ProgramUniform2dEXT, FgGLContext *, FgGLuint, FgGLint, FgGLdouble, FgGLdouble ) \
+    FG_GL_FUNCTION_VOID( ProgramUniform3dEXT, FgGLContext *, FgGLuint, FgGLint, FgGLdouble, FgGLdouble, FgGLdouble ) \
+    FG_GL_FUNCTION_VOID( ProgramUniform4dEXT, FgGLContext *, FgGLuint, FgGLint, FgGLdouble, FgGLdouble, FgGLdouble, FgGLdouble ) \
+    FG_GL_FUNCTION_VOID( ProgramUniform1dvEXT, FgGLContext *, FgGLuint, FgGLint, FgGLsizei, const FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( ProgramUniform2dvEXT, FgGLContext *, FgGLuint, FgGLint, FgGLsizei, const FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( ProgramUniform3dvEXT, FgGLContext *, FgGLuint, FgGLint, FgGLsizei, const FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( ProgramUniform4dvEXT, FgGLContext *, FgGLuint, FgGLint, FgGLsizei, const FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( ProgramUniformMatrix2dvEXT, FgGLContext *, FgGLuint, FgGLint, FgGLsizei, FgGLboolean, const FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( ProgramUniformMatrix3dvEXT, FgGLContext *, FgGLuint, FgGLint, FgGLsizei, FgGLboolean, const FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( ProgramUniformMatrix4dvEXT, FgGLContext *, FgGLuint, FgGLint, FgGLsizei, FgGLboolean, const FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( ProgramUniformMatrix2x3dvEXT, FgGLContext *, FgGLuint, FgGLint, FgGLsizei, FgGLboolean, const FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( ProgramUniformMatrix2x4dvEXT, FgGLContext *, FgGLuint, FgGLint, FgGLsizei, FgGLboolean, const FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( ProgramUniformMatrix3x2dvEXT, FgGLContext *, FgGLuint, FgGLint, FgGLsizei, FgGLboolean, const FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( ProgramUniformMatrix3x4dvEXT, FgGLContext *, FgGLuint, FgGLint, FgGLsizei, FgGLboolean, const FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( ProgramUniformMatrix4x2dvEXT, FgGLContext *, FgGLuint, FgGLint, FgGLsizei, FgGLboolean, const FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( ProgramUniformMatrix4x3dvEXT, FgGLContext *, FgGLuint, FgGLint, FgGLsizei, FgGLboolean, const FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( TextureBufferRangeEXT, FgGLContext *, FgGLuint, FgGLenum, FgGLenum, FgGLuint, FgGLintptr, FgGLsizeiptr ) \
+    FG_GL_FUNCTION_VOID( TextureStorage1DEXT, FgGLContext *, FgGLuint, FgGLenum, FgGLsizei, FgGLenum, FgGLsizei ) \
+    FG_GL_FUNCTION_VOID( TextureStorage2DEXT, FgGLContext *, FgGLuint, FgGLenum, FgGLsizei, FgGLenum, FgGLsizei, FgGLsizei ) \
+    FG_GL_FUNCTION_VOID( TextureStorage3DEXT, FgGLContext *, FgGLuint, FgGLenum, FgGLsizei, FgGLenum, FgGLsizei, FgGLsizei, FgGLsizei ) \
+    FG_GL_FUNCTION_VOID( TextureStorage2DMultisampleEXT, FgGLContext *, FgGLuint, FgGLenum, FgGLsizei, FgGLenum, FgGLsizei, FgGLsizei, FgGLboolean ) \
+    FG_GL_FUNCTION_VOID( TextureStorage3DMultisampleEXT, FgGLContext *, FgGLuint, FgGLenum, FgGLsizei, FgGLenum, FgGLsizei, FgGLsizei, FgGLsizei, FgGLboolean ) \
+    FG_GL_FUNCTION_VOID( VertexArrayBindVertexBufferEXT, FgGLContext *, FgGLuint, FgGLuint, FgGLuint, FgGLintptr, FgGLsizei ) \
+    FG_GL_FUNCTION_VOID( VertexArrayVertexAttribFormatEXT, FgGLContext *, FgGLuint, FgGLuint, FgGLint, FgGLenum, FgGLboolean, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( VertexArrayVertexAttribIFormatEXT, FgGLContext *, FgGLuint, FgGLuint, FgGLint, FgGLenum, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( VertexArrayVertexAttribLFormatEXT, FgGLContext *, FgGLuint, FgGLuint, FgGLint, FgGLenum, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( VertexArrayVertexAttribBindingEXT, FgGLContext *, FgGLuint, FgGLuint, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( VertexArrayVertexBindingDivisorEXT, FgGLContext *, FgGLuint, FgGLuint, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( VertexArrayVertexAttribLOffsetEXT, FgGLContext *, FgGLuint, FgGLuint, FgGLuint, FgGLint, FgGLenum, FgGLsizei, FgGLintptr ) \
+    FG_GL_FUNCTION_VOID( TexturePageCommitmentEXT, FgGLContext *, FgGLuint, FgGLint, FgGLint, FgGLint, FgGLint, FgGLsizei, FgGLsizei, FgGLsizei, FgGLboolean ) \
+    FG_GL_FUNCTION_VOID( VertexArrayVertexAttribDivisorEXT, FgGLContext *, FgGLuint, FgGLuint, FgGLuint ) \
 \
     /* GL_EXT_draw_buffers2 */ \
-    FG_GL_VOID_FUNCTION( ColorMaskIndexedEXT, ( FgGLuint _1, FgGLboolean _2, FgGLboolean _3, FgGLboolean _4, FgGLboolean _5 ), ( _1, _2, _3, _4, _5 ) ) \
+    FG_GL_FUNCTION_VOID( ColorMaskIndexedEXT, FgGLContext *, FgGLuint, FgGLboolean, FgGLboolean, FgGLboolean, FgGLboolean ) \
 \
     /* GL_EXT_draw_instanced */ \
-    FG_GL_VOID_FUNCTION( DrawArraysInstancedEXT, ( FgGLenum _1, FgGLint _2, FgGLsizei _3, FgGLsizei _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( DrawElementsInstancedEXT, ( FgGLenum _1, FgGLsizei _2, FgGLenum _3, const FgGLvoid * _4, FgGLsizei _5 ), ( _1, _2, _3, _4, _5 ) ) \
+    FG_GL_FUNCTION_VOID( DrawArraysInstancedEXT, FgGLContext *, FgGLenum, FgGLint, FgGLsizei, FgGLsizei ) \
+    FG_GL_FUNCTION_VOID( DrawElementsInstancedEXT, FgGLContext *, FgGLenum, FgGLsizei, FgGLenum, const FgGLvoid *, FgGLsizei ) \
 \
     /* GL_EXT_draw_range_elements */ \
-    FG_GL_VOID_FUNCTION( DrawRangeElementsEXT, ( FgGLenum _1, FgGLuint _2, FgGLuint _3, FgGLsizei _4, FgGLenum _5, const FgGLvoid * _6 ), ( _1, _2, _3, _4, _5, _6 ) ) \
+    FG_GL_FUNCTION_VOID( DrawRangeElementsEXT, FgGLContext *, FgGLenum, FgGLuint, FgGLuint, FgGLsizei, FgGLenum, const FgGLvoid * ) \
 \
     /* GL_EXT_fog_coord */ \
-    FG_GL_VOID_FUNCTION( FogCoordfEXT, ( FgGLfloat _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( FogCoordfvEXT, ( const FgGLfloat * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( FogCoorddEXT, ( FgGLdouble _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( FogCoorddvEXT, ( const FgGLdouble * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( FogCoordPointerEXT, ( FgGLenum _1, FgGLsizei _2, const FgGLvoid * _3 ), ( _1, _2, _3 ) ) \
+    FG_GL_FUNCTION_VOID( FogCoordfEXT, FgGLContext *, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( FogCoordfvEXT, FgGLContext *, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( FogCoorddEXT, FgGLContext *, FgGLdouble ) \
+    FG_GL_FUNCTION_VOID( FogCoorddvEXT, FgGLContext *, const FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( FogCoordPointerEXT, FgGLContext *, FgGLenum, FgGLsizei, const FgGLvoid * ) \
 \
     /* GL_EXT_framebuffer_blit */ \
-    FG_GL_VOID_FUNCTION( BlitFramebufferEXT, ( FgGLint _1, FgGLint _2, FgGLint _3, FgGLint _4, FgGLint _5, FgGLint _6, FgGLint _7, FgGLint _8, FgGLbitfield _9, FgGLenum _10 ), ( _1, _2, _3, _4, _5, _6, _7, _8, _9, _10 ) ) \
+    FG_GL_FUNCTION_VOID( BlitFramebufferEXT, FgGLContext *, FgGLint, FgGLint, FgGLint, FgGLint, FgGLint, FgGLint, FgGLint, FgGLint, FgGLbitfield, FgGLenum ) \
 \
     /* GL_EXT_framebuffer_multisample */ \
-    FG_GL_VOID_FUNCTION( RenderbufferStorageMultisampleEXT, ( FgGLenum _1, FgGLsizei _2, FgGLenum _3, FgGLsizei _4, FgGLsizei _5 ), ( _1, _2, _3, _4, _5 ) ) \
+    FG_GL_FUNCTION_VOID( RenderbufferStorageMultisampleEXT, FgGLContext *, FgGLenum, FgGLsizei, FgGLenum, FgGLsizei, FgGLsizei ) \
 \
     /* GL_EXT_framebuffer_multisample_blit_scaled */ \
 \
     /* GL_EXT_framebuffer_object */ \
-    FG_GL_FUNCTION( 0, FgGLboolean, IsRenderbufferEXT, ( FgGLuint _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( BindRenderbufferEXT, ( FgGLenum _1, FgGLuint _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( DeleteRenderbuffersEXT, ( FgGLsizei _1, const FgGLuint * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( GenRenderbuffersEXT, ( FgGLsizei _1, FgGLuint * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( RenderbufferStorageEXT, ( FgGLenum _1, FgGLenum _2, FgGLsizei _3, FgGLsizei _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( GetRenderbufferParameterivEXT, ( FgGLenum _1, FgGLenum _2, FgGLint * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_FUNCTION( 0, FgGLboolean, IsFramebufferEXT, ( FgGLuint _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( BindFramebufferEXT, ( FgGLenum _1, FgGLuint _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( DeleteFramebuffersEXT, ( FgGLsizei _1, const FgGLuint * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( GenFramebuffersEXT, ( FgGLsizei _1, FgGLuint * _2 ), ( _1, _2 ) ) \
-    FG_GL_FUNCTION( 0, FgGLenum, CheckFramebufferStatusEXT, ( FgGLenum _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( FramebufferTexture1DEXT, ( FgGLenum _1, FgGLenum _2, FgGLenum _3, FgGLuint _4, FgGLint _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( FramebufferTexture2DEXT, ( FgGLenum _1, FgGLenum _2, FgGLenum _3, FgGLuint _4, FgGLint _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( FramebufferTexture3DEXT, ( FgGLenum _1, FgGLenum _2, FgGLenum _3, FgGLuint _4, FgGLint _5, FgGLint _6 ), ( _1, _2, _3, _4, _5, _6 ) ) \
-    FG_GL_VOID_FUNCTION( FramebufferRenderbufferEXT, ( FgGLenum _1, FgGLenum _2, FgGLenum _3, FgGLuint _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( GetFramebufferAttachmentParameterivEXT, ( FgGLenum _1, FgGLenum _2, FgGLenum _3, FgGLint * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( GenerateMipmapEXT, ( FgGLenum _1 ), ( _1 ) ) \
+    FG_GL_FUNCTION_NUM( IsRenderbufferEXT, FgGLboolean, FgGLContext *, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( BindRenderbufferEXT, FgGLContext *, FgGLenum, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( DeleteRenderbuffersEXT, FgGLContext *, FgGLsizei, const FgGLuint * ) \
+    FG_GL_FUNCTION_VOID( GenRenderbuffersEXT, FgGLContext *, FgGLsizei, FgGLuint * ) \
+    FG_GL_FUNCTION_VOID( RenderbufferStorageEXT, FgGLContext *, FgGLenum, FgGLenum, FgGLsizei, FgGLsizei ) \
+    FG_GL_FUNCTION_VOID( GetRenderbufferParameterivEXT, FgGLContext *, FgGLenum, FgGLenum, FgGLint * ) \
+    FG_GL_FUNCTION_NUM( IsFramebufferEXT, FgGLboolean, FgGLContext *, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( BindFramebufferEXT, FgGLContext *, FgGLenum, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( DeleteFramebuffersEXT, FgGLContext *, FgGLsizei, const FgGLuint * ) \
+    FG_GL_FUNCTION_VOID( GenFramebuffersEXT, FgGLContext *, FgGLsizei, FgGLuint * ) \
+    FG_GL_FUNCTION_NUM( CheckFramebufferStatusEXT, FgGLenum, FgGLContext *, FgGLenum ) \
+    FG_GL_FUNCTION_VOID( FramebufferTexture1DEXT, FgGLContext *, FgGLenum, FgGLenum, FgGLenum, FgGLuint, FgGLint ) \
+    FG_GL_FUNCTION_VOID( FramebufferTexture2DEXT, FgGLContext *, FgGLenum, FgGLenum, FgGLenum, FgGLuint, FgGLint ) \
+    FG_GL_FUNCTION_VOID( FramebufferTexture3DEXT, FgGLContext *, FgGLenum, FgGLenum, FgGLenum, FgGLuint, FgGLint, FgGLint ) \
+    FG_GL_FUNCTION_VOID( FramebufferRenderbufferEXT, FgGLContext *, FgGLenum, FgGLenum, FgGLenum, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( GetFramebufferAttachmentParameterivEXT, FgGLContext *, FgGLenum, FgGLenum, FgGLenum, FgGLint * ) \
+    FG_GL_FUNCTION_VOID( GenerateMipmapEXT, FgGLContext *, FgGLenum ) \
 \
     /* GL_EXT_framebuffer_sRGB */ \
 \
     /* GL_EXT_geometry_shader4 */ \
-    FG_GL_VOID_FUNCTION( ProgramParameteriEXT, ( FgGLuint _1, FgGLenum _2, FgGLint _3 ), ( _1, _2, _3 ) ) \
+    FG_GL_FUNCTION_VOID( ProgramParameteriEXT, FgGLContext *, FgGLuint, FgGLenum, FgGLint ) \
 \
     /* GL_EXT_gpu_program_parameters */ \
-    FG_GL_VOID_FUNCTION( ProgramEnvParameters4fvEXT, ( FgGLenum _1, FgGLuint _2, FgGLsizei _3, const FgGLfloat * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramLocalParameters4fvEXT, ( FgGLenum _1, FgGLuint _2, FgGLsizei _3, const FgGLfloat * _4 ), ( _1, _2, _3, _4 ) ) \
+    FG_GL_FUNCTION_VOID( ProgramEnvParameters4fvEXT, FgGLContext *, FgGLenum, FgGLuint, FgGLsizei, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( ProgramLocalParameters4fvEXT, FgGLContext *, FgGLenum, FgGLuint, FgGLsizei, const FgGLfloat * ) \
 \
     /* GL_EXT_gpu_shader4 */ \
-    FG_GL_VOID_FUNCTION( GetUniformuivEXT, ( FgGLuint _1, FgGLint _2, FgGLuint * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( BindFragDataLocationEXT, ( FgGLuint _1, FgGLuint _2, const FgGLchar * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_FUNCTION( 0, FgGLint, GetFragDataLocationEXT, ( FgGLuint _1, const FgGLchar * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( Uniform1uiEXT, ( FgGLint _1, FgGLuint _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( Uniform2uiEXT, ( FgGLint _1, FgGLuint _2, FgGLuint _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( Uniform3uiEXT, ( FgGLint _1, FgGLuint _2, FgGLuint _3, FgGLuint _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( Uniform4uiEXT, ( FgGLint _1, FgGLuint _2, FgGLuint _3, FgGLuint _4, FgGLuint _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( Uniform1uivEXT, ( FgGLint _1, FgGLsizei _2, const FgGLuint * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( Uniform2uivEXT, ( FgGLint _1, FgGLsizei _2, const FgGLuint * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( Uniform3uivEXT, ( FgGLint _1, FgGLsizei _2, const FgGLuint * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( Uniform4uivEXT, ( FgGLint _1, FgGLsizei _2, const FgGLuint * _3 ), ( _1, _2, _3 ) ) \
+    FG_GL_FUNCTION_VOID( GetUniformuivEXT, FgGLContext *, FgGLuint, FgGLint, FgGLuint * ) \
+    FG_GL_FUNCTION_VOID( BindFragDataLocationEXT, FgGLContext *, FgGLuint, FgGLuint, const FgGLchar * ) \
+    FG_GL_FUNCTION_NUM( GetFragDataLocationEXT, FgGLint, FgGLContext *, FgGLuint, const FgGLchar * ) \
+    FG_GL_FUNCTION_VOID( Uniform1uiEXT, FgGLContext *, FgGLint, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( Uniform2uiEXT, FgGLContext *, FgGLint, FgGLuint, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( Uniform3uiEXT, FgGLContext *, FgGLint, FgGLuint, FgGLuint, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( Uniform4uiEXT, FgGLContext *, FgGLint, FgGLuint, FgGLuint, FgGLuint, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( Uniform1uivEXT, FgGLContext *, FgGLint, FgGLsizei, const FgGLuint * ) \
+    FG_GL_FUNCTION_VOID( Uniform2uivEXT, FgGLContext *, FgGLint, FgGLsizei, const FgGLuint * ) \
+    FG_GL_FUNCTION_VOID( Uniform3uivEXT, FgGLContext *, FgGLint, FgGLsizei, const FgGLuint * ) \
+    FG_GL_FUNCTION_VOID( Uniform4uivEXT, FgGLContext *, FgGLint, FgGLsizei, const FgGLuint * ) \
 \
     /* GL_EXT_histogram */ \
-    FG_GL_VOID_FUNCTION( GetHistogramEXT, ( FgGLenum _1, FgGLboolean _2, FgGLenum _3, FgGLenum _4, FgGLvoid * _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( GetHistogramParameterfvEXT, ( FgGLenum _1, FgGLenum _2, FgGLfloat * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetHistogramParameterivEXT, ( FgGLenum _1, FgGLenum _2, FgGLint * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetMinmaxEXT, ( FgGLenum _1, FgGLboolean _2, FgGLenum _3, FgGLenum _4, FgGLvoid * _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( GetMinmaxParameterfvEXT, ( FgGLenum _1, FgGLenum _2, FgGLfloat * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetMinmaxParameterivEXT, ( FgGLenum _1, FgGLenum _2, FgGLint * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( HistogramEXT, ( FgGLenum _1, FgGLsizei _2, FgGLenum _3, FgGLboolean _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( MinmaxEXT, ( FgGLenum _1, FgGLenum _2, FgGLboolean _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( ResetHistogramEXT, ( FgGLenum _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( ResetMinmaxEXT, ( FgGLenum _1 ), ( _1 ) ) \
+    FG_GL_FUNCTION_VOID( GetHistogramEXT, FgGLContext *, FgGLenum, FgGLboolean, FgGLenum, FgGLenum, FgGLvoid * ) \
+    FG_GL_FUNCTION_VOID( GetHistogramParameterfvEXT, FgGLContext *, FgGLenum, FgGLenum, FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( GetHistogramParameterivEXT, FgGLContext *, FgGLenum, FgGLenum, FgGLint * ) \
+    FG_GL_FUNCTION_VOID( GetMinmaxEXT, FgGLContext *, FgGLenum, FgGLboolean, FgGLenum, FgGLenum, FgGLvoid * ) \
+    FG_GL_FUNCTION_VOID( GetMinmaxParameterfvEXT, FgGLContext *, FgGLenum, FgGLenum, FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( GetMinmaxParameterivEXT, FgGLContext *, FgGLenum, FgGLenum, FgGLint * ) \
+    FG_GL_FUNCTION_VOID( HistogramEXT, FgGLContext *, FgGLenum, FgGLsizei, FgGLenum, FgGLboolean ) \
+    FG_GL_FUNCTION_VOID( MinmaxEXT, FgGLContext *, FgGLenum, FgGLenum, FgGLboolean ) \
+    FG_GL_FUNCTION_VOID( ResetHistogramEXT, FgGLContext *, FgGLenum ) \
+    FG_GL_FUNCTION_VOID( ResetMinmaxEXT, FgGLContext *, FgGLenum ) \
 \
     /* GL_EXT_index_array_formats */ \
 \
     /* GL_EXT_index_func */ \
-    FG_GL_VOID_FUNCTION( IndexFuncEXT, ( FgGLenum _1, FgGLclampf _2 ), ( _1, _2 ) ) \
+    FG_GL_FUNCTION_VOID( IndexFuncEXT, FgGLContext *, FgGLenum, FgGLclampf ) \
 \
     /* GL_EXT_index_material */ \
-    FG_GL_VOID_FUNCTION( IndexMaterialEXT, ( FgGLenum _1, FgGLenum _2 ), ( _1, _2 ) ) \
+    FG_GL_FUNCTION_VOID( IndexMaterialEXT, FgGLContext *, FgGLenum, FgGLenum ) \
 \
     /* GL_EXT_index_texture */ \
 \
     /* GL_EXT_light_texture */ \
-    FG_GL_VOID_FUNCTION( ApplyTextureEXT, ( FgGLenum _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( TextureLightEXT, ( FgGLenum _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( TextureMaterialEXT, ( FgGLenum _1, FgGLenum _2 ), ( _1, _2 ) ) \
+    FG_GL_FUNCTION_VOID( ApplyTextureEXT, FgGLContext *, FgGLenum ) \
+    FG_GL_FUNCTION_VOID( TextureLightEXT, FgGLContext *, FgGLenum ) \
+    FG_GL_FUNCTION_VOID( TextureMaterialEXT, FgGLContext *, FgGLenum, FgGLenum ) \
 \
     /* GL_EXT_misc_attribute */ \
 \
     /* GL_EXT_multi_draw_arrays */ \
-    FG_GL_VOID_FUNCTION( MultiDrawArraysEXT, ( FgGLenum _1, const FgGLint * _2, const FgGLsizei * _3, FgGLsizei _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( MultiDrawElementsEXT, ( FgGLenum _1, const FgGLsizei * _2, FgGLenum _3, const FgGLvoid *const* _4, FgGLsizei _5 ), ( _1, _2, _3, _4, _5 ) ) \
+    FG_GL_FUNCTION_VOID( MultiDrawArraysEXT, FgGLContext *, FgGLenum, const FgGLint *, const FgGLsizei *, FgGLsizei ) \
+    FG_GL_FUNCTION_VOID( MultiDrawElementsEXT, FgGLContext *, FgGLenum, const FgGLsizei *, FgGLenum, const FgGLvoid *const*, FgGLsizei ) \
 \
     /* GL_EXT_multisample */ \
-    FG_GL_VOID_FUNCTION( SampleMaskEXT, ( FgGLclampf _1, FgGLboolean _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( SamplePatternEXT, ( FgGLenum _1 ), ( _1 ) ) \
+    FG_GL_FUNCTION_VOID( SampleMaskEXT, FgGLContext *, FgGLclampf, FgGLboolean ) \
+    FG_GL_FUNCTION_VOID( SamplePatternEXT, FgGLContext *, FgGLenum ) \
 \
     /* GL_EXT_packed_depth_stencil */ \
 \
@@ -2422,91 +2423,91 @@
     /* GL_EXT_packed_pixels */ \
 \
     /* GL_EXT_paletted_texture */ \
-    FG_GL_VOID_FUNCTION( ColorTableEXT, ( FgGLenum _1, FgGLenum _2, FgGLsizei _3, FgGLenum _4, FgGLenum _5, const FgGLvoid * _6 ), ( _1, _2, _3, _4, _5, _6 ) ) \
-    FG_GL_VOID_FUNCTION( GetColorTableEXT, ( FgGLenum _1, FgGLenum _2, FgGLenum _3, FgGLvoid * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( GetColorTableParameterivEXT, ( FgGLenum _1, FgGLenum _2, FgGLint * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetColorTableParameterfvEXT, ( FgGLenum _1, FgGLenum _2, FgGLfloat * _3 ), ( _1, _2, _3 ) ) \
+    FG_GL_FUNCTION_VOID( ColorTableEXT, FgGLContext *, FgGLenum, FgGLenum, FgGLsizei, FgGLenum, FgGLenum, const FgGLvoid * ) \
+    FG_GL_FUNCTION_VOID( GetColorTableEXT, FgGLContext *, FgGLenum, FgGLenum, FgGLenum, FgGLvoid * ) \
+    FG_GL_FUNCTION_VOID( GetColorTableParameterivEXT, FgGLContext *, FgGLenum, FgGLenum, FgGLint * ) \
+    FG_GL_FUNCTION_VOID( GetColorTableParameterfvEXT, FgGLContext *, FgGLenum, FgGLenum, FgGLfloat * ) \
 \
     /* GL_EXT_pixel_buffer_object */ \
 \
     /* GL_EXT_pixel_transform */ \
-    FG_GL_VOID_FUNCTION( PixelTransformParameteriEXT, ( FgGLenum _1, FgGLenum _2, FgGLint _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( PixelTransformParameterfEXT, ( FgGLenum _1, FgGLenum _2, FgGLfloat _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( PixelTransformParameterivEXT, ( FgGLenum _1, FgGLenum _2, const FgGLint * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( PixelTransformParameterfvEXT, ( FgGLenum _1, FgGLenum _2, const FgGLfloat * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetPixelTransformParameterivEXT, ( FgGLenum _1, FgGLenum _2, FgGLint * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetPixelTransformParameterfvEXT, ( FgGLenum _1, FgGLenum _2, FgGLfloat * _3 ), ( _1, _2, _3 ) ) \
+    FG_GL_FUNCTION_VOID( PixelTransformParameteriEXT, FgGLContext *, FgGLenum, FgGLenum, FgGLint ) \
+    FG_GL_FUNCTION_VOID( PixelTransformParameterfEXT, FgGLContext *, FgGLenum, FgGLenum, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( PixelTransformParameterivEXT, FgGLContext *, FgGLenum, FgGLenum, const FgGLint * ) \
+    FG_GL_FUNCTION_VOID( PixelTransformParameterfvEXT, FgGLContext *, FgGLenum, FgGLenum, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( GetPixelTransformParameterivEXT, FgGLContext *, FgGLenum, FgGLenum, FgGLint * ) \
+    FG_GL_FUNCTION_VOID( GetPixelTransformParameterfvEXT, FgGLContext *, FgGLenum, FgGLenum, FgGLfloat * ) \
 \
     /* GL_EXT_pixel_transform_color_table */ \
 \
     /* GL_EXT_point_parameters */ \
-    FG_GL_VOID_FUNCTION( PointParameterfEXT, ( FgGLenum _1, FgGLfloat _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( PointParameterfvEXT, ( FgGLenum _1, const FgGLfloat * _2 ), ( _1, _2 ) ) \
+    FG_GL_FUNCTION_VOID( PointParameterfEXT, FgGLContext *, FgGLenum, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( PointParameterfvEXT, FgGLContext *, FgGLenum, const FgGLfloat * ) \
 \
     /* GL_EXT_polygon_offset */ \
-    FG_GL_VOID_FUNCTION( PolygonOffsetEXT, ( FgGLfloat _1, FgGLfloat _2 ), ( _1, _2 ) ) \
+    FG_GL_FUNCTION_VOID( PolygonOffsetEXT, FgGLContext *, FgGLfloat, FgGLfloat ) \
 \
     /* GL_EXT_provoking_vertex */ \
-    FG_GL_VOID_FUNCTION( ProvokingVertexEXT, ( FgGLenum _1 ), ( _1 ) ) \
+    FG_GL_FUNCTION_VOID( ProvokingVertexEXT, FgGLContext *, FgGLenum ) \
 \
     /* GL_EXT_rescale_normal */ \
 \
     /* GL_EXT_secondary_color */ \
-    FG_GL_VOID_FUNCTION( SecondaryColor3bEXT, ( FgGLbyte _1, FgGLbyte _2, FgGLbyte _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( SecondaryColor3bvEXT, ( const FgGLbyte * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( SecondaryColor3dEXT, ( FgGLdouble _1, FgGLdouble _2, FgGLdouble _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( SecondaryColor3dvEXT, ( const FgGLdouble * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( SecondaryColor3fEXT, ( FgGLfloat _1, FgGLfloat _2, FgGLfloat _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( SecondaryColor3fvEXT, ( const FgGLfloat * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( SecondaryColor3iEXT, ( FgGLint _1, FgGLint _2, FgGLint _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( SecondaryColor3ivEXT, ( const FgGLint * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( SecondaryColor3sEXT, ( FgGLshort _1, FgGLshort _2, FgGLshort _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( SecondaryColor3svEXT, ( const FgGLshort * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( SecondaryColor3ubEXT, ( FgGLubyte _1, FgGLubyte _2, FgGLubyte _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( SecondaryColor3ubvEXT, ( const FgGLubyte * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( SecondaryColor3uiEXT, ( FgGLuint _1, FgGLuint _2, FgGLuint _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( SecondaryColor3uivEXT, ( const FgGLuint * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( SecondaryColor3usEXT, ( FgGLushort _1, FgGLushort _2, FgGLushort _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( SecondaryColor3usvEXT, ( const FgGLushort * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( SecondaryColorPointerEXT, ( FgGLint _1, FgGLenum _2, FgGLsizei _3, const FgGLvoid * _4 ), ( _1, _2, _3, _4 ) ) \
+    FG_GL_FUNCTION_VOID( SecondaryColor3bEXT, FgGLContext *, FgGLbyte, FgGLbyte, FgGLbyte ) \
+    FG_GL_FUNCTION_VOID( SecondaryColor3bvEXT, FgGLContext *, const FgGLbyte * ) \
+    FG_GL_FUNCTION_VOID( SecondaryColor3dEXT, FgGLContext *, FgGLdouble, FgGLdouble, FgGLdouble ) \
+    FG_GL_FUNCTION_VOID( SecondaryColor3dvEXT, FgGLContext *, const FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( SecondaryColor3fEXT, FgGLContext *, FgGLfloat, FgGLfloat, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( SecondaryColor3fvEXT, FgGLContext *, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( SecondaryColor3iEXT, FgGLContext *, FgGLint, FgGLint, FgGLint ) \
+    FG_GL_FUNCTION_VOID( SecondaryColor3ivEXT, FgGLContext *, const FgGLint * ) \
+    FG_GL_FUNCTION_VOID( SecondaryColor3sEXT, FgGLContext *, FgGLshort, FgGLshort, FgGLshort ) \
+    FG_GL_FUNCTION_VOID( SecondaryColor3svEXT, FgGLContext *, const FgGLshort * ) \
+    FG_GL_FUNCTION_VOID( SecondaryColor3ubEXT, FgGLContext *, FgGLubyte, FgGLubyte, FgGLubyte ) \
+    FG_GL_FUNCTION_VOID( SecondaryColor3ubvEXT, FgGLContext *, const FgGLubyte * ) \
+    FG_GL_FUNCTION_VOID( SecondaryColor3uiEXT, FgGLContext *, FgGLuint, FgGLuint, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( SecondaryColor3uivEXT, FgGLContext *, const FgGLuint * ) \
+    FG_GL_FUNCTION_VOID( SecondaryColor3usEXT, FgGLContext *, FgGLushort, FgGLushort, FgGLushort ) \
+    FG_GL_FUNCTION_VOID( SecondaryColor3usvEXT, FgGLContext *, const FgGLushort * ) \
+    FG_GL_FUNCTION_VOID( SecondaryColorPointerEXT, FgGLContext *, FgGLint, FgGLenum, FgGLsizei, const FgGLvoid * ) \
 \
     /* GL_EXT_separate_shader_objects */ \
-    FG_GL_VOID_FUNCTION( UseShaderProgramEXT, ( FgGLenum _1, FgGLuint _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( ActiveProgramEXT, ( FgGLuint _1 ), ( _1 ) ) \
-    FG_GL_FUNCTION( 0, FgGLuint, CreateShaderProgramEXT, ( FgGLenum _1, const FgGLchar * _2 ), ( _1, _2 ) ) \
+    FG_GL_FUNCTION_VOID( UseShaderProgramEXT, FgGLContext *, FgGLenum, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( ActiveProgramEXT, FgGLContext *, FgGLuint ) \
+    FG_GL_FUNCTION_NUM( CreateShaderProgramEXT, FgGLuint, FgGLContext *, FgGLenum, const FgGLchar * ) \
 \
     /* GL_EXT_separate_specular_color */ \
 \
     /* GL_EXT_shader_image_load_store */ \
-    FG_GL_VOID_FUNCTION( BindImageTextureEXT, ( FgGLuint _1, FgGLuint _2, FgGLint _3, FgGLboolean _4, FgGLint _5, FgGLenum _6, FgGLint _7 ), ( _1, _2, _3, _4, _5, _6, _7 ) ) \
-    FG_GL_VOID_FUNCTION( MemoryBarrierEXT, ( FgGLbitfield _1 ), ( _1 ) ) \
+    FG_GL_FUNCTION_VOID( BindImageTextureEXT, FgGLContext *, FgGLuint, FgGLuint, FgGLint, FgGLboolean, FgGLint, FgGLenum, FgGLint ) \
+    FG_GL_FUNCTION_VOID( MemoryBarrierEXT, FgGLContext *, FgGLbitfield ) \
 \
     /* GL_EXT_shadow_funcs */ \
 \
     /* GL_EXT_shared_texture_palette */ \
 \
     /* GL_EXT_stencil_clear_tag */ \
-    FG_GL_VOID_FUNCTION( StencilClearTagEXT, ( FgGLsizei _1, FgGLuint _2 ), ( _1, _2 ) ) \
+    FG_GL_FUNCTION_VOID( StencilClearTagEXT, FgGLContext *, FgGLsizei, FgGLuint ) \
 \
     /* GL_EXT_stencil_two_side */ \
-    FG_GL_VOID_FUNCTION( ActiveStencilFaceEXT, ( FgGLenum _1 ), ( _1 ) ) \
+    FG_GL_FUNCTION_VOID( ActiveStencilFaceEXT, FgGLContext *, FgGLenum ) \
 \
     /* GL_EXT_stencil_wrap */ \
 \
     /* GL_EXT_subtexture */ \
-    FG_GL_VOID_FUNCTION( TexSubImage1DEXT, ( FgGLenum _1, FgGLint _2, FgGLint _3, FgGLsizei _4, FgGLenum _5, FgGLenum _6, const FgGLvoid * _7 ), ( _1, _2, _3, _4, _5, _6, _7 ) ) \
-    FG_GL_VOID_FUNCTION( TexSubImage2DEXT, ( FgGLenum _1, FgGLint _2, FgGLint _3, FgGLint _4, FgGLsizei _5, FgGLsizei _6, FgGLenum _7, FgGLenum _8, const FgGLvoid * _9 ), ( _1, _2, _3, _4, _5, _6, _7, _8, _9 ) ) \
+    FG_GL_FUNCTION_VOID( TexSubImage1DEXT, FgGLContext *, FgGLenum, FgGLint, FgGLint, FgGLsizei, FgGLenum, FgGLenum, const FgGLvoid * ) \
+    FG_GL_FUNCTION_VOID( TexSubImage2DEXT, FgGLContext *, FgGLenum, FgGLint, FgGLint, FgGLint, FgGLsizei, FgGLsizei, FgGLenum, FgGLenum, const FgGLvoid * ) \
 \
     /* GL_EXT_texture */ \
 \
     /* GL_EXT_texture3D */ \
-    FG_GL_VOID_FUNCTION( TexImage3DEXT, ( FgGLenum _1, FgGLint _2, FgGLenum _3, FgGLsizei _4, FgGLsizei _5, FgGLsizei _6, FgGLint _7, FgGLenum _8, FgGLenum _9, const FgGLvoid * _10 ), ( _1, _2, _3, _4, _5, _6, _7, _8, _9, _10 ) ) \
-    FG_GL_VOID_FUNCTION( TexSubImage3DEXT, ( FgGLenum _1, FgGLint _2, FgGLint _3, FgGLint _4, FgGLint _5, FgGLsizei _6, FgGLsizei _7, FgGLsizei _8, FgGLenum _9, FgGLenum _10, const FgGLvoid * _11 ), ( _1, _2, _3, _4, _5, _6, _7, _8, _9, _10, _11 ) ) \
+    FG_GL_FUNCTION_VOID( TexImage3DEXT, FgGLContext *, FgGLenum, FgGLint, FgGLenum, FgGLsizei, FgGLsizei, FgGLsizei, FgGLint, FgGLenum, FgGLenum, const FgGLvoid * ) \
+    FG_GL_FUNCTION_VOID( TexSubImage3DEXT, FgGLContext *, FgGLenum, FgGLint, FgGLint, FgGLint, FgGLint, FgGLsizei, FgGLsizei, FgGLsizei, FgGLenum, FgGLenum, const FgGLvoid * ) \
 \
     /* GL_EXT_texture_array */ \
 \
     /* GL_EXT_texture_buffer_object */ \
-    FG_GL_VOID_FUNCTION( TexBufferEXT, ( FgGLenum _1, FgGLenum _2, FgGLuint _3 ), ( _1, _2, _3 ) ) \
+    FG_GL_FUNCTION_VOID( TexBufferEXT, FgGLContext *, FgGLenum, FgGLenum, FgGLuint ) \
 \
     /* GL_EXT_texture_compression_latc */ \
 \
@@ -2525,27 +2526,27 @@
     /* GL_EXT_texture_filter_anisotropic */ \
 \
     /* GL_EXT_texture_integer */ \
-    FG_GL_VOID_FUNCTION( TexParameterIivEXT, ( FgGLenum _1, FgGLenum _2, const FgGLint * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( TexParameterIuivEXT, ( FgGLenum _1, FgGLenum _2, const FgGLuint * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetTexParameterIivEXT, ( FgGLenum _1, FgGLenum _2, FgGLint * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetTexParameterIuivEXT, ( FgGLenum _1, FgGLenum _2, FgGLuint * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( ClearColorIiEXT, ( FgGLint _1, FgGLint _2, FgGLint _3, FgGLint _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( ClearColorIuiEXT, ( FgGLuint _1, FgGLuint _2, FgGLuint _3, FgGLuint _4 ), ( _1, _2, _3, _4 ) ) \
+    FG_GL_FUNCTION_VOID( TexParameterIivEXT, FgGLContext *, FgGLenum, FgGLenum, const FgGLint * ) \
+    FG_GL_FUNCTION_VOID( TexParameterIuivEXT, FgGLContext *, FgGLenum, FgGLenum, const FgGLuint * ) \
+    FG_GL_FUNCTION_VOID( GetTexParameterIivEXT, FgGLContext *, FgGLenum, FgGLenum, FgGLint * ) \
+    FG_GL_FUNCTION_VOID( GetTexParameterIuivEXT, FgGLContext *, FgGLenum, FgGLenum, FgGLuint * ) \
+    FG_GL_FUNCTION_VOID( ClearColorIiEXT, FgGLContext *, FgGLint, FgGLint, FgGLint, FgGLint ) \
+    FG_GL_FUNCTION_VOID( ClearColorIuiEXT, FgGLContext *, FgGLuint, FgGLuint, FgGLuint, FgGLuint ) \
 \
     /* GL_EXT_texture_lod_bias */ \
 \
     /* GL_EXT_texture_mirror_clamp */ \
 \
     /* GL_EXT_texture_object */ \
-    FG_GL_FUNCTION( 0, FgGLboolean, AreTexturesResidentEXT, ( FgGLsizei _1, const FgGLuint * _2, FgGLboolean * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( BindTextureEXT, ( FgGLenum _1, FgGLuint _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( DeleteTexturesEXT, ( FgGLsizei _1, const FgGLuint * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( GenTexturesEXT, ( FgGLsizei _1, FgGLuint * _2 ), ( _1, _2 ) ) \
-    FG_GL_FUNCTION( 0, FgGLboolean, IsTextureEXT, ( FgGLuint _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( PrioritizeTexturesEXT, ( FgGLsizei _1, const FgGLuint * _2, const FgGLclampf * _3 ), ( _1, _2, _3 ) ) \
+    FG_GL_FUNCTION_NUM( AreTexturesResidentEXT, FgGLboolean, FgGLContext *, FgGLsizei, const FgGLuint *, FgGLboolean * ) \
+    FG_GL_FUNCTION_VOID( BindTextureEXT, FgGLContext *, FgGLenum, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( DeleteTexturesEXT, FgGLContext *, FgGLsizei, const FgGLuint * ) \
+    FG_GL_FUNCTION_VOID( GenTexturesEXT, FgGLContext *, FgGLsizei, FgGLuint * ) \
+    FG_GL_FUNCTION_NUM( IsTextureEXT, FgGLboolean, FgGLContext *, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( PrioritizeTexturesEXT, FgGLContext *, FgGLsizei, const FgGLuint *, const FgGLclampf * ) \
 \
     /* GL_EXT_texture_perturb_normal */ \
-    FG_GL_VOID_FUNCTION( TextureNormalEXT, ( FgGLenum _1 ), ( _1 ) ) \
+    FG_GL_FUNCTION_VOID( TextureNormalEXT, FgGLContext *, FgGLenum ) \
 \
     /* GL_EXT_texture_sRGB */ \
 \
@@ -2558,110 +2559,110 @@
     /* GL_EXT_texture_swizzle */ \
 \
     /* GL_EXT_timer_query */ \
-    FG_GL_VOID_FUNCTION( GetQueryObjecti64vEXT, ( FgGLuint _1, FgGLenum _2, FgGLint64 * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetQueryObjectui64vEXT, ( FgGLuint _1, FgGLenum _2, FgGLuint64 * _3 ), ( _1, _2, _3 ) ) \
+    FG_GL_FUNCTION_VOID( GetQueryObjecti64vEXT, FgGLContext *, FgGLuint, FgGLenum, FgGLint64 * ) \
+    FG_GL_FUNCTION_VOID( GetQueryObjectui64vEXT, FgGLContext *, FgGLuint, FgGLenum, FgGLuint64 * ) \
 \
     /* GL_EXT_transform_feedback */ \
-    FG_GL_VOID_FUNCTION( BeginTransformFeedbackEXT, ( FgGLenum _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( EndTransformFeedbackEXT, ( ), ( ) ) \
-    FG_GL_VOID_FUNCTION( BindBufferRangeEXT, ( FgGLenum _1, FgGLuint _2, FgGLuint _3, FgGLintptr _4, FgGLsizeiptr _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( BindBufferOffsetEXT, ( FgGLenum _1, FgGLuint _2, FgGLuint _3, FgGLintptr _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( BindBufferBaseEXT, ( FgGLenum _1, FgGLuint _2, FgGLuint _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( TransformFeedbackVaryingsEXT, ( FgGLuint _1, FgGLsizei _2, const FgGLchar *const* _3, FgGLenum _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( GetTransformFeedbackVaryingEXT, ( FgGLuint _1, FgGLuint _2, FgGLsizei _3, FgGLsizei * _4, FgGLsizei * _5, FgGLenum * _6, FgGLchar * _7 ), ( _1, _2, _3, _4, _5, _6, _7 ) ) \
+    FG_GL_FUNCTION_VOID( BeginTransformFeedbackEXT, FgGLContext *, FgGLenum ) \
+    FG_GL_FUNCTION_VOID( EndTransformFeedbackEXT, FgGLContext * ) \
+    FG_GL_FUNCTION_VOID( BindBufferRangeEXT, FgGLContext *, FgGLenum, FgGLuint, FgGLuint, FgGLintptr, FgGLsizeiptr ) \
+    FG_GL_FUNCTION_VOID( BindBufferOffsetEXT, FgGLContext *, FgGLenum, FgGLuint, FgGLuint, FgGLintptr ) \
+    FG_GL_FUNCTION_VOID( BindBufferBaseEXT, FgGLContext *, FgGLenum, FgGLuint, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( TransformFeedbackVaryingsEXT, FgGLContext *, FgGLuint, FgGLsizei, const FgGLchar *const*, FgGLenum ) \
+    FG_GL_FUNCTION_VOID( GetTransformFeedbackVaryingEXT, FgGLContext *, FgGLuint, FgGLuint, FgGLsizei, FgGLsizei *, FgGLsizei *, FgGLenum *, FgGLchar * ) \
 \
     /* GL_EXT_vertex_array */ \
-    FG_GL_VOID_FUNCTION( ArrayElementEXT, ( FgGLint _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( ColorPointerEXT, ( FgGLint _1, FgGLenum _2, FgGLsizei _3, FgGLsizei _4, const FgGLvoid * _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( DrawArraysEXT, ( FgGLenum _1, FgGLint _2, FgGLsizei _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( EdgeFlagPointerEXT, ( FgGLsizei _1, FgGLsizei _2, const FgGLboolean * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetPointervEXT, ( FgGLenum _1, FgGLvoid ** _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( IndexPointerEXT, ( FgGLenum _1, FgGLsizei _2, FgGLsizei _3, const FgGLvoid * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( NormalPointerEXT, ( FgGLenum _1, FgGLsizei _2, FgGLsizei _3, const FgGLvoid * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( TexCoordPointerEXT, ( FgGLint _1, FgGLenum _2, FgGLsizei _3, FgGLsizei _4, const FgGLvoid * _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( VertexPointerEXT, ( FgGLint _1, FgGLenum _2, FgGLsizei _3, FgGLsizei _4, const FgGLvoid * _5 ), ( _1, _2, _3, _4, _5 ) ) \
+    FG_GL_FUNCTION_VOID( ArrayElementEXT, FgGLContext *, FgGLint ) \
+    FG_GL_FUNCTION_VOID( ColorPointerEXT, FgGLContext *, FgGLint, FgGLenum, FgGLsizei, FgGLsizei, const FgGLvoid * ) \
+    FG_GL_FUNCTION_VOID( DrawArraysEXT, FgGLContext *, FgGLenum, FgGLint, FgGLsizei ) \
+    FG_GL_FUNCTION_VOID( EdgeFlagPointerEXT, FgGLContext *, FgGLsizei, FgGLsizei, const FgGLboolean * ) \
+    FG_GL_FUNCTION_VOID( GetPointervEXT, FgGLContext *, FgGLenum, FgGLvoid ** ) \
+    FG_GL_FUNCTION_VOID( IndexPointerEXT, FgGLContext *, FgGLenum, FgGLsizei, FgGLsizei, const FgGLvoid * ) \
+    FG_GL_FUNCTION_VOID( NormalPointerEXT, FgGLContext *, FgGLenum, FgGLsizei, FgGLsizei, const FgGLvoid * ) \
+    FG_GL_FUNCTION_VOID( TexCoordPointerEXT, FgGLContext *, FgGLint, FgGLenum, FgGLsizei, FgGLsizei, const FgGLvoid * ) \
+    FG_GL_FUNCTION_VOID( VertexPointerEXT, FgGLContext *, FgGLint, FgGLenum, FgGLsizei, FgGLsizei, const FgGLvoid * ) \
 \
     /* GL_EXT_vertex_array_bgra */ \
 \
     /* GL_EXT_vertex_attrib_64bit */ \
-    FG_GL_VOID_FUNCTION( VertexAttribL1dEXT, ( FgGLuint _1, FgGLdouble _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttribL2dEXT, ( FgGLuint _1, FgGLdouble _2, FgGLdouble _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttribL3dEXT, ( FgGLuint _1, FgGLdouble _2, FgGLdouble _3, FgGLdouble _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttribL4dEXT, ( FgGLuint _1, FgGLdouble _2, FgGLdouble _3, FgGLdouble _4, FgGLdouble _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttribL1dvEXT, ( FgGLuint _1, const FgGLdouble * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttribL2dvEXT, ( FgGLuint _1, const FgGLdouble * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttribL3dvEXT, ( FgGLuint _1, const FgGLdouble * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttribL4dvEXT, ( FgGLuint _1, const FgGLdouble * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttribLPointerEXT, ( FgGLuint _1, FgGLint _2, FgGLenum _3, FgGLsizei _4, const FgGLvoid * _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( GetVertexAttribLdvEXT, ( FgGLuint _1, FgGLenum _2, FgGLdouble * _3 ), ( _1, _2, _3 ) ) \
+    FG_GL_FUNCTION_VOID( VertexAttribL1dEXT, FgGLContext *, FgGLuint, FgGLdouble ) \
+    FG_GL_FUNCTION_VOID( VertexAttribL2dEXT, FgGLContext *, FgGLuint, FgGLdouble, FgGLdouble ) \
+    FG_GL_FUNCTION_VOID( VertexAttribL3dEXT, FgGLContext *, FgGLuint, FgGLdouble, FgGLdouble, FgGLdouble ) \
+    FG_GL_FUNCTION_VOID( VertexAttribL4dEXT, FgGLContext *, FgGLuint, FgGLdouble, FgGLdouble, FgGLdouble, FgGLdouble ) \
+    FG_GL_FUNCTION_VOID( VertexAttribL1dvEXT, FgGLContext *, FgGLuint, const FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( VertexAttribL2dvEXT, FgGLContext *, FgGLuint, const FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( VertexAttribL3dvEXT, FgGLContext *, FgGLuint, const FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( VertexAttribL4dvEXT, FgGLContext *, FgGLuint, const FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( VertexAttribLPointerEXT, FgGLContext *, FgGLuint, FgGLint, FgGLenum, FgGLsizei, const FgGLvoid * ) \
+    FG_GL_FUNCTION_VOID( GetVertexAttribLdvEXT, FgGLContext *, FgGLuint, FgGLenum, FgGLdouble * ) \
 \
     /* GL_EXT_vertex_shader */ \
-    FG_GL_VOID_FUNCTION( BeginVertexShaderEXT, ( ), ( ) ) \
-    FG_GL_VOID_FUNCTION( EndVertexShaderEXT, ( ), ( ) ) \
-    FG_GL_VOID_FUNCTION( BindVertexShaderEXT, ( FgGLuint _1 ), ( _1 ) ) \
-    FG_GL_FUNCTION( 0, FgGLuint, GenVertexShadersEXT, ( FgGLuint _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( DeleteVertexShaderEXT, ( FgGLuint _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( ShaderOp1EXT, ( FgGLenum _1, FgGLuint _2, FgGLuint _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( ShaderOp2EXT, ( FgGLenum _1, FgGLuint _2, FgGLuint _3, FgGLuint _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( ShaderOp3EXT, ( FgGLenum _1, FgGLuint _2, FgGLuint _3, FgGLuint _4, FgGLuint _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( SwizzleEXT, ( FgGLuint _1, FgGLuint _2, FgGLenum _3, FgGLenum _4, FgGLenum _5, FgGLenum _6 ), ( _1, _2, _3, _4, _5, _6 ) ) \
-    FG_GL_VOID_FUNCTION( WriteMaskEXT, ( FgGLuint _1, FgGLuint _2, FgGLenum _3, FgGLenum _4, FgGLenum _5, FgGLenum _6 ), ( _1, _2, _3, _4, _5, _6 ) ) \
-    FG_GL_VOID_FUNCTION( InsertComponentEXT, ( FgGLuint _1, FgGLuint _2, FgGLuint _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( ExtractComponentEXT, ( FgGLuint _1, FgGLuint _2, FgGLuint _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_FUNCTION( 0, FgGLuint, GenSymbolsEXT, ( FgGLenum _1, FgGLenum _2, FgGLenum _3, FgGLuint _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( SetInvariantEXT, ( FgGLuint _1, FgGLenum _2, const FgGLvoid * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( SetLocalConstantEXT, ( FgGLuint _1, FgGLenum _2, const FgGLvoid * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( VariantbvEXT, ( FgGLuint _1, const FgGLbyte * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VariantsvEXT, ( FgGLuint _1, const FgGLshort * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VariantivEXT, ( FgGLuint _1, const FgGLint * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VariantfvEXT, ( FgGLuint _1, const FgGLfloat * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VariantdvEXT, ( FgGLuint _1, const FgGLdouble * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VariantubvEXT, ( FgGLuint _1, const FgGLubyte * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VariantusvEXT, ( FgGLuint _1, const FgGLushort * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VariantuivEXT, ( FgGLuint _1, const FgGLuint * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VariantPointerEXT, ( FgGLuint _1, FgGLenum _2, FgGLuint _3, const FgGLvoid * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( EnableVariantClientStateEXT, ( FgGLuint _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( DisableVariantClientStateEXT, ( FgGLuint _1 ), ( _1 ) ) \
-    FG_GL_FUNCTION( 0, FgGLuint, BindLightParameterEXT, ( FgGLenum _1, FgGLenum _2 ), ( _1, _2 ) ) \
-    FG_GL_FUNCTION( 0, FgGLuint, BindMaterialParameterEXT, ( FgGLenum _1, FgGLenum _2 ), ( _1, _2 ) ) \
-    FG_GL_FUNCTION( 0, FgGLuint, BindTexGenParameterEXT, ( FgGLenum _1, FgGLenum _2, FgGLenum _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_FUNCTION( 0, FgGLuint, BindTextureUnitParameterEXT, ( FgGLenum _1, FgGLenum _2 ), ( _1, _2 ) ) \
-    FG_GL_FUNCTION( 0, FgGLuint, BindParameterEXT, ( FgGLenum _1 ), ( _1 ) ) \
-    FG_GL_FUNCTION( 0, FgGLboolean, IsVariantEnabledEXT, ( FgGLuint _1, FgGLenum _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( GetVariantBooleanvEXT, ( FgGLuint _1, FgGLenum _2, FgGLboolean * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetVariantIntegervEXT, ( FgGLuint _1, FgGLenum _2, FgGLint * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetVariantFloatvEXT, ( FgGLuint _1, FgGLenum _2, FgGLfloat * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetVariantPointervEXT, ( FgGLuint _1, FgGLenum _2, FgGLvoid ** _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetInvariantBooleanvEXT, ( FgGLuint _1, FgGLenum _2, FgGLboolean * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetInvariantIntegervEXT, ( FgGLuint _1, FgGLenum _2, FgGLint * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetInvariantFloatvEXT, ( FgGLuint _1, FgGLenum _2, FgGLfloat * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetLocalConstantBooleanvEXT, ( FgGLuint _1, FgGLenum _2, FgGLboolean * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetLocalConstantIntegervEXT, ( FgGLuint _1, FgGLenum _2, FgGLint * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetLocalConstantFloatvEXT, ( FgGLuint _1, FgGLenum _2, FgGLfloat * _3 ), ( _1, _2, _3 ) ) \
+    FG_GL_FUNCTION_VOID( BeginVertexShaderEXT, FgGLContext * ) \
+    FG_GL_FUNCTION_VOID( EndVertexShaderEXT, FgGLContext * ) \
+    FG_GL_FUNCTION_VOID( BindVertexShaderEXT, FgGLContext *, FgGLuint ) \
+    FG_GL_FUNCTION_NUM( GenVertexShadersEXT, FgGLuint, FgGLContext *, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( DeleteVertexShaderEXT, FgGLContext *, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( ShaderOp1EXT, FgGLContext *, FgGLenum, FgGLuint, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( ShaderOp2EXT, FgGLContext *, FgGLenum, FgGLuint, FgGLuint, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( ShaderOp3EXT, FgGLContext *, FgGLenum, FgGLuint, FgGLuint, FgGLuint, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( SwizzleEXT, FgGLContext *, FgGLuint, FgGLuint, FgGLenum, FgGLenum, FgGLenum, FgGLenum ) \
+    FG_GL_FUNCTION_VOID( WriteMaskEXT, FgGLContext *, FgGLuint, FgGLuint, FgGLenum, FgGLenum, FgGLenum, FgGLenum ) \
+    FG_GL_FUNCTION_VOID( InsertComponentEXT, FgGLContext *, FgGLuint, FgGLuint, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( ExtractComponentEXT, FgGLContext *, FgGLuint, FgGLuint, FgGLuint ) \
+    FG_GL_FUNCTION_NUM( GenSymbolsEXT, FgGLuint, FgGLContext *, FgGLenum, FgGLenum, FgGLenum, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( SetInvariantEXT, FgGLContext *, FgGLuint, FgGLenum, const FgGLvoid * ) \
+    FG_GL_FUNCTION_VOID( SetLocalConstantEXT, FgGLContext *, FgGLuint, FgGLenum, const FgGLvoid * ) \
+    FG_GL_FUNCTION_VOID( VariantbvEXT, FgGLContext *, FgGLuint, const FgGLbyte * ) \
+    FG_GL_FUNCTION_VOID( VariantsvEXT, FgGLContext *, FgGLuint, const FgGLshort * ) \
+    FG_GL_FUNCTION_VOID( VariantivEXT, FgGLContext *, FgGLuint, const FgGLint * ) \
+    FG_GL_FUNCTION_VOID( VariantfvEXT, FgGLContext *, FgGLuint, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( VariantdvEXT, FgGLContext *, FgGLuint, const FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( VariantubvEXT, FgGLContext *, FgGLuint, const FgGLubyte * ) \
+    FG_GL_FUNCTION_VOID( VariantusvEXT, FgGLContext *, FgGLuint, const FgGLushort * ) \
+    FG_GL_FUNCTION_VOID( VariantuivEXT, FgGLContext *, FgGLuint, const FgGLuint * ) \
+    FG_GL_FUNCTION_VOID( VariantPointerEXT, FgGLContext *, FgGLuint, FgGLenum, FgGLuint, const FgGLvoid * ) \
+    FG_GL_FUNCTION_VOID( EnableVariantClientStateEXT, FgGLContext *, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( DisableVariantClientStateEXT, FgGLContext *, FgGLuint ) \
+    FG_GL_FUNCTION_NUM( BindLightParameterEXT, FgGLuint, FgGLContext *, FgGLenum, FgGLenum ) \
+    FG_GL_FUNCTION_NUM( BindMaterialParameterEXT, FgGLuint, FgGLContext *, FgGLenum, FgGLenum ) \
+    FG_GL_FUNCTION_NUM( BindTexGenParameterEXT, FgGLuint, FgGLContext *, FgGLenum, FgGLenum, FgGLenum ) \
+    FG_GL_FUNCTION_NUM( BindTextureUnitParameterEXT, FgGLuint, FgGLContext *, FgGLenum, FgGLenum ) \
+    FG_GL_FUNCTION_NUM( BindParameterEXT, FgGLuint, FgGLContext *, FgGLenum ) \
+    FG_GL_FUNCTION_NUM( IsVariantEnabledEXT, FgGLboolean, FgGLContext *, FgGLuint, FgGLenum ) \
+    FG_GL_FUNCTION_VOID( GetVariantBooleanvEXT, FgGLContext *, FgGLuint, FgGLenum, FgGLboolean * ) \
+    FG_GL_FUNCTION_VOID( GetVariantIntegervEXT, FgGLContext *, FgGLuint, FgGLenum, FgGLint * ) \
+    FG_GL_FUNCTION_VOID( GetVariantFloatvEXT, FgGLContext *, FgGLuint, FgGLenum, FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( GetVariantPointervEXT, FgGLContext *, FgGLuint, FgGLenum, FgGLvoid ** ) \
+    FG_GL_FUNCTION_VOID( GetInvariantBooleanvEXT, FgGLContext *, FgGLuint, FgGLenum, FgGLboolean * ) \
+    FG_GL_FUNCTION_VOID( GetInvariantIntegervEXT, FgGLContext *, FgGLuint, FgGLenum, FgGLint * ) \
+    FG_GL_FUNCTION_VOID( GetInvariantFloatvEXT, FgGLContext *, FgGLuint, FgGLenum, FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( GetLocalConstantBooleanvEXT, FgGLContext *, FgGLuint, FgGLenum, FgGLboolean * ) \
+    FG_GL_FUNCTION_VOID( GetLocalConstantIntegervEXT, FgGLContext *, FgGLuint, FgGLenum, FgGLint * ) \
+    FG_GL_FUNCTION_VOID( GetLocalConstantFloatvEXT, FgGLContext *, FgGLuint, FgGLenum, FgGLfloat * ) \
 \
     /* GL_EXT_vertex_weighting */ \
-    FG_GL_VOID_FUNCTION( VertexWeightfEXT, ( FgGLfloat _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( VertexWeightfvEXT, ( const FgGLfloat * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( VertexWeightPointerEXT, ( FgGLint _1, FgGLenum _2, FgGLsizei _3, const FgGLvoid * _4 ), ( _1, _2, _3, _4 ) ) \
+    FG_GL_FUNCTION_VOID( VertexWeightfEXT, FgGLContext *, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( VertexWeightfvEXT, FgGLContext *, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( VertexWeightPointerEXT, FgGLContext *, FgGLint, FgGLenum, FgGLsizei, const FgGLvoid * ) \
 \
     /* GL_EXT_x11_sync_object */ \
-    FG_GL_FUNCTION( NULL, FgGLsync, ImportSyncEXT, ( FgGLenum _1, FgGLintptr _2, FgGLbitfield _3 ), ( _1, _2, _3 ) ) \
+    FG_GL_FUNCTION_PTR( ImportSyncEXT, FgGLsync, FgGLContext *, FgGLenum, FgGLintptr, FgGLbitfield ) \
 \
     /* GL_GREMEDY_frame_terminator */ \
-    FG_GL_VOID_FUNCTION( FrameTerminatorGREMEDY, ( ), ( ) ) \
+    FG_GL_FUNCTION_VOID( FrameTerminatorGREMEDY, FgGLContext * ) \
 \
     /* GL_GREMEDY_string_marker */ \
-    FG_GL_VOID_FUNCTION( StringMarkerGREMEDY, ( FgGLsizei _1, const FgGLvoid * _2 ), ( _1, _2 ) ) \
+    FG_GL_FUNCTION_VOID( StringMarkerGREMEDY, FgGLContext *, FgGLsizei, const FgGLvoid * ) \
 \
     /* GL_HP_convolution_border_modes */ \
 \
     /* GL_HP_image_transform */ \
-    FG_GL_VOID_FUNCTION( ImageTransformParameteriHP, ( FgGLenum _1, FgGLenum _2, FgGLint _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( ImageTransformParameterfHP, ( FgGLenum _1, FgGLenum _2, FgGLfloat _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( ImageTransformParameterivHP, ( FgGLenum _1, FgGLenum _2, const FgGLint * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( ImageTransformParameterfvHP, ( FgGLenum _1, FgGLenum _2, const FgGLfloat * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetImageTransformParameterivHP, ( FgGLenum _1, FgGLenum _2, FgGLint * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetImageTransformParameterfvHP, ( FgGLenum _1, FgGLenum _2, FgGLfloat * _3 ), ( _1, _2, _3 ) ) \
+    FG_GL_FUNCTION_VOID( ImageTransformParameteriHP, FgGLContext *, FgGLenum, FgGLenum, FgGLint ) \
+    FG_GL_FUNCTION_VOID( ImageTransformParameterfHP, FgGLContext *, FgGLenum, FgGLenum, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( ImageTransformParameterivHP, FgGLContext *, FgGLenum, FgGLenum, const FgGLint * ) \
+    FG_GL_FUNCTION_VOID( ImageTransformParameterfvHP, FgGLContext *, FgGLenum, FgGLenum, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( GetImageTransformParameterivHP, FgGLContext *, FgGLenum, FgGLenum, FgGLint * ) \
+    FG_GL_FUNCTION_VOID( GetImageTransformParameterfvHP, FgGLContext *, FgGLenum, FgGLenum, FgGLfloat * ) \
 \
     /* GL_HP_occlusion_test */ \
 \
@@ -2670,105 +2671,105 @@
     /* GL_IBM_cull_vertex */ \
 \
     /* GL_IBM_multimode_draw_arrays */ \
-    FG_GL_VOID_FUNCTION( MultiModeDrawArraysIBM, ( const FgGLenum * _1, const FgGLint * _2, const FgGLsizei * _3, FgGLsizei _4, FgGLint _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( MultiModeDrawElementsIBM, ( const FgGLenum * _1, const FgGLsizei * _2, FgGLenum _3, const FgGLvoid *const* _4, FgGLsizei _5, FgGLint _6 ), ( _1, _2, _3, _4, _5, _6 ) ) \
+    FG_GL_FUNCTION_VOID( MultiModeDrawArraysIBM, FgGLContext *, const FgGLenum *, const FgGLint *, const FgGLsizei *, FgGLsizei, FgGLint ) \
+    FG_GL_FUNCTION_VOID( MultiModeDrawElementsIBM, FgGLContext *, const FgGLenum *, const FgGLsizei *, FgGLenum, const FgGLvoid *const*, FgGLsizei, FgGLint ) \
 \
     /* GL_IBM_rasterpos_clip */ \
 \
     /* GL_IBM_static_data */ \
-    FG_GL_VOID_FUNCTION( FlushStaticDataIBM, ( FgGLenum _1 ), ( _1 ) ) \
+    FG_GL_FUNCTION_VOID( FlushStaticDataIBM, FgGLContext *, FgGLenum ) \
 \
     /* GL_IBM_texture_mirrored_repeat */ \
 \
     /* GL_IBM_vertex_array_lists */ \
-    FG_GL_VOID_FUNCTION( ColorPointerListIBM, ( FgGLint _1, FgGLenum _2, FgGLint _3, const FgGLvoid ** _4, FgGLint _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( SecondaryColorPointerListIBM, ( FgGLint _1, FgGLenum _2, FgGLint _3, const FgGLvoid ** _4, FgGLint _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( EdgeFlagPointerListIBM, ( FgGLint _1, const FgGLboolean ** _2, FgGLint _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( FogCoordPointerListIBM, ( FgGLenum _1, FgGLint _2, const FgGLvoid ** _3, FgGLint _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( IndexPointerListIBM, ( FgGLenum _1, FgGLint _2, const FgGLvoid ** _3, FgGLint _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( NormalPointerListIBM, ( FgGLenum _1, FgGLint _2, const FgGLvoid ** _3, FgGLint _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( TexCoordPointerListIBM, ( FgGLint _1, FgGLenum _2, FgGLint _3, const FgGLvoid ** _4, FgGLint _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( VertexPointerListIBM, ( FgGLint _1, FgGLenum _2, FgGLint _3, const FgGLvoid ** _4, FgGLint _5 ), ( _1, _2, _3, _4, _5 ) ) \
+    FG_GL_FUNCTION_VOID( ColorPointerListIBM, FgGLContext *, FgGLint, FgGLenum, FgGLint, const FgGLvoid **, FgGLint ) \
+    FG_GL_FUNCTION_VOID( SecondaryColorPointerListIBM, FgGLContext *, FgGLint, FgGLenum, FgGLint, const FgGLvoid **, FgGLint ) \
+    FG_GL_FUNCTION_VOID( EdgeFlagPointerListIBM, FgGLContext *, FgGLint, const FgGLboolean **, FgGLint ) \
+    FG_GL_FUNCTION_VOID( FogCoordPointerListIBM, FgGLContext *, FgGLenum, FgGLint, const FgGLvoid **, FgGLint ) \
+    FG_GL_FUNCTION_VOID( IndexPointerListIBM, FgGLContext *, FgGLenum, FgGLint, const FgGLvoid **, FgGLint ) \
+    FG_GL_FUNCTION_VOID( NormalPointerListIBM, FgGLContext *, FgGLenum, FgGLint, const FgGLvoid **, FgGLint ) \
+    FG_GL_FUNCTION_VOID( TexCoordPointerListIBM, FgGLContext *, FgGLint, FgGLenum, FgGLint, const FgGLvoid **, FgGLint ) \
+    FG_GL_FUNCTION_VOID( VertexPointerListIBM, FgGLContext *, FgGLint, FgGLenum, FgGLint, const FgGLvoid **, FgGLint ) \
 \
     /* GL_INGR_blend_func_separate */ \
-    FG_GL_VOID_FUNCTION( BlendFuncSeparateINGR, ( FgGLenum _1, FgGLenum _2, FgGLenum _3, FgGLenum _4 ), ( _1, _2, _3, _4 ) ) \
+    FG_GL_FUNCTION_VOID( BlendFuncSeparateINGR, FgGLContext *, FgGLenum, FgGLenum, FgGLenum, FgGLenum ) \
 \
     /* GL_INGR_color_clamp */ \
 \
     /* GL_INGR_interlace_read */ \
 \
     /* GL_INTEL_map_texture */ \
-    FG_GL_VOID_FUNCTION( SyncTextureINTEL, ( FgGLuint _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( UnmapTexture2DINTEL, ( FgGLuint _1, FgGLint _2 ), ( _1, _2 ) ) \
-    FG_GL_FUNCTION( NULL, void *, MapTexture2DINTEL, ( FgGLuint _1, FgGLint _2, FgGLbitfield _3, const FgGLint * _4, const FgGLenum * _5 ), ( _1, _2, _3, _4, _5 ) ) \
+    FG_GL_FUNCTION_VOID( SyncTextureINTEL, FgGLContext *, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( UnmapTexture2DINTEL, FgGLContext *, FgGLuint, FgGLint ) \
+    FG_GL_FUNCTION_PTR( MapTexture2DINTEL, void *, FgGLContext *, FgGLuint, FgGLint, FgGLbitfield, const FgGLint *, const FgGLenum * ) \
 \
     /* GL_INTEL_parallel_arrays */ \
-    FG_GL_VOID_FUNCTION( VertexPointervINTEL, ( FgGLint _1, FgGLenum _2, const FgGLvoid ** _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( NormalPointervINTEL, ( FgGLenum _1, const FgGLvoid ** _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( ColorPointervINTEL, ( FgGLint _1, FgGLenum _2, const FgGLvoid ** _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( TexCoordPointervINTEL, ( FgGLint _1, FgGLenum _2, const FgGLvoid ** _3 ), ( _1, _2, _3 ) ) \
+    FG_GL_FUNCTION_VOID( VertexPointervINTEL, FgGLContext *, FgGLint, FgGLenum, const FgGLvoid ** ) \
+    FG_GL_FUNCTION_VOID( NormalPointervINTEL, FgGLContext *, FgGLenum, const FgGLvoid ** ) \
+    FG_GL_FUNCTION_VOID( ColorPointervINTEL, FgGLContext *, FgGLint, FgGLenum, const FgGLvoid ** ) \
+    FG_GL_FUNCTION_VOID( TexCoordPointervINTEL, FgGLContext *, FgGLint, FgGLenum, const FgGLvoid ** ) \
 \
     /* GL_MESAX_texture_stack */ \
 \
     /* GL_MESA_pack_invert */ \
 \
     /* GL_MESA_resize_buffers */ \
-    FG_GL_VOID_FUNCTION( ResizeBuffersMESA, ( ), ( ) ) \
+    FG_GL_FUNCTION_VOID( ResizeBuffersMESA, FgGLContext * ) \
 \
     /* GL_MESA_window_pos */ \
-    FG_GL_VOID_FUNCTION( WindowPos2dMESA, ( FgGLdouble _1, FgGLdouble _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( WindowPos2dvMESA, ( const FgGLdouble * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( WindowPos2fMESA, ( FgGLfloat _1, FgGLfloat _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( WindowPos2fvMESA, ( const FgGLfloat * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( WindowPos2iMESA, ( FgGLint _1, FgGLint _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( WindowPos2ivMESA, ( const FgGLint * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( WindowPos2sMESA, ( FgGLshort _1, FgGLshort _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( WindowPos2svMESA, ( const FgGLshort * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( WindowPos3dMESA, ( FgGLdouble _1, FgGLdouble _2, FgGLdouble _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( WindowPos3dvMESA, ( const FgGLdouble * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( WindowPos3fMESA, ( FgGLfloat _1, FgGLfloat _2, FgGLfloat _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( WindowPos3fvMESA, ( const FgGLfloat * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( WindowPos3iMESA, ( FgGLint _1, FgGLint _2, FgGLint _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( WindowPos3ivMESA, ( const FgGLint * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( WindowPos3sMESA, ( FgGLshort _1, FgGLshort _2, FgGLshort _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( WindowPos3svMESA, ( const FgGLshort * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( WindowPos4dMESA, ( FgGLdouble _1, FgGLdouble _2, FgGLdouble _3, FgGLdouble _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( WindowPos4dvMESA, ( const FgGLdouble * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( WindowPos4fMESA, ( FgGLfloat _1, FgGLfloat _2, FgGLfloat _3, FgGLfloat _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( WindowPos4fvMESA, ( const FgGLfloat * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( WindowPos4iMESA, ( FgGLint _1, FgGLint _2, FgGLint _3, FgGLint _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( WindowPos4ivMESA, ( const FgGLint * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( WindowPos4sMESA, ( FgGLshort _1, FgGLshort _2, FgGLshort _3, FgGLshort _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( WindowPos4svMESA, ( const FgGLshort * _1 ), ( _1 ) ) \
+    FG_GL_FUNCTION_VOID( WindowPos2dMESA, FgGLContext *, FgGLdouble, FgGLdouble ) \
+    FG_GL_FUNCTION_VOID( WindowPos2dvMESA, FgGLContext *, const FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( WindowPos2fMESA, FgGLContext *, FgGLfloat, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( WindowPos2fvMESA, FgGLContext *, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( WindowPos2iMESA, FgGLContext *, FgGLint, FgGLint ) \
+    FG_GL_FUNCTION_VOID( WindowPos2ivMESA, FgGLContext *, const FgGLint * ) \
+    FG_GL_FUNCTION_VOID( WindowPos2sMESA, FgGLContext *, FgGLshort, FgGLshort ) \
+    FG_GL_FUNCTION_VOID( WindowPos2svMESA, FgGLContext *, const FgGLshort * ) \
+    FG_GL_FUNCTION_VOID( WindowPos3dMESA, FgGLContext *, FgGLdouble, FgGLdouble, FgGLdouble ) \
+    FG_GL_FUNCTION_VOID( WindowPos3dvMESA, FgGLContext *, const FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( WindowPos3fMESA, FgGLContext *, FgGLfloat, FgGLfloat, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( WindowPos3fvMESA, FgGLContext *, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( WindowPos3iMESA, FgGLContext *, FgGLint, FgGLint, FgGLint ) \
+    FG_GL_FUNCTION_VOID( WindowPos3ivMESA, FgGLContext *, const FgGLint * ) \
+    FG_GL_FUNCTION_VOID( WindowPos3sMESA, FgGLContext *, FgGLshort, FgGLshort, FgGLshort ) \
+    FG_GL_FUNCTION_VOID( WindowPos3svMESA, FgGLContext *, const FgGLshort * ) \
+    FG_GL_FUNCTION_VOID( WindowPos4dMESA, FgGLContext *, FgGLdouble, FgGLdouble, FgGLdouble, FgGLdouble ) \
+    FG_GL_FUNCTION_VOID( WindowPos4dvMESA, FgGLContext *, const FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( WindowPos4fMESA, FgGLContext *, FgGLfloat, FgGLfloat, FgGLfloat, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( WindowPos4fvMESA, FgGLContext *, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( WindowPos4iMESA, FgGLContext *, FgGLint, FgGLint, FgGLint, FgGLint ) \
+    FG_GL_FUNCTION_VOID( WindowPos4ivMESA, FgGLContext *, const FgGLint * ) \
+    FG_GL_FUNCTION_VOID( WindowPos4sMESA, FgGLContext *, FgGLshort, FgGLshort, FgGLshort, FgGLshort ) \
+    FG_GL_FUNCTION_VOID( WindowPos4svMESA, FgGLContext *, const FgGLshort * ) \
 \
     /* GL_MESA_ycbcr_texture */ \
 \
     /* GL_NVX_conditional_render */ \
-    FG_GL_VOID_FUNCTION( BeginConditionalRenderNVX, ( FgGLuint _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( EndConditionalRenderNVX, ( ), ( ) ) \
+    FG_GL_FUNCTION_VOID( BeginConditionalRenderNVX, FgGLContext *, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( EndConditionalRenderNVX, FgGLContext * ) \
 \
     /* GL_NV_bindless_multi_draw_indirect */ \
-    FG_GL_VOID_FUNCTION( MultiDrawArraysIndirectBindlessNV, ( FgGLenum _1, const FgGLvoid * _2, FgGLsizei _3, FgGLsizei _4, FgGLint _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( MultiDrawElementsIndirectBindlessNV, ( FgGLenum _1, FgGLenum _2, const FgGLvoid * _3, FgGLsizei _4, FgGLsizei _5, FgGLint _6 ), ( _1, _2, _3, _4, _5, _6 ) ) \
+    FG_GL_FUNCTION_VOID( MultiDrawArraysIndirectBindlessNV, FgGLContext *, FgGLenum, const FgGLvoid *, FgGLsizei, FgGLsizei, FgGLint ) \
+    FG_GL_FUNCTION_VOID( MultiDrawElementsIndirectBindlessNV, FgGLContext *, FgGLenum, FgGLenum, const FgGLvoid *, FgGLsizei, FgGLsizei, FgGLint ) \
 \
     /* GL_NV_bindless_texture */ \
-    FG_GL_FUNCTION( 0, FgGLuint64, GetTextureHandleNV, ( FgGLuint _1 ), ( _1 ) ) \
-    FG_GL_FUNCTION( 0, FgGLuint64, GetTextureSamplerHandleNV, ( FgGLuint _1, FgGLuint _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( MakeTextureHandleResidentNV, ( FgGLuint64 _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( MakeTextureHandleNonResidentNV, ( FgGLuint64 _1 ), ( _1 ) ) \
-    FG_GL_FUNCTION( 0, FgGLuint64, GetImageHandleNV, ( FgGLuint _1, FgGLint _2, FgGLboolean _3, FgGLint _4, FgGLenum _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( MakeImageHandleResidentNV, ( FgGLuint64 _1, FgGLenum _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( MakeImageHandleNonResidentNV, ( FgGLuint64 _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( UniformHandleui64NV, ( FgGLint _1, FgGLuint64 _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( UniformHandleui64vNV, ( FgGLint _1, FgGLsizei _2, const FgGLuint64 * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramUniformHandleui64NV, ( FgGLuint _1, FgGLint _2, FgGLuint64 _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramUniformHandleui64vNV, ( FgGLuint _1, FgGLint _2, FgGLsizei _3, const FgGLuint64 * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_FUNCTION( 0, FgGLboolean, IsTextureHandleResidentNV, ( FgGLuint64 _1 ), ( _1 ) ) \
-    FG_GL_FUNCTION( 0, FgGLboolean, IsImageHandleResidentNV, ( FgGLuint64 _1 ), ( _1 ) ) \
+    FG_GL_FUNCTION_NUM( GetTextureHandleNV, FgGLuint64, FgGLContext *, FgGLuint ) \
+    FG_GL_FUNCTION_NUM( GetTextureSamplerHandleNV, FgGLuint64, FgGLContext *, FgGLuint, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( MakeTextureHandleResidentNV, FgGLContext *, FgGLuint64 ) \
+    FG_GL_FUNCTION_VOID( MakeTextureHandleNonResidentNV, FgGLContext *, FgGLuint64 ) \
+    FG_GL_FUNCTION_NUM( GetImageHandleNV, FgGLuint64, FgGLContext *, FgGLuint, FgGLint, FgGLboolean, FgGLint, FgGLenum ) \
+    FG_GL_FUNCTION_VOID( MakeImageHandleResidentNV, FgGLContext *, FgGLuint64, FgGLenum ) \
+    FG_GL_FUNCTION_VOID( MakeImageHandleNonResidentNV, FgGLContext *, FgGLuint64 ) \
+    FG_GL_FUNCTION_VOID( UniformHandleui64NV, FgGLContext *, FgGLint, FgGLuint64 ) \
+    FG_GL_FUNCTION_VOID( UniformHandleui64vNV, FgGLContext *, FgGLint, FgGLsizei, const FgGLuint64 * ) \
+    FG_GL_FUNCTION_VOID( ProgramUniformHandleui64NV, FgGLContext *, FgGLuint, FgGLint, FgGLuint64 ) \
+    FG_GL_FUNCTION_VOID( ProgramUniformHandleui64vNV, FgGLContext *, FgGLuint, FgGLint, FgGLsizei, const FgGLuint64 * ) \
+    FG_GL_FUNCTION_NUM( IsTextureHandleResidentNV, FgGLboolean, FgGLContext *, FgGLuint64 ) \
+    FG_GL_FUNCTION_NUM( IsImageHandleResidentNV, FgGLboolean, FgGLContext *, FgGLuint64 ) \
 \
     /* GL_NV_blend_equation_advanced */ \
-    FG_GL_VOID_FUNCTION( BlendParameteriNV, ( FgGLenum _1, FgGLint _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( BlendBarrierNV, ( ), ( ) ) \
+    FG_GL_FUNCTION_VOID( BlendParameteriNV, FgGLContext *, FgGLenum, FgGLint ) \
+    FG_GL_FUNCTION_VOID( BlendBarrierNV, FgGLContext * ) \
 \
     /* GL_NV_blend_equation_advanced_coherent */ \
 \
@@ -2777,62 +2778,62 @@
     /* GL_NV_compute_program5 */ \
 \
     /* GL_NV_conditional_render */ \
-    FG_GL_VOID_FUNCTION( BeginConditionalRenderNV, ( FgGLuint _1, FgGLenum _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( EndConditionalRenderNV, ( ), ( ) ) \
+    FG_GL_FUNCTION_VOID( BeginConditionalRenderNV, FgGLContext *, FgGLuint, FgGLenum ) \
+    FG_GL_FUNCTION_VOID( EndConditionalRenderNV, FgGLContext * ) \
 \
     /* GL_NV_copy_depth_to_color */ \
 \
     /* GL_NV_copy_image */ \
-    FG_GL_VOID_FUNCTION( CopyImageSubDataNV, ( FgGLuint _1, FgGLenum _2, FgGLint _3, FgGLint _4, FgGLint _5, FgGLint _6, FgGLuint _7, FgGLenum _8, FgGLint _9, FgGLint _10, FgGLint _11, FgGLint _12, FgGLsizei _13, FgGLsizei _14, FgGLsizei _15 ), ( _1, _2, _3, _4, _5, _6, _7, _8, _9, _10, _11, _12, _13, _14, _15 ) ) \
+    FG_GL_FUNCTION_VOID( CopyImageSubDataNV, FgGLContext *, FgGLuint, FgGLenum, FgGLint, FgGLint, FgGLint, FgGLint, FgGLuint, FgGLenum, FgGLint, FgGLint, FgGLint, FgGLint, FgGLsizei, FgGLsizei, FgGLsizei ) \
 \
     /* GL_NV_deep_texture3D */ \
 \
     /* GL_NV_depth_buffer_float */ \
-    FG_GL_VOID_FUNCTION( DepthRangedNV, ( FgGLdouble _1, FgGLdouble _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( ClearDepthdNV, ( FgGLdouble _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( DepthBoundsdNV, ( FgGLdouble _1, FgGLdouble _2 ), ( _1, _2 ) ) \
+    FG_GL_FUNCTION_VOID( DepthRangedNV, FgGLContext *, FgGLdouble, FgGLdouble ) \
+    FG_GL_FUNCTION_VOID( ClearDepthdNV, FgGLContext *, FgGLdouble ) \
+    FG_GL_FUNCTION_VOID( DepthBoundsdNV, FgGLContext *, FgGLdouble, FgGLdouble ) \
 \
     /* GL_NV_depth_clamp */ \
 \
     /* GL_NV_draw_texture */ \
-    FG_GL_VOID_FUNCTION( DrawTextureNV, ( FgGLuint _1, FgGLuint _2, FgGLfloat _3, FgGLfloat _4, FgGLfloat _5, FgGLfloat _6, FgGLfloat _7, FgGLfloat _8, FgGLfloat _9, FgGLfloat _10, FgGLfloat _11 ), ( _1, _2, _3, _4, _5, _6, _7, _8, _9, _10, _11 ) ) \
+    FG_GL_FUNCTION_VOID( DrawTextureNV, FgGLContext *, FgGLuint, FgGLuint, FgGLfloat, FgGLfloat, FgGLfloat, FgGLfloat, FgGLfloat, FgGLfloat, FgGLfloat, FgGLfloat, FgGLfloat ) \
 \
     /* GL_NV_evaluators */ \
-    FG_GL_VOID_FUNCTION( MapControlPointsNV, ( FgGLenum _1, FgGLuint _2, FgGLenum _3, FgGLsizei _4, FgGLsizei _5, FgGLint _6, FgGLint _7, FgGLboolean _8, const FgGLvoid * _9 ), ( _1, _2, _3, _4, _5, _6, _7, _8, _9 ) ) \
-    FG_GL_VOID_FUNCTION( MapParameterivNV, ( FgGLenum _1, FgGLenum _2, const FgGLint * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( MapParameterfvNV, ( FgGLenum _1, FgGLenum _2, const FgGLfloat * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetMapControlPointsNV, ( FgGLenum _1, FgGLuint _2, FgGLenum _3, FgGLsizei _4, FgGLsizei _5, FgGLboolean _6, FgGLvoid * _7 ), ( _1, _2, _3, _4, _5, _6, _7 ) ) \
-    FG_GL_VOID_FUNCTION( GetMapParameterivNV, ( FgGLenum _1, FgGLenum _2, FgGLint * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetMapParameterfvNV, ( FgGLenum _1, FgGLenum _2, FgGLfloat * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetMapAttribParameterivNV, ( FgGLenum _1, FgGLuint _2, FgGLenum _3, FgGLint * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( GetMapAttribParameterfvNV, ( FgGLenum _1, FgGLuint _2, FgGLenum _3, FgGLfloat * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( EvalMapsNV, ( FgGLenum _1, FgGLenum _2 ), ( _1, _2 ) ) \
+    FG_GL_FUNCTION_VOID( MapControlPointsNV, FgGLContext *, FgGLenum, FgGLuint, FgGLenum, FgGLsizei, FgGLsizei, FgGLint, FgGLint, FgGLboolean, const FgGLvoid * ) \
+    FG_GL_FUNCTION_VOID( MapParameterivNV, FgGLContext *, FgGLenum, FgGLenum, const FgGLint * ) \
+    FG_GL_FUNCTION_VOID( MapParameterfvNV, FgGLContext *, FgGLenum, FgGLenum, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( GetMapControlPointsNV, FgGLContext *, FgGLenum, FgGLuint, FgGLenum, FgGLsizei, FgGLsizei, FgGLboolean, FgGLvoid * ) \
+    FG_GL_FUNCTION_VOID( GetMapParameterivNV, FgGLContext *, FgGLenum, FgGLenum, FgGLint * ) \
+    FG_GL_FUNCTION_VOID( GetMapParameterfvNV, FgGLContext *, FgGLenum, FgGLenum, FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( GetMapAttribParameterivNV, FgGLContext *, FgGLenum, FgGLuint, FgGLenum, FgGLint * ) \
+    FG_GL_FUNCTION_VOID( GetMapAttribParameterfvNV, FgGLContext *, FgGLenum, FgGLuint, FgGLenum, FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( EvalMapsNV, FgGLContext *, FgGLenum, FgGLenum ) \
 \
     /* GL_NV_explicit_multisample */ \
-    FG_GL_VOID_FUNCTION( GetMultisamplefvNV, ( FgGLenum _1, FgGLuint _2, FgGLfloat * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( SampleMaskIndexedNV, ( FgGLuint _1, FgGLbitfield _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( TexRenderbufferNV, ( FgGLenum _1, FgGLuint _2 ), ( _1, _2 ) ) \
+    FG_GL_FUNCTION_VOID( GetMultisamplefvNV, FgGLContext *, FgGLenum, FgGLuint, FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( SampleMaskIndexedNV, FgGLContext *, FgGLuint, FgGLbitfield ) \
+    FG_GL_FUNCTION_VOID( TexRenderbufferNV, FgGLContext *, FgGLenum, FgGLuint ) \
 \
     /* GL_NV_fence */ \
-    FG_GL_VOID_FUNCTION( DeleteFencesNV, ( FgGLsizei _1, const FgGLuint * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( GenFencesNV, ( FgGLsizei _1, FgGLuint * _2 ), ( _1, _2 ) ) \
-    FG_GL_FUNCTION( 0, FgGLboolean, IsFenceNV, ( FgGLuint _1 ), ( _1 ) ) \
-    FG_GL_FUNCTION( 0, FgGLboolean, TestFenceNV, ( FgGLuint _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( GetFenceivNV, ( FgGLuint _1, FgGLenum _2, FgGLint * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( FinishFenceNV, ( FgGLuint _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( SetFenceNV, ( FgGLuint _1, FgGLenum _2 ), ( _1, _2 ) ) \
+    FG_GL_FUNCTION_VOID( DeleteFencesNV, FgGLContext *, FgGLsizei, const FgGLuint * ) \
+    FG_GL_FUNCTION_VOID( GenFencesNV, FgGLContext *, FgGLsizei, FgGLuint * ) \
+    FG_GL_FUNCTION_NUM( IsFenceNV, FgGLboolean, FgGLContext *, FgGLuint ) \
+    FG_GL_FUNCTION_NUM( TestFenceNV, FgGLboolean, FgGLContext *, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( GetFenceivNV, FgGLContext *, FgGLuint, FgGLenum, FgGLint * ) \
+    FG_GL_FUNCTION_VOID( FinishFenceNV, FgGLContext *, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( SetFenceNV, FgGLContext *, FgGLuint, FgGLenum ) \
 \
     /* GL_NV_float_buffer */ \
 \
     /* GL_NV_fog_distance */ \
 \
     /* GL_NV_fragment_program */ \
-    FG_GL_VOID_FUNCTION( ProgramNamedParameter4fNV, ( FgGLuint _1, FgGLsizei _2, const FgGLubyte * _3, FgGLfloat _4, FgGLfloat _5, FgGLfloat _6, FgGLfloat _7 ), ( _1, _2, _3, _4, _5, _6, _7 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramNamedParameter4fvNV, ( FgGLuint _1, FgGLsizei _2, const FgGLubyte * _3, const FgGLfloat * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramNamedParameter4dNV, ( FgGLuint _1, FgGLsizei _2, const FgGLubyte * _3, FgGLdouble _4, FgGLdouble _5, FgGLdouble _6, FgGLdouble _7 ), ( _1, _2, _3, _4, _5, _6, _7 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramNamedParameter4dvNV, ( FgGLuint _1, FgGLsizei _2, const FgGLubyte * _3, const FgGLdouble * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( GetProgramNamedParameterfvNV, ( FgGLuint _1, FgGLsizei _2, const FgGLubyte * _3, FgGLfloat * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( GetProgramNamedParameterdvNV, ( FgGLuint _1, FgGLsizei _2, const FgGLubyte * _3, FgGLdouble * _4 ), ( _1, _2, _3, _4 ) ) \
+    FG_GL_FUNCTION_VOID( ProgramNamedParameter4fNV, FgGLContext *, FgGLuint, FgGLsizei, const FgGLubyte *, FgGLfloat, FgGLfloat, FgGLfloat, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( ProgramNamedParameter4fvNV, FgGLContext *, FgGLuint, FgGLsizei, const FgGLubyte *, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( ProgramNamedParameter4dNV, FgGLContext *, FgGLuint, FgGLsizei, const FgGLubyte *, FgGLdouble, FgGLdouble, FgGLdouble, FgGLdouble ) \
+    FG_GL_FUNCTION_VOID( ProgramNamedParameter4dvNV, FgGLContext *, FgGLuint, FgGLsizei, const FgGLubyte *, const FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( GetProgramNamedParameterfvNV, FgGLContext *, FgGLuint, FgGLsizei, const FgGLubyte *, FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( GetProgramNamedParameterdvNV, FgGLContext *, FgGLuint, FgGLsizei, const FgGLubyte *, FgGLdouble * ) \
 \
     /* GL_NV_fragment_program2 */ \
 \
@@ -2841,122 +2842,122 @@
     /* GL_NV_fragment_program_option */ \
 \
     /* GL_NV_framebuffer_multisample_coverage */ \
-    FG_GL_VOID_FUNCTION( RenderbufferStorageMultisampleCoverageNV, ( FgGLenum _1, FgGLsizei _2, FgGLsizei _3, FgGLenum _4, FgGLsizei _5, FgGLsizei _6 ), ( _1, _2, _3, _4, _5, _6 ) ) \
+    FG_GL_FUNCTION_VOID( RenderbufferStorageMultisampleCoverageNV, FgGLContext *, FgGLenum, FgGLsizei, FgGLsizei, FgGLenum, FgGLsizei, FgGLsizei ) \
 \
     /* GL_NV_geometry_program4 */ \
-    FG_GL_VOID_FUNCTION( ProgramVertexLimitNV, ( FgGLenum _1, FgGLint _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( FramebufferTextureEXT, ( FgGLenum _1, FgGLenum _2, FgGLuint _3, FgGLint _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( FramebufferTextureLayerEXT, ( FgGLenum _1, FgGLenum _2, FgGLuint _3, FgGLint _4, FgGLint _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( FramebufferTextureFaceEXT, ( FgGLenum _1, FgGLenum _2, FgGLuint _3, FgGLint _4, FgGLenum _5 ), ( _1, _2, _3, _4, _5 ) ) \
+    FG_GL_FUNCTION_VOID( ProgramVertexLimitNV, FgGLContext *, FgGLenum, FgGLint ) \
+    FG_GL_FUNCTION_VOID( FramebufferTextureEXT, FgGLContext *, FgGLenum, FgGLenum, FgGLuint, FgGLint ) \
+    FG_GL_FUNCTION_VOID( FramebufferTextureLayerEXT, FgGLContext *, FgGLenum, FgGLenum, FgGLuint, FgGLint, FgGLint ) \
+    FG_GL_FUNCTION_VOID( FramebufferTextureFaceEXT, FgGLContext *, FgGLenum, FgGLenum, FgGLuint, FgGLint, FgGLenum ) \
 \
     /* GL_NV_geometry_shader4 */ \
 \
     /* GL_NV_gpu_program4 */ \
-    FG_GL_VOID_FUNCTION( ProgramLocalParameterI4iNV, ( FgGLenum _1, FgGLuint _2, FgGLint _3, FgGLint _4, FgGLint _5, FgGLint _6 ), ( _1, _2, _3, _4, _5, _6 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramLocalParameterI4ivNV, ( FgGLenum _1, FgGLuint _2, const FgGLint * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramLocalParametersI4ivNV, ( FgGLenum _1, FgGLuint _2, FgGLsizei _3, const FgGLint * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramLocalParameterI4uiNV, ( FgGLenum _1, FgGLuint _2, FgGLuint _3, FgGLuint _4, FgGLuint _5, FgGLuint _6 ), ( _1, _2, _3, _4, _5, _6 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramLocalParameterI4uivNV, ( FgGLenum _1, FgGLuint _2, const FgGLuint * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramLocalParametersI4uivNV, ( FgGLenum _1, FgGLuint _2, FgGLsizei _3, const FgGLuint * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramEnvParameterI4iNV, ( FgGLenum _1, FgGLuint _2, FgGLint _3, FgGLint _4, FgGLint _5, FgGLint _6 ), ( _1, _2, _3, _4, _5, _6 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramEnvParameterI4ivNV, ( FgGLenum _1, FgGLuint _2, const FgGLint * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramEnvParametersI4ivNV, ( FgGLenum _1, FgGLuint _2, FgGLsizei _3, const FgGLint * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramEnvParameterI4uiNV, ( FgGLenum _1, FgGLuint _2, FgGLuint _3, FgGLuint _4, FgGLuint _5, FgGLuint _6 ), ( _1, _2, _3, _4, _5, _6 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramEnvParameterI4uivNV, ( FgGLenum _1, FgGLuint _2, const FgGLuint * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramEnvParametersI4uivNV, ( FgGLenum _1, FgGLuint _2, FgGLsizei _3, const FgGLuint * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( GetProgramLocalParameterIivNV, ( FgGLenum _1, FgGLuint _2, FgGLint * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetProgramLocalParameterIuivNV, ( FgGLenum _1, FgGLuint _2, FgGLuint * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetProgramEnvParameterIivNV, ( FgGLenum _1, FgGLuint _2, FgGLint * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetProgramEnvParameterIuivNV, ( FgGLenum _1, FgGLuint _2, FgGLuint * _3 ), ( _1, _2, _3 ) ) \
+    FG_GL_FUNCTION_VOID( ProgramLocalParameterI4iNV, FgGLContext *, FgGLenum, FgGLuint, FgGLint, FgGLint, FgGLint, FgGLint ) \
+    FG_GL_FUNCTION_VOID( ProgramLocalParameterI4ivNV, FgGLContext *, FgGLenum, FgGLuint, const FgGLint * ) \
+    FG_GL_FUNCTION_VOID( ProgramLocalParametersI4ivNV, FgGLContext *, FgGLenum, FgGLuint, FgGLsizei, const FgGLint * ) \
+    FG_GL_FUNCTION_VOID( ProgramLocalParameterI4uiNV, FgGLContext *, FgGLenum, FgGLuint, FgGLuint, FgGLuint, FgGLuint, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( ProgramLocalParameterI4uivNV, FgGLContext *, FgGLenum, FgGLuint, const FgGLuint * ) \
+    FG_GL_FUNCTION_VOID( ProgramLocalParametersI4uivNV, FgGLContext *, FgGLenum, FgGLuint, FgGLsizei, const FgGLuint * ) \
+    FG_GL_FUNCTION_VOID( ProgramEnvParameterI4iNV, FgGLContext *, FgGLenum, FgGLuint, FgGLint, FgGLint, FgGLint, FgGLint ) \
+    FG_GL_FUNCTION_VOID( ProgramEnvParameterI4ivNV, FgGLContext *, FgGLenum, FgGLuint, const FgGLint * ) \
+    FG_GL_FUNCTION_VOID( ProgramEnvParametersI4ivNV, FgGLContext *, FgGLenum, FgGLuint, FgGLsizei, const FgGLint * ) \
+    FG_GL_FUNCTION_VOID( ProgramEnvParameterI4uiNV, FgGLContext *, FgGLenum, FgGLuint, FgGLuint, FgGLuint, FgGLuint, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( ProgramEnvParameterI4uivNV, FgGLContext *, FgGLenum, FgGLuint, const FgGLuint * ) \
+    FG_GL_FUNCTION_VOID( ProgramEnvParametersI4uivNV, FgGLContext *, FgGLenum, FgGLuint, FgGLsizei, const FgGLuint * ) \
+    FG_GL_FUNCTION_VOID( GetProgramLocalParameterIivNV, FgGLContext *, FgGLenum, FgGLuint, FgGLint * ) \
+    FG_GL_FUNCTION_VOID( GetProgramLocalParameterIuivNV, FgGLContext *, FgGLenum, FgGLuint, FgGLuint * ) \
+    FG_GL_FUNCTION_VOID( GetProgramEnvParameterIivNV, FgGLContext *, FgGLenum, FgGLuint, FgGLint * ) \
+    FG_GL_FUNCTION_VOID( GetProgramEnvParameterIuivNV, FgGLContext *, FgGLenum, FgGLuint, FgGLuint * ) \
 \
     /* GL_NV_gpu_program5 */ \
-    FG_GL_VOID_FUNCTION( ProgramSubroutineParametersuivNV, ( FgGLenum _1, FgGLsizei _2, const FgGLuint * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetProgramSubroutineParameteruivNV, ( FgGLenum _1, FgGLuint _2, FgGLuint * _3 ), ( _1, _2, _3 ) ) \
+    FG_GL_FUNCTION_VOID( ProgramSubroutineParametersuivNV, FgGLContext *, FgGLenum, FgGLsizei, const FgGLuint * ) \
+    FG_GL_FUNCTION_VOID( GetProgramSubroutineParameteruivNV, FgGLContext *, FgGLenum, FgGLuint, FgGLuint * ) \
 \
     /* GL_NV_gpu_program5_mem_extended */ \
 \
     /* GL_NV_gpu_shader5 */ \
-    FG_GL_VOID_FUNCTION( Uniform1i64NV, ( FgGLint _1, FgGLint64EXT _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( Uniform2i64NV, ( FgGLint _1, FgGLint64EXT _2, FgGLint64EXT _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( Uniform3i64NV, ( FgGLint _1, FgGLint64EXT _2, FgGLint64EXT _3, FgGLint64EXT _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( Uniform4i64NV, ( FgGLint _1, FgGLint64EXT _2, FgGLint64EXT _3, FgGLint64EXT _4, FgGLint64EXT _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( Uniform1i64vNV, ( FgGLint _1, FgGLsizei _2, const FgGLint64EXT * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( Uniform2i64vNV, ( FgGLint _1, FgGLsizei _2, const FgGLint64EXT * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( Uniform3i64vNV, ( FgGLint _1, FgGLsizei _2, const FgGLint64EXT * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( Uniform4i64vNV, ( FgGLint _1, FgGLsizei _2, const FgGLint64EXT * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( Uniform1ui64NV, ( FgGLint _1, FgGLuint64EXT _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( Uniform2ui64NV, ( FgGLint _1, FgGLuint64EXT _2, FgGLuint64EXT _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( Uniform3ui64NV, ( FgGLint _1, FgGLuint64EXT _2, FgGLuint64EXT _3, FgGLuint64EXT _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( Uniform4ui64NV, ( FgGLint _1, FgGLuint64EXT _2, FgGLuint64EXT _3, FgGLuint64EXT _4, FgGLuint64EXT _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( Uniform1ui64vNV, ( FgGLint _1, FgGLsizei _2, const FgGLuint64EXT * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( Uniform2ui64vNV, ( FgGLint _1, FgGLsizei _2, const FgGLuint64EXT * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( Uniform3ui64vNV, ( FgGLint _1, FgGLsizei _2, const FgGLuint64EXT * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( Uniform4ui64vNV, ( FgGLint _1, FgGLsizei _2, const FgGLuint64EXT * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetUniformi64vNV, ( FgGLuint _1, FgGLint _2, FgGLint64EXT * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramUniform1i64NV, ( FgGLuint _1, FgGLint _2, FgGLint64EXT _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramUniform2i64NV, ( FgGLuint _1, FgGLint _2, FgGLint64EXT _3, FgGLint64EXT _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramUniform3i64NV, ( FgGLuint _1, FgGLint _2, FgGLint64EXT _3, FgGLint64EXT _4, FgGLint64EXT _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramUniform4i64NV, ( FgGLuint _1, FgGLint _2, FgGLint64EXT _3, FgGLint64EXT _4, FgGLint64EXT _5, FgGLint64EXT _6 ), ( _1, _2, _3, _4, _5, _6 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramUniform1i64vNV, ( FgGLuint _1, FgGLint _2, FgGLsizei _3, const FgGLint64EXT * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramUniform2i64vNV, ( FgGLuint _1, FgGLint _2, FgGLsizei _3, const FgGLint64EXT * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramUniform3i64vNV, ( FgGLuint _1, FgGLint _2, FgGLsizei _3, const FgGLint64EXT * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramUniform4i64vNV, ( FgGLuint _1, FgGLint _2, FgGLsizei _3, const FgGLint64EXT * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramUniform1ui64NV, ( FgGLuint _1, FgGLint _2, FgGLuint64EXT _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramUniform2ui64NV, ( FgGLuint _1, FgGLint _2, FgGLuint64EXT _3, FgGLuint64EXT _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramUniform3ui64NV, ( FgGLuint _1, FgGLint _2, FgGLuint64EXT _3, FgGLuint64EXT _4, FgGLuint64EXT _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramUniform4ui64NV, ( FgGLuint _1, FgGLint _2, FgGLuint64EXT _3, FgGLuint64EXT _4, FgGLuint64EXT _5, FgGLuint64EXT _6 ), ( _1, _2, _3, _4, _5, _6 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramUniform1ui64vNV, ( FgGLuint _1, FgGLint _2, FgGLsizei _3, const FgGLuint64EXT * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramUniform2ui64vNV, ( FgGLuint _1, FgGLint _2, FgGLsizei _3, const FgGLuint64EXT * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramUniform3ui64vNV, ( FgGLuint _1, FgGLint _2, FgGLsizei _3, const FgGLuint64EXT * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramUniform4ui64vNV, ( FgGLuint _1, FgGLint _2, FgGLsizei _3, const FgGLuint64EXT * _4 ), ( _1, _2, _3, _4 ) ) \
+    FG_GL_FUNCTION_VOID( Uniform1i64NV, FgGLContext *, FgGLint, FgGLint64EXT ) \
+    FG_GL_FUNCTION_VOID( Uniform2i64NV, FgGLContext *, FgGLint, FgGLint64EXT, FgGLint64EXT ) \
+    FG_GL_FUNCTION_VOID( Uniform3i64NV, FgGLContext *, FgGLint, FgGLint64EXT, FgGLint64EXT, FgGLint64EXT ) \
+    FG_GL_FUNCTION_VOID( Uniform4i64NV, FgGLContext *, FgGLint, FgGLint64EXT, FgGLint64EXT, FgGLint64EXT, FgGLint64EXT ) \
+    FG_GL_FUNCTION_VOID( Uniform1i64vNV, FgGLContext *, FgGLint, FgGLsizei, const FgGLint64EXT * ) \
+    FG_GL_FUNCTION_VOID( Uniform2i64vNV, FgGLContext *, FgGLint, FgGLsizei, const FgGLint64EXT * ) \
+    FG_GL_FUNCTION_VOID( Uniform3i64vNV, FgGLContext *, FgGLint, FgGLsizei, const FgGLint64EXT * ) \
+    FG_GL_FUNCTION_VOID( Uniform4i64vNV, FgGLContext *, FgGLint, FgGLsizei, const FgGLint64EXT * ) \
+    FG_GL_FUNCTION_VOID( Uniform1ui64NV, FgGLContext *, FgGLint, FgGLuint64EXT ) \
+    FG_GL_FUNCTION_VOID( Uniform2ui64NV, FgGLContext *, FgGLint, FgGLuint64EXT, FgGLuint64EXT ) \
+    FG_GL_FUNCTION_VOID( Uniform3ui64NV, FgGLContext *, FgGLint, FgGLuint64EXT, FgGLuint64EXT, FgGLuint64EXT ) \
+    FG_GL_FUNCTION_VOID( Uniform4ui64NV, FgGLContext *, FgGLint, FgGLuint64EXT, FgGLuint64EXT, FgGLuint64EXT, FgGLuint64EXT ) \
+    FG_GL_FUNCTION_VOID( Uniform1ui64vNV, FgGLContext *, FgGLint, FgGLsizei, const FgGLuint64EXT * ) \
+    FG_GL_FUNCTION_VOID( Uniform2ui64vNV, FgGLContext *, FgGLint, FgGLsizei, const FgGLuint64EXT * ) \
+    FG_GL_FUNCTION_VOID( Uniform3ui64vNV, FgGLContext *, FgGLint, FgGLsizei, const FgGLuint64EXT * ) \
+    FG_GL_FUNCTION_VOID( Uniform4ui64vNV, FgGLContext *, FgGLint, FgGLsizei, const FgGLuint64EXT * ) \
+    FG_GL_FUNCTION_VOID( GetUniformi64vNV, FgGLContext *, FgGLuint, FgGLint, FgGLint64EXT * ) \
+    FG_GL_FUNCTION_VOID( ProgramUniform1i64NV, FgGLContext *, FgGLuint, FgGLint, FgGLint64EXT ) \
+    FG_GL_FUNCTION_VOID( ProgramUniform2i64NV, FgGLContext *, FgGLuint, FgGLint, FgGLint64EXT, FgGLint64EXT ) \
+    FG_GL_FUNCTION_VOID( ProgramUniform3i64NV, FgGLContext *, FgGLuint, FgGLint, FgGLint64EXT, FgGLint64EXT, FgGLint64EXT ) \
+    FG_GL_FUNCTION_VOID( ProgramUniform4i64NV, FgGLContext *, FgGLuint, FgGLint, FgGLint64EXT, FgGLint64EXT, FgGLint64EXT, FgGLint64EXT ) \
+    FG_GL_FUNCTION_VOID( ProgramUniform1i64vNV, FgGLContext *, FgGLuint, FgGLint, FgGLsizei, const FgGLint64EXT * ) \
+    FG_GL_FUNCTION_VOID( ProgramUniform2i64vNV, FgGLContext *, FgGLuint, FgGLint, FgGLsizei, const FgGLint64EXT * ) \
+    FG_GL_FUNCTION_VOID( ProgramUniform3i64vNV, FgGLContext *, FgGLuint, FgGLint, FgGLsizei, const FgGLint64EXT * ) \
+    FG_GL_FUNCTION_VOID( ProgramUniform4i64vNV, FgGLContext *, FgGLuint, FgGLint, FgGLsizei, const FgGLint64EXT * ) \
+    FG_GL_FUNCTION_VOID( ProgramUniform1ui64NV, FgGLContext *, FgGLuint, FgGLint, FgGLuint64EXT ) \
+    FG_GL_FUNCTION_VOID( ProgramUniform2ui64NV, FgGLContext *, FgGLuint, FgGLint, FgGLuint64EXT, FgGLuint64EXT ) \
+    FG_GL_FUNCTION_VOID( ProgramUniform3ui64NV, FgGLContext *, FgGLuint, FgGLint, FgGLuint64EXT, FgGLuint64EXT, FgGLuint64EXT ) \
+    FG_GL_FUNCTION_VOID( ProgramUniform4ui64NV, FgGLContext *, FgGLuint, FgGLint, FgGLuint64EXT, FgGLuint64EXT, FgGLuint64EXT, FgGLuint64EXT ) \
+    FG_GL_FUNCTION_VOID( ProgramUniform1ui64vNV, FgGLContext *, FgGLuint, FgGLint, FgGLsizei, const FgGLuint64EXT * ) \
+    FG_GL_FUNCTION_VOID( ProgramUniform2ui64vNV, FgGLContext *, FgGLuint, FgGLint, FgGLsizei, const FgGLuint64EXT * ) \
+    FG_GL_FUNCTION_VOID( ProgramUniform3ui64vNV, FgGLContext *, FgGLuint, FgGLint, FgGLsizei, const FgGLuint64EXT * ) \
+    FG_GL_FUNCTION_VOID( ProgramUniform4ui64vNV, FgGLContext *, FgGLuint, FgGLint, FgGLsizei, const FgGLuint64EXT * ) \
 \
     /* GL_NV_half_float */ \
-    FG_GL_VOID_FUNCTION( Vertex2hNV, ( FgGLhalfNV _1, FgGLhalfNV _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( Vertex2hvNV, ( const FgGLhalfNV * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( Vertex3hNV, ( FgGLhalfNV _1, FgGLhalfNV _2, FgGLhalfNV _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( Vertex3hvNV, ( const FgGLhalfNV * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( Vertex4hNV, ( FgGLhalfNV _1, FgGLhalfNV _2, FgGLhalfNV _3, FgGLhalfNV _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( Vertex4hvNV, ( const FgGLhalfNV * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( Normal3hNV, ( FgGLhalfNV _1, FgGLhalfNV _2, FgGLhalfNV _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( Normal3hvNV, ( const FgGLhalfNV * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( Color3hNV, ( FgGLhalfNV _1, FgGLhalfNV _2, FgGLhalfNV _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( Color3hvNV, ( const FgGLhalfNV * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( Color4hNV, ( FgGLhalfNV _1, FgGLhalfNV _2, FgGLhalfNV _3, FgGLhalfNV _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( Color4hvNV, ( const FgGLhalfNV * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( TexCoord1hNV, ( FgGLhalfNV _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( TexCoord1hvNV, ( const FgGLhalfNV * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( TexCoord2hNV, ( FgGLhalfNV _1, FgGLhalfNV _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( TexCoord2hvNV, ( const FgGLhalfNV * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( TexCoord3hNV, ( FgGLhalfNV _1, FgGLhalfNV _2, FgGLhalfNV _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( TexCoord3hvNV, ( const FgGLhalfNV * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( TexCoord4hNV, ( FgGLhalfNV _1, FgGLhalfNV _2, FgGLhalfNV _3, FgGLhalfNV _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( TexCoord4hvNV, ( const FgGLhalfNV * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( MultiTexCoord1hNV, ( FgGLenum _1, FgGLhalfNV _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( MultiTexCoord1hvNV, ( FgGLenum _1, const FgGLhalfNV * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( MultiTexCoord2hNV, ( FgGLenum _1, FgGLhalfNV _2, FgGLhalfNV _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( MultiTexCoord2hvNV, ( FgGLenum _1, const FgGLhalfNV * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( MultiTexCoord3hNV, ( FgGLenum _1, FgGLhalfNV _2, FgGLhalfNV _3, FgGLhalfNV _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( MultiTexCoord3hvNV, ( FgGLenum _1, const FgGLhalfNV * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( MultiTexCoord4hNV, ( FgGLenum _1, FgGLhalfNV _2, FgGLhalfNV _3, FgGLhalfNV _4, FgGLhalfNV _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( MultiTexCoord4hvNV, ( FgGLenum _1, const FgGLhalfNV * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( FogCoordhNV, ( FgGLhalfNV _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( FogCoordhvNV, ( const FgGLhalfNV * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( SecondaryColor3hNV, ( FgGLhalfNV _1, FgGLhalfNV _2, FgGLhalfNV _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( SecondaryColor3hvNV, ( const FgGLhalfNV * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( VertexWeighthNV, ( FgGLhalfNV _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( VertexWeighthvNV, ( const FgGLhalfNV * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttrib1hNV, ( FgGLuint _1, FgGLhalfNV _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttrib1hvNV, ( FgGLuint _1, const FgGLhalfNV * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttrib2hNV, ( FgGLuint _1, FgGLhalfNV _2, FgGLhalfNV _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttrib2hvNV, ( FgGLuint _1, const FgGLhalfNV * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttrib3hNV, ( FgGLuint _1, FgGLhalfNV _2, FgGLhalfNV _3, FgGLhalfNV _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttrib3hvNV, ( FgGLuint _1, const FgGLhalfNV * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttrib4hNV, ( FgGLuint _1, FgGLhalfNV _2, FgGLhalfNV _3, FgGLhalfNV _4, FgGLhalfNV _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttrib4hvNV, ( FgGLuint _1, const FgGLhalfNV * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttribs1hvNV, ( FgGLuint _1, FgGLsizei _2, const FgGLhalfNV * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttribs2hvNV, ( FgGLuint _1, FgGLsizei _2, const FgGLhalfNV * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttribs3hvNV, ( FgGLuint _1, FgGLsizei _2, const FgGLhalfNV * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttribs4hvNV, ( FgGLuint _1, FgGLsizei _2, const FgGLhalfNV * _3 ), ( _1, _2, _3 ) ) \
+    FG_GL_FUNCTION_VOID( Vertex2hNV, FgGLContext *, FgGLhalfNV, FgGLhalfNV ) \
+    FG_GL_FUNCTION_VOID( Vertex2hvNV, FgGLContext *, const FgGLhalfNV * ) \
+    FG_GL_FUNCTION_VOID( Vertex3hNV, FgGLContext *, FgGLhalfNV, FgGLhalfNV, FgGLhalfNV ) \
+    FG_GL_FUNCTION_VOID( Vertex3hvNV, FgGLContext *, const FgGLhalfNV * ) \
+    FG_GL_FUNCTION_VOID( Vertex4hNV, FgGLContext *, FgGLhalfNV, FgGLhalfNV, FgGLhalfNV, FgGLhalfNV ) \
+    FG_GL_FUNCTION_VOID( Vertex4hvNV, FgGLContext *, const FgGLhalfNV * ) \
+    FG_GL_FUNCTION_VOID( Normal3hNV, FgGLContext *, FgGLhalfNV, FgGLhalfNV, FgGLhalfNV ) \
+    FG_GL_FUNCTION_VOID( Normal3hvNV, FgGLContext *, const FgGLhalfNV * ) \
+    FG_GL_FUNCTION_VOID( Color3hNV, FgGLContext *, FgGLhalfNV, FgGLhalfNV, FgGLhalfNV ) \
+    FG_GL_FUNCTION_VOID( Color3hvNV, FgGLContext *, const FgGLhalfNV * ) \
+    FG_GL_FUNCTION_VOID( Color4hNV, FgGLContext *, FgGLhalfNV, FgGLhalfNV, FgGLhalfNV, FgGLhalfNV ) \
+    FG_GL_FUNCTION_VOID( Color4hvNV, FgGLContext *, const FgGLhalfNV * ) \
+    FG_GL_FUNCTION_VOID( TexCoord1hNV, FgGLContext *, FgGLhalfNV ) \
+    FG_GL_FUNCTION_VOID( TexCoord1hvNV, FgGLContext *, const FgGLhalfNV * ) \
+    FG_GL_FUNCTION_VOID( TexCoord2hNV, FgGLContext *, FgGLhalfNV, FgGLhalfNV ) \
+    FG_GL_FUNCTION_VOID( TexCoord2hvNV, FgGLContext *, const FgGLhalfNV * ) \
+    FG_GL_FUNCTION_VOID( TexCoord3hNV, FgGLContext *, FgGLhalfNV, FgGLhalfNV, FgGLhalfNV ) \
+    FG_GL_FUNCTION_VOID( TexCoord3hvNV, FgGLContext *, const FgGLhalfNV * ) \
+    FG_GL_FUNCTION_VOID( TexCoord4hNV, FgGLContext *, FgGLhalfNV, FgGLhalfNV, FgGLhalfNV, FgGLhalfNV ) \
+    FG_GL_FUNCTION_VOID( TexCoord4hvNV, FgGLContext *, const FgGLhalfNV * ) \
+    FG_GL_FUNCTION_VOID( MultiTexCoord1hNV, FgGLContext *, FgGLenum, FgGLhalfNV ) \
+    FG_GL_FUNCTION_VOID( MultiTexCoord1hvNV, FgGLContext *, FgGLenum, const FgGLhalfNV * ) \
+    FG_GL_FUNCTION_VOID( MultiTexCoord2hNV, FgGLContext *, FgGLenum, FgGLhalfNV, FgGLhalfNV ) \
+    FG_GL_FUNCTION_VOID( MultiTexCoord2hvNV, FgGLContext *, FgGLenum, const FgGLhalfNV * ) \
+    FG_GL_FUNCTION_VOID( MultiTexCoord3hNV, FgGLContext *, FgGLenum, FgGLhalfNV, FgGLhalfNV, FgGLhalfNV ) \
+    FG_GL_FUNCTION_VOID( MultiTexCoord3hvNV, FgGLContext *, FgGLenum, const FgGLhalfNV * ) \
+    FG_GL_FUNCTION_VOID( MultiTexCoord4hNV, FgGLContext *, FgGLenum, FgGLhalfNV, FgGLhalfNV, FgGLhalfNV, FgGLhalfNV ) \
+    FG_GL_FUNCTION_VOID( MultiTexCoord4hvNV, FgGLContext *, FgGLenum, const FgGLhalfNV * ) \
+    FG_GL_FUNCTION_VOID( FogCoordhNV, FgGLContext *, FgGLhalfNV ) \
+    FG_GL_FUNCTION_VOID( FogCoordhvNV, FgGLContext *, const FgGLhalfNV * ) \
+    FG_GL_FUNCTION_VOID( SecondaryColor3hNV, FgGLContext *, FgGLhalfNV, FgGLhalfNV, FgGLhalfNV ) \
+    FG_GL_FUNCTION_VOID( SecondaryColor3hvNV, FgGLContext *, const FgGLhalfNV * ) \
+    FG_GL_FUNCTION_VOID( VertexWeighthNV, FgGLContext *, FgGLhalfNV ) \
+    FG_GL_FUNCTION_VOID( VertexWeighthvNV, FgGLContext *, const FgGLhalfNV * ) \
+    FG_GL_FUNCTION_VOID( VertexAttrib1hNV, FgGLContext *, FgGLuint, FgGLhalfNV ) \
+    FG_GL_FUNCTION_VOID( VertexAttrib1hvNV, FgGLContext *, FgGLuint, const FgGLhalfNV * ) \
+    FG_GL_FUNCTION_VOID( VertexAttrib2hNV, FgGLContext *, FgGLuint, FgGLhalfNV, FgGLhalfNV ) \
+    FG_GL_FUNCTION_VOID( VertexAttrib2hvNV, FgGLContext *, FgGLuint, const FgGLhalfNV * ) \
+    FG_GL_FUNCTION_VOID( VertexAttrib3hNV, FgGLContext *, FgGLuint, FgGLhalfNV, FgGLhalfNV, FgGLhalfNV ) \
+    FG_GL_FUNCTION_VOID( VertexAttrib3hvNV, FgGLContext *, FgGLuint, const FgGLhalfNV * ) \
+    FG_GL_FUNCTION_VOID( VertexAttrib4hNV, FgGLContext *, FgGLuint, FgGLhalfNV, FgGLhalfNV, FgGLhalfNV, FgGLhalfNV ) \
+    FG_GL_FUNCTION_VOID( VertexAttrib4hvNV, FgGLContext *, FgGLuint, const FgGLhalfNV * ) \
+    FG_GL_FUNCTION_VOID( VertexAttribs1hvNV, FgGLContext *, FgGLuint, FgGLsizei, const FgGLhalfNV * ) \
+    FG_GL_FUNCTION_VOID( VertexAttribs2hvNV, FgGLContext *, FgGLuint, FgGLsizei, const FgGLhalfNV * ) \
+    FG_GL_FUNCTION_VOID( VertexAttribs3hvNV, FgGLContext *, FgGLuint, FgGLsizei, const FgGLhalfNV * ) \
+    FG_GL_FUNCTION_VOID( VertexAttribs4hvNV, FgGLContext *, FgGLuint, FgGLsizei, const FgGLhalfNV * ) \
 \
     /* GL_NV_light_max_exponent */ \
 \
@@ -2965,132 +2966,132 @@
     /* GL_NV_multisample_filter_hint */ \
 \
     /* GL_NV_occlusion_query */ \
-    FG_GL_VOID_FUNCTION( GenOcclusionQueriesNV, ( FgGLsizei _1, FgGLuint * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( DeleteOcclusionQueriesNV, ( FgGLsizei _1, const FgGLuint * _2 ), ( _1, _2 ) ) \
-    FG_GL_FUNCTION( 0, FgGLboolean, IsOcclusionQueryNV, ( FgGLuint _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( BeginOcclusionQueryNV, ( FgGLuint _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( EndOcclusionQueryNV, ( ), ( ) ) \
-    FG_GL_VOID_FUNCTION( GetOcclusionQueryivNV, ( FgGLuint _1, FgGLenum _2, FgGLint * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetOcclusionQueryuivNV, ( FgGLuint _1, FgGLenum _2, FgGLuint * _3 ), ( _1, _2, _3 ) ) \
+    FG_GL_FUNCTION_VOID( GenOcclusionQueriesNV, FgGLContext *, FgGLsizei, FgGLuint * ) \
+    FG_GL_FUNCTION_VOID( DeleteOcclusionQueriesNV, FgGLContext *, FgGLsizei, const FgGLuint * ) \
+    FG_GL_FUNCTION_NUM( IsOcclusionQueryNV, FgGLboolean, FgGLContext *, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( BeginOcclusionQueryNV, FgGLContext *, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( EndOcclusionQueryNV, FgGLContext * ) \
+    FG_GL_FUNCTION_VOID( GetOcclusionQueryivNV, FgGLContext *, FgGLuint, FgGLenum, FgGLint * ) \
+    FG_GL_FUNCTION_VOID( GetOcclusionQueryuivNV, FgGLContext *, FgGLuint, FgGLenum, FgGLuint * ) \
 \
     /* GL_NV_packed_depth_stencil */ \
 \
     /* GL_NV_parameter_buffer_object */ \
-    FG_GL_VOID_FUNCTION( ProgramBufferParametersfvNV, ( FgGLenum _1, FgGLuint _2, FgGLuint _3, FgGLsizei _4, const FgGLfloat * _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramBufferParametersIivNV, ( FgGLenum _1, FgGLuint _2, FgGLuint _3, FgGLsizei _4, const FgGLint * _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramBufferParametersIuivNV, ( FgGLenum _1, FgGLuint _2, FgGLuint _3, FgGLsizei _4, const FgGLuint * _5 ), ( _1, _2, _3, _4, _5 ) ) \
+    FG_GL_FUNCTION_VOID( ProgramBufferParametersfvNV, FgGLContext *, FgGLenum, FgGLuint, FgGLuint, FgGLsizei, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( ProgramBufferParametersIivNV, FgGLContext *, FgGLenum, FgGLuint, FgGLuint, FgGLsizei, const FgGLint * ) \
+    FG_GL_FUNCTION_VOID( ProgramBufferParametersIuivNV, FgGLContext *, FgGLenum, FgGLuint, FgGLuint, FgGLsizei, const FgGLuint * ) \
 \
     /* GL_NV_parameter_buffer_object2 */ \
 \
     /* GL_NV_path_rendering */ \
-    FG_GL_FUNCTION( 0, FgGLuint, GenPathsNV, ( FgGLsizei _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( DeletePathsNV, ( FgGLuint _1, FgGLsizei _2 ), ( _1, _2 ) ) \
-    FG_GL_FUNCTION( 0, FgGLboolean, IsPathNV, ( FgGLuint _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( PathCommandsNV, ( FgGLuint _1, FgGLsizei _2, const FgGLubyte * _3, FgGLsizei _4, FgGLenum _5, const FgGLvoid * _6 ), ( _1, _2, _3, _4, _5, _6 ) ) \
-    FG_GL_VOID_FUNCTION( PathCoordsNV, ( FgGLuint _1, FgGLsizei _2, FgGLenum _3, const FgGLvoid * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( PathSubCommandsNV, ( FgGLuint _1, FgGLsizei _2, FgGLsizei _3, FgGLsizei _4, const FgGLubyte * _5, FgGLsizei _6, FgGLenum _7, const FgGLvoid * _8 ), ( _1, _2, _3, _4, _5, _6, _7, _8 ) ) \
-    FG_GL_VOID_FUNCTION( PathSubCoordsNV, ( FgGLuint _1, FgGLsizei _2, FgGLsizei _3, FgGLenum _4, const FgGLvoid * _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( PathStringNV, ( FgGLuint _1, FgGLenum _2, FgGLsizei _3, const FgGLvoid * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( PathGlyphsNV, ( FgGLuint _1, FgGLenum _2, const FgGLvoid * _3, FgGLbitfield _4, FgGLsizei _5, FgGLenum _6, const FgGLvoid * _7, FgGLenum _8, FgGLuint _9, FgGLfloat _10 ), ( _1, _2, _3, _4, _5, _6, _7, _8, _9, _10 ) ) \
-    FG_GL_VOID_FUNCTION( PathGlyphRangeNV, ( FgGLuint _1, FgGLenum _2, const FgGLvoid * _3, FgGLbitfield _4, FgGLuint _5, FgGLsizei _6, FgGLenum _7, FgGLuint _8, FgGLfloat _9 ), ( _1, _2, _3, _4, _5, _6, _7, _8, _9 ) ) \
-    FG_GL_VOID_FUNCTION( WeightPathsNV, ( FgGLuint _1, FgGLsizei _2, const FgGLuint * _3, const FgGLfloat * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( CopyPathNV, ( FgGLuint _1, FgGLuint _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( InterpolatePathsNV, ( FgGLuint _1, FgGLuint _2, FgGLuint _3, FgGLfloat _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( TransformPathNV, ( FgGLuint _1, FgGLuint _2, FgGLenum _3, const FgGLfloat * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( PathParameterivNV, ( FgGLuint _1, FgGLenum _2, const FgGLint * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( PathParameteriNV, ( FgGLuint _1, FgGLenum _2, FgGLint _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( PathParameterfvNV, ( FgGLuint _1, FgGLenum _2, const FgGLfloat * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( PathParameterfNV, ( FgGLuint _1, FgGLenum _2, FgGLfloat _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( PathDashArrayNV, ( FgGLuint _1, FgGLsizei _2, const FgGLfloat * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( PathStencilFuncNV, ( FgGLenum _1, FgGLint _2, FgGLuint _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( PathStencilDepthOffsetNV, ( FgGLfloat _1, FgGLfloat _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( StencilFillPathNV, ( FgGLuint _1, FgGLenum _2, FgGLuint _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( StencilStrokePathNV, ( FgGLuint _1, FgGLint _2, FgGLuint _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( StencilFillPathInstancedNV, ( FgGLsizei _1, FgGLenum _2, const FgGLvoid * _3, FgGLuint _4, FgGLenum _5, FgGLuint _6, FgGLenum _7, const FgGLfloat * _8 ), ( _1, _2, _3, _4, _5, _6, _7, _8 ) ) \
-    FG_GL_VOID_FUNCTION( StencilStrokePathInstancedNV, ( FgGLsizei _1, FgGLenum _2, const FgGLvoid * _3, FgGLuint _4, FgGLint _5, FgGLuint _6, FgGLenum _7, const FgGLfloat * _8 ), ( _1, _2, _3, _4, _5, _6, _7, _8 ) ) \
-    FG_GL_VOID_FUNCTION( PathCoverDepthFuncNV, ( FgGLenum _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( PathColorGenNV, ( FgGLenum _1, FgGLenum _2, FgGLenum _3, const FgGLfloat * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( PathTexGenNV, ( FgGLenum _1, FgGLenum _2, FgGLint _3, const FgGLfloat * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( PathFogGenNV, ( FgGLenum _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( CoverFillPathNV, ( FgGLuint _1, FgGLenum _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( CoverStrokePathNV, ( FgGLuint _1, FgGLenum _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( CoverFillPathInstancedNV, ( FgGLsizei _1, FgGLenum _2, const FgGLvoid * _3, FgGLuint _4, FgGLenum _5, FgGLenum _6, const FgGLfloat * _7 ), ( _1, _2, _3, _4, _5, _6, _7 ) ) \
-    FG_GL_VOID_FUNCTION( CoverStrokePathInstancedNV, ( FgGLsizei _1, FgGLenum _2, const FgGLvoid * _3, FgGLuint _4, FgGLenum _5, FgGLenum _6, const FgGLfloat * _7 ), ( _1, _2, _3, _4, _5, _6, _7 ) ) \
-    FG_GL_VOID_FUNCTION( GetPathParameterivNV, ( FgGLuint _1, FgGLenum _2, FgGLint * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetPathParameterfvNV, ( FgGLuint _1, FgGLenum _2, FgGLfloat * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetPathCommandsNV, ( FgGLuint _1, FgGLubyte * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( GetPathCoordsNV, ( FgGLuint _1, FgGLfloat * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( GetPathDashArrayNV, ( FgGLuint _1, FgGLfloat * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( GetPathMetricsNV, ( FgGLbitfield _1, FgGLsizei _2, FgGLenum _3, const FgGLvoid * _4, FgGLuint _5, FgGLsizei _6, FgGLfloat * _7 ), ( _1, _2, _3, _4, _5, _6, _7 ) ) \
-    FG_GL_VOID_FUNCTION( GetPathMetricRangeNV, ( FgGLbitfield _1, FgGLuint _2, FgGLsizei _3, FgGLsizei _4, FgGLfloat * _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( GetPathSpacingNV, ( FgGLenum _1, FgGLsizei _2, FgGLenum _3, const FgGLvoid * _4, FgGLuint _5, FgGLfloat _6, FgGLfloat _7, FgGLenum _8, FgGLfloat * _9 ), ( _1, _2, _3, _4, _5, _6, _7, _8, _9 ) ) \
-    FG_GL_VOID_FUNCTION( GetPathColorGenivNV, ( FgGLenum _1, FgGLenum _2, FgGLint * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetPathColorGenfvNV, ( FgGLenum _1, FgGLenum _2, FgGLfloat * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetPathTexGenivNV, ( FgGLenum _1, FgGLenum _2, FgGLint * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetPathTexGenfvNV, ( FgGLenum _1, FgGLenum _2, FgGLfloat * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_FUNCTION( 0, FgGLboolean, IsPointInFillPathNV, ( FgGLuint _1, FgGLuint _2, FgGLfloat _3, FgGLfloat _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_FUNCTION( 0, FgGLboolean, IsPointInStrokePathNV, ( FgGLuint _1, FgGLfloat _2, FgGLfloat _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_FUNCTION( 0, FgGLfloat, GetPathLengthNV, ( FgGLuint _1, FgGLsizei _2, FgGLsizei _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_FUNCTION( 0, FgGLboolean, PointAlongPathNV, ( FgGLuint _1, FgGLsizei _2, FgGLsizei _3, FgGLfloat _4, FgGLfloat * _5, FgGLfloat * _6, FgGLfloat * _7, FgGLfloat * _8 ), ( _1, _2, _3, _4, _5, _6, _7, _8 ) ) \
+    FG_GL_FUNCTION_NUM( GenPathsNV, FgGLuint, FgGLContext *, FgGLsizei ) \
+    FG_GL_FUNCTION_VOID( DeletePathsNV, FgGLContext *, FgGLuint, FgGLsizei ) \
+    FG_GL_FUNCTION_NUM( IsPathNV, FgGLboolean, FgGLContext *, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( PathCommandsNV, FgGLContext *, FgGLuint, FgGLsizei, const FgGLubyte *, FgGLsizei, FgGLenum, const FgGLvoid * ) \
+    FG_GL_FUNCTION_VOID( PathCoordsNV, FgGLContext *, FgGLuint, FgGLsizei, FgGLenum, const FgGLvoid * ) \
+    FG_GL_FUNCTION_VOID( PathSubCommandsNV, FgGLContext *, FgGLuint, FgGLsizei, FgGLsizei, FgGLsizei, const FgGLubyte *, FgGLsizei, FgGLenum, const FgGLvoid * ) \
+    FG_GL_FUNCTION_VOID( PathSubCoordsNV, FgGLContext *, FgGLuint, FgGLsizei, FgGLsizei, FgGLenum, const FgGLvoid * ) \
+    FG_GL_FUNCTION_VOID( PathStringNV, FgGLContext *, FgGLuint, FgGLenum, FgGLsizei, const FgGLvoid * ) \
+    FG_GL_FUNCTION_VOID( PathGlyphsNV, FgGLContext *, FgGLuint, FgGLenum, const FgGLvoid *, FgGLbitfield, FgGLsizei, FgGLenum, const FgGLvoid *, FgGLenum, FgGLuint, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( PathGlyphRangeNV, FgGLContext *, FgGLuint, FgGLenum, const FgGLvoid *, FgGLbitfield, FgGLuint, FgGLsizei, FgGLenum, FgGLuint, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( WeightPathsNV, FgGLContext *, FgGLuint, FgGLsizei, const FgGLuint *, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( CopyPathNV, FgGLContext *, FgGLuint, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( InterpolatePathsNV, FgGLContext *, FgGLuint, FgGLuint, FgGLuint, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( TransformPathNV, FgGLContext *, FgGLuint, FgGLuint, FgGLenum, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( PathParameterivNV, FgGLContext *, FgGLuint, FgGLenum, const FgGLint * ) \
+    FG_GL_FUNCTION_VOID( PathParameteriNV, FgGLContext *, FgGLuint, FgGLenum, FgGLint ) \
+    FG_GL_FUNCTION_VOID( PathParameterfvNV, FgGLContext *, FgGLuint, FgGLenum, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( PathParameterfNV, FgGLContext *, FgGLuint, FgGLenum, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( PathDashArrayNV, FgGLContext *, FgGLuint, FgGLsizei, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( PathStencilFuncNV, FgGLContext *, FgGLenum, FgGLint, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( PathStencilDepthOffsetNV, FgGLContext *, FgGLfloat, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( StencilFillPathNV, FgGLContext *, FgGLuint, FgGLenum, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( StencilStrokePathNV, FgGLContext *, FgGLuint, FgGLint, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( StencilFillPathInstancedNV, FgGLContext *, FgGLsizei, FgGLenum, const FgGLvoid *, FgGLuint, FgGLenum, FgGLuint, FgGLenum, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( StencilStrokePathInstancedNV, FgGLContext *, FgGLsizei, FgGLenum, const FgGLvoid *, FgGLuint, FgGLint, FgGLuint, FgGLenum, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( PathCoverDepthFuncNV, FgGLContext *, FgGLenum ) \
+    FG_GL_FUNCTION_VOID( PathColorGenNV, FgGLContext *, FgGLenum, FgGLenum, FgGLenum, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( PathTexGenNV, FgGLContext *, FgGLenum, FgGLenum, FgGLint, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( PathFogGenNV, FgGLContext *, FgGLenum ) \
+    FG_GL_FUNCTION_VOID( CoverFillPathNV, FgGLContext *, FgGLuint, FgGLenum ) \
+    FG_GL_FUNCTION_VOID( CoverStrokePathNV, FgGLContext *, FgGLuint, FgGLenum ) \
+    FG_GL_FUNCTION_VOID( CoverFillPathInstancedNV, FgGLContext *, FgGLsizei, FgGLenum, const FgGLvoid *, FgGLuint, FgGLenum, FgGLenum, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( CoverStrokePathInstancedNV, FgGLContext *, FgGLsizei, FgGLenum, const FgGLvoid *, FgGLuint, FgGLenum, FgGLenum, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( GetPathParameterivNV, FgGLContext *, FgGLuint, FgGLenum, FgGLint * ) \
+    FG_GL_FUNCTION_VOID( GetPathParameterfvNV, FgGLContext *, FgGLuint, FgGLenum, FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( GetPathCommandsNV, FgGLContext *, FgGLuint, FgGLubyte * ) \
+    FG_GL_FUNCTION_VOID( GetPathCoordsNV, FgGLContext *, FgGLuint, FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( GetPathDashArrayNV, FgGLContext *, FgGLuint, FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( GetPathMetricsNV, FgGLContext *, FgGLbitfield, FgGLsizei, FgGLenum, const FgGLvoid *, FgGLuint, FgGLsizei, FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( GetPathMetricRangeNV, FgGLContext *, FgGLbitfield, FgGLuint, FgGLsizei, FgGLsizei, FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( GetPathSpacingNV, FgGLContext *, FgGLenum, FgGLsizei, FgGLenum, const FgGLvoid *, FgGLuint, FgGLfloat, FgGLfloat, FgGLenum, FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( GetPathColorGenivNV, FgGLContext *, FgGLenum, FgGLenum, FgGLint * ) \
+    FG_GL_FUNCTION_VOID( GetPathColorGenfvNV, FgGLContext *, FgGLenum, FgGLenum, FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( GetPathTexGenivNV, FgGLContext *, FgGLenum, FgGLenum, FgGLint * ) \
+    FG_GL_FUNCTION_VOID( GetPathTexGenfvNV, FgGLContext *, FgGLenum, FgGLenum, FgGLfloat * ) \
+    FG_GL_FUNCTION_NUM( IsPointInFillPathNV, FgGLboolean, FgGLContext *, FgGLuint, FgGLuint, FgGLfloat, FgGLfloat ) \
+    FG_GL_FUNCTION_NUM( IsPointInStrokePathNV, FgGLboolean, FgGLContext *, FgGLuint, FgGLfloat, FgGLfloat ) \
+    FG_GL_FUNCTION_NUM( GetPathLengthNV, FgGLfloat, FgGLContext *, FgGLuint, FgGLsizei, FgGLsizei ) \
+    FG_GL_FUNCTION_NUM( PointAlongPathNV, FgGLboolean, FgGLContext *, FgGLuint, FgGLsizei, FgGLsizei, FgGLfloat, FgGLfloat *, FgGLfloat *, FgGLfloat *, FgGLfloat * ) \
 \
     /* GL_NV_pixel_data_range */ \
-    FG_GL_VOID_FUNCTION( PixelDataRangeNV, ( FgGLenum _1, FgGLsizei _2, const FgGLvoid * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( FlushPixelDataRangeNV, ( FgGLenum _1 ), ( _1 ) ) \
+    FG_GL_FUNCTION_VOID( PixelDataRangeNV, FgGLContext *, FgGLenum, FgGLsizei, const FgGLvoid * ) \
+    FG_GL_FUNCTION_VOID( FlushPixelDataRangeNV, FgGLContext *, FgGLenum ) \
 \
     /* GL_NV_point_sprite */ \
-    FG_GL_VOID_FUNCTION( PointParameteriNV, ( FgGLenum _1, FgGLint _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( PointParameterivNV, ( FgGLenum _1, const FgGLint * _2 ), ( _1, _2 ) ) \
+    FG_GL_FUNCTION_VOID( PointParameteriNV, FgGLContext *, FgGLenum, FgGLint ) \
+    FG_GL_FUNCTION_VOID( PointParameterivNV, FgGLContext *, FgGLenum, const FgGLint * ) \
 \
     /* GL_NV_present_video */ \
-    FG_GL_VOID_FUNCTION( PresentFrameKeyedNV, ( FgGLuint _1, FgGLuint64EXT _2, FgGLuint _3, FgGLuint _4, FgGLenum _5, FgGLenum _6, FgGLuint _7, FgGLuint _8, FgGLenum _9, FgGLuint _10, FgGLuint _11 ), ( _1, _2, _3, _4, _5, _6, _7, _8, _9, _10, _11 ) ) \
-    FG_GL_VOID_FUNCTION( PresentFrameDualFillNV, ( FgGLuint _1, FgGLuint64EXT _2, FgGLuint _3, FgGLuint _4, FgGLenum _5, FgGLenum _6, FgGLuint _7, FgGLenum _8, FgGLuint _9, FgGLenum _10, FgGLuint _11, FgGLenum _12, FgGLuint _13 ), ( _1, _2, _3, _4, _5, _6, _7, _8, _9, _10, _11, _12, _13 ) ) \
-    FG_GL_VOID_FUNCTION( GetVideoivNV, ( FgGLuint _1, FgGLenum _2, FgGLint * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetVideouivNV, ( FgGLuint _1, FgGLenum _2, FgGLuint * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetVideoi64vNV, ( FgGLuint _1, FgGLenum _2, FgGLint64EXT * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetVideoui64vNV, ( FgGLuint _1, FgGLenum _2, FgGLuint64EXT * _3 ), ( _1, _2, _3 ) ) \
+    FG_GL_FUNCTION_VOID( PresentFrameKeyedNV, FgGLContext *, FgGLuint, FgGLuint64EXT, FgGLuint, FgGLuint, FgGLenum, FgGLenum, FgGLuint, FgGLuint, FgGLenum, FgGLuint, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( PresentFrameDualFillNV, FgGLContext *, FgGLuint, FgGLuint64EXT, FgGLuint, FgGLuint, FgGLenum, FgGLenum, FgGLuint, FgGLenum, FgGLuint, FgGLenum, FgGLuint, FgGLenum, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( GetVideoivNV, FgGLContext *, FgGLuint, FgGLenum, FgGLint * ) \
+    FG_GL_FUNCTION_VOID( GetVideouivNV, FgGLContext *, FgGLuint, FgGLenum, FgGLuint * ) \
+    FG_GL_FUNCTION_VOID( GetVideoi64vNV, FgGLContext *, FgGLuint, FgGLenum, FgGLint64EXT * ) \
+    FG_GL_FUNCTION_VOID( GetVideoui64vNV, FgGLContext *, FgGLuint, FgGLenum, FgGLuint64EXT * ) \
 \
     /* GL_NV_primitive_restart */ \
-    FG_GL_VOID_FUNCTION( PrimitiveRestartNV, ( ), ( ) ) \
-    FG_GL_VOID_FUNCTION( PrimitiveRestartIndexNV, ( FgGLuint _1 ), ( _1 ) ) \
+    FG_GL_FUNCTION_VOID( PrimitiveRestartNV, FgGLContext * ) \
+    FG_GL_FUNCTION_VOID( PrimitiveRestartIndexNV, FgGLContext *, FgGLuint ) \
 \
     /* GL_NV_register_combiners */ \
-    FG_GL_VOID_FUNCTION( CombinerParameterfvNV, ( FgGLenum _1, const FgGLfloat * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( CombinerParameterfNV, ( FgGLenum _1, FgGLfloat _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( CombinerParameterivNV, ( FgGLenum _1, const FgGLint * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( CombinerParameteriNV, ( FgGLenum _1, FgGLint _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( CombinerInputNV, ( FgGLenum _1, FgGLenum _2, FgGLenum _3, FgGLenum _4, FgGLenum _5, FgGLenum _6 ), ( _1, _2, _3, _4, _5, _6 ) ) \
-    FG_GL_VOID_FUNCTION( CombinerOutputNV, ( FgGLenum _1, FgGLenum _2, FgGLenum _3, FgGLenum _4, FgGLenum _5, FgGLenum _6, FgGLenum _7, FgGLboolean _8, FgGLboolean _9, FgGLboolean _10 ), ( _1, _2, _3, _4, _5, _6, _7, _8, _9, _10 ) ) \
-    FG_GL_VOID_FUNCTION( FinalCombinerInputNV, ( FgGLenum _1, FgGLenum _2, FgGLenum _3, FgGLenum _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( GetCombinerInputParameterfvNV, ( FgGLenum _1, FgGLenum _2, FgGLenum _3, FgGLenum _4, FgGLfloat * _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( GetCombinerInputParameterivNV, ( FgGLenum _1, FgGLenum _2, FgGLenum _3, FgGLenum _4, FgGLint * _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( GetCombinerOutputParameterfvNV, ( FgGLenum _1, FgGLenum _2, FgGLenum _3, FgGLfloat * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( GetCombinerOutputParameterivNV, ( FgGLenum _1, FgGLenum _2, FgGLenum _3, FgGLint * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( GetFinalCombinerInputParameterfvNV, ( FgGLenum _1, FgGLenum _2, FgGLfloat * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetFinalCombinerInputParameterivNV, ( FgGLenum _1, FgGLenum _2, FgGLint * _3 ), ( _1, _2, _3 ) ) \
+    FG_GL_FUNCTION_VOID( CombinerParameterfvNV, FgGLContext *, FgGLenum, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( CombinerParameterfNV, FgGLContext *, FgGLenum, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( CombinerParameterivNV, FgGLContext *, FgGLenum, const FgGLint * ) \
+    FG_GL_FUNCTION_VOID( CombinerParameteriNV, FgGLContext *, FgGLenum, FgGLint ) \
+    FG_GL_FUNCTION_VOID( CombinerInputNV, FgGLContext *, FgGLenum, FgGLenum, FgGLenum, FgGLenum, FgGLenum, FgGLenum ) \
+    FG_GL_FUNCTION_VOID( CombinerOutputNV, FgGLContext *, FgGLenum, FgGLenum, FgGLenum, FgGLenum, FgGLenum, FgGLenum, FgGLenum, FgGLboolean, FgGLboolean, FgGLboolean ) \
+    FG_GL_FUNCTION_VOID( FinalCombinerInputNV, FgGLContext *, FgGLenum, FgGLenum, FgGLenum, FgGLenum ) \
+    FG_GL_FUNCTION_VOID( GetCombinerInputParameterfvNV, FgGLContext *, FgGLenum, FgGLenum, FgGLenum, FgGLenum, FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( GetCombinerInputParameterivNV, FgGLContext *, FgGLenum, FgGLenum, FgGLenum, FgGLenum, FgGLint * ) \
+    FG_GL_FUNCTION_VOID( GetCombinerOutputParameterfvNV, FgGLContext *, FgGLenum, FgGLenum, FgGLenum, FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( GetCombinerOutputParameterivNV, FgGLContext *, FgGLenum, FgGLenum, FgGLenum, FgGLint * ) \
+    FG_GL_FUNCTION_VOID( GetFinalCombinerInputParameterfvNV, FgGLContext *, FgGLenum, FgGLenum, FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( GetFinalCombinerInputParameterivNV, FgGLContext *, FgGLenum, FgGLenum, FgGLint * ) \
 \
     /* GL_NV_register_combiners2 */ \
-    FG_GL_VOID_FUNCTION( CombinerStageParameterfvNV, ( FgGLenum _1, FgGLenum _2, const FgGLfloat * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetCombinerStageParameterfvNV, ( FgGLenum _1, FgGLenum _2, FgGLfloat * _3 ), ( _1, _2, _3 ) ) \
+    FG_GL_FUNCTION_VOID( CombinerStageParameterfvNV, FgGLContext *, FgGLenum, FgGLenum, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( GetCombinerStageParameterfvNV, FgGLContext *, FgGLenum, FgGLenum, FgGLfloat * ) \
 \
     /* GL_NV_shader_atomic_counters */ \
 \
     /* GL_NV_shader_atomic_float */ \
 \
     /* GL_NV_shader_buffer_load */ \
-    FG_GL_VOID_FUNCTION( MakeBufferResidentNV, ( FgGLenum _1, FgGLenum _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( MakeBufferNonResidentNV, ( FgGLenum _1 ), ( _1 ) ) \
-    FG_GL_FUNCTION( 0, FgGLboolean, IsBufferResidentNV, ( FgGLenum _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( MakeNamedBufferResidentNV, ( FgGLuint _1, FgGLenum _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( MakeNamedBufferNonResidentNV, ( FgGLuint _1 ), ( _1 ) ) \
-    FG_GL_FUNCTION( 0, FgGLboolean, IsNamedBufferResidentNV, ( FgGLuint _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( GetBufferParameterui64vNV, ( FgGLenum _1, FgGLenum _2, FgGLuint64EXT * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetNamedBufferParameterui64vNV, ( FgGLuint _1, FgGLenum _2, FgGLuint64EXT * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetIntegerui64vNV, ( FgGLenum _1, FgGLuint64EXT * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( Uniformui64NV, ( FgGLint _1, FgGLuint64EXT _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( Uniformui64vNV, ( FgGLint _1, FgGLsizei _2, const FgGLuint64EXT * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetUniformui64vNV, ( FgGLuint _1, FgGLint _2, FgGLuint64EXT * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramUniformui64NV, ( FgGLuint _1, FgGLint _2, FgGLuint64EXT _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramUniformui64vNV, ( FgGLuint _1, FgGLint _2, FgGLsizei _3, const FgGLuint64EXT * _4 ), ( _1, _2, _3, _4 ) ) \
+    FG_GL_FUNCTION_VOID( MakeBufferResidentNV, FgGLContext *, FgGLenum, FgGLenum ) \
+    FG_GL_FUNCTION_VOID( MakeBufferNonResidentNV, FgGLContext *, FgGLenum ) \
+    FG_GL_FUNCTION_NUM( IsBufferResidentNV, FgGLboolean, FgGLContext *, FgGLenum ) \
+    FG_GL_FUNCTION_VOID( MakeNamedBufferResidentNV, FgGLContext *, FgGLuint, FgGLenum ) \
+    FG_GL_FUNCTION_VOID( MakeNamedBufferNonResidentNV, FgGLContext *, FgGLuint ) \
+    FG_GL_FUNCTION_NUM( IsNamedBufferResidentNV, FgGLboolean, FgGLContext *, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( GetBufferParameterui64vNV, FgGLContext *, FgGLenum, FgGLenum, FgGLuint64EXT * ) \
+    FG_GL_FUNCTION_VOID( GetNamedBufferParameterui64vNV, FgGLContext *, FgGLuint, FgGLenum, FgGLuint64EXT * ) \
+    FG_GL_FUNCTION_VOID( GetIntegerui64vNV, FgGLContext *, FgGLenum, FgGLuint64EXT * ) \
+    FG_GL_FUNCTION_VOID( Uniformui64NV, FgGLContext *, FgGLint, FgGLuint64EXT ) \
+    FG_GL_FUNCTION_VOID( Uniformui64vNV, FgGLContext *, FgGLint, FgGLsizei, const FgGLuint64EXT * ) \
+    FG_GL_FUNCTION_VOID( GetUniformui64vNV, FgGLContext *, FgGLuint, FgGLint, FgGLuint64EXT * ) \
+    FG_GL_FUNCTION_VOID( ProgramUniformui64NV, FgGLContext *, FgGLuint, FgGLint, FgGLuint64EXT ) \
+    FG_GL_FUNCTION_VOID( ProgramUniformui64vNV, FgGLContext *, FgGLuint, FgGLint, FgGLsizei, const FgGLuint64EXT * ) \
 \
     /* GL_NV_shader_buffer_store */ \
 \
@@ -3103,7 +3104,7 @@
     /* GL_NV_texgen_reflection */ \
 \
     /* GL_NV_texture_barrier */ \
-    FG_GL_VOID_FUNCTION( TextureBarrierNV, ( ), ( ) ) \
+    FG_GL_FUNCTION_VOID( TextureBarrierNV, FgGLContext * ) \
 \
     /* GL_NV_texture_compression_vtc */ \
 \
@@ -3112,12 +3113,12 @@
     /* GL_NV_texture_expand_normal */ \
 \
     /* GL_NV_texture_multisample */ \
-    FG_GL_VOID_FUNCTION( TexImage2DMultisampleCoverageNV, ( FgGLenum _1, FgGLsizei _2, FgGLsizei _3, FgGLint _4, FgGLsizei _5, FgGLsizei _6, FgGLboolean _7 ), ( _1, _2, _3, _4, _5, _6, _7 ) ) \
-    FG_GL_VOID_FUNCTION( TexImage3DMultisampleCoverageNV, ( FgGLenum _1, FgGLsizei _2, FgGLsizei _3, FgGLint _4, FgGLsizei _5, FgGLsizei _6, FgGLsizei _7, FgGLboolean _8 ), ( _1, _2, _3, _4, _5, _6, _7, _8 ) ) \
-    FG_GL_VOID_FUNCTION( TextureImage2DMultisampleNV, ( FgGLuint _1, FgGLenum _2, FgGLsizei _3, FgGLint _4, FgGLsizei _5, FgGLsizei _6, FgGLboolean _7 ), ( _1, _2, _3, _4, _5, _6, _7 ) ) \
-    FG_GL_VOID_FUNCTION( TextureImage3DMultisampleNV, ( FgGLuint _1, FgGLenum _2, FgGLsizei _3, FgGLint _4, FgGLsizei _5, FgGLsizei _6, FgGLsizei _7, FgGLboolean _8 ), ( _1, _2, _3, _4, _5, _6, _7, _8 ) ) \
-    FG_GL_VOID_FUNCTION( TextureImage2DMultisampleCoverageNV, ( FgGLuint _1, FgGLenum _2, FgGLsizei _3, FgGLsizei _4, FgGLint _5, FgGLsizei _6, FgGLsizei _7, FgGLboolean _8 ), ( _1, _2, _3, _4, _5, _6, _7, _8 ) ) \
-    FG_GL_VOID_FUNCTION( TextureImage3DMultisampleCoverageNV, ( FgGLuint _1, FgGLenum _2, FgGLsizei _3, FgGLsizei _4, FgGLint _5, FgGLsizei _6, FgGLsizei _7, FgGLsizei _8, FgGLboolean _9 ), ( _1, _2, _3, _4, _5, _6, _7, _8, _9 ) ) \
+    FG_GL_FUNCTION_VOID( TexImage2DMultisampleCoverageNV, FgGLContext *, FgGLenum, FgGLsizei, FgGLsizei, FgGLint, FgGLsizei, FgGLsizei, FgGLboolean ) \
+    FG_GL_FUNCTION_VOID( TexImage3DMultisampleCoverageNV, FgGLContext *, FgGLenum, FgGLsizei, FgGLsizei, FgGLint, FgGLsizei, FgGLsizei, FgGLsizei, FgGLboolean ) \
+    FG_GL_FUNCTION_VOID( TextureImage2DMultisampleNV, FgGLContext *, FgGLuint, FgGLenum, FgGLsizei, FgGLint, FgGLsizei, FgGLsizei, FgGLboolean ) \
+    FG_GL_FUNCTION_VOID( TextureImage3DMultisampleNV, FgGLContext *, FgGLuint, FgGLenum, FgGLsizei, FgGLint, FgGLsizei, FgGLsizei, FgGLsizei, FgGLboolean ) \
+    FG_GL_FUNCTION_VOID( TextureImage2DMultisampleCoverageNV, FgGLContext *, FgGLuint, FgGLenum, FgGLsizei, FgGLsizei, FgGLint, FgGLsizei, FgGLsizei, FgGLboolean ) \
+    FG_GL_FUNCTION_VOID( TextureImage3DMultisampleCoverageNV, FgGLContext *, FgGLuint, FgGLenum, FgGLsizei, FgGLsizei, FgGLint, FgGLsizei, FgGLsizei, FgGLsizei, FgGLboolean ) \
 \
     /* GL_NV_texture_rectangle */ \
 \
@@ -3128,146 +3129,146 @@
     /* GL_NV_texture_shader3 */ \
 \
     /* GL_NV_transform_feedback */ \
-    FG_GL_VOID_FUNCTION( BeginTransformFeedbackNV, ( FgGLenum _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( EndTransformFeedbackNV, ( ), ( ) ) \
-    FG_GL_VOID_FUNCTION( TransformFeedbackAttribsNV, ( FgGLuint _1, const FgGLint * _2, FgGLenum _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( BindBufferRangeNV, ( FgGLenum _1, FgGLuint _2, FgGLuint _3, FgGLintptr _4, FgGLsizeiptr _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( BindBufferOffsetNV, ( FgGLenum _1, FgGLuint _2, FgGLuint _3, FgGLintptr _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( BindBufferBaseNV, ( FgGLenum _1, FgGLuint _2, FgGLuint _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( TransformFeedbackVaryingsNV, ( FgGLuint _1, FgGLsizei _2, const FgGLint * _3, FgGLenum _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( ActiveVaryingNV, ( FgGLuint _1, const FgGLchar * _2 ), ( _1, _2 ) ) \
-    FG_GL_FUNCTION( 0, FgGLint, GetVaryingLocationNV, ( FgGLuint _1, const FgGLchar * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( GetActiveVaryingNV, ( FgGLuint _1, FgGLuint _2, FgGLsizei _3, FgGLsizei * _4, FgGLsizei * _5, FgGLenum * _6, FgGLchar * _7 ), ( _1, _2, _3, _4, _5, _6, _7 ) ) \
-    FG_GL_VOID_FUNCTION( GetTransformFeedbackVaryingNV, ( FgGLuint _1, FgGLuint _2, FgGLint * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( TransformFeedbackStreamAttribsNV, ( FgGLsizei _1, const FgGLint * _2, FgGLsizei _3, const FgGLint * _4, FgGLenum _5 ), ( _1, _2, _3, _4, _5 ) ) \
+    FG_GL_FUNCTION_VOID( BeginTransformFeedbackNV, FgGLContext *, FgGLenum ) \
+    FG_GL_FUNCTION_VOID( EndTransformFeedbackNV, FgGLContext * ) \
+    FG_GL_FUNCTION_VOID( TransformFeedbackAttribsNV, FgGLContext *, FgGLuint, const FgGLint *, FgGLenum ) \
+    FG_GL_FUNCTION_VOID( BindBufferRangeNV, FgGLContext *, FgGLenum, FgGLuint, FgGLuint, FgGLintptr, FgGLsizeiptr ) \
+    FG_GL_FUNCTION_VOID( BindBufferOffsetNV, FgGLContext *, FgGLenum, FgGLuint, FgGLuint, FgGLintptr ) \
+    FG_GL_FUNCTION_VOID( BindBufferBaseNV, FgGLContext *, FgGLenum, FgGLuint, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( TransformFeedbackVaryingsNV, FgGLContext *, FgGLuint, FgGLsizei, const FgGLint *, FgGLenum ) \
+    FG_GL_FUNCTION_VOID( ActiveVaryingNV, FgGLContext *, FgGLuint, const FgGLchar * ) \
+    FG_GL_FUNCTION_NUM( GetVaryingLocationNV, FgGLint, FgGLContext *, FgGLuint, const FgGLchar * ) \
+    FG_GL_FUNCTION_VOID( GetActiveVaryingNV, FgGLContext *, FgGLuint, FgGLuint, FgGLsizei, FgGLsizei *, FgGLsizei *, FgGLenum *, FgGLchar * ) \
+    FG_GL_FUNCTION_VOID( GetTransformFeedbackVaryingNV, FgGLContext *, FgGLuint, FgGLuint, FgGLint * ) \
+    FG_GL_FUNCTION_VOID( TransformFeedbackStreamAttribsNV, FgGLContext *, FgGLsizei, const FgGLint *, FgGLsizei, const FgGLint *, FgGLenum ) \
 \
     /* GL_NV_transform_feedback2 */ \
-    FG_GL_VOID_FUNCTION( BindTransformFeedbackNV, ( FgGLenum _1, FgGLuint _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( DeleteTransformFeedbacksNV, ( FgGLsizei _1, const FgGLuint * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( GenTransformFeedbacksNV, ( FgGLsizei _1, FgGLuint * _2 ), ( _1, _2 ) ) \
-    FG_GL_FUNCTION( 0, FgGLboolean, IsTransformFeedbackNV, ( FgGLuint _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( PauseTransformFeedbackNV, ( ), ( ) ) \
-    FG_GL_VOID_FUNCTION( ResumeTransformFeedbackNV, ( ), ( ) ) \
-    FG_GL_VOID_FUNCTION( DrawTransformFeedbackNV, ( FgGLenum _1, FgGLuint _2 ), ( _1, _2 ) ) \
+    FG_GL_FUNCTION_VOID( BindTransformFeedbackNV, FgGLContext *, FgGLenum, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( DeleteTransformFeedbacksNV, FgGLContext *, FgGLsizei, const FgGLuint * ) \
+    FG_GL_FUNCTION_VOID( GenTransformFeedbacksNV, FgGLContext *, FgGLsizei, FgGLuint * ) \
+    FG_GL_FUNCTION_NUM( IsTransformFeedbackNV, FgGLboolean, FgGLContext *, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( PauseTransformFeedbackNV, FgGLContext * ) \
+    FG_GL_FUNCTION_VOID( ResumeTransformFeedbackNV, FgGLContext * ) \
+    FG_GL_FUNCTION_VOID( DrawTransformFeedbackNV, FgGLContext *, FgGLenum, FgGLuint ) \
 \
     /* GL_NV_vdpau_interop */ \
-    FG_GL_VOID_FUNCTION( VDPAUInitNV, ( const FgGLvoid * _1, const FgGLvoid * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VDPAUFiniNV, ( ), ( ) ) \
-    FG_GL_FUNCTION( 0, FgGLvdpauSurfaceNV, VDPAURegisterVideoSurfaceNV, ( const FgGLvoid * _1, FgGLenum _2, FgGLsizei _3, const FgGLuint * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_FUNCTION( 0, FgGLvdpauSurfaceNV, VDPAURegisterOutputSurfaceNV, ( const FgGLvoid * _1, FgGLenum _2, FgGLsizei _3, const FgGLuint * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( VDPAUIsSurfaceNV, ( FgGLvdpauSurfaceNV _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( VDPAUUnregisterSurfaceNV, ( FgGLvdpauSurfaceNV _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( VDPAUGetSurfaceivNV, ( FgGLvdpauSurfaceNV _1, FgGLenum _2, FgGLsizei _3, FgGLsizei * _4, FgGLint * _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( VDPAUSurfaceAccessNV, ( FgGLvdpauSurfaceNV _1, FgGLenum _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VDPAUMapSurfacesNV, ( FgGLsizei _1, const FgGLvdpauSurfaceNV * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VDPAUUnmapSurfacesNV, ( FgGLsizei _1, const FgGLvdpauSurfaceNV * _2 ), ( _1, _2 ) ) \
+    FG_GL_FUNCTION_VOID( VDPAUInitNV, FgGLContext *, const FgGLvoid *, const FgGLvoid * ) \
+    FG_GL_FUNCTION_VOID( VDPAUFiniNV, FgGLContext * ) \
+    FG_GL_FUNCTION_NUM( VDPAURegisterVideoSurfaceNV, FgGLvdpauSurfaceNV, FgGLContext *, const FgGLvoid *, FgGLenum, FgGLsizei, const FgGLuint * ) \
+    FG_GL_FUNCTION_NUM( VDPAURegisterOutputSurfaceNV, FgGLvdpauSurfaceNV, FgGLContext *, const FgGLvoid *, FgGLenum, FgGLsizei, const FgGLuint * ) \
+    FG_GL_FUNCTION_VOID( VDPAUIsSurfaceNV, FgGLContext *, FgGLvdpauSurfaceNV ) \
+    FG_GL_FUNCTION_VOID( VDPAUUnregisterSurfaceNV, FgGLContext *, FgGLvdpauSurfaceNV ) \
+    FG_GL_FUNCTION_VOID( VDPAUGetSurfaceivNV, FgGLContext *, FgGLvdpauSurfaceNV, FgGLenum, FgGLsizei, FgGLsizei *, FgGLint * ) \
+    FG_GL_FUNCTION_VOID( VDPAUSurfaceAccessNV, FgGLContext *, FgGLvdpauSurfaceNV, FgGLenum ) \
+    FG_GL_FUNCTION_VOID( VDPAUMapSurfacesNV, FgGLContext *, FgGLsizei, const FgGLvdpauSurfaceNV * ) \
+    FG_GL_FUNCTION_VOID( VDPAUUnmapSurfacesNV, FgGLContext *, FgGLsizei, const FgGLvdpauSurfaceNV * ) \
 \
     /* GL_NV_vertex_array_range */ \
-    FG_GL_VOID_FUNCTION( FlushVertexArrayRangeNV, ( ), ( ) ) \
-    FG_GL_VOID_FUNCTION( VertexArrayRangeNV, ( FgGLsizei _1, const FgGLvoid * _2 ), ( _1, _2 ) ) \
+    FG_GL_FUNCTION_VOID( FlushVertexArrayRangeNV, FgGLContext * ) \
+    FG_GL_FUNCTION_VOID( VertexArrayRangeNV, FgGLContext *, FgGLsizei, const FgGLvoid * ) \
 \
     /* GL_NV_vertex_array_range2 */ \
 \
     /* GL_NV_vertex_attrib_integer_64bit */ \
-    FG_GL_VOID_FUNCTION( VertexAttribL1i64NV, ( FgGLuint _1, FgGLint64EXT _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttribL2i64NV, ( FgGLuint _1, FgGLint64EXT _2, FgGLint64EXT _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttribL3i64NV, ( FgGLuint _1, FgGLint64EXT _2, FgGLint64EXT _3, FgGLint64EXT _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttribL4i64NV, ( FgGLuint _1, FgGLint64EXT _2, FgGLint64EXT _3, FgGLint64EXT _4, FgGLint64EXT _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttribL1i64vNV, ( FgGLuint _1, const FgGLint64EXT * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttribL2i64vNV, ( FgGLuint _1, const FgGLint64EXT * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttribL3i64vNV, ( FgGLuint _1, const FgGLint64EXT * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttribL4i64vNV, ( FgGLuint _1, const FgGLint64EXT * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttribL1ui64NV, ( FgGLuint _1, FgGLuint64EXT _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttribL2ui64NV, ( FgGLuint _1, FgGLuint64EXT _2, FgGLuint64EXT _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttribL3ui64NV, ( FgGLuint _1, FgGLuint64EXT _2, FgGLuint64EXT _3, FgGLuint64EXT _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttribL4ui64NV, ( FgGLuint _1, FgGLuint64EXT _2, FgGLuint64EXT _3, FgGLuint64EXT _4, FgGLuint64EXT _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttribL1ui64vNV, ( FgGLuint _1, const FgGLuint64EXT * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttribL2ui64vNV, ( FgGLuint _1, const FgGLuint64EXT * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttribL3ui64vNV, ( FgGLuint _1, const FgGLuint64EXT * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttribL4ui64vNV, ( FgGLuint _1, const FgGLuint64EXT * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( GetVertexAttribLi64vNV, ( FgGLuint _1, FgGLenum _2, FgGLint64EXT * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetVertexAttribLui64vNV, ( FgGLuint _1, FgGLenum _2, FgGLuint64EXT * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttribLFormatNV, ( FgGLuint _1, FgGLint _2, FgGLenum _3, FgGLsizei _4 ), ( _1, _2, _3, _4 ) ) \
+    FG_GL_FUNCTION_VOID( VertexAttribL1i64NV, FgGLContext *, FgGLuint, FgGLint64EXT ) \
+    FG_GL_FUNCTION_VOID( VertexAttribL2i64NV, FgGLContext *, FgGLuint, FgGLint64EXT, FgGLint64EXT ) \
+    FG_GL_FUNCTION_VOID( VertexAttribL3i64NV, FgGLContext *, FgGLuint, FgGLint64EXT, FgGLint64EXT, FgGLint64EXT ) \
+    FG_GL_FUNCTION_VOID( VertexAttribL4i64NV, FgGLContext *, FgGLuint, FgGLint64EXT, FgGLint64EXT, FgGLint64EXT, FgGLint64EXT ) \
+    FG_GL_FUNCTION_VOID( VertexAttribL1i64vNV, FgGLContext *, FgGLuint, const FgGLint64EXT * ) \
+    FG_GL_FUNCTION_VOID( VertexAttribL2i64vNV, FgGLContext *, FgGLuint, const FgGLint64EXT * ) \
+    FG_GL_FUNCTION_VOID( VertexAttribL3i64vNV, FgGLContext *, FgGLuint, const FgGLint64EXT * ) \
+    FG_GL_FUNCTION_VOID( VertexAttribL4i64vNV, FgGLContext *, FgGLuint, const FgGLint64EXT * ) \
+    FG_GL_FUNCTION_VOID( VertexAttribL1ui64NV, FgGLContext *, FgGLuint, FgGLuint64EXT ) \
+    FG_GL_FUNCTION_VOID( VertexAttribL2ui64NV, FgGLContext *, FgGLuint, FgGLuint64EXT, FgGLuint64EXT ) \
+    FG_GL_FUNCTION_VOID( VertexAttribL3ui64NV, FgGLContext *, FgGLuint, FgGLuint64EXT, FgGLuint64EXT, FgGLuint64EXT ) \
+    FG_GL_FUNCTION_VOID( VertexAttribL4ui64NV, FgGLContext *, FgGLuint, FgGLuint64EXT, FgGLuint64EXT, FgGLuint64EXT, FgGLuint64EXT ) \
+    FG_GL_FUNCTION_VOID( VertexAttribL1ui64vNV, FgGLContext *, FgGLuint, const FgGLuint64EXT * ) \
+    FG_GL_FUNCTION_VOID( VertexAttribL2ui64vNV, FgGLContext *, FgGLuint, const FgGLuint64EXT * ) \
+    FG_GL_FUNCTION_VOID( VertexAttribL3ui64vNV, FgGLContext *, FgGLuint, const FgGLuint64EXT * ) \
+    FG_GL_FUNCTION_VOID( VertexAttribL4ui64vNV, FgGLContext *, FgGLuint, const FgGLuint64EXT * ) \
+    FG_GL_FUNCTION_VOID( GetVertexAttribLi64vNV, FgGLContext *, FgGLuint, FgGLenum, FgGLint64EXT * ) \
+    FG_GL_FUNCTION_VOID( GetVertexAttribLui64vNV, FgGLContext *, FgGLuint, FgGLenum, FgGLuint64EXT * ) \
+    FG_GL_FUNCTION_VOID( VertexAttribLFormatNV, FgGLContext *, FgGLuint, FgGLint, FgGLenum, FgGLsizei ) \
 \
     /* GL_NV_vertex_buffer_unified_memory */ \
-    FG_GL_VOID_FUNCTION( BufferAddressRangeNV, ( FgGLenum _1, FgGLuint _2, FgGLuint64EXT _3, FgGLsizeiptr _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( VertexFormatNV, ( FgGLint _1, FgGLenum _2, FgGLsizei _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( NormalFormatNV, ( FgGLenum _1, FgGLsizei _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( ColorFormatNV, ( FgGLint _1, FgGLenum _2, FgGLsizei _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( IndexFormatNV, ( FgGLenum _1, FgGLsizei _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( TexCoordFormatNV, ( FgGLint _1, FgGLenum _2, FgGLsizei _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( EdgeFlagFormatNV, ( FgGLsizei _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( SecondaryColorFormatNV, ( FgGLint _1, FgGLenum _2, FgGLsizei _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( FogCoordFormatNV, ( FgGLenum _1, FgGLsizei _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttribFormatNV, ( FgGLuint _1, FgGLint _2, FgGLenum _3, FgGLboolean _4, FgGLsizei _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttribIFormatNV, ( FgGLuint _1, FgGLint _2, FgGLenum _3, FgGLsizei _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( GetIntegerui64i_vNV, ( FgGLenum _1, FgGLuint _2, FgGLuint64EXT * _3 ), ( _1, _2, _3 ) ) \
+    FG_GL_FUNCTION_VOID( BufferAddressRangeNV, FgGLContext *, FgGLenum, FgGLuint, FgGLuint64EXT, FgGLsizeiptr ) \
+    FG_GL_FUNCTION_VOID( VertexFormatNV, FgGLContext *, FgGLint, FgGLenum, FgGLsizei ) \
+    FG_GL_FUNCTION_VOID( NormalFormatNV, FgGLContext *, FgGLenum, FgGLsizei ) \
+    FG_GL_FUNCTION_VOID( ColorFormatNV, FgGLContext *, FgGLint, FgGLenum, FgGLsizei ) \
+    FG_GL_FUNCTION_VOID( IndexFormatNV, FgGLContext *, FgGLenum, FgGLsizei ) \
+    FG_GL_FUNCTION_VOID( TexCoordFormatNV, FgGLContext *, FgGLint, FgGLenum, FgGLsizei ) \
+    FG_GL_FUNCTION_VOID( EdgeFlagFormatNV, FgGLContext *, FgGLsizei ) \
+    FG_GL_FUNCTION_VOID( SecondaryColorFormatNV, FgGLContext *, FgGLint, FgGLenum, FgGLsizei ) \
+    FG_GL_FUNCTION_VOID( FogCoordFormatNV, FgGLContext *, FgGLenum, FgGLsizei ) \
+    FG_GL_FUNCTION_VOID( VertexAttribFormatNV, FgGLContext *, FgGLuint, FgGLint, FgGLenum, FgGLboolean, FgGLsizei ) \
+    FG_GL_FUNCTION_VOID( VertexAttribIFormatNV, FgGLContext *, FgGLuint, FgGLint, FgGLenum, FgGLsizei ) \
+    FG_GL_FUNCTION_VOID( GetIntegerui64i_vNV, FgGLContext *, FgGLenum, FgGLuint, FgGLuint64EXT * ) \
 \
     /* GL_NV_vertex_program */ \
-    FG_GL_FUNCTION( 0, FgGLboolean, AreProgramsResidentNV, ( FgGLsizei _1, const FgGLuint * _2, FgGLboolean * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( BindProgramNV, ( FgGLenum _1, FgGLuint _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( DeleteProgramsNV, ( FgGLsizei _1, const FgGLuint * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( ExecuteProgramNV, ( FgGLenum _1, FgGLuint _2, const FgGLfloat * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GenProgramsNV, ( FgGLsizei _1, FgGLuint * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( GetProgramParameterdvNV, ( FgGLenum _1, FgGLuint _2, FgGLenum _3, FgGLdouble * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( GetProgramParameterfvNV, ( FgGLenum _1, FgGLuint _2, FgGLenum _3, FgGLfloat * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( GetProgramivNV, ( FgGLuint _1, FgGLenum _2, FgGLint * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetProgramStringNV, ( FgGLuint _1, FgGLenum _2, FgGLubyte * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetTrackMatrixivNV, ( FgGLenum _1, FgGLuint _2, FgGLenum _3, FgGLint * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( GetVertexAttribdvNV, ( FgGLuint _1, FgGLenum _2, FgGLdouble * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetVertexAttribfvNV, ( FgGLuint _1, FgGLenum _2, FgGLfloat * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetVertexAttribivNV, ( FgGLuint _1, FgGLenum _2, FgGLint * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetVertexAttribPointervNV, ( FgGLuint _1, FgGLenum _2, FgGLvoid ** _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_FUNCTION( 0, FgGLboolean, IsProgramNV, ( FgGLuint _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( LoadProgramNV, ( FgGLenum _1, FgGLuint _2, FgGLsizei _3, const FgGLubyte * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramParameter4dNV, ( FgGLenum _1, FgGLuint _2, FgGLdouble _3, FgGLdouble _4, FgGLdouble _5, FgGLdouble _6 ), ( _1, _2, _3, _4, _5, _6 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramParameter4dvNV, ( FgGLenum _1, FgGLuint _2, const FgGLdouble * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramParameter4fNV, ( FgGLenum _1, FgGLuint _2, FgGLfloat _3, FgGLfloat _4, FgGLfloat _5, FgGLfloat _6 ), ( _1, _2, _3, _4, _5, _6 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramParameter4fvNV, ( FgGLenum _1, FgGLuint _2, const FgGLfloat * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramParameters4dvNV, ( FgGLenum _1, FgGLuint _2, FgGLsizei _3, const FgGLdouble * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( ProgramParameters4fvNV, ( FgGLenum _1, FgGLuint _2, FgGLsizei _3, const FgGLfloat * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( RequestResidentProgramsNV, ( FgGLsizei _1, const FgGLuint * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( TrackMatrixNV, ( FgGLenum _1, FgGLuint _2, FgGLenum _3, FgGLenum _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttribPointerNV, ( FgGLuint _1, FgGLint _2, FgGLenum _3, FgGLsizei _4, const FgGLvoid * _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttrib1dNV, ( FgGLuint _1, FgGLdouble _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttrib1dvNV, ( FgGLuint _1, const FgGLdouble * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttrib1fNV, ( FgGLuint _1, FgGLfloat _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttrib1fvNV, ( FgGLuint _1, const FgGLfloat * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttrib1sNV, ( FgGLuint _1, FgGLshort _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttrib1svNV, ( FgGLuint _1, const FgGLshort * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttrib2dNV, ( FgGLuint _1, FgGLdouble _2, FgGLdouble _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttrib2dvNV, ( FgGLuint _1, const FgGLdouble * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttrib2fNV, ( FgGLuint _1, FgGLfloat _2, FgGLfloat _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttrib2fvNV, ( FgGLuint _1, const FgGLfloat * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttrib2sNV, ( FgGLuint _1, FgGLshort _2, FgGLshort _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttrib2svNV, ( FgGLuint _1, const FgGLshort * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttrib3dNV, ( FgGLuint _1, FgGLdouble _2, FgGLdouble _3, FgGLdouble _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttrib3dvNV, ( FgGLuint _1, const FgGLdouble * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttrib3fNV, ( FgGLuint _1, FgGLfloat _2, FgGLfloat _3, FgGLfloat _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttrib3fvNV, ( FgGLuint _1, const FgGLfloat * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttrib3sNV, ( FgGLuint _1, FgGLshort _2, FgGLshort _3, FgGLshort _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttrib3svNV, ( FgGLuint _1, const FgGLshort * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttrib4dNV, ( FgGLuint _1, FgGLdouble _2, FgGLdouble _3, FgGLdouble _4, FgGLdouble _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttrib4dvNV, ( FgGLuint _1, const FgGLdouble * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttrib4fNV, ( FgGLuint _1, FgGLfloat _2, FgGLfloat _3, FgGLfloat _4, FgGLfloat _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttrib4fvNV, ( FgGLuint _1, const FgGLfloat * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttrib4sNV, ( FgGLuint _1, FgGLshort _2, FgGLshort _3, FgGLshort _4, FgGLshort _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttrib4svNV, ( FgGLuint _1, const FgGLshort * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttrib4ubNV, ( FgGLuint _1, FgGLubyte _2, FgGLubyte _3, FgGLubyte _4, FgGLubyte _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttrib4ubvNV, ( FgGLuint _1, const FgGLubyte * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttribs1dvNV, ( FgGLuint _1, FgGLsizei _2, const FgGLdouble * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttribs1fvNV, ( FgGLuint _1, FgGLsizei _2, const FgGLfloat * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttribs1svNV, ( FgGLuint _1, FgGLsizei _2, const FgGLshort * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttribs2dvNV, ( FgGLuint _1, FgGLsizei _2, const FgGLdouble * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttribs2fvNV, ( FgGLuint _1, FgGLsizei _2, const FgGLfloat * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttribs2svNV, ( FgGLuint _1, FgGLsizei _2, const FgGLshort * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttribs3dvNV, ( FgGLuint _1, FgGLsizei _2, const FgGLdouble * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttribs3fvNV, ( FgGLuint _1, FgGLsizei _2, const FgGLfloat * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttribs3svNV, ( FgGLuint _1, FgGLsizei _2, const FgGLshort * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttribs4dvNV, ( FgGLuint _1, FgGLsizei _2, const FgGLdouble * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttribs4fvNV, ( FgGLuint _1, FgGLsizei _2, const FgGLfloat * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttribs4svNV, ( FgGLuint _1, FgGLsizei _2, const FgGLshort * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttribs4ubvNV, ( FgGLuint _1, FgGLsizei _2, const FgGLubyte * _3 ), ( _1, _2, _3 ) ) \
+    FG_GL_FUNCTION_NUM( AreProgramsResidentNV, FgGLboolean, FgGLContext *, FgGLsizei, const FgGLuint *, FgGLboolean * ) \
+    FG_GL_FUNCTION_VOID( BindProgramNV, FgGLContext *, FgGLenum, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( DeleteProgramsNV, FgGLContext *, FgGLsizei, const FgGLuint * ) \
+    FG_GL_FUNCTION_VOID( ExecuteProgramNV, FgGLContext *, FgGLenum, FgGLuint, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( GenProgramsNV, FgGLContext *, FgGLsizei, FgGLuint * ) \
+    FG_GL_FUNCTION_VOID( GetProgramParameterdvNV, FgGLContext *, FgGLenum, FgGLuint, FgGLenum, FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( GetProgramParameterfvNV, FgGLContext *, FgGLenum, FgGLuint, FgGLenum, FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( GetProgramivNV, FgGLContext *, FgGLuint, FgGLenum, FgGLint * ) \
+    FG_GL_FUNCTION_VOID( GetProgramStringNV, FgGLContext *, FgGLuint, FgGLenum, FgGLubyte * ) \
+    FG_GL_FUNCTION_VOID( GetTrackMatrixivNV, FgGLContext *, FgGLenum, FgGLuint, FgGLenum, FgGLint * ) \
+    FG_GL_FUNCTION_VOID( GetVertexAttribdvNV, FgGLContext *, FgGLuint, FgGLenum, FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( GetVertexAttribfvNV, FgGLContext *, FgGLuint, FgGLenum, FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( GetVertexAttribivNV, FgGLContext *, FgGLuint, FgGLenum, FgGLint * ) \
+    FG_GL_FUNCTION_VOID( GetVertexAttribPointervNV, FgGLContext *, FgGLuint, FgGLenum, FgGLvoid ** ) \
+    FG_GL_FUNCTION_NUM( IsProgramNV, FgGLboolean, FgGLContext *, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( LoadProgramNV, FgGLContext *, FgGLenum, FgGLuint, FgGLsizei, const FgGLubyte * ) \
+    FG_GL_FUNCTION_VOID( ProgramParameter4dNV, FgGLContext *, FgGLenum, FgGLuint, FgGLdouble, FgGLdouble, FgGLdouble, FgGLdouble ) \
+    FG_GL_FUNCTION_VOID( ProgramParameter4dvNV, FgGLContext *, FgGLenum, FgGLuint, const FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( ProgramParameter4fNV, FgGLContext *, FgGLenum, FgGLuint, FgGLfloat, FgGLfloat, FgGLfloat, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( ProgramParameter4fvNV, FgGLContext *, FgGLenum, FgGLuint, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( ProgramParameters4dvNV, FgGLContext *, FgGLenum, FgGLuint, FgGLsizei, const FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( ProgramParameters4fvNV, FgGLContext *, FgGLenum, FgGLuint, FgGLsizei, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( RequestResidentProgramsNV, FgGLContext *, FgGLsizei, const FgGLuint * ) \
+    FG_GL_FUNCTION_VOID( TrackMatrixNV, FgGLContext *, FgGLenum, FgGLuint, FgGLenum, FgGLenum ) \
+    FG_GL_FUNCTION_VOID( VertexAttribPointerNV, FgGLContext *, FgGLuint, FgGLint, FgGLenum, FgGLsizei, const FgGLvoid * ) \
+    FG_GL_FUNCTION_VOID( VertexAttrib1dNV, FgGLContext *, FgGLuint, FgGLdouble ) \
+    FG_GL_FUNCTION_VOID( VertexAttrib1dvNV, FgGLContext *, FgGLuint, const FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( VertexAttrib1fNV, FgGLContext *, FgGLuint, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( VertexAttrib1fvNV, FgGLContext *, FgGLuint, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( VertexAttrib1sNV, FgGLContext *, FgGLuint, FgGLshort ) \
+    FG_GL_FUNCTION_VOID( VertexAttrib1svNV, FgGLContext *, FgGLuint, const FgGLshort * ) \
+    FG_GL_FUNCTION_VOID( VertexAttrib2dNV, FgGLContext *, FgGLuint, FgGLdouble, FgGLdouble ) \
+    FG_GL_FUNCTION_VOID( VertexAttrib2dvNV, FgGLContext *, FgGLuint, const FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( VertexAttrib2fNV, FgGLContext *, FgGLuint, FgGLfloat, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( VertexAttrib2fvNV, FgGLContext *, FgGLuint, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( VertexAttrib2sNV, FgGLContext *, FgGLuint, FgGLshort, FgGLshort ) \
+    FG_GL_FUNCTION_VOID( VertexAttrib2svNV, FgGLContext *, FgGLuint, const FgGLshort * ) \
+    FG_GL_FUNCTION_VOID( VertexAttrib3dNV, FgGLContext *, FgGLuint, FgGLdouble, FgGLdouble, FgGLdouble ) \
+    FG_GL_FUNCTION_VOID( VertexAttrib3dvNV, FgGLContext *, FgGLuint, const FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( VertexAttrib3fNV, FgGLContext *, FgGLuint, FgGLfloat, FgGLfloat, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( VertexAttrib3fvNV, FgGLContext *, FgGLuint, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( VertexAttrib3sNV, FgGLContext *, FgGLuint, FgGLshort, FgGLshort, FgGLshort ) \
+    FG_GL_FUNCTION_VOID( VertexAttrib3svNV, FgGLContext *, FgGLuint, const FgGLshort * ) \
+    FG_GL_FUNCTION_VOID( VertexAttrib4dNV, FgGLContext *, FgGLuint, FgGLdouble, FgGLdouble, FgGLdouble, FgGLdouble ) \
+    FG_GL_FUNCTION_VOID( VertexAttrib4dvNV, FgGLContext *, FgGLuint, const FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( VertexAttrib4fNV, FgGLContext *, FgGLuint, FgGLfloat, FgGLfloat, FgGLfloat, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( VertexAttrib4fvNV, FgGLContext *, FgGLuint, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( VertexAttrib4sNV, FgGLContext *, FgGLuint, FgGLshort, FgGLshort, FgGLshort, FgGLshort ) \
+    FG_GL_FUNCTION_VOID( VertexAttrib4svNV, FgGLContext *, FgGLuint, const FgGLshort * ) \
+    FG_GL_FUNCTION_VOID( VertexAttrib4ubNV, FgGLContext *, FgGLuint, FgGLubyte, FgGLubyte, FgGLubyte, FgGLubyte ) \
+    FG_GL_FUNCTION_VOID( VertexAttrib4ubvNV, FgGLContext *, FgGLuint, const FgGLubyte * ) \
+    FG_GL_FUNCTION_VOID( VertexAttribs1dvNV, FgGLContext *, FgGLuint, FgGLsizei, const FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( VertexAttribs1fvNV, FgGLContext *, FgGLuint, FgGLsizei, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( VertexAttribs1svNV, FgGLContext *, FgGLuint, FgGLsizei, const FgGLshort * ) \
+    FG_GL_FUNCTION_VOID( VertexAttribs2dvNV, FgGLContext *, FgGLuint, FgGLsizei, const FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( VertexAttribs2fvNV, FgGLContext *, FgGLuint, FgGLsizei, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( VertexAttribs2svNV, FgGLContext *, FgGLuint, FgGLsizei, const FgGLshort * ) \
+    FG_GL_FUNCTION_VOID( VertexAttribs3dvNV, FgGLContext *, FgGLuint, FgGLsizei, const FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( VertexAttribs3fvNV, FgGLContext *, FgGLuint, FgGLsizei, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( VertexAttribs3svNV, FgGLContext *, FgGLuint, FgGLsizei, const FgGLshort * ) \
+    FG_GL_FUNCTION_VOID( VertexAttribs4dvNV, FgGLContext *, FgGLuint, FgGLsizei, const FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( VertexAttribs4fvNV, FgGLContext *, FgGLuint, FgGLsizei, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( VertexAttribs4svNV, FgGLContext *, FgGLuint, FgGLsizei, const FgGLshort * ) \
+    FG_GL_FUNCTION_VOID( VertexAttribs4ubvNV, FgGLContext *, FgGLuint, FgGLsizei, const FgGLubyte * ) \
 \
     /* GL_NV_vertex_program1_1 */ \
 \
@@ -3278,43 +3279,43 @@
     /* GL_NV_vertex_program3 */ \
 \
     /* GL_NV_vertex_program4 */ \
-    FG_GL_VOID_FUNCTION( VertexAttribI1iEXT, ( FgGLuint _1, FgGLint _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttribI2iEXT, ( FgGLuint _1, FgGLint _2, FgGLint _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttribI3iEXT, ( FgGLuint _1, FgGLint _2, FgGLint _3, FgGLint _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttribI4iEXT, ( FgGLuint _1, FgGLint _2, FgGLint _3, FgGLint _4, FgGLint _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttribI1uiEXT, ( FgGLuint _1, FgGLuint _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttribI2uiEXT, ( FgGLuint _1, FgGLuint _2, FgGLuint _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttribI3uiEXT, ( FgGLuint _1, FgGLuint _2, FgGLuint _3, FgGLuint _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttribI4uiEXT, ( FgGLuint _1, FgGLuint _2, FgGLuint _3, FgGLuint _4, FgGLuint _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttribI1ivEXT, ( FgGLuint _1, const FgGLint * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttribI2ivEXT, ( FgGLuint _1, const FgGLint * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttribI3ivEXT, ( FgGLuint _1, const FgGLint * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttribI4ivEXT, ( FgGLuint _1, const FgGLint * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttribI1uivEXT, ( FgGLuint _1, const FgGLuint * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttribI2uivEXT, ( FgGLuint _1, const FgGLuint * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttribI3uivEXT, ( FgGLuint _1, const FgGLuint * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttribI4uivEXT, ( FgGLuint _1, const FgGLuint * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttribI4bvEXT, ( FgGLuint _1, const FgGLbyte * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttribI4svEXT, ( FgGLuint _1, const FgGLshort * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttribI4ubvEXT, ( FgGLuint _1, const FgGLubyte * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttribI4usvEXT, ( FgGLuint _1, const FgGLushort * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( VertexAttribIPointerEXT, ( FgGLuint _1, FgGLint _2, FgGLenum _3, FgGLsizei _4, const FgGLvoid * _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( GetVertexAttribIivEXT, ( FgGLuint _1, FgGLenum _2, FgGLint * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetVertexAttribIuivEXT, ( FgGLuint _1, FgGLenum _2, FgGLuint * _3 ), ( _1, _2, _3 ) ) \
+    FG_GL_FUNCTION_VOID( VertexAttribI1iEXT, FgGLContext *, FgGLuint, FgGLint ) \
+    FG_GL_FUNCTION_VOID( VertexAttribI2iEXT, FgGLContext *, FgGLuint, FgGLint, FgGLint ) \
+    FG_GL_FUNCTION_VOID( VertexAttribI3iEXT, FgGLContext *, FgGLuint, FgGLint, FgGLint, FgGLint ) \
+    FG_GL_FUNCTION_VOID( VertexAttribI4iEXT, FgGLContext *, FgGLuint, FgGLint, FgGLint, FgGLint, FgGLint ) \
+    FG_GL_FUNCTION_VOID( VertexAttribI1uiEXT, FgGLContext *, FgGLuint, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( VertexAttribI2uiEXT, FgGLContext *, FgGLuint, FgGLuint, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( VertexAttribI3uiEXT, FgGLContext *, FgGLuint, FgGLuint, FgGLuint, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( VertexAttribI4uiEXT, FgGLContext *, FgGLuint, FgGLuint, FgGLuint, FgGLuint, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( VertexAttribI1ivEXT, FgGLContext *, FgGLuint, const FgGLint * ) \
+    FG_GL_FUNCTION_VOID( VertexAttribI2ivEXT, FgGLContext *, FgGLuint, const FgGLint * ) \
+    FG_GL_FUNCTION_VOID( VertexAttribI3ivEXT, FgGLContext *, FgGLuint, const FgGLint * ) \
+    FG_GL_FUNCTION_VOID( VertexAttribI4ivEXT, FgGLContext *, FgGLuint, const FgGLint * ) \
+    FG_GL_FUNCTION_VOID( VertexAttribI1uivEXT, FgGLContext *, FgGLuint, const FgGLuint * ) \
+    FG_GL_FUNCTION_VOID( VertexAttribI2uivEXT, FgGLContext *, FgGLuint, const FgGLuint * ) \
+    FG_GL_FUNCTION_VOID( VertexAttribI3uivEXT, FgGLContext *, FgGLuint, const FgGLuint * ) \
+    FG_GL_FUNCTION_VOID( VertexAttribI4uivEXT, FgGLContext *, FgGLuint, const FgGLuint * ) \
+    FG_GL_FUNCTION_VOID( VertexAttribI4bvEXT, FgGLContext *, FgGLuint, const FgGLbyte * ) \
+    FG_GL_FUNCTION_VOID( VertexAttribI4svEXT, FgGLContext *, FgGLuint, const FgGLshort * ) \
+    FG_GL_FUNCTION_VOID( VertexAttribI4ubvEXT, FgGLContext *, FgGLuint, const FgGLubyte * ) \
+    FG_GL_FUNCTION_VOID( VertexAttribI4usvEXT, FgGLContext *, FgGLuint, const FgGLushort * ) \
+    FG_GL_FUNCTION_VOID( VertexAttribIPointerEXT, FgGLContext *, FgGLuint, FgGLint, FgGLenum, FgGLsizei, const FgGLvoid * ) \
+    FG_GL_FUNCTION_VOID( GetVertexAttribIivEXT, FgGLContext *, FgGLuint, FgGLenum, FgGLint * ) \
+    FG_GL_FUNCTION_VOID( GetVertexAttribIuivEXT, FgGLContext *, FgGLuint, FgGLenum, FgGLuint * ) \
 \
     /* GL_NV_video_capture */ \
-    FG_GL_VOID_FUNCTION( BeginVideoCaptureNV, ( FgGLuint _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( BindVideoCaptureStreamBufferNV, ( FgGLuint _1, FgGLuint _2, FgGLenum _3, FgGLintptrARB _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( BindVideoCaptureStreamTextureNV, ( FgGLuint _1, FgGLuint _2, FgGLenum _3, FgGLenum _4, FgGLuint _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( EndVideoCaptureNV, ( FgGLuint _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( GetVideoCaptureivNV, ( FgGLuint _1, FgGLenum _2, FgGLint * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetVideoCaptureStreamivNV, ( FgGLuint _1, FgGLuint _2, FgGLenum _3, FgGLint * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( GetVideoCaptureStreamfvNV, ( FgGLuint _1, FgGLuint _2, FgGLenum _3, FgGLfloat * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( GetVideoCaptureStreamdvNV, ( FgGLuint _1, FgGLuint _2, FgGLenum _3, FgGLdouble * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_FUNCTION( 0, FgGLenum, VideoCaptureNV, ( FgGLuint _1, FgGLuint * _2, FgGLuint64EXT * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( VideoCaptureStreamParameterivNV, ( FgGLuint _1, FgGLuint _2, FgGLenum _3, const FgGLint * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( VideoCaptureStreamParameterfvNV, ( FgGLuint _1, FgGLuint _2, FgGLenum _3, const FgGLfloat * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( VideoCaptureStreamParameterdvNV, ( FgGLuint _1, FgGLuint _2, FgGLenum _3, const FgGLdouble * _4 ), ( _1, _2, _3, _4 ) ) \
+    FG_GL_FUNCTION_VOID( BeginVideoCaptureNV, FgGLContext *, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( BindVideoCaptureStreamBufferNV, FgGLContext *, FgGLuint, FgGLuint, FgGLenum, FgGLintptrARB ) \
+    FG_GL_FUNCTION_VOID( BindVideoCaptureStreamTextureNV, FgGLContext *, FgGLuint, FgGLuint, FgGLenum, FgGLenum, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( EndVideoCaptureNV, FgGLContext *, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( GetVideoCaptureivNV, FgGLContext *, FgGLuint, FgGLenum, FgGLint * ) \
+    FG_GL_FUNCTION_VOID( GetVideoCaptureStreamivNV, FgGLContext *, FgGLuint, FgGLuint, FgGLenum, FgGLint * ) \
+    FG_GL_FUNCTION_VOID( GetVideoCaptureStreamfvNV, FgGLContext *, FgGLuint, FgGLuint, FgGLenum, FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( GetVideoCaptureStreamdvNV, FgGLContext *, FgGLuint, FgGLuint, FgGLenum, FgGLdouble * ) \
+    FG_GL_FUNCTION_NUM( VideoCaptureNV, FgGLenum, FgGLContext *, FgGLuint, FgGLuint *, FgGLuint64EXT * ) \
+    FG_GL_FUNCTION_VOID( VideoCaptureStreamParameterivNV, FgGLContext *, FgGLuint, FgGLuint, FgGLenum, const FgGLint * ) \
+    FG_GL_FUNCTION_VOID( VideoCaptureStreamParameterfvNV, FgGLContext *, FgGLuint, FgGLuint, FgGLenum, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( VideoCaptureStreamParameterdvNV, FgGLContext *, FgGLuint, FgGLuint, FgGLenum, const FgGLdouble * ) \
 \
     /* GL_OML_interlace */ \
 \
@@ -3323,7 +3324,7 @@
     /* GL_OML_subsample */ \
 \
     /* GL_PGI_misc_hints */ \
-    FG_GL_VOID_FUNCTION( HintPGI, ( FgGLenum _1, FgGLint _2 ), ( _1, _2 ) ) \
+    FG_GL_FUNCTION_VOID( HintPGI, FgGLContext *, FgGLenum, FgGLint ) \
 \
     /* GL_PGI_vertex_hints */ \
 \
@@ -3332,63 +3333,63 @@
     /* GL_S3_s3tc */ \
 \
     /* GL_SGIS_detail_texture */ \
-    FG_GL_VOID_FUNCTION( DetailTexFuncSGIS, ( FgGLenum _1, FgGLsizei _2, const FgGLfloat * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetDetailTexFuncSGIS, ( FgGLenum _1, FgGLfloat * _2 ), ( _1, _2 ) ) \
+    FG_GL_FUNCTION_VOID( DetailTexFuncSGIS, FgGLContext *, FgGLenum, FgGLsizei, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( GetDetailTexFuncSGIS, FgGLContext *, FgGLenum, FgGLfloat * ) \
 \
     /* GL_SGIS_fog_function */ \
-    FG_GL_VOID_FUNCTION( FogFuncSGIS, ( FgGLsizei _1, const FgGLfloat * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( GetFogFuncSGIS, ( FgGLfloat * _1 ), ( _1 ) ) \
+    FG_GL_FUNCTION_VOID( FogFuncSGIS, FgGLContext *, FgGLsizei, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( GetFogFuncSGIS, FgGLContext *, FgGLfloat * ) \
 \
     /* GL_SGIS_generate_mipmap */ \
 \
     /* GL_SGIS_multisample */ \
-    FG_GL_VOID_FUNCTION( SampleMaskSGIS, ( FgGLclampf _1, FgGLboolean _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( SamplePatternSGIS, ( FgGLenum _1 ), ( _1 ) ) \
+    FG_GL_FUNCTION_VOID( SampleMaskSGIS, FgGLContext *, FgGLclampf, FgGLboolean ) \
+    FG_GL_FUNCTION_VOID( SamplePatternSGIS, FgGLContext *, FgGLenum ) \
 \
     /* GL_SGIS_pixel_texture */ \
-    FG_GL_VOID_FUNCTION( PixelTexGenParameteriSGIS, ( FgGLenum _1, FgGLint _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( PixelTexGenParameterivSGIS, ( FgGLenum _1, const FgGLint * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( PixelTexGenParameterfSGIS, ( FgGLenum _1, FgGLfloat _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( PixelTexGenParameterfvSGIS, ( FgGLenum _1, const FgGLfloat * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( GetPixelTexGenParameterivSGIS, ( FgGLenum _1, FgGLint * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( GetPixelTexGenParameterfvSGIS, ( FgGLenum _1, FgGLfloat * _2 ), ( _1, _2 ) ) \
+    FG_GL_FUNCTION_VOID( PixelTexGenParameteriSGIS, FgGLContext *, FgGLenum, FgGLint ) \
+    FG_GL_FUNCTION_VOID( PixelTexGenParameterivSGIS, FgGLContext *, FgGLenum, const FgGLint * ) \
+    FG_GL_FUNCTION_VOID( PixelTexGenParameterfSGIS, FgGLContext *, FgGLenum, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( PixelTexGenParameterfvSGIS, FgGLContext *, FgGLenum, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( GetPixelTexGenParameterivSGIS, FgGLContext *, FgGLenum, FgGLint * ) \
+    FG_GL_FUNCTION_VOID( GetPixelTexGenParameterfvSGIS, FgGLContext *, FgGLenum, FgGLfloat * ) \
 \
     /* GL_SGIS_point_line_texgen */ \
 \
     /* GL_SGIS_point_parameters */ \
-    FG_GL_VOID_FUNCTION( PointParameterfSGIS, ( FgGLenum _1, FgGLfloat _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( PointParameterfvSGIS, ( FgGLenum _1, const FgGLfloat * _2 ), ( _1, _2 ) ) \
+    FG_GL_FUNCTION_VOID( PointParameterfSGIS, FgGLContext *, FgGLenum, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( PointParameterfvSGIS, FgGLContext *, FgGLenum, const FgGLfloat * ) \
 \
     /* GL_SGIS_sharpen_texture */ \
-    FG_GL_VOID_FUNCTION( SharpenTexFuncSGIS, ( FgGLenum _1, FgGLsizei _2, const FgGLfloat * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetSharpenTexFuncSGIS, ( FgGLenum _1, FgGLfloat * _2 ), ( _1, _2 ) ) \
+    FG_GL_FUNCTION_VOID( SharpenTexFuncSGIS, FgGLContext *, FgGLenum, FgGLsizei, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( GetSharpenTexFuncSGIS, FgGLContext *, FgGLenum, FgGLfloat * ) \
 \
     /* GL_SGIS_texture4D */ \
-    FG_GL_VOID_FUNCTION( TexImage4DSGIS, ( FgGLenum _1, FgGLint _2, FgGLenum _3, FgGLsizei _4, FgGLsizei _5, FgGLsizei _6, FgGLsizei _7, FgGLint _8, FgGLenum _9, FgGLenum _10, const FgGLvoid * _11 ), ( _1, _2, _3, _4, _5, _6, _7, _8, _9, _10, _11 ) ) \
-    FG_GL_VOID_FUNCTION( TexSubImage4DSGIS, ( FgGLenum _1, FgGLint _2, FgGLint _3, FgGLint _4, FgGLint _5, FgGLint _6, FgGLsizei _7, FgGLsizei _8, FgGLsizei _9, FgGLsizei _10, FgGLenum _11, FgGLenum _12, const FgGLvoid * _13 ), ( _1, _2, _3, _4, _5, _6, _7, _8, _9, _10, _11, _12, _13 ) ) \
+    FG_GL_FUNCTION_VOID( TexImage4DSGIS, FgGLContext *, FgGLenum, FgGLint, FgGLenum, FgGLsizei, FgGLsizei, FgGLsizei, FgGLsizei, FgGLint, FgGLenum, FgGLenum, const FgGLvoid * ) \
+    FG_GL_FUNCTION_VOID( TexSubImage4DSGIS, FgGLContext *, FgGLenum, FgGLint, FgGLint, FgGLint, FgGLint, FgGLint, FgGLsizei, FgGLsizei, FgGLsizei, FgGLsizei, FgGLenum, FgGLenum, const FgGLvoid * ) \
 \
     /* GL_SGIS_texture_border_clamp */ \
 \
     /* GL_SGIS_texture_color_mask */ \
-    FG_GL_VOID_FUNCTION( TextureColorMaskSGIS, ( FgGLboolean _1, FgGLboolean _2, FgGLboolean _3, FgGLboolean _4 ), ( _1, _2, _3, _4 ) ) \
+    FG_GL_FUNCTION_VOID( TextureColorMaskSGIS, FgGLContext *, FgGLboolean, FgGLboolean, FgGLboolean, FgGLboolean ) \
 \
     /* GL_SGIS_texture_edge_clamp */ \
 \
     /* GL_SGIS_texture_filter4 */ \
-    FG_GL_VOID_FUNCTION( GetTexFilterFuncSGIS, ( FgGLenum _1, FgGLenum _2, FgGLfloat * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( TexFilterFuncSGIS, ( FgGLenum _1, FgGLenum _2, FgGLsizei _3, const FgGLfloat * _4 ), ( _1, _2, _3, _4 ) ) \
+    FG_GL_FUNCTION_VOID( GetTexFilterFuncSGIS, FgGLContext *, FgGLenum, FgGLenum, FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( TexFilterFuncSGIS, FgGLContext *, FgGLenum, FgGLenum, FgGLsizei, const FgGLfloat * ) \
 \
     /* GL_SGIS_texture_lod */ \
 \
     /* GL_SGIS_texture_select */ \
 \
     /* GL_SGIX_async */ \
-    FG_GL_VOID_FUNCTION( AsyncMarkerSGIX, ( FgGLuint _1 ), ( _1 ) ) \
-    FG_GL_FUNCTION( 0, FgGLint, FinishAsyncSGIX, ( FgGLuint * _1 ), ( _1 ) ) \
-    FG_GL_FUNCTION( 0, FgGLint, PollAsyncSGIX, ( FgGLuint * _1 ), ( _1 ) ) \
-    FG_GL_FUNCTION( 0, FgGLuint, GenAsyncMarkersSGIX, ( FgGLsizei _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( DeleteAsyncMarkersSGIX, ( FgGLuint _1, FgGLsizei _2 ), ( _1, _2 ) ) \
-    FG_GL_FUNCTION( 0, FgGLboolean, IsAsyncMarkerSGIX, ( FgGLuint _1 ), ( _1 ) ) \
+    FG_GL_FUNCTION_VOID( AsyncMarkerSGIX, FgGLContext *, FgGLuint ) \
+    FG_GL_FUNCTION_NUM( FinishAsyncSGIX, FgGLint, FgGLContext *, FgGLuint * ) \
+    FG_GL_FUNCTION_NUM( PollAsyncSGIX, FgGLint, FgGLContext *, FgGLuint * ) \
+    FG_GL_FUNCTION_NUM( GenAsyncMarkersSGIX, FgGLuint, FgGLContext *, FgGLsizei ) \
+    FG_GL_FUNCTION_VOID( DeleteAsyncMarkersSGIX, FgGLContext *, FgGLuint, FgGLsizei ) \
+    FG_GL_FUNCTION_NUM( IsAsyncMarkerSGIX, FgGLboolean, FgGLContext *, FgGLuint ) \
 \
     /* GL_SGIX_async_histogram */ \
 \
@@ -3407,69 +3408,69 @@
     /* GL_SGIX_depth_texture */ \
 \
     /* GL_SGIX_flush_raster */ \
-    FG_GL_VOID_FUNCTION( FlushRasterSGIX, ( ), ( ) ) \
+    FG_GL_FUNCTION_VOID( FlushRasterSGIX, FgGLContext * ) \
 \
     /* GL_SGIX_fog_offset */ \
 \
     /* GL_SGIX_fragment_lighting */ \
-    FG_GL_VOID_FUNCTION( FragmentColorMaterialSGIX, ( FgGLenum _1, FgGLenum _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( FragmentLightfSGIX, ( FgGLenum _1, FgGLenum _2, FgGLfloat _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( FragmentLightfvSGIX, ( FgGLenum _1, FgGLenum _2, const FgGLfloat * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( FragmentLightiSGIX, ( FgGLenum _1, FgGLenum _2, FgGLint _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( FragmentLightivSGIX, ( FgGLenum _1, FgGLenum _2, const FgGLint * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( FragmentLightModelfSGIX, ( FgGLenum _1, FgGLfloat _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( FragmentLightModelfvSGIX, ( FgGLenum _1, const FgGLfloat * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( FragmentLightModeliSGIX, ( FgGLenum _1, FgGLint _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( FragmentLightModelivSGIX, ( FgGLenum _1, const FgGLint * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( FragmentMaterialfSGIX, ( FgGLenum _1, FgGLenum _2, FgGLfloat _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( FragmentMaterialfvSGIX, ( FgGLenum _1, FgGLenum _2, const FgGLfloat * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( FragmentMaterialiSGIX, ( FgGLenum _1, FgGLenum _2, FgGLint _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( FragmentMaterialivSGIX, ( FgGLenum _1, FgGLenum _2, const FgGLint * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetFragmentLightfvSGIX, ( FgGLenum _1, FgGLenum _2, FgGLfloat * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetFragmentLightivSGIX, ( FgGLenum _1, FgGLenum _2, FgGLint * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetFragmentMaterialfvSGIX, ( FgGLenum _1, FgGLenum _2, FgGLfloat * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetFragmentMaterialivSGIX, ( FgGLenum _1, FgGLenum _2, FgGLint * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( LightEnviSGIX, ( FgGLenum _1, FgGLint _2 ), ( _1, _2 ) ) \
+    FG_GL_FUNCTION_VOID( FragmentColorMaterialSGIX, FgGLContext *, FgGLenum, FgGLenum ) \
+    FG_GL_FUNCTION_VOID( FragmentLightfSGIX, FgGLContext *, FgGLenum, FgGLenum, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( FragmentLightfvSGIX, FgGLContext *, FgGLenum, FgGLenum, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( FragmentLightiSGIX, FgGLContext *, FgGLenum, FgGLenum, FgGLint ) \
+    FG_GL_FUNCTION_VOID( FragmentLightivSGIX, FgGLContext *, FgGLenum, FgGLenum, const FgGLint * ) \
+    FG_GL_FUNCTION_VOID( FragmentLightModelfSGIX, FgGLContext *, FgGLenum, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( FragmentLightModelfvSGIX, FgGLContext *, FgGLenum, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( FragmentLightModeliSGIX, FgGLContext *, FgGLenum, FgGLint ) \
+    FG_GL_FUNCTION_VOID( FragmentLightModelivSGIX, FgGLContext *, FgGLenum, const FgGLint * ) \
+    FG_GL_FUNCTION_VOID( FragmentMaterialfSGIX, FgGLContext *, FgGLenum, FgGLenum, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( FragmentMaterialfvSGIX, FgGLContext *, FgGLenum, FgGLenum, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( FragmentMaterialiSGIX, FgGLContext *, FgGLenum, FgGLenum, FgGLint ) \
+    FG_GL_FUNCTION_VOID( FragmentMaterialivSGIX, FgGLContext *, FgGLenum, FgGLenum, const FgGLint * ) \
+    FG_GL_FUNCTION_VOID( GetFragmentLightfvSGIX, FgGLContext *, FgGLenum, FgGLenum, FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( GetFragmentLightivSGIX, FgGLContext *, FgGLenum, FgGLenum, FgGLint * ) \
+    FG_GL_FUNCTION_VOID( GetFragmentMaterialfvSGIX, FgGLContext *, FgGLenum, FgGLenum, FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( GetFragmentMaterialivSGIX, FgGLContext *, FgGLenum, FgGLenum, FgGLint * ) \
+    FG_GL_FUNCTION_VOID( LightEnviSGIX, FgGLContext *, FgGLenum, FgGLint ) \
 \
     /* GL_SGIX_framezoom */ \
-    FG_GL_VOID_FUNCTION( FrameZoomSGIX, ( FgGLint _1 ), ( _1 ) ) \
+    FG_GL_FUNCTION_VOID( FrameZoomSGIX, FgGLContext *, FgGLint ) \
 \
     /* GL_SGIX_igloo_interface */ \
-    FG_GL_VOID_FUNCTION( IglooInterfaceSGIX, ( FgGLenum _1, const FgGLvoid * _2 ), ( _1, _2 ) ) \
+    FG_GL_FUNCTION_VOID( IglooInterfaceSGIX, FgGLContext *, FgGLenum, const FgGLvoid * ) \
 \
     /* GL_SGIX_instruments */ \
-    FG_GL_FUNCTION( 0, FgGLint, GetInstrumentsSGIX, ( ), ( ) ) \
-    FG_GL_VOID_FUNCTION( InstrumentsBufferSGIX, ( FgGLsizei _1, FgGLint * _2 ), ( _1, _2 ) ) \
-    FG_GL_FUNCTION( 0, FgGLint, PollInstrumentsSGIX, ( FgGLint * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( ReadInstrumentsSGIX, ( FgGLint _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( StartInstrumentsSGIX, ( ), ( ) ) \
-    FG_GL_VOID_FUNCTION( StopInstrumentsSGIX, ( FgGLint _1 ), ( _1 ) ) \
+    FG_GL_FUNCTION_NUM( GetInstrumentsSGIX, FgGLint, FgGLContext * ) \
+    FG_GL_FUNCTION_VOID( InstrumentsBufferSGIX, FgGLContext *, FgGLsizei, FgGLint * ) \
+    FG_GL_FUNCTION_NUM( PollInstrumentsSGIX, FgGLint, FgGLContext *, FgGLint * ) \
+    FG_GL_FUNCTION_VOID( ReadInstrumentsSGIX, FgGLContext *, FgGLint ) \
+    FG_GL_FUNCTION_VOID( StartInstrumentsSGIX, FgGLContext * ) \
+    FG_GL_FUNCTION_VOID( StopInstrumentsSGIX, FgGLContext *, FgGLint ) \
 \
     /* GL_SGIX_interlace */ \
 \
     /* GL_SGIX_ir_instrument1 */ \
 \
     /* GL_SGIX_list_priority */ \
-    FG_GL_VOID_FUNCTION( GetListParameterfvSGIX, ( FgGLuint _1, FgGLenum _2, FgGLfloat * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetListParameterivSGIX, ( FgGLuint _1, FgGLenum _2, FgGLint * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( ListParameterfSGIX, ( FgGLuint _1, FgGLenum _2, FgGLfloat _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( ListParameterfvSGIX, ( FgGLuint _1, FgGLenum _2, const FgGLfloat * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( ListParameteriSGIX, ( FgGLuint _1, FgGLenum _2, FgGLint _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( ListParameterivSGIX, ( FgGLuint _1, FgGLenum _2, const FgGLint * _3 ), ( _1, _2, _3 ) ) \
+    FG_GL_FUNCTION_VOID( GetListParameterfvSGIX, FgGLContext *, FgGLuint, FgGLenum, FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( GetListParameterivSGIX, FgGLContext *, FgGLuint, FgGLenum, FgGLint * ) \
+    FG_GL_FUNCTION_VOID( ListParameterfSGIX, FgGLContext *, FgGLuint, FgGLenum, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( ListParameterfvSGIX, FgGLContext *, FgGLuint, FgGLenum, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( ListParameteriSGIX, FgGLContext *, FgGLuint, FgGLenum, FgGLint ) \
+    FG_GL_FUNCTION_VOID( ListParameterivSGIX, FgGLContext *, FgGLuint, FgGLenum, const FgGLint * ) \
 \
     /* GL_SGIX_pixel_texture */ \
-    FG_GL_VOID_FUNCTION( PixelTexGenSGIX, ( FgGLenum _1 ), ( _1 ) ) \
+    FG_GL_FUNCTION_VOID( PixelTexGenSGIX, FgGLContext *, FgGLenum ) \
 \
     /* GL_SGIX_pixel_tiles */ \
 \
     /* GL_SGIX_polynomial_ffd */ \
-    FG_GL_VOID_FUNCTION( DeformationMap3dSGIX, ( FgGLenum _1, FgGLdouble _2, FgGLdouble _3, FgGLint _4, FgGLint _5, FgGLdouble _6, FgGLdouble _7, FgGLint _8, FgGLint _9, FgGLdouble _10, FgGLdouble _11, FgGLint _12, FgGLint _13, const FgGLdouble * _14 ), ( _1, _2, _3, _4, _5, _6, _7, _8, _9, _10, _11, _12, _13, _14 ) ) \
-    FG_GL_VOID_FUNCTION( DeformationMap3fSGIX, ( FgGLenum _1, FgGLfloat _2, FgGLfloat _3, FgGLint _4, FgGLint _5, FgGLfloat _6, FgGLfloat _7, FgGLint _8, FgGLint _9, FgGLfloat _10, FgGLfloat _11, FgGLint _12, FgGLint _13, const FgGLfloat * _14 ), ( _1, _2, _3, _4, _5, _6, _7, _8, _9, _10, _11, _12, _13, _14 ) ) \
-    FG_GL_VOID_FUNCTION( DeformSGIX, ( FgGLbitfield _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( LoadIdentityDeformationMapSGIX, ( FgGLbitfield _1 ), ( _1 ) ) \
+    FG_GL_FUNCTION_VOID( DeformationMap3dSGIX, FgGLContext *, FgGLenum, FgGLdouble, FgGLdouble, FgGLint, FgGLint, FgGLdouble, FgGLdouble, FgGLint, FgGLint, FgGLdouble, FgGLdouble, FgGLint, FgGLint, const FgGLdouble * ) \
+    FG_GL_FUNCTION_VOID( DeformationMap3fSGIX, FgGLContext *, FgGLenum, FgGLfloat, FgGLfloat, FgGLint, FgGLint, FgGLfloat, FgGLfloat, FgGLint, FgGLint, FgGLfloat, FgGLfloat, FgGLint, FgGLint, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( DeformSGIX, FgGLContext *, FgGLbitfield ) \
+    FG_GL_FUNCTION_VOID( LoadIdentityDeformationMapSGIX, FgGLContext *, FgGLbitfield ) \
 \
     /* GL_SGIX_reference_plane */ \
-    FG_GL_VOID_FUNCTION( ReferencePlaneSGIX, ( const FgGLdouble * _1 ), ( _1 ) ) \
+    FG_GL_FUNCTION_VOID( ReferencePlaneSGIX, FgGLContext *, const FgGLdouble * ) \
 \
     /* GL_SGIX_resample */ \
 \
@@ -3480,15 +3481,15 @@
     /* GL_SGIX_shadow_ambient */ \
 \
     /* GL_SGIX_sprite */ \
-    FG_GL_VOID_FUNCTION( SpriteParameterfSGIX, ( FgGLenum _1, FgGLfloat _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( SpriteParameterfvSGIX, ( FgGLenum _1, const FgGLfloat * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( SpriteParameteriSGIX, ( FgGLenum _1, FgGLint _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( SpriteParameterivSGIX, ( FgGLenum _1, const FgGLint * _2 ), ( _1, _2 ) ) \
+    FG_GL_FUNCTION_VOID( SpriteParameterfSGIX, FgGLContext *, FgGLenum, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( SpriteParameterfvSGIX, FgGLContext *, FgGLenum, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( SpriteParameteriSGIX, FgGLContext *, FgGLenum, FgGLint ) \
+    FG_GL_FUNCTION_VOID( SpriteParameterivSGIX, FgGLContext *, FgGLenum, const FgGLint * ) \
 \
     /* GL_SGIX_subsample */ \
 \
     /* GL_SGIX_tag_sample_buffer */ \
-    FG_GL_VOID_FUNCTION( TagSampleBufferSGIX, ( ), ( ) ) \
+    FG_GL_FUNCTION_VOID( TagSampleBufferSGIX, FgGLContext * ) \
 \
     /* GL_SGIX_texture_add_env */ \
 \
@@ -3511,100 +3512,103 @@
     /* GL_SGI_color_matrix */ \
 \
     /* GL_SGI_color_table */ \
-    FG_GL_VOID_FUNCTION( ColorTableSGI, ( FgGLenum _1, FgGLenum _2, FgGLsizei _3, FgGLenum _4, FgGLenum _5, const FgGLvoid * _6 ), ( _1, _2, _3, _4, _5, _6 ) ) \
-    FG_GL_VOID_FUNCTION( ColorTableParameterfvSGI, ( FgGLenum _1, FgGLenum _2, const FgGLfloat * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( ColorTableParameterivSGI, ( FgGLenum _1, FgGLenum _2, const FgGLint * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( CopyColorTableSGI, ( FgGLenum _1, FgGLenum _2, FgGLint _3, FgGLint _4, FgGLsizei _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( GetColorTableSGI, ( FgGLenum _1, FgGLenum _2, FgGLenum _3, FgGLvoid * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( GetColorTableParameterfvSGI, ( FgGLenum _1, FgGLenum _2, FgGLfloat * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( GetColorTableParameterivSGI, ( FgGLenum _1, FgGLenum _2, FgGLint * _3 ), ( _1, _2, _3 ) ) \
+    FG_GL_FUNCTION_VOID( ColorTableSGI, FgGLContext *, FgGLenum, FgGLenum, FgGLsizei, FgGLenum, FgGLenum, const FgGLvoid * ) \
+    FG_GL_FUNCTION_VOID( ColorTableParameterfvSGI, FgGLContext *, FgGLenum, FgGLenum, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( ColorTableParameterivSGI, FgGLContext *, FgGLenum, FgGLenum, const FgGLint * ) \
+    FG_GL_FUNCTION_VOID( CopyColorTableSGI, FgGLContext *, FgGLenum, FgGLenum, FgGLint, FgGLint, FgGLsizei ) \
+    FG_GL_FUNCTION_VOID( GetColorTableSGI, FgGLContext *, FgGLenum, FgGLenum, FgGLenum, FgGLvoid * ) \
+    FG_GL_FUNCTION_VOID( GetColorTableParameterfvSGI, FgGLContext *, FgGLenum, FgGLenum, FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( GetColorTableParameterivSGI, FgGLContext *, FgGLenum, FgGLenum, FgGLint * ) \
 \
     /* GL_SGI_texture_color_table */ \
 \
     /* GL_SUNX_constant_data */ \
-    FG_GL_VOID_FUNCTION( FinishTextureSUNX, ( ), ( ) ) \
+    FG_GL_FUNCTION_VOID( FinishTextureSUNX, FgGLContext * ) \
 \
     /* GL_SUN_convolution_border_modes */ \
 \
     /* GL_SUN_global_alpha */ \
-    FG_GL_VOID_FUNCTION( GlobalAlphaFactorbSUN, ( FgGLbyte _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( GlobalAlphaFactorsSUN, ( FgGLshort _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( GlobalAlphaFactoriSUN, ( FgGLint _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( GlobalAlphaFactorfSUN, ( FgGLfloat _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( GlobalAlphaFactordSUN, ( FgGLdouble _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( GlobalAlphaFactorubSUN, ( FgGLubyte _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( GlobalAlphaFactorusSUN, ( FgGLushort _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( GlobalAlphaFactoruiSUN, ( FgGLuint _1 ), ( _1 ) ) \
+    FG_GL_FUNCTION_VOID( GlobalAlphaFactorbSUN, FgGLContext *, FgGLbyte ) \
+    FG_GL_FUNCTION_VOID( GlobalAlphaFactorsSUN, FgGLContext *, FgGLshort ) \
+    FG_GL_FUNCTION_VOID( GlobalAlphaFactoriSUN, FgGLContext *, FgGLint ) \
+    FG_GL_FUNCTION_VOID( GlobalAlphaFactorfSUN, FgGLContext *, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( GlobalAlphaFactordSUN, FgGLContext *, FgGLdouble ) \
+    FG_GL_FUNCTION_VOID( GlobalAlphaFactorubSUN, FgGLContext *, FgGLubyte ) \
+    FG_GL_FUNCTION_VOID( GlobalAlphaFactorusSUN, FgGLContext *, FgGLushort ) \
+    FG_GL_FUNCTION_VOID( GlobalAlphaFactoruiSUN, FgGLContext *, FgGLuint ) \
 \
     /* GL_SUN_mesh_array */ \
-    FG_GL_VOID_FUNCTION( DrawMeshArraysSUN, ( FgGLenum _1, FgGLint _2, FgGLsizei _3, FgGLsizei _4 ), ( _1, _2, _3, _4 ) ) \
+    FG_GL_FUNCTION_VOID( DrawMeshArraysSUN, FgGLContext *, FgGLenum, FgGLint, FgGLsizei, FgGLsizei ) \
 \
     /* GL_SUN_slice_accum */ \
 \
     /* GL_SUN_triangle_list */ \
-    FG_GL_VOID_FUNCTION( ReplacementCodeuiSUN, ( FgGLuint _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( ReplacementCodeusSUN, ( FgGLushort _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( ReplacementCodeubSUN, ( FgGLubyte _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( ReplacementCodeuivSUN, ( const FgGLuint * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( ReplacementCodeusvSUN, ( const FgGLushort * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( ReplacementCodeubvSUN, ( const FgGLubyte * _1 ), ( _1 ) ) \
-    FG_GL_VOID_FUNCTION( ReplacementCodePointerSUN, ( FgGLenum _1, FgGLsizei _2, const FgGLvoid ** _3 ), ( _1, _2, _3 ) ) \
+    FG_GL_FUNCTION_VOID( ReplacementCodeuiSUN, FgGLContext *, FgGLuint ) \
+    FG_GL_FUNCTION_VOID( ReplacementCodeusSUN, FgGLContext *, FgGLushort ) \
+    FG_GL_FUNCTION_VOID( ReplacementCodeubSUN, FgGLContext *, FgGLubyte ) \
+    FG_GL_FUNCTION_VOID( ReplacementCodeuivSUN, FgGLContext *, const FgGLuint * ) \
+    FG_GL_FUNCTION_VOID( ReplacementCodeusvSUN, FgGLContext *, const FgGLushort * ) \
+    FG_GL_FUNCTION_VOID( ReplacementCodeubvSUN, FgGLContext *, const FgGLubyte * ) \
+    FG_GL_FUNCTION_VOID( ReplacementCodePointerSUN, FgGLContext *, FgGLenum, FgGLsizei, const FgGLvoid ** ) \
 \
     /* GL_SUN_vertex */ \
-    FG_GL_VOID_FUNCTION( Color4ubVertex2fSUN, ( FgGLubyte _1, FgGLubyte _2, FgGLubyte _3, FgGLubyte _4, FgGLfloat _5, FgGLfloat _6 ), ( _1, _2, _3, _4, _5, _6 ) ) \
-    FG_GL_VOID_FUNCTION( Color4ubVertex2fvSUN, ( const FgGLubyte * _1, const FgGLfloat * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( Color4ubVertex3fSUN, ( FgGLubyte _1, FgGLubyte _2, FgGLubyte _3, FgGLubyte _4, FgGLfloat _5, FgGLfloat _6, FgGLfloat _7 ), ( _1, _2, _3, _4, _5, _6, _7 ) ) \
-    FG_GL_VOID_FUNCTION( Color4ubVertex3fvSUN, ( const FgGLubyte * _1, const FgGLfloat * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( Color3fVertex3fSUN, ( FgGLfloat _1, FgGLfloat _2, FgGLfloat _3, FgGLfloat _4, FgGLfloat _5, FgGLfloat _6 ), ( _1, _2, _3, _4, _5, _6 ) ) \
-    FG_GL_VOID_FUNCTION( Color3fVertex3fvSUN, ( const FgGLfloat * _1, const FgGLfloat * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( Normal3fVertex3fSUN, ( FgGLfloat _1, FgGLfloat _2, FgGLfloat _3, FgGLfloat _4, FgGLfloat _5, FgGLfloat _6 ), ( _1, _2, _3, _4, _5, _6 ) ) \
-    FG_GL_VOID_FUNCTION( Normal3fVertex3fvSUN, ( const FgGLfloat * _1, const FgGLfloat * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( Color4fNormal3fVertex3fSUN, ( FgGLfloat _1, FgGLfloat _2, FgGLfloat _3, FgGLfloat _4, FgGLfloat _5, FgGLfloat _6, FgGLfloat _7, FgGLfloat _8, FgGLfloat _9, FgGLfloat _10 ), ( _1, _2, _3, _4, _5, _6, _7, _8, _9, _10 ) ) \
-    FG_GL_VOID_FUNCTION( Color4fNormal3fVertex3fvSUN, ( const FgGLfloat * _1, const FgGLfloat * _2, const FgGLfloat * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( TexCoord2fVertex3fSUN, ( FgGLfloat _1, FgGLfloat _2, FgGLfloat _3, FgGLfloat _4, FgGLfloat _5 ), ( _1, _2, _3, _4, _5 ) ) \
-    FG_GL_VOID_FUNCTION( TexCoord2fVertex3fvSUN, ( const FgGLfloat * _1, const FgGLfloat * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( TexCoord4fVertex4fSUN, ( FgGLfloat _1, FgGLfloat _2, FgGLfloat _3, FgGLfloat _4, FgGLfloat _5, FgGLfloat _6, FgGLfloat _7, FgGLfloat _8 ), ( _1, _2, _3, _4, _5, _6, _7, _8 ) ) \
-    FG_GL_VOID_FUNCTION( TexCoord4fVertex4fvSUN, ( const FgGLfloat * _1, const FgGLfloat * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( TexCoord2fColor4ubVertex3fSUN, ( FgGLfloat _1, FgGLfloat _2, FgGLubyte _3, FgGLubyte _4, FgGLubyte _5, FgGLubyte _6, FgGLfloat _7, FgGLfloat _8, FgGLfloat _9 ), ( _1, _2, _3, _4, _5, _6, _7, _8, _9 ) ) \
-    FG_GL_VOID_FUNCTION( TexCoord2fColor4ubVertex3fvSUN, ( const FgGLfloat * _1, const FgGLubyte * _2, const FgGLfloat * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( TexCoord2fColor3fVertex3fSUN, ( FgGLfloat _1, FgGLfloat _2, FgGLfloat _3, FgGLfloat _4, FgGLfloat _5, FgGLfloat _6, FgGLfloat _7, FgGLfloat _8 ), ( _1, _2, _3, _4, _5, _6, _7, _8 ) ) \
-    FG_GL_VOID_FUNCTION( TexCoord2fColor3fVertex3fvSUN, ( const FgGLfloat * _1, const FgGLfloat * _2, const FgGLfloat * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( TexCoord2fNormal3fVertex3fSUN, ( FgGLfloat _1, FgGLfloat _2, FgGLfloat _3, FgGLfloat _4, FgGLfloat _5, FgGLfloat _6, FgGLfloat _7, FgGLfloat _8 ), ( _1, _2, _3, _4, _5, _6, _7, _8 ) ) \
-    FG_GL_VOID_FUNCTION( TexCoord2fNormal3fVertex3fvSUN, ( const FgGLfloat * _1, const FgGLfloat * _2, const FgGLfloat * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( TexCoord2fColor4fNormal3fVertex3fSUN, ( FgGLfloat _1, FgGLfloat _2, FgGLfloat _3, FgGLfloat _4, FgGLfloat _5, FgGLfloat _6, FgGLfloat _7, FgGLfloat _8, FgGLfloat _9, FgGLfloat _10, FgGLfloat _11, FgGLfloat _12 ), ( _1, _2, _3, _4, _5, _6, _7, _8, _9, _10, _11, _12 ) ) \
-    FG_GL_VOID_FUNCTION( TexCoord2fColor4fNormal3fVertex3fvSUN, ( const FgGLfloat * _1, const FgGLfloat * _2, const FgGLfloat * _3, const FgGLfloat * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( TexCoord4fColor4fNormal3fVertex4fSUN, ( FgGLfloat _1, FgGLfloat _2, FgGLfloat _3, FgGLfloat _4, FgGLfloat _5, FgGLfloat _6, FgGLfloat _7, FgGLfloat _8, FgGLfloat _9, FgGLfloat _10, FgGLfloat _11, FgGLfloat _12, FgGLfloat _13, FgGLfloat _14, FgGLfloat _15 ), ( _1, _2, _3, _4, _5, _6, _7, _8, _9, _10, _11, _12, _13, _14, _15 ) ) \
-    FG_GL_VOID_FUNCTION( TexCoord4fColor4fNormal3fVertex4fvSUN, ( const FgGLfloat * _1, const FgGLfloat * _2, const FgGLfloat * _3, const FgGLfloat * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( ReplacementCodeuiVertex3fSUN, ( FgGLuint _1, FgGLfloat _2, FgGLfloat _3, FgGLfloat _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( ReplacementCodeuiVertex3fvSUN, ( const FgGLuint * _1, const FgGLfloat * _2 ), ( _1, _2 ) ) \
-    FG_GL_VOID_FUNCTION( ReplacementCodeuiColor4ubVertex3fSUN, ( FgGLuint _1, FgGLubyte _2, FgGLubyte _3, FgGLubyte _4, FgGLubyte _5, FgGLfloat _6, FgGLfloat _7, FgGLfloat _8 ), ( _1, _2, _3, _4, _5, _6, _7, _8 ) ) \
-    FG_GL_VOID_FUNCTION( ReplacementCodeuiColor4ubVertex3fvSUN, ( const FgGLuint * _1, const FgGLubyte * _2, const FgGLfloat * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( ReplacementCodeuiColor3fVertex3fSUN, ( FgGLuint _1, FgGLfloat _2, FgGLfloat _3, FgGLfloat _4, FgGLfloat _5, FgGLfloat _6, FgGLfloat _7 ), ( _1, _2, _3, _4, _5, _6, _7 ) ) \
-    FG_GL_VOID_FUNCTION( ReplacementCodeuiColor3fVertex3fvSUN, ( const FgGLuint * _1, const FgGLfloat * _2, const FgGLfloat * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( ReplacementCodeuiNormal3fVertex3fSUN, ( FgGLuint _1, FgGLfloat _2, FgGLfloat _3, FgGLfloat _4, FgGLfloat _5, FgGLfloat _6, FgGLfloat _7 ), ( _1, _2, _3, _4, _5, _6, _7 ) ) \
-    FG_GL_VOID_FUNCTION( ReplacementCodeuiNormal3fVertex3fvSUN, ( const FgGLuint * _1, const FgGLfloat * _2, const FgGLfloat * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( ReplacementCodeuiColor4fNormal3fVertex3fSUN, ( FgGLuint _1, FgGLfloat _2, FgGLfloat _3, FgGLfloat _4, FgGLfloat _5, FgGLfloat _6, FgGLfloat _7, FgGLfloat _8, FgGLfloat _9, FgGLfloat _10, FgGLfloat _11 ), ( _1, _2, _3, _4, _5, _6, _7, _8, _9, _10, _11 ) ) \
-    FG_GL_VOID_FUNCTION( ReplacementCodeuiColor4fNormal3fVertex3fvSUN, ( const FgGLuint * _1, const FgGLfloat * _2, const FgGLfloat * _3, const FgGLfloat * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( ReplacementCodeuiTexCoord2fVertex3fSUN, ( FgGLuint _1, FgGLfloat _2, FgGLfloat _3, FgGLfloat _4, FgGLfloat _5, FgGLfloat _6 ), ( _1, _2, _3, _4, _5, _6 ) ) \
-    FG_GL_VOID_FUNCTION( ReplacementCodeuiTexCoord2fVertex3fvSUN, ( const FgGLuint * _1, const FgGLfloat * _2, const FgGLfloat * _3 ), ( _1, _2, _3 ) ) \
-    FG_GL_VOID_FUNCTION( ReplacementCodeuiTexCoord2fNormal3fVertex3fSUN, ( FgGLuint _1, FgGLfloat _2, FgGLfloat _3, FgGLfloat _4, FgGLfloat _5, FgGLfloat _6, FgGLfloat _7, FgGLfloat _8, FgGLfloat _9 ), ( _1, _2, _3, _4, _5, _6, _7, _8, _9 ) ) \
-    FG_GL_VOID_FUNCTION( ReplacementCodeuiTexCoord2fNormal3fVertex3fvSUN, ( const FgGLuint * _1, const FgGLfloat * _2, const FgGLfloat * _3, const FgGLfloat * _4 ), ( _1, _2, _3, _4 ) ) \
-    FG_GL_VOID_FUNCTION( ReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fSUN, ( FgGLuint _1, FgGLfloat _2, FgGLfloat _3, FgGLfloat _4, FgGLfloat _5, FgGLfloat _6, FgGLfloat _7, FgGLfloat _8, FgGLfloat _9, FgGLfloat _10, FgGLfloat _11, FgGLfloat _12, FgGLfloat _13 ), ( _1, _2, _3, _4, _5, _6, _7, _8, _9, _10, _11, _12, _13 ) ) \
-    FG_GL_VOID_FUNCTION( ReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fvSUN, ( const FgGLuint * _1, const FgGLfloat * _2, const FgGLfloat * _3, const FgGLfloat * _4, const FgGLfloat * _5 ), ( _1, _2, _3, _4, _5 ) ) \
+    FG_GL_FUNCTION_VOID( Color4ubVertex2fSUN, FgGLContext *, FgGLubyte, FgGLubyte, FgGLubyte, FgGLubyte, FgGLfloat, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( Color4ubVertex2fvSUN, FgGLContext *, const FgGLubyte *, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( Color4ubVertex3fSUN, FgGLContext *, FgGLubyte, FgGLubyte, FgGLubyte, FgGLubyte, FgGLfloat, FgGLfloat, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( Color4ubVertex3fvSUN, FgGLContext *, const FgGLubyte *, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( Color3fVertex3fSUN, FgGLContext *, FgGLfloat, FgGLfloat, FgGLfloat, FgGLfloat, FgGLfloat, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( Color3fVertex3fvSUN, FgGLContext *, const FgGLfloat *, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( Normal3fVertex3fSUN, FgGLContext *, FgGLfloat, FgGLfloat, FgGLfloat, FgGLfloat, FgGLfloat, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( Normal3fVertex3fvSUN, FgGLContext *, const FgGLfloat *, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( Color4fNormal3fVertex3fSUN, FgGLContext *, FgGLfloat, FgGLfloat, FgGLfloat, FgGLfloat, FgGLfloat, FgGLfloat, FgGLfloat, FgGLfloat, FgGLfloat, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( Color4fNormal3fVertex3fvSUN, FgGLContext *, const FgGLfloat *, const FgGLfloat *, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( TexCoord2fVertex3fSUN, FgGLContext *, FgGLfloat, FgGLfloat, FgGLfloat, FgGLfloat, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( TexCoord2fVertex3fvSUN, FgGLContext *, const FgGLfloat *, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( TexCoord4fVertex4fSUN, FgGLContext *, FgGLfloat, FgGLfloat, FgGLfloat, FgGLfloat, FgGLfloat, FgGLfloat, FgGLfloat, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( TexCoord4fVertex4fvSUN, FgGLContext *, const FgGLfloat *, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( TexCoord2fColor4ubVertex3fSUN, FgGLContext *, FgGLfloat, FgGLfloat, FgGLubyte, FgGLubyte, FgGLubyte, FgGLubyte, FgGLfloat, FgGLfloat, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( TexCoord2fColor4ubVertex3fvSUN, FgGLContext *, const FgGLfloat *, const FgGLubyte *, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( TexCoord2fColor3fVertex3fSUN, FgGLContext *, FgGLfloat, FgGLfloat, FgGLfloat, FgGLfloat, FgGLfloat, FgGLfloat, FgGLfloat, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( TexCoord2fColor3fVertex3fvSUN, FgGLContext *, const FgGLfloat *, const FgGLfloat *, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( TexCoord2fNormal3fVertex3fSUN, FgGLContext *, FgGLfloat, FgGLfloat, FgGLfloat, FgGLfloat, FgGLfloat, FgGLfloat, FgGLfloat, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( TexCoord2fNormal3fVertex3fvSUN, FgGLContext *, const FgGLfloat *, const FgGLfloat *, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( TexCoord2fColor4fNormal3fVertex3fSUN, FgGLContext *, FgGLfloat, FgGLfloat, FgGLfloat, FgGLfloat, FgGLfloat, FgGLfloat, FgGLfloat, FgGLfloat, FgGLfloat, FgGLfloat, FgGLfloat, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( TexCoord2fColor4fNormal3fVertex3fvSUN, FgGLContext *, const FgGLfloat *, const FgGLfloat *, const FgGLfloat *, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( TexCoord4fColor4fNormal3fVertex4fSUN, FgGLContext *, FgGLfloat, FgGLfloat, FgGLfloat, FgGLfloat, FgGLfloat, FgGLfloat, FgGLfloat, FgGLfloat, FgGLfloat, FgGLfloat, FgGLfloat, FgGLfloat, FgGLfloat, FgGLfloat, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( TexCoord4fColor4fNormal3fVertex4fvSUN, FgGLContext *, const FgGLfloat *, const FgGLfloat *, const FgGLfloat *, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( ReplacementCodeuiVertex3fSUN, FgGLContext *, FgGLuint, FgGLfloat, FgGLfloat, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( ReplacementCodeuiVertex3fvSUN, FgGLContext *, const FgGLuint *, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( ReplacementCodeuiColor4ubVertex3fSUN, FgGLContext *, FgGLuint, FgGLubyte, FgGLubyte, FgGLubyte, FgGLubyte, FgGLfloat, FgGLfloat, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( ReplacementCodeuiColor4ubVertex3fvSUN, FgGLContext *, const FgGLuint *, const FgGLubyte *, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( ReplacementCodeuiColor3fVertex3fSUN, FgGLContext *, FgGLuint, FgGLfloat, FgGLfloat, FgGLfloat, FgGLfloat, FgGLfloat, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( ReplacementCodeuiColor3fVertex3fvSUN, FgGLContext *, const FgGLuint *, const FgGLfloat *, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( ReplacementCodeuiNormal3fVertex3fSUN, FgGLContext *, FgGLuint, FgGLfloat, FgGLfloat, FgGLfloat, FgGLfloat, FgGLfloat, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( ReplacementCodeuiNormal3fVertex3fvSUN, FgGLContext *, const FgGLuint *, const FgGLfloat *, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( ReplacementCodeuiColor4fNormal3fVertex3fSUN, FgGLContext *, FgGLuint, FgGLfloat, FgGLfloat, FgGLfloat, FgGLfloat, FgGLfloat, FgGLfloat, FgGLfloat, FgGLfloat, FgGLfloat, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( ReplacementCodeuiColor4fNormal3fVertex3fvSUN, FgGLContext *, const FgGLuint *, const FgGLfloat *, const FgGLfloat *, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( ReplacementCodeuiTexCoord2fVertex3fSUN, FgGLContext *, FgGLuint, FgGLfloat, FgGLfloat, FgGLfloat, FgGLfloat, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( ReplacementCodeuiTexCoord2fVertex3fvSUN, FgGLContext *, const FgGLuint *, const FgGLfloat *, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( ReplacementCodeuiTexCoord2fNormal3fVertex3fSUN, FgGLContext *, FgGLuint, FgGLfloat, FgGLfloat, FgGLfloat, FgGLfloat, FgGLfloat, FgGLfloat, FgGLfloat, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( ReplacementCodeuiTexCoord2fNormal3fVertex3fvSUN, FgGLContext *, const FgGLuint *, const FgGLfloat *, const FgGLfloat *, const FgGLfloat * ) \
+    FG_GL_FUNCTION_VOID( ReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fSUN, FgGLContext *, FgGLuint, FgGLfloat, FgGLfloat, FgGLfloat, FgGLfloat, FgGLfloat, FgGLfloat, FgGLfloat, FgGLfloat, FgGLfloat, FgGLfloat, FgGLfloat, FgGLfloat ) \
+    FG_GL_FUNCTION_VOID( ReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fvSUN, FgGLContext *, const FgGLuint *, const FgGLfloat *, const FgGLfloat *, const FgGLfloat *, const FgGLfloat * ) \
 \
     /* GL_WIN_phong_shading */ \
 \
     /* GL_WIN_specular_fog */ \
 
-#define GL_DECLARE_FUNCTION( _returnType, _name, _args ) \
-    FGEXPORT _returnType fgGL##_name _args;
-#define FG_GL_FUNCTION( _dummyReturnValue, _returnType, _name, _args, _argValues ) \
-    GL_DECLARE_FUNCTION( _returnType, _name, _args )
-#define FG_GL_VOID_FUNCTION( _name, _args, _argValues ) \
-    GL_DECLARE_FUNCTION( void, _name, _args )
+#define GL_DECLARE_FUNCTION( _name, _returnType, ... ) \
+    FGEXPORT _returnType fgGL##_name( __VA_ARGS__ );
+#define FG_GL_FUNCTION_NUM( _name, _returnType, ... ) \
+    GL_DECLARE_FUNCTION( _name, _returnType, __VA_ARGS__ )
+#define FG_GL_FUNCTION_PTR( _name, _returnType, ... ) \
+    GL_DECLARE_FUNCTION( _name, _returnType, __VA_ARGS__ )
+#define FG_GL_FUNCTION_VOID( _name, ... ) \
+    GL_DECLARE_FUNCTION( _name, void, __VA_ARGS__ )
 FG_GL_FUNCTIONS
-#undef  FG_GL_VOID_FUNCTION
-#undef  FG_GL_FUNCTION
+#undef  FG_GL_FUNCTION_VOID
+#undef  FG_GL_FUNCTION_PTR
+#undef  FG_GL_FUNCTION_NUM
 #undef  GL_DECLARE_FUNCTION
 
 #endif  // FG_GL_FUNCTIONS_H

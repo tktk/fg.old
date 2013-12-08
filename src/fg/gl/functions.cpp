@@ -1,22 +1,16 @@
 ﻿#include "fg/util/export.h"
 #include "fg/gl/functions.h"
 
-#define GL_DEFINE_FUNCTION( _returnType, _name, _args, _proc ) \
-    _returnType fgGL##_name _args \
-    { \
-        _proc \
-    } \
-
-#define FG_GL_FUNCTION( _dummyReturnValue, _returnType, _name, _args, _argValues ) \
-    GL_DEFINE_FUNCTION( _returnType, _name, _args, return _dummyReturnValue; )
-
-#define FG_GL_VOID_FUNCTION( _name, _args, _argValues ) \
-    GL_DEFINE_FUNCTION( void, _name, _args, )
-
+#define GL_DEFINE_FUNCTION( _proc, _name, _returnType, ... ) \
+    _returnType fgGL##_name( __VA_ARGS__ ) { _proc }
+#define FG_GL_FUNCTION_NUM( _name, _returnType, ... ) \
+    GL_DEFINE_FUNCTION( return 0;, _name, _returnType, __VA_ARGS__ )
+#define FG_GL_FUNCTION_PTR( _name, _returnType, ... ) \
+    GL_DEFINE_FUNCTION( return NULL;, _name, _returnType, __VA_ARGS__ )
+#define FG_GL_FUNCTION_VOID( _name, ... ) \
+    GL_DEFINE_FUNCTION( , _name, void, __VA_ARGS__ )
 FG_GL_FUNCTIONS
-
-#undef  FG_GL_VOID_FUNCTION
-
-#undef  FG_GL_FUNCTION
-
+#undef  FG_GL_FUNCTION_VOID
+#undef  FG_GL_FUNCTION_PTR
+#undef  FG_GL_FUNCTION_NUM
 #undef  GL_DEFINE_FUNCTION
