@@ -5,7 +5,9 @@
 #include "fg/window/window.h"
 #include "fg/common/primitives.h"
 
-FgGLCurrentContext * fgGLCurrentContextGetOrNew(
+FgGLCurrentContext * fgGLCurrentContextNew(
+    FgGLContext *
+    , FgWindow *
 )
 {
     return nullptr;
@@ -15,15 +17,6 @@ void fgGLCurrentContextFree(
     FgGLCurrentContext *
 )
 {
-}
-
-FgBool fgGLCurrentContextChange(
-    FgGLCurrentContext *
-    , FgGLContext *
-    , FgWindow *
-)
-{
-    return false;
 }
 
 void fgGLCurrentContextSwapBuffers(

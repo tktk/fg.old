@@ -6,20 +6,15 @@ typedef struct FgGLCurrentContext FgGLCurrentContext;
 #include "fg/gl/context.h"
 #include "fg/gl/functions.h"
 #include "fg/window/window.h"
-#include "fg/common/primitives.h"
 #include "fg/util/import.h"
 
 FGEXPORT FgGLCurrentContext * fgGLCurrentContextGetOrNew(
+    FgGLContext *
+    , FgWindow *
 );
 
 FGEXPORT void fgGLCurrentContextFree(
     FgGLCurrentContext *
-);
-
-FGEXPORT FgBool fgGLCurrentContextChange(
-    FgGLCurrentContext *
-    , FgGLContext *
-    , FgWindow *
 );
 
 FGEXPORT void fgGLCurrentContextSwapBuffers(
