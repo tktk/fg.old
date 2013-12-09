@@ -24,4 +24,8 @@ FGEXPORT FgBool fgGLContextMakeCurrent(
 FGEXPORT void fgGLContextReleaseCurrent(
 );
 
+FGEXPORT void fgGLContextSwapBuffers(
+    FgGLContext *
+);
+
 #endif  // FG_GL_CONTEXT_H

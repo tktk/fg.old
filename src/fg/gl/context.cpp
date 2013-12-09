@@ -30,3 +30,9 @@ void fgGLContextReleaseCurrent(
 )
 {
 }
+
+void fgGLContextSwapBuffers(
+    FgGLContext *
+)
+{
+}
