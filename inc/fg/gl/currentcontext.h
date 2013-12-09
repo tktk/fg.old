@@ -21,8 +21,9 @@ FGEXPORT void fgGLCurrentContextSwapBuffers(
     FgGLCurrentContext *
 );
 
+#define FG_GL_FUNCTION_NAME( _name ) fgGL##_name
 #define FG_GL_FUNCTION( _name, _returnType, ... ) \
-    _returnType fgGL##_name( FgGLCurrentContext * __VA_ARGS__ )
+    _returnType FG_GL_FUNCTION_NAME( _name )( FgGLCurrentContext * __VA_ARGS__ )
 
 #define GL_DECLARE_FUNCTION( _name, _returnType, ... ) \
     FGEXPORT FG_GL_FUNCTION( _name, _returnType, __VA_ARGS__ );
