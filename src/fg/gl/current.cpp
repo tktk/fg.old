@@ -1,11 +1,11 @@
 ﻿#include "fg/util/export.h"
-#include "fg/gl/currentcontext.h"
+#include "fg/gl/current.h"
 
 #include "fg/gl/functions.h"
 #include "fg/window/window.h"
 #include "fg/common/primitives.h"
 
-FgGLCurrentContext * fgGLCurrentContextNew(
+FgGLCurrent * fgGLCurrentNew(
     FgGLContext *
     , FgWindow *
 )
@@ -13,14 +13,14 @@ FgGLCurrentContext * fgGLCurrentContextNew(
     return nullptr;
 }
 
-void fgGLCurrentContextFree(
-    FgGLCurrentContext *
+void fgGLCurrentFree(
+    FgGLCurrent *
 )
 {
 }
 
-void fgGLCurrentContextSwapBuffers(
-    FgGLCurrentContext *
+void fgGLCurrentSwapBuffers(
+    FgGLCurrent *
 )
 {
 }

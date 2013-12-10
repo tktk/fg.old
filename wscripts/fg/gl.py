@@ -13,7 +13,7 @@ def build( _context ):
                 MODULE_NAME : {
                     'config.cpp',
                     'context.cpp',
-                    'currentcontext.cpp',
+                    'current.cpp',
                 },
             },
         },
