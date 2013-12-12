@@ -22,17 +22,19 @@ FGEXPORT void fgGLCurrentSwapBuffers(
 );
 
 #define FG_GL_FUNCTION_NAME( _name ) fgGL##_name
-#define FG_GL_FUNCTION( _name, _returnType, ... ) \
-    _returnType FG_GL_FUNCTION_NAME( _name )( FgGLCurrent * __VA_ARGS__ )
+#define FG_GL_ARGS( ... ) \
+    FgGLCurrent * __VA_ARGS__
+#define FG_GL_FUNCTION( _name, _returnType, _args ) \
+    _returnType FG_GL_FUNCTION_NAME( _name )( FG_GL_ARGS _args )
 
-#define GL_DECLARE_FUNCTION( _name, _returnType, ... ) \
-    FGEXPORT FG_GL_FUNCTION( _name, _returnType, __VA_ARGS__ );
-#define FG_GL_FUNCTION_NUM( _name, _returnType, ... ) \
-    GL_DECLARE_FUNCTION( _name, _returnType, __VA_ARGS__ )
-#define FG_GL_FUNCTION_PTR( _name, _returnType, ... ) \
-    GL_DECLARE_FUNCTION( _name, _returnType, __VA_ARGS__ )
-#define FG_GL_FUNCTION_VOID( _name, ... ) \
-    GL_DECLARE_FUNCTION( _name, void, __VA_ARGS__ )
+#define GL_DECLARE_FUNCTION( _name, _returnType, _args ) \
+    FGEXPORT FG_GL_FUNCTION( _name, _returnType, _args );
+#define FG_GL_FUNCTION_NUM( _name, _returnType, _args, _values ) \
+    GL_DECLARE_FUNCTION( _name, _returnType, _args )
+#define FG_GL_FUNCTION_PTR( _name, _returnType, _args, _values ) \
+    GL_DECLARE_FUNCTION( _name, _returnType, _args )
+#define FG_GL_FUNCTION_VOID( _name, _args, _values ) \
+    GL_DECLARE_FUNCTION( _name, void, _args )
 FG_GL_FUNCTIONS
 #undef  FG_GL_FUNCTION_VOID
 #undef  FG_GL_FUNCTION_PTR
