@@ -35,7 +35,9 @@ FGEXPORT void fgGLCurrentSwapBuffers(
     GL_DECLARE_FUNCTION( _name, _returnType, _args )
 #define FG_GL_FUNCTION_VOID( _name, _args, _values ) \
     GL_DECLARE_FUNCTION( _name, void, _args )
+
 FG_GL_FUNCTIONS
+
 #undef  FG_GL_FUNCTION_VOID
 #undef  FG_GL_FUNCTION_PTR
 #undef  FG_GL_FUNCTION_NUM

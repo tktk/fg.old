@@ -33,7 +33,9 @@ void fgGLCurrentSwapBuffers(
     GL_DEFINE_FUNCTION( return nullptr;, _name, _returnType, _args )
 #define FG_GL_FUNCTION_VOID( _name, _args, _values ) \
     GL_DEFINE_FUNCTION( , _name, void, _args )
+
 FG_GL_FUNCTIONS
+
 #undef  FG_GL_FUNCTION_VOID
 #undef  FG_GL_FUNCTION_PTR
 #undef  FG_GL_FUNCTION_NUM
