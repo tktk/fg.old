@@ -47,9 +47,7 @@ void fgWindowEventHandlersSetPositionEventHandler(
 
 void fgWindowEventHandlersCallPositionEventHandler(
     const FgWindowEventHandlers *
-    , FgWindow *
-    , FgInt
-    , FgInt
+    , const FgWindowPositionEvent *
 )
 {
 }
