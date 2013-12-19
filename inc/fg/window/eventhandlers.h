@@ -5,15 +5,10 @@ typedef struct FgWindowEventHandlers FgWindowEventHandlers;
 
 #include "fg/window/closeevent.h"
 #include "fg/window/positionevent.h"
+#include "fg/window/sizeevent.h"
 #include "fg/window/window.h"
 #include "fg/window/key.h"
 #include "fg/common/primitives.h"
-
-typedef void( * FgWindowSizeEventHandler )(
-    FgWindow *
-    , FgInt
-    , FgInt
-);
 
 typedef void( * FgWindowPaintEventHandler )(
     FgWindow *
@@ -84,9 +79,7 @@ FGEXPORT void fgWindowEventHandlersSetSizeEventHandler(
 
 FGEXPORT void fgWindowEventHandlersCallSizeEventHandler(
     const FgWindowEventHandlers *
-    , FgWindow *
-    , FgInt
-    , FgInt
+    , const FgWindowSizeEvent *
 );
 
 FGEXPORT void fgWindowEventHandlersSetPaintEventHandler(

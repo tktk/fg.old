@@ -2,6 +2,8 @@
 #include "fg/window/eventhandlers.h"
 
 #include "fg/window/closeevent.h"
+#include "fg/window/positionevent.h"
+#include "fg/window/sizeevent.h"
 #include "fg/window/window.h"
 #include "fg/common/primitives.h"
 
@@ -61,9 +63,7 @@ void fgWindowEventHandlersSetSizeEventHandler(
 
 void fgWindowEventHandlersCallSizeEventHandler(
     const FgWindowEventHandlers *
-    , FgWindow *
-    , FgInt
-    , FgInt
+    , const FgWindowSizeEvent *
 )
 {
 }
