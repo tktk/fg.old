@@ -1,6 +1,7 @@
 ﻿#include "fg/util/export.h"
 #include "fg/window/eventhandlers.h"
 
+#include "fg/window/closeevent.h"
 #include "fg/window/window.h"
 #include "fg/common/primitives.h"
 
@@ -32,7 +33,7 @@ void fgWindowEventHandlersSetCloseEventHandler(
 
 void fgWindowEventHandlersCallCloseEventHandler(
     const FgWindowEventHandlers *
-    , FgWindow *
+    , FgWindowCloseEvent *
 )
 {
 }

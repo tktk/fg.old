@@ -3,13 +3,10 @@
 
 typedef struct FgWindowEventHandlers FgWindowEventHandlers;
 
+#include "fg/window/closeevent.h"
 #include "fg/window/window.h"
 #include "fg/window/key.h"
 #include "fg/common/primitives.h"
-
-typedef void( * FgWindowCloseEventHandler )(
-    FgWindow *
-);
 
 typedef void( * FgWindowPositionEventHandler )(
     FgWindow *
@@ -72,7 +69,7 @@ FGEXPORT void fgWindowEventHandlersSetCloseEventHandler(
 
 FGEXPORT void fgWindowEventHandlersCallCloseEventHandler(
     const FgWindowEventHandlers *
-    , FgWindow *
+    , FgWindowCloseEvent *
 );
 
 FGEXPORT void fgWindowEventHandlersSetPositionEventHandler(
