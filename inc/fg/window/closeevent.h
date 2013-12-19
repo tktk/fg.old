@@ -4,7 +4,7 @@
 typedef struct FgWindowCloseEvent FgWindowCloseEvent;
 
 typedef void( * FgWindowCloseEventHandler )(
-    FgWindowCloseEvent *
+    const FgWindowCloseEvent *
 );
 
 #include "fg/window/window.h"
