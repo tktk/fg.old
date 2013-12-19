@@ -14,6 +14,7 @@ def build( _context ):
                     'window.cpp',
                     'eventhandlers.cpp',
                     'closeevent.cpp',
+                    'positionevent.cpp',
                 },
             },
         },
