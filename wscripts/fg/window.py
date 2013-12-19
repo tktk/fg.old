@@ -13,6 +13,7 @@ def build( _context ):
                 MODULE_NAME : {
                     'window.cpp',
                     'eventhandlers.cpp',
+                    'closeevent.cpp',
                 },
             },
         },
