@@ -24,7 +24,7 @@ void fgWindowCloseEventFree(
 }
 
 FgWindow * fgWindowCloseEventGetSource(
-    FgWindowCloseEvent *
+    const FgWindowCloseEvent *
 )
 {
     return nullptr;

@@ -69,7 +69,7 @@ FGEXPORT void fgWindowEventHandlersSetCloseEventHandler(
 
 FGEXPORT void fgWindowEventHandlersCallCloseEventHandler(
     const FgWindowEventHandlers *
-    , FgWindowCloseEvent *
+    , const FgWindowCloseEvent *
 );
 
 FGEXPORT void fgWindowEventHandlersSetPositionEventHandler(

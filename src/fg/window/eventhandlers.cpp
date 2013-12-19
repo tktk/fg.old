@@ -33,7 +33,7 @@ void fgWindowEventHandlersSetCloseEventHandler(
 
 void fgWindowEventHandlersCallCloseEventHandler(
     const FgWindowEventHandlers *
-    , FgWindowCloseEvent *
+    , const FgWindowCloseEvent *
 )
 {
 }

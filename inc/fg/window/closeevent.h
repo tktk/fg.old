@@ -23,7 +23,7 @@ FGEXPORT void fgWindowCloseEventFree(
 );
 
 FGEXPORT FgWindow * fgWindowCloseEventGetSource(
-    FgWindowCloseEvent *
+    const FgWindowCloseEvent *
 );
 
 #endif  // FG_WINDOW_CLOSEEVENT_H
