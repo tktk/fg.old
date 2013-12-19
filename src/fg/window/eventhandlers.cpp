@@ -4,6 +4,7 @@
 #include "fg/window/closeevent.h"
 #include "fg/window/positionevent.h"
 #include "fg/window/sizeevent.h"
+#include "fg/window/paintevent.h"
 #include "fg/window/window.h"
 #include "fg/common/primitives.h"
 
@@ -77,11 +78,7 @@ void fgWindowEventHandlersSetPaintEventHandler(
 
 void fgWindowEventHandlersCallPaintEventHandler(
     const FgWindowEventHandlers *
-    , FgWindow *
-    , FgInt
-    , FgInt
-    , FgInt
-    , FgInt
+    , const FgWindowPaintEvent *
 )
 {
 }
