@@ -6,6 +6,8 @@
 
 FgWindowSizeEvent * fgWindowSizeEventNew(
     FgWindow *
+    , FgInt
+    , FgInt
 )
 {
     return nullptr;

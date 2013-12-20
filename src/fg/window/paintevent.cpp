@@ -6,6 +6,10 @@
 
 FgWindowPaintEvent * fgWindowPaintEventNew(
     FgWindow *
+    , FgInt
+    , FgInt
+    , FgInt
+    , FgInt
 )
 {
     return nullptr;

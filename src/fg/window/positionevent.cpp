@@ -6,6 +6,8 @@
 
 FgWindowPositionEvent * fgWindowPositionEventNew(
     FgWindow *
+    , FgInt
+    , FgInt
 )
 {
     return nullptr;
