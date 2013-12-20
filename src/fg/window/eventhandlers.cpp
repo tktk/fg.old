@@ -6,6 +6,7 @@
 #include "fg/window/sizeevent.h"
 #include "fg/window/paintevent.h"
 #include "fg/window/keyevent.h"
+#include "fg/window/mousebuttonevent.h"
 #include "fg/window/window.h"
 #include "fg/common/primitives.h"
 
@@ -107,11 +108,7 @@ void fgWindowEventHandlersSetMouseButtonEventHandler(
 
 void fgWindowEventHandlersCallMouseButtonEventHandler(
     const FgWindowEventHandlers *
-    , FgWindow *
-    , FgULong
-    , FgBool
-    , FgInt
-    , FgInt
+    , const FgWindowMouseButtonEvent *
 )
 {
 }
