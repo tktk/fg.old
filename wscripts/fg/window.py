@@ -17,6 +17,7 @@ def build( _context ):
                     'positionevent.cpp',
                     'sizeevent.cpp',
                     'paintevent.cpp',
+                    'keyevent.cpp',
                 },
             },
         },
