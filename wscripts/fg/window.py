@@ -18,6 +18,7 @@ def build( _context ):
                     'sizeevent.cpp',
                     'paintevent.cpp',
                     'keyevent.cpp',
+                    'mousebuttonevent.cpp',
                 },
             },
         },
