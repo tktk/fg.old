@@ -19,6 +19,7 @@ def build( _context ):
                     'paintevent.cpp',
                     'keyevent.cpp',
                     'mousebuttonevent.cpp',
+                    'mousemotionevent.cpp',
                 },
             },
         },
