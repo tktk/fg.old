@@ -9,16 +9,7 @@ typedef struct FgWindowEventHandlers FgWindowEventHandlers;
 #include "fg/window/paintevent.h"
 #include "fg/window/keyevent.h"
 #include "fg/window/mousebuttonevent.h"
-#include "fg/window/window.h"
-#include "fg/window/key.h"
-#include "fg/common/primitives.h"
-
-typedef void( * FgWindowMouseMotionEventHandler )(
-    FgWindow *
-    , FgInt
-    , FgInt
-);
-
+#include "fg/window/mousemotionevent.h"
 #include "fg/util/import.h"
 
 FGEXPORT FgWindowEventHandlers * fgWindowEventHandlersNew(
@@ -99,9 +90,7 @@ FGEXPORT void fgWindowEventHandlersSetMouseMotionEventHandler(
 
 FGEXPORT void fgWindowEventHandlersCallMouseMotionEventHandler(
     const FgWindowEventHandlers *
-    , FgWindow *
-    , FgInt
-    , FgInt
+    , const FgWindowMouseMotionEvent *
 );
 
 #endif  // FG_WINDOW_EVENTHANDLERS_H

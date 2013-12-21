@@ -7,8 +7,7 @@
 #include "fg/window/paintevent.h"
 #include "fg/window/keyevent.h"
 #include "fg/window/mousebuttonevent.h"
-#include "fg/window/window.h"
-#include "fg/common/primitives.h"
+#include "fg/window/mousemotionevent.h"
 
 FgWindowEventHandlers * fgWindowEventHandlersNew(
 )
@@ -122,9 +121,7 @@ void fgWindowEventHandlersSetMouseMotionEventHandler(
 
 void fgWindowEventHandlersCallMouseMotionEventHandler(
     const FgWindowEventHandlers *
-    , FgWindow *
-    , FgInt
-    , FgInt
+    , const FgWindowMouseMotionEvent *
 )
 {
 }
