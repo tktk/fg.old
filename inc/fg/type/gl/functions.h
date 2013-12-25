@@ -1,5 +1,5 @@
-﻿#ifndef FG_GL_FUNCTIONS_H
-#define FG_GL_FUNCTIONS_H
+﻿#ifndef FG_TYPE_GL_FUNCTIONS_H
+#define FG_TYPE_GL_FUNCTIONS_H
 
 #include "fg/gl/types.h"
 
@@ -3595,4 +3595,4 @@
 \
     /* GL_WIN_specular_fog */ \
 
-#endif  // FG_GL_FUNCTIONS_H
+#endif  // FG_TYPE_GL_FUNCTIONS_H
