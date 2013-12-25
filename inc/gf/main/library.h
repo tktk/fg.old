@@ -1,23 +1,28 @@
 ﻿#ifndef GF_MAIN_LIBRARY_H
 #define GF_MAIN_LIBRARY_H
 
-typedef struct GfLibrary GfLibrary;
+#include "gf/def/main/library.h"
+#include "fg/def/string/utf32.h"
+#include "fg/util/import_new.h"
 
-#include "fg/string/utf32.h"
-#include "fg/util/import.h"
+FG_FUNCTION_PTR(
+    GfLibrary * gfLibraryNew(
+        const FgUtf32 *     _FILE
+        , const FgUtf32 *   _DIR
+    )
+)
 
-FGEXPORT GfLibrary * gfLibraryNew(
-    const FgUtf32 *
-    , const FgUtf32 *
-);
+FG_FUNCTION_VOID(
+    void gfLibraryFree(
+        GfLibrary * _this
+    )
+)
 
-FGEXPORT void gfLibraryFree(
-    GfLibrary *
-);
-
-FGEXPORT void * gfLibraryGetAddress(
-    GfLibrary *
-    , const FgUtf32 *
-);
+FG_FUNCTION_PTR(
+    void * gfLibraryGetAddress(
+        GfLibrary *         _this
+        , const FgUtf32 *   _SYMBOL_NAME
+    )
+)
 
 #endif  // GF_MAIN_LIBRARY_H
