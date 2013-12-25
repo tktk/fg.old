@@ -10,9 +10,9 @@ BUILD = 'build'
 BUILD_DEBUG = 'debug'
 BUILD_RELEASE = 'release'
 
-CXXFLAGS_BASE = 'cxxflagsbase'
-CXXFLAGS_BASE_GXX = 'g++'
-CXXFLAGS_BASE_MSVC = 'msvc'
+CFLAGS_BASE = 'cflagsbase'
+CFLAGS_BASE_GCC = 'gcc'
+CFLAGS_BASE_MSVC = 'msvc'
 
 LINKFLAGS_BASE = 'linkflagsbase'
 LINKFLAGS_BASE_LD = 'ld'
@@ -50,12 +50,12 @@ OPTIONS = {
         TYPE : _TYPE_STRING,
         DEFAULT : BUILD_DEBUG,
     },
-    CXXFLAGS_BASE : {
+    CFLAGS_BASE : {
         TYPE : _TYPE_STRING,
         DEFAULT : _defaultValue(
             {
-                OS_LINUX : CXXFLAGS_BASE_GXX,
-                OS_WINDOWS : CXXFLAGS_BASE_MSVC,
+                OS_LINUX : CFLAGS_BASE_GCC,
+                OS_WINDOWS : CFLAGS_BASE_MSVC,
             },
         ),
     },

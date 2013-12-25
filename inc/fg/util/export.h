@@ -3,10 +3,16 @@
 
 #include <stddef.h>
 
+#ifndef __cplusplus
+#   define FGEXTERN extern
+#else   // __cplusplus
+#   define FGEXTERN extern "C"
+#endif  // __cplusplus
+
 #if defined OS_LINUX    // OS
-#   define FGEXPORT extern "C" __attribute__( ( visibility( "default" ) ) )
+#   define FGEXPORT FGEXTERN __attribute__( ( visibility( "default" ) ) )
 #elif defined OS_WINDOWS    // OS
-#   define FGEXPORT extern "C" __declspec( dllexport )
+#   define FGEXPORT FGEXTERN __declspec( dllexport )
 #else   // OS
 #   error 未対応のOS
 #endif  // OS

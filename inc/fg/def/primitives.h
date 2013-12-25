@@ -4,6 +4,7 @@
 #include <stddef.h>
 
 #ifndef __cplusplus
+#   include <stdbool.h>
 #   include <uchar.h>
 #endif  // __cplusplus
 

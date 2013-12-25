@@ -11,10 +11,10 @@ def build( _context ):
         common.SOURCE_DIR : {
             common.GF : {
                 MODULE_NAME : {
-                    'args.cpp',
-                    'boot.cpp',
-                    'bootconfig.cpp',
-                    'library.cpp',
+                    'args.c',
+                    'boot.c',
+                    'bootconfig.c',
+                    'library.c',
                 },
             },
         },

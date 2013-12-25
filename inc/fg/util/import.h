@@ -3,10 +3,16 @@
 
 #ifndef FGEXPORT
 
+#   ifndef __cplusplus
+#       define FGEXTERN extern
+#   else   // __cplusplus
+#       define FGEXTERN extern "C"
+#   endif  // __cplusplus
+
 #   if defined OS_LINUX // OS
-#       define FGEXPORT extern "C"
+#       define FGEXPORT FGEXTERN
 #   elif defined OS_WINDOWS // OS
-#       define FGEXPORT extern "C" __declspec( dllimport )
+#       define FGEXPORT FGEXTERN __declspec( dllimport )
 #   else   // OS
 #       error 未対応のOS
 #   endif  // OS

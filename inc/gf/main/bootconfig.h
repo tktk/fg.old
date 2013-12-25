@@ -84,7 +84,7 @@ FG_FUNCTION_BOOL(
 FG_FUNCTION_VOID(
     void gfBootConfigSetGLDoubleBuffer(
         GfBootConfig *  _this
-        , FgBool
+        , FgBool        _doubleBuffer
     )
 )
 

@@ -29,7 +29,7 @@ FG_FUNCTION_VOID(
 #define FG_GL_FUNCTION_NAME( _name ) fgGL##_name
 
 #define GL_ARGS( ... ) \
-    FgGLCurrent * __VA_ARGS__
+    FgGLCurrent * _current __VA_ARGS__
 #define GL_DECLARE_FUNCTION( _macro, _name, _returnType, _args ) \
     _macro( _returnType FG_GL_FUNCTION_NAME( _name )( GL_ARGS _args ) )
 #define FG_GL_FUNCTION_NUM( _name, _returnType, _args, _values ) \

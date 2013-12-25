@@ -11,10 +11,10 @@ def build( _context ):
         common.SOURCE_DIR : {
             common.FG : {
                 MODULE_NAME : {
-                    'string.cpp',
-                    'utf8.cpp',
-                    'utf16.cpp',
-                    'utf32.cpp',
+                    'string.c',
+                    'utf8.c',
+                    'utf16.c',
+                    'utf32.c',
                 },
             },
         },

@@ -11,7 +11,7 @@ def build( _context ):
         common.SOURCE_DIR : {
             common.FG : {
                 MODULE_NAME : {
-                    'config.cpp',
+                    'config.c',
                 },
             },
         },

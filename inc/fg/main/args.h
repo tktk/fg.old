@@ -7,7 +7,7 @@
 
 FG_FUNCTION_PTR(
     const FgGLConfig * fgArgsGetGLConfig(
-        const FgArgs *
+        const FgArgs *  _THIS
     )
 )
 

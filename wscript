@@ -25,13 +25,12 @@ def _generateFlags(
         }.items()
     }
 
-_CXXFLAGS_BASES = {
-    cmdoption.CXXFLAGS_BASE_GXX : _generateFlags(
+_CFLAGS_BASES = {
+    cmdoption.CFLAGS_BASE_GCC : _generateFlags(
         common = [
             '-Wall',
-            '-fno-rtti',
             '-fvisibility=hidden',
-            '-std=c++0x',
+            '-std=c11',
         ],
         debug = [
             '-O0',
@@ -41,7 +40,7 @@ _CXXFLAGS_BASES = {
             '-O2',
         ],
     ),
-    cmdoption.CXXFLAGS_BASE_MSVC : _generateFlags(
+    cmdoption.CFLAGS_BASE_MSVC : _generateFlags(
         common = [
             '/Wall',
             '/nologo',
@@ -107,7 +106,7 @@ def options( _context ):
             default = OPTION[ cmdoption.DEFAULT ],
         )
 
-    _context.load( 'compiler_cxx' )
+    _context.load( 'compiler_c' )
 
 def _optionKey(
     _KEY
@@ -119,10 +118,10 @@ def configure( _context ):
     _configureOs( _context )
     _configureIncludes( _context )
     _configureDefines( _context )
-    _configureCxxflags( _context )
+    _configureCflags( _context )
     _configureLinkflags( _context )
 
-    _context.load( 'compiler_cxx' )
+    _context.load( 'compiler_c' )
 
 def _configureBuild( _context ):
     BUILD = _context.options.build
@@ -177,26 +176,26 @@ def _configureDefines( _context ):
 
     _context.env.MY_DEFINES = defines
 
-def _configureCxxflags( _context ):
-    CXXFLAGS_BASE = _context.options.cxxflagsbase
+def _configureCflags( _context ):
+    CFLAGS_BASE = _context.options.cflagsbase
 
     _context.msg(
-        cmdoption.CXXFLAGS_BASE,
-        CXXFLAGS_BASE,
+        cmdoption.CFLAGS_BASE,
+        CFLAGS_BASE,
     )
 
-    CXXFLAGS = _configureFlags(
+    CFLAGS = _configureFlags(
         _context,
-        CXXFLAGS_BASE,
-        _CXXFLAGS_BASES,
+        CFLAGS_BASE,
+        _CFLAGS_BASES,
     )
 
     _context.msg(
-        'cxxflags',
-        CXXFLAGS,
+        'cflags',
+        CFLAGS,
     )
 
-    _context.env.MY_CXXFLAGS = CXXFLAGS
+    _context.env.MY_CFLAGS = CFLAGS
 
 def _configureLinkflags( _context ):
     LINKFLAGS_BASE = _context.options.linkflagsbase
