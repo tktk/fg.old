@@ -1,7 +1,7 @@
 ﻿#ifndef FG_TYPE_GL_FUNCTIONS_H
 #define FG_TYPE_GL_FUNCTIONS_H
 
-#include "fg/gl/types.h"
+#include "fg/type/gl/types.h"
 
 #define FG_GL_FUNCTIONS \
     /* GL_VERSION_1_0 */ \
