@@ -31,6 +31,7 @@ void fgWindowEventHandlersFree(
 void fgWindowEventHandlersSetCloseEventHandler(
     FgWindowEventHandlers *
     , FgWindowCloseEventHandler
+    , void *
 )
 {
 }
@@ -45,6 +46,7 @@ void fgWindowEventHandlersCallCloseEventHandler(
 void fgWindowEventHandlersSetPositionEventHandler(
     FgWindowEventHandlers *
     , FgWindowPositionEventHandler
+    , void *
 )
 {
 }
@@ -59,6 +61,7 @@ void fgWindowEventHandlersCallPositionEventHandler(
 void fgWindowEventHandlersSetSizeEventHandler(
     FgWindowEventHandlers *
     , FgWindowSizeEventHandler
+    , void *
 )
 {
 }
@@ -73,6 +76,7 @@ void fgWindowEventHandlersCallSizeEventHandler(
 void fgWindowEventHandlersSetPaintEventHandler(
     FgWindowEventHandlers *
     , FgWindowPaintEventHandler
+    , void *
 )
 {
 }
@@ -87,6 +91,7 @@ void fgWindowEventHandlersCallPaintEventHandler(
 void fgWindowEventHandlersSetKeyEventHandler(
     FgWindowEventHandlers *
     , FgWindowKeyEventHandler
+    , void *
 )
 {
 }
@@ -101,6 +106,7 @@ void fgWindowEventHandlersCallKeyEventHandler(
 void fgWindowEventHandlersSetMouseButtonEventHandler(
     FgWindowEventHandlers *
     , FgWindowMouseButtonEventHandler
+    , void *
 )
 {
 }
@@ -115,6 +121,7 @@ void fgWindowEventHandlersCallMouseButtonEventHandler(
 void fgWindowEventHandlersSetMouseMotionEventHandler(
     FgWindowEventHandlers *
     , FgWindowMouseMotionEventHandler
+    , void *
 )
 {
 }

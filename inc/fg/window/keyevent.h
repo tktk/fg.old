@@ -5,6 +5,7 @@ typedef struct FgWindowKeyEvent FgWindowKeyEvent;
 
 typedef void( * FgWindowKeyEventHandler )(
     const FgWindowKeyEvent *
+    , void *
 );
 
 #include "fg/window/window.h"

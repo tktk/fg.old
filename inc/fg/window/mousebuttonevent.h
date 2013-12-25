@@ -5,6 +5,7 @@ typedef struct FgWindowMouseButtonEvent FgWindowMouseButtonEvent;
 
 typedef void( * FgWindowMouseButtonEventHandler )(
     const FgWindowMouseButtonEvent *
+    , void *
 );
 
 #include "fg/window/window.h"

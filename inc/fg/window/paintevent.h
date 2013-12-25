@@ -5,6 +5,7 @@ typedef struct FgWindowPaintEvent FgWindowPaintEvent;
 
 typedef void( * FgWindowPaintEventHandler )(
     const FgWindowPaintEvent *
+    , void *
 );
 
 #include "fg/window/window.h"

@@ -26,6 +26,7 @@ FGEXPORT void fgWindowEventHandlersFree(
 FGEXPORT void fgWindowEventHandlersSetCloseEventHandler(
     FgWindowEventHandlers *
     , FgWindowCloseEventHandler
+    , void *
 );
 
 FGEXPORT void fgWindowEventHandlersCallCloseEventHandler(
@@ -36,6 +37,7 @@ FGEXPORT void fgWindowEventHandlersCallCloseEventHandler(
 FGEXPORT void fgWindowEventHandlersSetPositionEventHandler(
     FgWindowEventHandlers *
     , FgWindowPositionEventHandler
+    , void *
 );
 
 FGEXPORT void fgWindowEventHandlersCallPositionEventHandler(
@@ -46,6 +48,7 @@ FGEXPORT void fgWindowEventHandlersCallPositionEventHandler(
 FGEXPORT void fgWindowEventHandlersSetSizeEventHandler(
     FgWindowEventHandlers *
     , FgWindowSizeEventHandler
+    , void *
 );
 
 FGEXPORT void fgWindowEventHandlersCallSizeEventHandler(
@@ -56,6 +59,7 @@ FGEXPORT void fgWindowEventHandlersCallSizeEventHandler(
 FGEXPORT void fgWindowEventHandlersSetPaintEventHandler(
     FgWindowEventHandlers *
     , FgWindowPaintEventHandler
+    , void *
 );
 
 FGEXPORT void fgWindowEventHandlersCallPaintEventHandler(
@@ -66,6 +70,7 @@ FGEXPORT void fgWindowEventHandlersCallPaintEventHandler(
 FGEXPORT void fgWindowEventHandlersSetKeyEventHandler(
     FgWindowEventHandlers *
     , FgWindowKeyEventHandler
+    , void *
 );
 
 FGEXPORT void fgWindowEventHandlersCallKeyEventHandler(
@@ -76,6 +81,7 @@ FGEXPORT void fgWindowEventHandlersCallKeyEventHandler(
 FGEXPORT void fgWindowEventHandlersSetMouseButtonEventHandler(
     FgWindowEventHandlers *
     , FgWindowMouseButtonEventHandler
+    , void *
 );
 
 FGEXPORT void fgWindowEventHandlersCallMouseButtonEventHandler(
@@ -86,6 +92,7 @@ FGEXPORT void fgWindowEventHandlersCallMouseButtonEventHandler(
 FGEXPORT void fgWindowEventHandlersSetMouseMotionEventHandler(
     FgWindowEventHandlers *
     , FgWindowMouseMotionEventHandler
+    , void *
 );
 
 FGEXPORT void fgWindowEventHandlersCallMouseMotionEventHandler(

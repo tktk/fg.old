@@ -5,6 +5,7 @@ typedef struct FgWindowSizeEvent FgWindowSizeEvent;
 
 typedef void( * FgWindowSizeEventHandler )(
     const FgWindowSizeEvent *
+    , void *
 );
 
 #include "fg/window/window.h"

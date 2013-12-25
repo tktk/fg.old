@@ -5,6 +5,7 @@ typedef struct FgWindowPositionEvent FgWindowPositionEvent;
 
 typedef void( * FgWindowPositionEventHandler )(
     const FgWindowPositionEvent *
+    , void *
 );
 
 #include "fg/window/window.h"
