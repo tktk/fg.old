@@ -1,15 +1,17 @@
 ﻿#ifndef GF_MAIN_BOOT_H
 #define GF_MAIN_BOOT_H
 
-#include "gf/main/bootconfig.h"
-#include "fg/string/utf32.h"
-#include "fg/common/primitives.h"
-#include "fg/util/import.h"
+#include "gf/def/main/bootconfig.h"
+#include "fg/def/string/utf32.h"
+#include "fg/def/primitives.h"
+#include "fg/util/import_new.h"
 
-FGEXPORT FgInt gfBoot(
-    const FgUtf32 *
-    , const FgUtf32 *
-    , const GfBootConfig *
-);
+FG_FUNCTION_NUM(
+    FgInt gfBoot(
+        const FgUtf32 *         _MAIN_FILE_NAME
+        , const FgUtf32 *       _MAIN_NAME
+        , const GfBootConfig *  _CONFIG
+    )
+)
 
 #endif  // GF_MAIN_BOOT_H
