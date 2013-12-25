@@ -1,40 +1,47 @@
 ﻿#ifndef FG_WINDOW_SIZEEVENT_H
 #define FG_WINDOW_SIZEEVENT_H
 
-typedef struct FgWindowSizeEvent FgWindowSizeEvent;
+#include "fg/type/window/sizeevent.h"
+#include "fg/type/window/window.h"
+#include "fg/type/primitives.h"
+#include "fg/util/import_new.h"
 
-typedef void( * FgWindowSizeEventHandler )(
-    const FgWindowSizeEvent *
-    , void *
-);
+FG_FUNCTION_PTR(
+    FgWindowSizeEvent * fgWindowSizeEventNew(
+        FgWindow *  _source
+        , FgInt     _width
+        , FgInt     _height
+    )
+)
 
-#include "fg/window/window.h"
-#include "fg/common/primitives.h"
+FG_FUNCTION_PTR(
+    FgWindowSizeEvent * fgWindowSizeEventClone(
+        const FgWindowSizeEvent *   _ORG
+    )
+)
 
-FGEXPORT FgWindowSizeEvent * fgWindowSizeEventNew(
-    FgWindow *
-    , FgInt
-    , FgInt
-);
+FG_FUNCTION_VOID(
+    void fgWindowSizeEventFree(
+        FgWindowSizeEvent * _this
+    )
+)
 
-FGEXPORT FgWindowSizeEvent * fgWindowSizeEventClone(
-    const FgWindowSizeEvent *
-);
+FG_FUNCTION_PTR(
+    FgWindow * fgWindowSizeEventGetSource(
+        const FgWindowSizeEvent *   _THIS
+    )
+)
 
-FGEXPORT void fgWindowSizeEventFree(
-    FgWindowSizeEvent *
-);
+FG_FUNCTION_NUM(
+    FgInt fgWindowSizeEventGetWidth(
+        const FgWindowSizeEvent *   _THIS
+    )
+)
 
-FGEXPORT FgWindow * fgWindowSizeEventGetSource(
-    const FgWindowSizeEvent *
-);
-
-FGEXPORT FgInt fgWindowSizeEventGetWidth(
-    const FgWindowSizeEvent *
-);
-
-FGEXPORT FgInt fgWindowSizeEventGetHeight(
-    const FgWindowSizeEvent *
-);
+FG_FUNCTION_NUM(
+    FgInt fgWindowSizeEventGetHeight(
+        const FgWindowSizeEvent *   _THIS
+    )
+)
 
 #endif  // FG_WINDOW_SIZEEVENT_H
