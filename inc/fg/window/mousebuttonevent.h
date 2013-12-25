@@ -4,7 +4,7 @@
 #include "fg/def/window/mousebuttonevent.h"
 #include "fg/def/window/window.h"
 #include "fg/def/primitives.h"
-#include "fg/util/import_new.h"
+#include "fg/util/import.h"
 
 FG_FUNCTION_PTR(
     FgWindowMouseButtonEvent * fgWindowMouseButtonEventNew(

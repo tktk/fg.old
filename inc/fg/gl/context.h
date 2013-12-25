@@ -3,7 +3,7 @@
 
 #include "fg/def/gl/context.h"
 #include "fg/def/gl/config.h"
-#include "fg/util/import_new.h"
+#include "fg/util/import.h"
 
 FG_FUNCTION_PTR(
     FgGLContext * fgGLContextNew(

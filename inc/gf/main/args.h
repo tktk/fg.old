@@ -3,7 +3,7 @@
 
 #include "fg/def/main/args.h"
 #include "gf/def/main/bootconfig.h"
-#include "fg/util/import_new.h"
+#include "fg/util/import.h"
 
 FG_FUNCTION_PTR(
     FgArgs * gfArgsNew(

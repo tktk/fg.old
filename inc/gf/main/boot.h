@@ -4,7 +4,7 @@
 #include "gf/def/main/bootconfig.h"
 #include "fg/def/string/utf32.h"
 #include "fg/def/primitives.h"
-#include "fg/util/import_new.h"
+#include "fg/util/import.h"
 
 FG_FUNCTION_NUM(
     FgInt gfBoot(

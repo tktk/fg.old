@@ -5,7 +5,7 @@
 #include "fg/def/gl/context.h"
 #include "fg/def/gl/functions.h"
 #include "fg/def/window/window.h"
-#include "fg/util/import_new.h"
+#include "fg/util/import.h"
 
 FG_FUNCTION_PTR(
     FgGLCurrent * fgGLCurrentGetOrNew(

@@ -6,7 +6,7 @@
 #include "fg/def/string/utf8.h"
 #include "fg/def/string/utf16.h"
 #include "fg/def/primitives.h"
-#include "fg/util/import_new.h"
+#include "fg/util/import.h"
 
 FG_FUNCTION_PTR(
     FgUtf32 * fgUtf32New(

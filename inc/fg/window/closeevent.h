@@ -3,7 +3,7 @@
 
 #include "fg/def/window/closeevent.h"
 #include "fg/def/window/window.h"
-#include "fg/util/import_new.h"
+#include "fg/util/import.h"
 
 FG_FUNCTION_PTR(
     FgWindowCloseEvent * fgWindowCloseEventNew(

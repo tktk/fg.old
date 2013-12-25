@@ -1,2 +1,2 @@
-﻿#include "fg/util/export_new.h"
+﻿#include "fg/util/export.h"
 #include "fg/string/utf16.h"

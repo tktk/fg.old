@@ -9,7 +9,7 @@
 #include "fg/def/window/keyevent.h"
 #include "fg/def/window/mousebuttonevent.h"
 #include "fg/def/window/mousemotionevent.h"
-#include "fg/util/import_new.h"
+#include "fg/util/import.h"
 
 FG_FUNCTION_PTR(
     FgWindowEventHandlers * fgWindowEventHandlersNew(

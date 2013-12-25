@@ -3,7 +3,7 @@
 
 #include "gf/def/main/library.h"
 #include "fg/def/string/utf32.h"
-#include "fg/util/import_new.h"
+#include "fg/util/import.h"
 
 FG_FUNCTION_PTR(
     GfLibrary * gfLibraryNew(
