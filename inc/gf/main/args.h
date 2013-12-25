@@ -1,16 +1,20 @@
 ﻿#ifndef GF_MAIN_ARGS_H
 #define GF_MAIN_ARGS_H
 
-#include "fg/main/args.h"
-#include "gf/main/bootconfig.h"
-#include "fg/util/import.h"
+#include "fg/def/main/args.h"
+#include "gf/def/main/bootconfig.h"
+#include "fg/util/import_new.h"
 
-FGEXPORT FgArgs * gfArgsNew(
-    const GfBootConfig *
-);
+FG_FUNCTION_PTR(
+    FgArgs * gfArgsNew(
+        const GfBootConfig *    _CONFIG
+    )
+)
 
-FGEXPORT void gfArgsFree(
-    FgArgs *
-);
+FG_FUNCTION_VOID(
+    void gfArgsFree(
+        FgArgs *    _this
+    )
+)
 
 #endif  // GF_MAIN_ARGS_H
