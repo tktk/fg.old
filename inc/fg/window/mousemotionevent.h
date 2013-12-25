@@ -1,40 +1,47 @@
 ﻿#ifndef FG_WINDOW_MOUSEMOTIONEVENT_H
 #define FG_WINDOW_MOUSEMOTIONEVENT_H
 
-typedef struct FgWindowMouseMotionEvent FgWindowMouseMotionEvent;
+#include "fg/type/window/mousemotionevent.h"
+#include "fg/type/window/window.h"
+#include "fg/type/primitives.h"
+#include "fg/util/import_new.h"
 
-typedef void( * FgWindowMouseMotionEventHandler )(
-    const FgWindowMouseMotionEvent *
-    , void *
-);
+FG_FUNCTION_PTR(
+    FgWindowMouseMotionEvent * fgWindowMouseMotionEventNew(
+        FgWindow *  _source
+        , FgInt     _x
+        , FgInt     _y
+    )
+)
 
-#include "fg/window/window.h"
-#include "fg/common/primitives.h"
+FG_FUNCTION_PTR(
+    FgWindowMouseMotionEvent * fgWindowMouseMotionEventClone(
+        const FgWindowMouseMotionEvent *    _ORG
+    )
+)
 
-FGEXPORT FgWindowMouseMotionEvent * fgWindowMouseMotionEventNew(
-    FgWindow *
-    , FgInt
-    , FgInt
-);
+FG_FUNCTION_VOID(
+    void fgWindowMouseMotionEventFree(
+        FgWindowMouseMotionEvent *  _this
+    )
+)
 
-FGEXPORT FgWindowMouseMotionEvent * fgWindowMouseMotionEventClone(
-    const FgWindowMouseMotionEvent *
-);
+FG_FUNCTION_PTR(
+    FgWindow * fgWindowMouseMotionEventGetSource(
+        const FgWindowMouseMotionEvent *    _THIS
+    )
+)
 
-FGEXPORT void fgWindowMouseMotionEventFree(
-    FgWindowMouseMotionEvent *
-);
+FG_FUNCTION_NUM(
+    FgInt fgWindowMouseMotionEventGetX(
+        const FgWindowMouseMotionEvent *    _THIS
+    )
+)
 
-FGEXPORT FgWindow * fgWindowMouseMotionEventGetSource(
-    const FgWindowMouseMotionEvent *
-);
-
-FGEXPORT FgInt fgWindowMouseMotionEventGetX(
-    const FgWindowMouseMotionEvent *
-);
-
-FGEXPORT FgInt fgWindowMouseMotionEventGetY(
-    const FgWindowMouseMotionEvent *
-);
+FG_FUNCTION_NUM(
+    FgInt fgWindowMouseMotionEventGetY(
+        const FgWindowMouseMotionEvent *    _THIS
+    )
+)
 
 #endif  // FG_WINDOW_MOUSEMOTIONEVENT_H
