@@ -1,50 +1,61 @@
 ﻿#ifndef FG_WINDOW_PAINTEVENT_H
 #define FG_WINDOW_PAINTEVENT_H
 
-typedef struct FgWindowPaintEvent FgWindowPaintEvent;
+#include "fg/type/window/paintevent.h"
+#include "fg/type/window/window.h"
+#include "fg/type/primitives.h"
+#include "fg/util/import_new.h"
 
-typedef void( * FgWindowPaintEventHandler )(
-    const FgWindowPaintEvent *
-    , void *
-);
+FG_FUNCTION_PTR(
+    FgWindowPaintEvent * fgWindowPaintEventNew(
+        FgWindow *  _source
+        , FgInt     _x
+        , FgInt     _y
+        , FgInt     _width
+        , FgInt     _height
+    )
+)
 
-#include "fg/window/window.h"
-#include "fg/common/primitives.h"
+FG_FUNCTION_PTR(
+    FgWindowPaintEvent * fgWindowPaintEventClone(
+        const FgWindowPaintEvent *  _ORG
+    )
+)
 
-FGEXPORT FgWindowPaintEvent * fgWindowPaintEventNew(
-    FgWindow *
-    , FgInt
-    , FgInt
-    , FgInt
-    , FgInt
-);
+FG_FUNCTION_VOID(
+    void fgWindowPaintEventFree(
+        FgWindowPaintEvent *    _this
+    )
+)
 
-FGEXPORT FgWindowPaintEvent * fgWindowPaintEventClone(
-    const FgWindowPaintEvent *
-);
+FG_FUNCTION_PTR(
+    FgWindow * fgWindowPaintEventGetSource(
+        const FgWindowPaintEvent *  _THIS
+    )
+)
 
-FGEXPORT void fgWindowPaintEventFree(
-    FgWindowPaintEvent *
-);
+FG_FUNCTION_NUM(
+    FgInt fgWindowPaintEventGetX(
+        const FgWindowPaintEvent *  _THIS
+    )
+)
 
-FGEXPORT FgWindow * fgWindowPaintEventGetSource(
-    const FgWindowPaintEvent *
-);
+FG_FUNCTION_NUM(
+    FgInt fgWindowPaintEventGetY(
+        const FgWindowPaintEvent *  _THIS
+    )
+)
 
-FGEXPORT FgInt fgWindowPaintEventGetX(
-    const FgWindowPaintEvent *
-);
+FG_FUNCTION_NUM(
+    FgInt fgWindowPaintEventGetWidth(
+        const FgWindowPaintEvent *  _THIS
+    )
+)
 
-FGEXPORT FgInt fgWindowPaintEventGetY(
-    const FgWindowPaintEvent *
-);
-
-FGEXPORT FgInt fgWindowPaintEventGetWidth(
-    const FgWindowPaintEvent *
-);
-
-FGEXPORT FgInt fgWindowPaintEventGetHeight(
-    const FgWindowPaintEvent *
-);
+FG_FUNCTION_NUM(
+    FgInt fgWindowPaintEventGetHeight(
+        const FgWindowPaintEvent *  _THIS
+    )
+)
 
 #endif  // FG_WINDOW_PAINTEVENT_H
