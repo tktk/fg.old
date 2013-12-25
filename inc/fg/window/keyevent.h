@@ -1,10 +1,10 @@
 ﻿#ifndef FG_WINDOW_KEYEVENT_H
 #define FG_WINDOW_KEYEVENT_H
 
-#include "fg/type/window/keyevent.h"
-#include "fg/type/window/window.h"
-#include "fg/type/window/key.h"
-#include "fg/type/primitives.h"
+#include "fg/def/window/keyevent.h"
+#include "fg/def/window/window.h"
+#include "fg/def/window/key.h"
+#include "fg/def/primitives.h"
 #include "fg/util/import_new.h"
 
 FG_FUNCTION_PTR(

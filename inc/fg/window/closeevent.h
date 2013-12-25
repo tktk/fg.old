@@ -1,8 +1,8 @@
 ﻿#ifndef FG_WINDOW_CLOSEEVENT_H
 #define FG_WINDOW_CLOSEEVENT_H
 
-#include "fg/type/window/closeevent.h"
-#include "fg/type/window/window.h"
+#include "fg/def/window/closeevent.h"
+#include "fg/def/window/window.h"
 #include "fg/util/import_new.h"
 
 FG_FUNCTION_PTR(

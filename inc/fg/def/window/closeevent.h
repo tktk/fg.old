@@ -1,5 +1,5 @@
-﻿#ifndef FG_TYPE_WINDOW_CLOSEEVENT_H
-#define FG_TYPE_WINDOW_CLOSEEVENT_H
+﻿#ifndef FG_DEF_WINDOW_CLOSEEVENT_H
+#define FG_DEF_WINDOW_CLOSEEVENT_H
 
 typedef struct FgWindowCloseEvent FgWindowCloseEvent;
 
@@ -8,4 +8,4 @@ typedef void( * FgWindowCloseEventHandler )(
     , void *
 );
 
-#endif  // FG_TYPE_WINDOW_CLOSEEVENT_H
+#endif  // FG_DEF_WINDOW_CLOSEEVENT_H

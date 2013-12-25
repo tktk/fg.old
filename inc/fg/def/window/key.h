@@ -1,5 +1,5 @@
-﻿#ifndef FG_TYPE_WINDOW_KEY_H
-#define FG_TYPE_WINDOW_KEY_H
+﻿#ifndef FG_DEF_WINDOW_KEY_H
+#define FG_DEF_WINDOW_KEY_H
 
 typedef enum FgKey
 {
@@ -208,4 +208,4 @@ typedef enum FgKey
     FG_KEY_F12,
 } FgKey;
 
-#endif  // FG_TYPE_WINDOW_KEY_H
+#endif  // FG_DEF_WINDOW_KEY_H

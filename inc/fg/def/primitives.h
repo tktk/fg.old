@@ -1,5 +1,5 @@
-﻿#ifndef FG_TYPE_COMMON_PRIMITIVES_H
-#define FG_TYPE_COMMON_PRIMITIVES_H
+﻿#ifndef FG_DEF_COMMON_PRIMITIVES_H
+#define FG_DEF_COMMON_PRIMITIVES_H
 
 #include <stddef.h>
 
@@ -28,4 +28,4 @@ typedef char FgUtf8Char;
 typedef char16_t FgUtf16Char;
 typedef char32_t FgUtf32Char;
 
-#endif  // FG_TYPE_COMMON_PRIMITIVES_H
+#endif  // FG_DEF_COMMON_PRIMITIVES_H

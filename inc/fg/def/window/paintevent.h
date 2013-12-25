@@ -1,5 +1,5 @@
-﻿#ifndef FG_TYPE_WINDOW_PAINTEVENT_H
-#define FG_TYPE_WINDOW_PAINTEVENT_H
+﻿#ifndef FG_DEF_WINDOW_PAINTEVENT_H
+#define FG_DEF_WINDOW_PAINTEVENT_H
 
 typedef struct FgWindowPaintEvent FgWindowPaintEvent;
 
@@ -8,4 +8,4 @@ typedef void( * FgWindowPaintEventHandler )(
     , void *
 );
 
-#endif  // FG_TYPE_WINDOW_PAINTEVENT_H
+#endif  // FG_DEF_WINDOW_PAINTEVENT_H

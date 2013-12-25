@@ -1,9 +1,9 @@
 ﻿#ifndef FG_WINDOW_POSITIONEVENT_H
 #define FG_WINDOW_POSITIONEVENT_H
 
-#include "fg/type/window/positionevent.h"
-#include "fg/type/window/window.h"
-#include "fg/type/primitives.h"
+#include "fg/def/window/positionevent.h"
+#include "fg/def/window/window.h"
+#include "fg/def/primitives.h"
 #include "fg/util/import_new.h"
 
 FG_FUNCTION_PTR(

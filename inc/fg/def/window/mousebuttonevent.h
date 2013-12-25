@@ -1,5 +1,5 @@
-﻿#ifndef FG_TYPE_WINDOW_MOUSEBUTTONEVENT_H
-#define FG_TYPE_WINDOW_MOUSEBUTTONEVENT_H
+﻿#ifndef FG_DEF_WINDOW_MOUSEBUTTONEVENT_H
+#define FG_DEF_WINDOW_MOUSEBUTTONEVENT_H
 
 typedef struct FgWindowMouseButtonEvent FgWindowMouseButtonEvent;
 
@@ -8,4 +8,4 @@ typedef void( * FgWindowMouseButtonEventHandler )(
     , void *
 );
 
-#endif  // FG_TYPE_WINDOW_MOUSEBUTTONEVENT_H
+#endif  // FG_DEF_WINDOW_MOUSEBUTTONEVENT_H

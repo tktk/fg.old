@@ -1,7 +1,7 @@
-﻿#ifndef FG_TYPE_GL_FUNCTIONS_H
-#define FG_TYPE_GL_FUNCTIONS_H
+﻿#ifndef FG_DEF_GL_FUNCTIONS_H
+#define FG_DEF_GL_FUNCTIONS_H
 
-#include "fg/type/gl/types.h"
+#include "fg/def/gl/types.h"
 
 #define FG_GL_FUNCTIONS \
     /* GL_VERSION_1_0 */ \
@@ -3595,4 +3595,4 @@
 \
     /* GL_WIN_specular_fog */ \
 
-#endif  // FG_TYPE_GL_FUNCTIONS_H
+#endif  // FG_DEF_GL_FUNCTIONS_H

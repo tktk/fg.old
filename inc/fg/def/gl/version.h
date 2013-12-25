@@ -1,5 +1,5 @@
-﻿#ifndef FG_TYPE_GL_VERSION_H
-#define FG_TYPE_GL_VERSION_H
+﻿#ifndef FG_DEF_GL_VERSION_H
+#define FG_DEF_GL_VERSION_H
 
 typedef enum FgGLVersion
 {
@@ -50,4 +50,4 @@ typedef enum FgGLVersion
 #undef  GL_VERSION_TYPE_POS
 } FgGLVersion;
 
-#endif  // FG_TYPE_GL_VERSION_H
+#endif  // FG_DEF_GL_VERSION_H

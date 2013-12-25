@@ -1,9 +1,9 @@
 ﻿#ifndef FG_WINDOW_SIZEEVENT_H
 #define FG_WINDOW_SIZEEVENT_H
 
-#include "fg/type/window/sizeevent.h"
-#include "fg/type/window/window.h"
-#include "fg/type/primitives.h"
+#include "fg/def/window/sizeevent.h"
+#include "fg/def/window/window.h"
+#include "fg/def/primitives.h"
 #include "fg/util/import_new.h"
 
 FG_FUNCTION_PTR(

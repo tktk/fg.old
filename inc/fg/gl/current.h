@@ -1,10 +1,10 @@
 ﻿#ifndef FG_GL_CURRENT_H
 #define FG_GL_CURRENT_H
 
-#include "fg/type/gl/current.h"
-#include "fg/type/gl/context.h"
-#include "fg/type/gl/functions.h"
-#include "fg/type/window/window.h"
+#include "fg/def/gl/current.h"
+#include "fg/def/gl/context.h"
+#include "fg/def/gl/functions.h"
+#include "fg/def/window/window.h"
 #include "fg/util/import_new.h"
 
 FG_FUNCTION_PTR(

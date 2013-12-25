@@ -1,11 +1,11 @@
 ﻿#ifndef FG_STRING_UTF16_H
 #define FG_STRING_UTF16_H
 
-#include "fg/type/string/utf16.h"
-#include "fg/type/string/string.h"
-#include "fg/type/string/utf8.h"
-#include "fg/type/string/utf32.h"
-#include "fg/type/primitives.h"
+#include "fg/def/string/utf16.h"
+#include "fg/def/string/string.h"
+#include "fg/def/string/utf8.h"
+#include "fg/def/string/utf32.h"
+#include "fg/def/primitives.h"
 #include "fg/util/import_new.h"
 
 FG_FUNCTION_PTR(

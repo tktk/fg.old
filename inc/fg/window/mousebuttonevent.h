@@ -1,9 +1,9 @@
 ﻿#ifndef FG_WINDOW_MOUSEBUTTONEVENT_H
 #define FG_WINDOW_MOUSEBUTTONEVENT_H
 
-#include "fg/type/window/mousebuttonevent.h"
-#include "fg/type/window/window.h"
-#include "fg/type/primitives.h"
+#include "fg/def/window/mousebuttonevent.h"
+#include "fg/def/window/window.h"
+#include "fg/def/primitives.h"
 #include "fg/util/import_new.h"
 
 FG_FUNCTION_PTR(

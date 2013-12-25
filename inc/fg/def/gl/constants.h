@@ -1,5 +1,5 @@
-﻿#ifndef FG_TYPE_GL_CONSTANTS_H
-#define FG_TYPE_GL_CONSTANTS_H
+﻿#ifndef FG_DEF_GL_CONSTANTS_H
+#define FG_DEF_GL_CONSTANTS_H
 
 enum {
     // GL_VERSION_1_1
@@ -5458,4 +5458,4 @@ enum {
     FG_GL_T4F_C4F_N3F_V4F = 0x2a2d,
 };
 
-#endif  // FG_TYPE_GL_CONSTANTS_H
+#endif  // FG_DEF_GL_CONSTANTS_H

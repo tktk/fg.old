@@ -1,14 +1,14 @@
 ﻿#ifndef FG_WINDOW_EVENTHANDLERS_H
 #define FG_WINDOW_EVENTHANDLERS_H
 
-#include "fg/type/window/eventhandlers.h"
-#include "fg/type/window/closeevent.h"
-#include "fg/type/window/positionevent.h"
-#include "fg/type/window/sizeevent.h"
-#include "fg/type/window/paintevent.h"
-#include "fg/type/window/keyevent.h"
-#include "fg/type/window/mousebuttonevent.h"
-#include "fg/type/window/mousemotionevent.h"
+#include "fg/def/window/eventhandlers.h"
+#include "fg/def/window/closeevent.h"
+#include "fg/def/window/positionevent.h"
+#include "fg/def/window/sizeevent.h"
+#include "fg/def/window/paintevent.h"
+#include "fg/def/window/keyevent.h"
+#include "fg/def/window/mousebuttonevent.h"
+#include "fg/def/window/mousemotionevent.h"
 #include "fg/util/import_new.h"
 
 FG_FUNCTION_PTR(

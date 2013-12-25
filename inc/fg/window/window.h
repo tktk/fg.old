@@ -1,10 +1,10 @@
 ﻿#ifndef FG_WINDOW_WINDOW_H
 #define FG_WINDOW_WINDOW_H
 
-#include "fg/type/window/window.h"
-#include "fg/type/window/eventhandlers.h"
-#include "fg/type/string/utf32.h"
-#include "fg/type/primitives.h"
+#include "fg/def/window/window.h"
+#include "fg/def/window/eventhandlers.h"
+#include "fg/def/string/utf32.h"
+#include "fg/def/primitives.h"
 #include "fg/util/import_new.h"
 
 FG_FUNCTION_PTR(

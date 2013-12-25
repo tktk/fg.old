@@ -1,5 +1,5 @@
-﻿#ifndef FG_TYPE_WINDOW_MOUSEMOTIONEVENT_H
-#define FG_TYPE_WINDOW_MOUSEMOTIONEVENT_H
+﻿#ifndef FG_DEF_WINDOW_MOUSEMOTIONEVENT_H
+#define FG_DEF_WINDOW_MOUSEMOTIONEVENT_H
 
 typedef struct FgWindowMouseMotionEvent FgWindowMouseMotionEvent;
 
@@ -8,4 +8,4 @@ typedef void( * FgWindowMouseMotionEventHandler )(
     , void *
 );
 
-#endif  // FG_TYPE_WINDOW_MOUSEMOTIONEVENT_H
+#endif  // FG_DEF_WINDOW_MOUSEMOTIONEVENT_H

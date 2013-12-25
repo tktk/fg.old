@@ -1,8 +1,8 @@
 ﻿#ifndef FG_GL_CONTEXT_H
 #define FG_GL_CONTEXT_H
 
-#include "fg/type/gl/context.h"
-#include "fg/type/gl/config.h"
+#include "fg/def/gl/context.h"
+#include "fg/def/gl/config.h"
 #include "fg/util/import_new.h"
 
 FG_FUNCTION_PTR(

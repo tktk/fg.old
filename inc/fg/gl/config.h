@@ -1,9 +1,9 @@
 ﻿#ifndef FG_GL_CONFIG_H
 #define FG_GL_CONFIG_H
 
-#include "fg/type/gl/config.h"
-#include "fg/type/gl/version.h"
-#include "fg/type/primitives.h"
+#include "fg/def/gl/config.h"
+#include "fg/def/gl/version.h"
+#include "fg/def/primitives.h"
 #include "fg/util/import_new.h"
 
 FG_FUNCTION(
