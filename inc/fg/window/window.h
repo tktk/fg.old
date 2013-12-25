@@ -1,55 +1,70 @@
 ﻿#ifndef FG_WINDOW_WINDOW_H
 #define FG_WINDOW_WINDOW_H
 
-typedef struct FgWindow FgWindow;
+#include "fg/type/window/window.h"
+#include "fg/type/window/eventhandlers.h"
+#include "fg/type/string/utf32.h"
+#include "fg/type/primitives.h"
+#include "fg/util/import_new.h"
 
-#include "fg/window/eventhandlers.h"
-#include "fg/string/utf32.h"
-#include "fg/common/primitives.h"
-#include "fg/util/import.h"
+FG_FUNCTION_PTR(
+    FgWindow * fgWindowNew(
+        const FgWindowEventHandlers *   _EVENT_HANDLERS
+        , const FgUtf32 *               _TITLE
+        , FgInt                         _x
+        , FgInt                         _y
+    )
+)
 
-FGEXPORT FgWindow * fgWindowNew(
-    const FgWindowEventHandlers *
-    , const FgUtf32 *
-    , FgInt
-    , FgInt
-);
+FG_FUNCTION_VOID(
+    void fgWindowFree(
+        FgWindow *  _this
+    )
+)
 
-FGEXPORT void fgWindowFree(
-    FgWindow *
-);
+FG_FUNCTION_VOID(
+    void fgWindowClose(
+        FgWindow *  _this
+    )
+)
 
-FGEXPORT void fgWindowClose(
-    FgWindow *
-);
+FG_FUNCTION_BOOL(
+    FgBool fgWindowSetTitle(
+        FgWindow *          _this
+        , const FgUtf32 *   _TITLE
+    )
+)
 
-FGEXPORT FgBool fgWindowSetTitle(
-    FgWindow *
-    , const FgUtf32 *
-);
+FG_FUNCTION_VOID(
+    void fgWindowSetPosition(
+        FgWindow *  _this
+        , FgInt     _x
+        , FgInt     _y
+    )
+)
 
-FGEXPORT void fgWindowSetPosition(
-    FgWindow *
-    , FgInt
-    , FgInt
-);
+FG_FUNCTION_VOID(
+    void fgWindowSetSize(
+        FgWindow *  _this
+        , FgInt     _width
+        , FgInt     _height
+    )
+)
 
-FGEXPORT void fgWindowSetSize(
-    FgWindow *
-    , FgInt
-    , FgInt
-);
+FG_FUNCTION_VOID(
+    void fgWindowRepaint(
+        FgWindow *  _this
+        , FgInt     _x
+        , FgInt     _y
+        , FgInt     _width
+        , FgInt     _height
+    )
+)
 
-FGEXPORT void fgWindowRepaint(
-    FgWindow *
-    , FgInt
-    , FgInt
-    , FgInt
-    , FgInt
-);
-
-FGEXPORT void fgWindowRepaintAll(
-    FgWindow *
-);
+FG_FUNCTION_VOID(
+    void fgWindowRepaintAll(
+        FgWindow *  _this
+    )
+)
 
 #endif  // FG_WINDOW_WINDOW_H
