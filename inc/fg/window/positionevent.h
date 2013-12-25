@@ -1,40 +1,47 @@
 ﻿#ifndef FG_WINDOW_POSITIONEVENT_H
 #define FG_WINDOW_POSITIONEVENT_H
 
-typedef struct FgWindowPositionEvent FgWindowPositionEvent;
+#include "fg/type/window/positionevent.h"
+#include "fg/type/window/window.h"
+#include "fg/type/primitives.h"
+#include "fg/util/import_new.h"
 
-typedef void( * FgWindowPositionEventHandler )(
-    const FgWindowPositionEvent *
-    , void *
-);
+FG_FUNCTION_PTR(
+    FgWindowPositionEvent * fgWindowPositionEventNew(
+        FgWindow *  _source
+        , FgInt     _x
+        , FgInt     _y
+    )
+)
 
-#include "fg/window/window.h"
-#include "fg/common/primitives.h"
+FG_FUNCTION_PTR(
+    FgWindowPositionEvent * fgWindowPositionEventClone(
+        const FgWindowPositionEvent *   _ORG
+    )
+)
 
-FGEXPORT FgWindowPositionEvent * fgWindowPositionEventNew(
-    FgWindow *
-    , FgInt
-    , FgInt
-);
+FG_FUNCTION_VOID(
+    void fgWindowPositionEventFree(
+        FgWindowPositionEvent * _this
+    )
+)
 
-FGEXPORT FgWindowPositionEvent * fgWindowPositionEventClone(
-    const FgWindowPositionEvent *
-);
+FG_FUNCTION_PTR(
+    FgWindow * fgWindowPositionEventGetSource(
+        const FgWindowPositionEvent *   _THIS
+    )
+)
 
-FGEXPORT void fgWindowPositionEventFree(
-    FgWindowPositionEvent *
-);
+FG_FUNCTION_NUM(
+    FgInt fgWindowPositionEventGetX(
+        const FgWindowPositionEvent *   _THIS
+    )
+)
 
-FGEXPORT FgWindow * fgWindowPositionEventGetSource(
-    const FgWindowPositionEvent *
-);
-
-FGEXPORT FgInt fgWindowPositionEventGetX(
-    const FgWindowPositionEvent *
-);
-
-FGEXPORT FgInt fgWindowPositionEventGetY(
-    const FgWindowPositionEvent *
-);
+FG_FUNCTION_NUM(
+    FgInt fgWindowPositionEventGetY(
+        const FgWindowPositionEvent *   _THIS
+    )
+)
 
 #endif  // FG_WINDOW_POSITIONEVENT_H
