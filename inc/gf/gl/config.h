@@ -1,125 +1,177 @@
 ﻿#ifndef GF_GL_CONFIG_H
 #define GF_GL_CONFIG_H
 
-#include "fg/gl/config.h"
-#include "fg/gl/version.h"
-#include "fg/common/primitives.h"
-#include "fg/util/import.h"
+#include "fg/def/gl/config.h"
+#include "fg/def/gl/version.h"
+#include "fg/def/primitives.h"
+#include "fg/util/import_new.h"
 
-FGEXPORT FgGLConfig * gfGLConfigNew(
-);
+FG_FUNCTION_PTR(
+    FgGLConfig * gfGLConfigNew(
+    )
+)
 
-FGEXPORT void gfGLConfigFree(
-    FgGLConfig *
-);
+FG_FUNCTION_VOID(
+    void gfGLConfigFree(
+        FgGLConfig *    _this
+    )
+)
 
-FGEXPORT void gfGLConfigSetVersion(
-    FgGLConfig *
-    , FgGLVersion
-);
+FG_FUNCTION_VOID(
+    void gfGLConfigSetVersion(
+        FgGLConfig *    _this
+        , FgGLVersion   _version
+    )
+)
 
-FGEXPORT void gfGLConfigSetDoubleBuffer(
-    FgGLConfig *
-    , FgBool
-);
+FG_FUNCTION_VOID(
+    void gfGLConfigSetDoubleBuffer(
+        FgGLConfig *    _this
+        , FgBool        _doubleBuffer
+    )
+)
 
-FGEXPORT void gfGLConfigSetAuxBuffers(
-    FgGLConfig *
-    , FgInt
-);
+FG_FUNCTION_VOID(
+    void gfGLConfigSetAuxBuffers(
+        FgGLConfig *    _this
+        , FgInt         _auxBuffers
+    )
+)
 
-FGEXPORT void gfGLConfigClearAuxBuffers(
-    FgGLConfig *
-);
+FG_FUNCTION_VOID(
+    void gfGLConfigClearAuxBuffers(
+        FgGLConfig *    _this
+    )
+)
 
-FGEXPORT void gfGLConfigSetRedBits(
-    FgGLConfig *
-    , FgInt
-);
+FG_FUNCTION_VOID(
+    void gfGLConfigSetRedBits(
+        FgGLConfig *    _this
+        , FgInt         _redBits
+    )
+)
 
-FGEXPORT void gfGLConfigClearRedBits(
-    FgGLConfig *
-);
+FG_FUNCTION_VOID(
+    void gfGLConfigClearRedBits(
+        FgGLConfig *    _this
+    )
+)
 
-FGEXPORT void gfGLConfigSetGreenBits(
-    FgGLConfig *
-    , FgInt
-);
+FG_FUNCTION_VOID(
+    void gfGLConfigSetGreenBits(
+        FgGLConfig *    _this
+        , FgInt         _greenBits
+    )
+)
 
-FGEXPORT void gfGLConfigClearGreenBits(
-    FgGLConfig *
-);
+FG_FUNCTION_VOID(
+    void gfGLConfigClearGreenBits(
+        FgGLConfig *    _this
+    )
+)
 
-FGEXPORT void gfGLConfigSetBlueBits(
-    FgGLConfig *
-    , FgInt
-);
+FG_FUNCTION_VOID(
+    void gfGLConfigSetBlueBits(
+        FgGLConfig *    _this
+        , FgInt         _blueBits
+    )
+)
 
-FGEXPORT void gfGLConfigClearBlueBits(
-    FgGLConfig *
-);
+FG_FUNCTION_VOID(
+    void gfGLConfigClearBlueBits(
+        FgGLConfig *    _this
+    )
+)
 
-FGEXPORT void gfGLConfigSetAlphaBits(
-    FgGLConfig *
-    , FgInt
-);
+FG_FUNCTION_VOID(
+    void gfGLConfigSetAlphaBits(
+        FgGLConfig *    _this
+        , FgInt         _alphaBits
+    )
+)
 
-FGEXPORT void gfGLConfigClearAlphaBits(
-    FgGLConfig *
-);
+FG_FUNCTION_VOID(
+    void gfGLConfigClearAlphaBits(
+        FgGLConfig *    _this
+    )
+)
 
-FGEXPORT void gfGLConfigSetDepthBits(
-    FgGLConfig *
-    , FgInt
-);
+FG_FUNCTION_VOID(
+    void gfGLConfigSetDepthBits(
+        FgGLConfig *    _this
+        , FgInt         _depthBits
+    )
+)
 
-FGEXPORT void gfGLConfigClearDepthBits(
-    FgGLConfig *
-);
+FG_FUNCTION_VOID(
+    void gfGLConfigClearDepthBits(
+        FgGLConfig *    _this
+    )
+)
 
-FGEXPORT void gfGLConfigSetStencilBits(
-    FgGLConfig *
-    , FgInt
-);
+FG_FUNCTION_VOID(
+    void gfGLConfigSetStencilBits(
+        FgGLConfig *    _this
+        , FgInt         _stencilBits
+    )
+)
 
-FGEXPORT void gfGLConfigClearStencilBits(
-    FgGLConfig *
-);
+FG_FUNCTION_VOID(
+    void gfGLConfigClearStencilBits(
+        FgGLConfig *    _this
+    )
+)
 
-FGEXPORT void gfGLConfigSetAccumRedBits(
-    FgGLConfig *
-    , FgInt
-);
+FG_FUNCTION_VOID(
+    void gfGLConfigSetAccumRedBits(
+        FgGLConfig *    _this
+        , FgInt         _accumRedBits
+    )
+)
 
-FGEXPORT void gfGLConfigClearAccumRedBits(
-    FgGLConfig *
-);
+FG_FUNCTION_VOID(
+    void gfGLConfigClearAccumRedBits(
+        FgGLConfig *    _this
+    )
+)
 
-FGEXPORT void gfGLConfigSetAccumGreenBits(
-    FgGLConfig *
-    , FgInt
-);
+FG_FUNCTION_VOID(
+    void gfGLConfigSetAccumGreenBits(
+        FgGLConfig *    _this
+        , FgInt         _accumGreenBits
+    )
+)
 
-FGEXPORT void gfGLConfigClearAccumGreenBits(
-    FgGLConfig *
-);
+FG_FUNCTION_VOID(
+    void gfGLConfigClearAccumGreenBits(
+        FgGLConfig *    _this
+    )
+)
 
-FGEXPORT void gfGLConfigSetAccumBlueBits(
-    FgGLConfig *
-    , FgInt
-);
+FG_FUNCTION_VOID(
+    void gfGLConfigSetAccumBlueBits(
+        FgGLConfig *    _this
+        , FgInt         _accumBlueBits
+    )
+)
 
-FGEXPORT void gfGLConfigClearAccumBlueBits(
-    FgGLConfig *
-);
+FG_FUNCTION_VOID(
+    void gfGLConfigClearAccumBlueBits(
+        FgGLConfig *    _this
+    )
+)
 
-FGEXPORT void gfGLConfigSetAccumAlphaBits(
-    FgGLConfig *
-    , FgInt
-);
+FG_FUNCTION_VOID(
+    void gfGLConfigSetAccumAlphaBits(
+        FgGLConfig *    _this
+        , FgInt         _accumAlphaBits
+    )
+)
 
-FGEXPORT void gfGLConfigClearAccumAlphaBits(
-    FgGLConfig *
-);
+FG_FUNCTION_VOID(
+    void gfGLConfigClearAccumAlphaBits(
+        FgGLConfig *    _this
+    )
+)
 
 #endif  // GF_GL_CONFIG_H
