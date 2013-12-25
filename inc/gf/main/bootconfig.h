@@ -1,256 +1,372 @@
 ﻿#ifndef GF_MAIN_BOOTCONFIG_H
 #define GF_MAIN_BOOTCONFIG_H
 
-typedef struct GfBootConfig GfBootConfig;
+#include "gf/def/main/bootconfig.h"
+#include "fg/def/gl/version.h"
+#include "fg/def/string/utf32.h"
+#include "fg/def/primitives.h"
+#include "fg/util/import_new.h"
 
-#include "fg/gl/version.h"
-#include "fg/string/utf32.h"
-#include "fg/common/primitives.h"
-#include "fg/util/import.h"
+FG_FUNCTION_PTR(
+    GfBootConfig * gfBootConfigNew(
+    )
+)
 
-FGEXPORT GfBootConfig * gfBootConfigNew(
-);
+FG_FUNCTION_VOID(
+    void gfBootConfigFree(
+        GfBootConfig *  _this
+    )
+)
 
-FGEXPORT void gfBootConfigFree(
-    GfBootConfig *
-);
+FG_FUNCTION_BOOL(
+    FgBool gfBootConfigExistsBinDir(
+        const GfBootConfig *    _THIS
+    )
+)
 
-FGEXPORT FgBool gfBootConfigExistsBinDir(
-    const GfBootConfig *
-);
+FG_FUNCTION_PTR(
+    const FgUtf32 * gfBootConfigGetBinDir(
+        const GfBootConfig *    _THIS
+    )
+)
 
-FGEXPORT const FgUtf32 * gfBootConfigGetBinDir(
-    const GfBootConfig *
-);
+FG_FUNCTION_BOOL(
+    FgBool gfBootConfigSetBinDir(
+        GfBootConfig *      _this
+        , const FgUtf32 *   _BIN_DIR
+    )
+)
 
-FGEXPORT FgBool gfBootConfigSetBinDir(
-    GfBootConfig *
-    , const FgUtf32 *
-);
+FG_FUNCTION_VOID(
+    void gfBootConfigClearBinDir(
+        GfBootConfig *  _this
+    )
+)
 
-FGEXPORT void gfBootConfigClearBinDir(
-    GfBootConfig *
-);
+FG_FUNCTION_BOOL(
+    FgBool gfBootConfigExistsGLVersion(
+        const GfBootConfig *    _THIS
+    )
+)
 
-FGEXPORT FgBool gfBootConfigExistsGLVersion(
-    const GfBootConfig *
-);
+FG_FUNCTION(
+    FgGLVersion gfBootConfigGetGLVersion(
+        const GfBootConfig *    _THIS
+    )
+    , return FG_GL_VERSION_INVALID;
+)
 
-FGEXPORT FgGLVersion gfBootConfigGetGLVersion(
-    const GfBootConfig *
-);
+FG_FUNCTION_VOID(
+    void gfBootConfigSetGLVersion(
+        GfBootConfig *  _this
+        , FgGLVersion   _version
+    )
+)
 
-FGEXPORT void gfBootConfigSetGLVersion(
-    GfBootConfig *
-    , FgGLVersion
-);
+FG_FUNCTION_VOID(
+    void gfBootConfigClearGLVersion(
+        GfBootConfig *  _this
+    )
+)
 
-FGEXPORT void gfBootConfigClearGLVersion(
-    GfBootConfig *
-);
+FG_FUNCTION_BOOL(
+    FgBool gfBootConfigExistsGLDoubleBuffer(
+        const GfBootConfig *    _THIS
+    )
+)
 
-FGEXPORT FgBool gfBootConfigExistsGLDoubleBuffer(
-    const GfBootConfig *
-);
+FG_FUNCTION_BOOL(
+    FgBool gfBootConfigGetGLDoubleBuffer(
+        const GfBootConfig *    _THIS
+    )
+)
 
-FGEXPORT FgBool gfBootConfigGetGLDoubleBuffer(
-    const GfBootConfig *
-);
+FG_FUNCTION_VOID(
+    void gfBootConfigSetGLDoubleBuffer(
+        GfBootConfig *  _this
+        , FgBool
+    )
+)
 
-FGEXPORT void gfBootConfigSetGLDoubleBuffer(
-    GfBootConfig *
-    , FgBool
-);
+FG_FUNCTION_VOID(
+    void gfBootConfigClearGLDoubleBuffer(
+        GfBootConfig *  _this
+    )
+)
 
-FGEXPORT void gfBootConfigClearGLDoubleBuffer(
-    GfBootConfig *
-);
+FG_FUNCTION_BOOL(
+    FgBool gfBootConfigExistsGLAuxBuffers(
+        const GfBootConfig *    _THIS
+    )
+)
 
-FGEXPORT FgBool gfBootConfigExistsGLAuxBuffers(
-    const GfBootConfig *
-);
+FG_FUNCTION_NUM(
+    FgInt gfBootConfigGetGLAuxBuffers(
+        const GfBootConfig *    _THIS
+    )
+)
 
-FGEXPORT FgInt gfBootConfigGetGLAuxBuffers(
-    const GfBootConfig *
-);
+FG_FUNCTION_VOID(
+    void gfBootConfigSetGLAuxBuffers(
+        GfBootConfig *  _this
+        , FgInt         _auxBuffers
+    )
+)
 
-FGEXPORT void gfBootConfigSetGLAuxBuffers(
-    GfBootConfig *
-    , FgInt
-);
+FG_FUNCTION_VOID(
+    void gfBootConfigClearGLAuxBuffers(
+        GfBootConfig *  _this
+    )
+)
 
-FGEXPORT void gfBootConfigClearGLAuxBuffers(
-    GfBootConfig *
-);
+FG_FUNCTION_BOOL(
+    FgBool gfBootConfigExistsGLRedBits(
+        const GfBootConfig *    _THIS
+    )
+)
 
-FGEXPORT FgBool gfBootConfigExistsGLRedBits(
-    const GfBootConfig *
-);
+FG_FUNCTION_NUM(
+    FgInt gfBootConfigGetGLRedBits(
+        const GfBootConfig *    _THIS
+    )
+)
 
-FGEXPORT FgInt gfBootConfigGetGLRedBits(
-    const GfBootConfig *
-);
+FG_FUNCTION_VOID(
+    void gfBootConfigSetGLRedBits(
+        GfBootConfig *  _this
+        , FgInt         _redBits
+    )
+)
 
-FGEXPORT void gfBootConfigSetGLRedBits(
-    GfBootConfig *
-    , FgInt
-);
+FG_FUNCTION_VOID(
+    void gfBootConfigClearGLRedBits(
+        GfBootConfig *  _this
+    )
+)
 
-FGEXPORT void gfBootConfigClearGLRedBits(
-    GfBootConfig *
-);
+FG_FUNCTION_BOOL(
+    FgBool gfBootConfigExistsGLGreenBits(
+        const GfBootConfig *    _THIS
+    )
+)
 
-FGEXPORT FgBool gfBootConfigExistsGLGreenBits(
-    const GfBootConfig *
-);
+FG_FUNCTION_NUM(
+    FgInt gfBootConfigGetGLGreenBits(
+        const GfBootConfig *    _THIS
+    )
+)
 
-FGEXPORT FgInt gfBootConfigGetGLGreenBits(
-    const GfBootConfig *
-);
+FG_FUNCTION_VOID(
+    void gfBootConfigSetGLGreenBits(
+        GfBootConfig *  _this
+        , FgInt         _greenBits
+    )
+)
 
-FGEXPORT void gfBootConfigSetGLGreenBits(
-    GfBootConfig *
-    , FgInt
-);
+FG_FUNCTION_VOID(
+    void gfBootConfigClearGLGreenBits(
+        GfBootConfig *  _this
+    )
+)
 
-FGEXPORT void gfBootConfigClearGLGreenBits(
-    GfBootConfig *
-);
+FG_FUNCTION_BOOL(
+    FgBool gfBootConfigExistsGLBlueBits(
+        const GfBootConfig *    _THIS
+    )
+)
 
-FGEXPORT FgBool gfBootConfigExistsGLBlueBits(
-    const GfBootConfig *
-);
+FG_FUNCTION_NUM(
+    FgInt gfBootConfigGetGLBlueBits(
+        const GfBootConfig *    _THIS
+    )
+)
 
-FGEXPORT FgInt gfBootConfigGetGLBlueBits(
-    const GfBootConfig *
-);
+FG_FUNCTION_VOID(
+    void gfBootConfigSetGLBlueBits(
+        GfBootConfig *  _this
+        , FgInt         _blueBits
+    )
+)
 
-FGEXPORT void gfBootConfigSetGLBlueBits(
-    GfBootConfig *
-    , FgInt
-);
+FG_FUNCTION_VOID(
+    void gfBootConfigClearGLBlueBits(
+        GfBootConfig *  _this
+    )
+)
 
-FGEXPORT void gfBootConfigClearGLBlueBits(
-    GfBootConfig *
-);
+FG_FUNCTION_BOOL(
+    FgBool gfBootConfigExistsGLAlphaBits(
+        const GfBootConfig *    _THIS
+    )
+)
 
-FGEXPORT FgBool gfBootConfigExistsGLAlphaBits(
-    const GfBootConfig *
-);
+FG_FUNCTION_NUM(
+    FgInt gfBootConfigGetGLAlphaBits(
+        const GfBootConfig *    _THIS
+    )
+)
 
-FGEXPORT FgInt gfBootConfigGetGLAlphaBits(
-    const GfBootConfig *
-);
+FG_FUNCTION_VOID(
+    void gfBootConfigSetGLAlphaBits(
+        GfBootConfig *  _this
+        , FgInt         _alphaBits
+    )
+)
 
-FGEXPORT void gfBootConfigSetGLAlphaBits(
-    GfBootConfig *
-    , FgInt
-);
+FG_FUNCTION_VOID(
+    void gfBootConfigClearGLAlphaBits(
+        GfBootConfig *  _this
+    )
+)
 
-FGEXPORT void gfBootConfigClearGLAlphaBits(
-    GfBootConfig *
-);
+FG_FUNCTION_BOOL(
+    FgBool gfBootConfigExistsGLDepthBits(
+        const GfBootConfig *    _THIS
+    )
+)
 
-FGEXPORT FgBool gfBootConfigExistsGLDepthBits(
-    const GfBootConfig *
-);
+FG_FUNCTION_NUM(
+    FgInt gfBootConfigGetGLDepthBits(
+        const GfBootConfig *    _THIS
+    )
+)
 
-FGEXPORT FgInt gfBootConfigGetGLDepthBits(
-    const GfBootConfig *
-);
+FG_FUNCTION_VOID(
+    void gfBootConfigSetGLDepthBits(
+        GfBootConfig *  _this
+        , FgInt         _depthBits
+    )
+)
 
-FGEXPORT void gfBootConfigSetGLDepthBits(
-    GfBootConfig *
-    , FgInt
-);
+FG_FUNCTION_VOID(
+    void gfBootConfigClearGLDepthBits(
+        GfBootConfig *  _this
+    )
+)
 
-FGEXPORT void gfBootConfigClearGLDepthBits(
-    GfBootConfig *
-);
+FG_FUNCTION_BOOL(
+    FgBool gfBootConfigExistsGLStencilBits(
+        const GfBootConfig *    _THIS
+    )
+)
 
-FGEXPORT FgBool gfBootConfigExistsGLStencilBits(
-    const GfBootConfig *
-);
+FG_FUNCTION_NUM(
+    FgInt gfBootConfigGetGLStencilBits(
+        const GfBootConfig *    _THIS
+    )
+)
 
-FGEXPORT FgInt gfBootConfigGetGLStencilBits(
-    const GfBootConfig *
-);
+FG_FUNCTION_VOID(
+    void gfBootConfigSetGLStencilBits(
+        GfBootConfig *  _this
+        , FgInt         _stencilBits
+    )
+)
 
-FGEXPORT void gfBootConfigSetGLStencilBits(
-    GfBootConfig *
-    , FgInt
-);
+FG_FUNCTION_VOID(
+    void gfBootConfigClearGLStencilBits(
+        GfBootConfig *  _this
+    )
+)
 
-FGEXPORT void gfBootConfigClearGLStencilBits(
-    GfBootConfig *
-);
+FG_FUNCTION_BOOL(
+    FgBool gfBootConfigExistsGLAccumRedBits(
+        const GfBootConfig *    _THIS
+    )
+)
 
-FGEXPORT FgBool gfBootConfigExistsGLAccumRedBits(
-    const GfBootConfig *
-);
+FG_FUNCTION_NUM(
+    FgInt gfBootConfigGetGLAccumRedBits(
+        const GfBootConfig *    _THIS
+    )
+)
 
-FGEXPORT FgInt gfBootConfigGetGLAccumRedBits(
-    const GfBootConfig *
-);
+FG_FUNCTION_VOID(
+    void gfBootConfigSetGLAccumRedBits(
+        GfBootConfig *  _this
+        , FgInt         _accumRedBits
+    )
+)
 
-FGEXPORT void gfBootConfigSetGLAccumRedBits(
-    GfBootConfig *
-    , FgInt
-);
+FG_FUNCTION_VOID(
+    void gfBootConfigClearGLAccumRedBits(
+        GfBootConfig *  _this
+    )
+)
 
-FGEXPORT void gfBootConfigClearGLAccumRedBits(
-    GfBootConfig *
-);
+FG_FUNCTION_BOOL(
+    FgBool gfBootConfigExistsGLAccumGreenBits(
+        const GfBootConfig *    _THIS
+    )
+)
 
-FGEXPORT FgBool gfBootConfigExistsGLAccumGreenBits(
-    const GfBootConfig *
-);
+FG_FUNCTION_NUM(
+    FgInt gfBootConfigGetGLAccumGreenBits(
+        const GfBootConfig *    _THIS
+    )
+)
 
-FGEXPORT FgInt gfBootConfigGetGLAccumGreenBits(
-    const GfBootConfig *
-);
+FG_FUNCTION_VOID(
+    void gfBootConfigSetGLAccumGreenBits(
+        GfBootConfig *  _this
+        , FgInt         _accumGreenBits
+    )
+)
 
-FGEXPORT void gfBootConfigSetGLAccumGreenBits(
-    GfBootConfig *
-    , FgInt
-);
+FG_FUNCTION_VOID(
+    void gfBootConfigClearGLAccumGreenBits(
+        GfBootConfig *  _this
+    )
+)
 
-FGEXPORT void gfBootConfigClearGLAccumGreenBits(
-    GfBootConfig *
-);
+FG_FUNCTION_BOOL(
+    FgBool gfBootConfigExistsGLAccumBlueBits(
+        const GfBootConfig *    _THIS
+    )
+)
 
-FGEXPORT FgBool gfBootConfigExistsGLAccumBlueBits(
-    const GfBootConfig *
-);
+FG_FUNCTION_NUM(
+    FgInt gfBootConfigGetGLAccumBlueBits(
+        const GfBootConfig *    _THIS
+    )
+)
 
-FGEXPORT FgInt gfBootConfigGetGLAccumBlueBits(
-    const GfBootConfig *
-);
+FG_FUNCTION_VOID(
+    void gfBootConfigSetGLAccumBlueBits(
+        GfBootConfig *  _this
+        , FgInt         _accumBlueBits
+    )
+)
 
-FGEXPORT void gfBootConfigSetGLAccumBlueBits(
-    GfBootConfig *
-    , FgInt
-);
+FG_FUNCTION_VOID(
+    void gfBootConfigClearGLAccumBlueBits(
+        GfBootConfig *  _this
+    )
+)
 
-FGEXPORT void gfBootConfigClearGLAccumBlueBits(
-    GfBootConfig *
-);
+FG_FUNCTION_BOOL(
+    FgBool gfBootConfigExistsGLAccumAlphaBits(
+        const GfBootConfig *    _THIS
+    )
+)
 
-FGEXPORT FgBool gfBootConfigExistsGLAccumAlphaBits(
-    const GfBootConfig *
-);
+FG_FUNCTION_NUM(
+    FgInt gfBootConfigGetGLAccumAlphaBits(
+        const GfBootConfig *    _THIS
+    )
+)
 
-FGEXPORT FgInt gfBootConfigGetGLAccumAlphaBits(
-    const GfBootConfig *
-);
+FG_FUNCTION_VOID(
+    void gfBootConfigSetGLAccumAlphaBits(
+        GfBootConfig *  _this
+        , FgInt         _accumAlphaBits
+    )
+)
 
-FGEXPORT void gfBootConfigSetGLAccumAlphaBits(
-    GfBootConfig *
-    , FgInt
-);
-
-FGEXPORT void gfBootConfigClearGLAccumAlphaBits(
-    GfBootConfig *
-);
+FG_FUNCTION_VOID(
+    void gfBootConfigClearGLAccumAlphaBits(
+        GfBootConfig *  _this
+    )
+)
 
 #endif  // GF_MAIN_BOOTCONFIG_H
