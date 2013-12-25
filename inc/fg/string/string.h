@@ -1,197 +1,272 @@
 ﻿#ifndef FG_STRING_STRING_H
 #define FG_STRING_STRING_H
 
-typedef struct FgString FgString;
+#include "fg/type/string/string.h"
+#include "fg/type/string/utf8.h"
+#include "fg/type/string/utf16.h"
+#include "fg/type/string/utf32.h"
+#include "fg/type/primitives.h"
+#include "fg/util/import_new.h"
 
-#include "fg/string/utf8.h"
-#include "fg/string/utf16.h"
-#include "fg/string/utf32.h"
-#include "fg/common/primitives.h"
-#include "fg/util/import.h"
+FG_FUNCTION_PTR(
+    FgString * fgStringNew(
+    )
+)
 
-FGEXPORT FgString * fgStringNew(
-);
+FG_FUNCTION_PTR(
+    FgString * fgStringClone(
+        const FgString *    _ORG
+    )
+)
 
-FGEXPORT FgString * fgStringClone(
-    const FgString *
-);
+FG_FUNCTION_PTR(
+    FgString * fgStringNewFromCharPtr(
+        const FgStringChar *    _FROM
+    )
+)
 
-FGEXPORT FgString * fgStringNewFromCharPtr(
-    const FgStringChar *
-);
+FG_FUNCTION_PTR(
+    FgString * fgStringNewFromCharPtrWithLength(
+        const FgStringChar *    _FROM
+        , FgSize                _length
+    )
+)
 
-FGEXPORT FgString * fgStringNewFromCharPtrWithLength(
-    const FgStringChar *
-    , FgSize
-);
+FG_FUNCTION_PTR(
+    FgString * fgStringNewFromUtf8(
+        const FgUtf8 *  _FROM
+    )
+)
 
-FGEXPORT FgString * fgStringNewFromUtf8(
-    const FgUtf8 *
-);
+FG_FUNCTION_PTR(
+    FgString * fgStringNewFromUtf8CharPtr(
+        const FgUtf8Char *  _FROM
+    )
+)
 
-FGEXPORT FgString * fgStringNewFromUtf8CharPtr(
-    const FgUtf8Char *
-);
+FG_FUNCTION_PTR(
+    FgString * fgStringNewFromUtf8CharPtrWithLength(
+        const FgUtf8Char *  _FROM
+        , FgSize            _length
+    )
+)
 
-FGEXPORT FgString * fgStringNewFromUtf8CharPtrWithLength(
-    const FgUtf8Char *
-    , FgSize
-);
+FG_FUNCTION_PTR(
+    FgString * fgStringNewFromUtf16(
+        const FgUtf16 * _FROM
+    )
+)
 
-FGEXPORT FgString * fgStringNewFromUtf16(
-    const FgUtf16 *
-);
+FG_FUNCTION_PTR(
+    FgString * fgStringNewFromUtf16CharPtr(
+        const FgUtf16Char * _FROM
+    )
+)
 
-FGEXPORT FgString * fgStringNewFromUtf16CharPtr(
-    const FgUtf16Char *
-);
+FG_FUNCTION_PTR(
+    FgString * fgStringNewFromUtf16CharPtrWithLength(
+        const FgUtf16Char * _FROM
+        , FgSize            _length
+    )
+)
 
-FGEXPORT FgString * fgStringNewFromUtf16CharPtrWithLength(
-    const FgUtf16Char *
-    , FgSize
-);
+FG_FUNCTION_PTR(
+    FgString * fgStringNewFromUtf32(
+        const FgUtf32 * _FROM
+    )
+)
 
-FGEXPORT FgString * fgStringNewFromUtf32(
-    const FgUtf32 *
-);
+FG_FUNCTION_PTR(
+    FgString * fgStringNewFromUtf32CharPtr(
+        const FgUtf32Char * _FROM
+    )
+)
 
-FGEXPORT FgString * fgStringNewFromUtf32CharPtr(
-    const FgUtf32Char *
-);
+FG_FUNCTION_PTR(
+    FgString * fgStringNewFromUtf32CharPtrWithLength(
+        const FgUtf32Char * _FROM
+        , FgSize            _length
+    )
+)
 
-FGEXPORT FgString * fgStringNewFromUtf32CharPtrWithLength(
-    const FgUtf32Char *
-    , FgSize
-);
+FG_FUNCTION_VOID(
+    void fgStringFree(
+        FgString *  _this
+    )
+)
 
-FGEXPORT void fgStringFree(
-    FgString *
-);
+FG_FUNCTION_PTR(
+    const FgStringChar * fgStringGetPtr(
+        const FgString *    _THIS
+    )
+)
 
-FGEXPORT const FgStringChar * fgStringGetPtr(
-    const FgString *
-);
+FG_FUNCTION_NUM(
+    FgSize fgStringGetLength(
+        const FgString *    _THIS
+    )
+)
 
-FGEXPORT FgSize fgStringGetLength(
-    const FgString *
-);
+FG_FUNCTION_BOOL(
+    FgBool fgStringAssign(
+        FgString *          _this
+        , const FgString *  _FROM
+    )
+)
 
-FGEXPORT FgBool fgStringAssign(
-    FgString *
-    , const FgString *
-);
+FG_FUNCTION_BOOL(
+    FgBool fgStringAssignFromCharPtr(
+        FgString *              _this
+        , const FgStringChar *  _FROM
+    )
+)
 
-FGEXPORT FgBool fgStringAssignFromCharPtr(
-    FgString *
-    , const FgStringChar *
-);
+FG_FUNCTION_BOOL(
+    FgBool fgStringAssignFromCharPtrWithLength(
+        FgString *              _this
+        , const FgStringChar *  _FROM
+        , FgSize                _length
+    )
+)
 
-FGEXPORT FgBool fgStringAssignFromCharPtrWithLength(
-    FgString *
-    , const FgStringChar *
-    , FgSize
-);
+FG_FUNCTION_BOOL(
+    FgBool fgStringAssignFromUtf8(
+        FgString *          _this
+        , const FgUtf8 *    _FROM
+    )
+)
 
-FGEXPORT FgBool fgStringAssignFromUtf8(
-    FgString *
-    , const FgUtf8 *
-);
+FG_FUNCTION_BOOL(
+    FgBool fgStringAssignFromUtf8CharPtr(
+        FgString *              _this
+        , const FgUtf8Char *    _FROM
+    )
+)
 
-FGEXPORT FgBool fgStringAssignFromUtf8CharPtr(
-    FgString *
-    , const FgUtf8Char *
-);
+FG_FUNCTION_BOOL(
+    FgBool fgStringAssignFromUtf8CharPtrWithLength(
+        FgString *              _this
+        , const FgUtf8Char *    _FROM
+        , FgSize                _length
+    )
+)
 
-FGEXPORT FgBool fgStringAssignFromUtf8CharPtrWithLength(
-    FgString *
-    , const FgUtf8Char *
-    , FgSize
-);
+FG_FUNCTION_BOOL(
+    FgBool fgStringAssignFromUtf16(
+        FgString *          _this
+        , const FgUtf16 *   _FROM
+    )
+)
 
-FGEXPORT FgBool fgStringAssignFromUtf16(
-    FgString *
-    , const FgUtf16 *
-);
+FG_FUNCTION_BOOL(
+    FgBool fgStringAssignFromUtf16CharPtr(
+        FgString *              _this
+        , const FgUtf16Char *   _FROM
+    )
+)
 
-FGEXPORT FgBool fgStringAssignFromUtf16CharPtr(
-    FgString *
-    , const FgUtf16Char *
-);
+FG_FUNCTION_BOOL(
+    FgBool fgStringAssignFromUtf16CharPtrWithLength(
+        FgString *              _this
+        , const FgUtf16Char *   _FROM
+        , FgSize                _length
+    )
+)
 
-FGEXPORT FgBool fgStringAssignFromUtf16CharPtrWithLength(
-    FgString *
-    , const FgUtf16Char *
-    , FgSize
-);
+FG_FUNCTION_BOOL(
+    FgBool fgStringAssignFromUtf32(
+        FgString *          _this
+        , const FgUtf32 *   _FROM
+    )
+)
 
-FGEXPORT FgBool fgStringAssignFromUtf32(
-    FgString *
-    , const FgUtf32 *
-);
+FG_FUNCTION_BOOL(
+    FgBool fgStringAssignFromUtf32CharPtr(
+        FgString *              _this
+        , const FgUtf32Char *   _FROM
+    )
+)
 
-FGEXPORT FgBool fgStringAssignFromUtf32CharPtr(
-    FgString *
-    , const FgUtf32Char *
-);
+FG_FUNCTION_BOOL(
+    FgBool fgStringAssignFromUtf32CharPtrWithLength(
+        FgString *              _this
+        , const FgUtf32Char *   _FROM
+        , FgSize                _length
+    )
+)
 
-FGEXPORT FgBool fgStringAssignFromUtf32CharPtrWithLength(
-    FgString *
-    , const FgUtf32Char *
-    , FgSize
-);
+FG_FUNCTION_BOOL(
+    FgBool fgStringToInt(
+        FgInt *             _to
+        , const FgString *  _FROM
+    )
+)
 
-FGEXPORT FgBool fgStringToInt(
-    FgInt *
-    , const FgString *
-);
+FG_FUNCTION_BOOL(
+    FgBool fgStringToIntWithBase(
+        FgInt *             _to
+        , const FgString *  _FROM
+        , FgInt             _base
+    )
+)
 
-FGEXPORT FgBool fgStringToIntWithBase(
-    FgInt *
-    , const FgString *
-    , FgInt
-);
+FG_FUNCTION_BOOL(
+    FgBool fgStringToUInt(
+        FgUInt *            _to
+        , const FgString *  _FROM
+    )
+)
 
-FGEXPORT FgBool fgStringToUInt(
-    FgUInt *
-    , const FgString *
-);
+FG_FUNCTION_BOOL(
+    FgBool fgStringToUIntWithBase(
+        FgUInt *            _to
+        , const FgString *  _FROM
+        , FgInt             _base
+    )
+)
 
-FGEXPORT FgBool fgStringToUIntWithBase(
-    FgUInt *
-    , const FgString *
-    , FgInt
-);
+FG_FUNCTION_BOOL(
+    FgBool fgStringToLong(
+        FgLong *            _to
+        , const FgString *  _FROM
+    )
+)
 
-FGEXPORT FgBool fgStringToLong(
-    FgLong *
-    , const FgString *
-);
+FG_FUNCTION_BOOL(
+    FgBool fgStringToLongWithBase(
+        FgLong *            _to
+        , const FgString *  _FROM
+        , FgInt             _base
+    )
+)
 
-FGEXPORT FgBool fgStringToLongWithBase(
-    FgLong *
-    , const FgString *
-    , FgInt
-);
+FG_FUNCTION_BOOL(
+    FgBool fgStringToULong(
+        FgULong *           _to
+        , const FgString *  _FROM
+    )
+)
 
-FGEXPORT FgBool fgStringToULong(
-    FgULong *
-    , const FgString *
-);
+FG_FUNCTION_BOOL(
+    FgBool fgStringToULongWithBase(
+        FgULong *           _to
+        , const FgString *  _FROM
+        , FgInt             _base
+    )
+)
 
-FGEXPORT FgBool fgStringToULongWithBase(
-    FgULong *
-    , const FgString *
-    , FgInt
-);
+FG_FUNCTION_BOOL(
+    FgBool fgStringToFloat(
+        FgFloat *           _to
+        , const FgString *  _FROM
+    )
+)
 
-FGEXPORT FgBool fgStringToFloat(
-    FgFloat *
-    , const FgString *
-);
-
-FGEXPORT FgBool fgStringToDouble(
-    FgDouble *
-    , const FgString *
-);
+FG_FUNCTION_BOOL(
+    FgBool fgStringToDouble(
+        FgDouble *          _to
+        , const FgString *  _FROM
+    )
+)
 
 #endif  // FG_STRING_STRING_H
