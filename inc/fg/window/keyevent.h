@@ -1,46 +1,56 @@
 ﻿#ifndef FG_WINDOW_KEYEVENT_H
 #define FG_WINDOW_KEYEVENT_H
 
-typedef struct FgWindowKeyEvent FgWindowKeyEvent;
+#include "fg/type/window/keyevent.h"
+#include "fg/type/window/window.h"
+#include "fg/type/window/key.h"
+#include "fg/type/primitives.h"
+#include "fg/util/import_new.h"
 
-typedef void( * FgWindowKeyEventHandler )(
-    const FgWindowKeyEvent *
-    , void *
-);
+FG_FUNCTION_PTR(
+    FgWindowKeyEvent * fgWindowKeyEventNew(
+        FgWindow *              _source
+        , FgKey                 _key
+        , const FgUtf32Char *   _CHAR_PTR
+        , FgBool                _pressed
+    )
+)
 
-#include "fg/window/window.h"
-#include "fg/window/key.h"
-#include "fg/common/primitives.h"
+FG_FUNCTION_PTR(
+    FgWindowKeyEvent * fgWindowKeyEventClone(
+        const FgWindowKeyEvent *    _ORG
+    )
+)
 
-FGEXPORT FgWindowKeyEvent * fgWindowKeyEventNew(
-    FgWindow *
-    , FgKey
-    , const FgUtf32Char *
-    , FgBool
-);
+FG_FUNCTION_VOID(
+    void fgWindowKeyEventFree(
+        FgWindowKeyEvent *  _this
+    )
+)
 
-FGEXPORT FgWindowKeyEvent * fgWindowKeyEventClone(
-    const FgWindowKeyEvent *
-);
+FG_FUNCTION_PTR(
+    FgWindow * fgWindowKeyEventGetSource(
+        const FgWindowKeyEvent *    _THIS
+    )
+)
 
-FGEXPORT void fgWindowKeyEventFree(
-    FgWindowKeyEvent *
-);
+FG_FUNCTION(
+    FgKey fgWindowKeyEventGetKey(
+        const FgWindowKeyEvent *    _THIS
+    )
+    , return FG_KEY_INVALID;
+)
 
-FGEXPORT FgWindow * fgWindowKeyEventGetSource(
-    const FgWindowKeyEvent *
-);
+FG_FUNCTION_PTR(
+    const FgUtf32Char * fgWindowKeyEventGetCharPtr(
+        const FgWindowKeyEvent *    _THIS
+    )
+)
 
-FGEXPORT FgKey fgWindowKeyEventGetKey(
-    const FgWindowKeyEvent *
-);
-
-FGEXPORT const FgUtf32Char * fgWindowKeyEventGetCharPtr(
-    const FgWindowKeyEvent *
-);
-
-FGEXPORT FgBool fgWindowKeyEventGetPressed(
-    const FgWindowKeyEvent *
-);
+FG_FUNCTION_BOOL(
+    FgBool fgWindowKeyEventGetPressed(
+        const FgWindowKeyEvent *    _THIS
+    )
+)
 
 #endif  // FG_WINDOW_KEYEVENT_H

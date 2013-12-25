@@ -7,6 +7,8 @@
 
 #   define FG_DECLARE_FUNCTION( _func ) \
         FGEXPORT _func;
+#   define FG_FUNCTION( _func, _dummyProc ) \
+        FG_DECLARE_FUNCTION( _func )
 #   define FG_FUNCTION_VOID( _func ) \
         FG_DECLARE_FUNCTION( _func )
 #   define FG_FUNCTION_NUM( _func ) \
