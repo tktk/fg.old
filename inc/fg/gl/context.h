@@ -1,17 +1,20 @@
 ﻿#ifndef FG_GL_CONTEXT_H
 #define FG_GL_CONTEXT_H
 
-typedef struct FgGLContext FgGLContext;
+#include "fg/type/gl/context.h"
+#include "fg/type/gl/config.h"
+#include "fg/util/import_new.h"
 
-#include "fg/gl/config.h"
-#include "fg/util/import.h"
+FG_FUNCTION_PTR(
+    FgGLContext * fgGLContextNew(
+        const FgGLConfig *  _CONFIG
+    )
+)
 
-FGEXPORT FgGLContext * fgGLContextNew(
-    const FgGLConfig *
-);
-
-FGEXPORT void fgGLContextFree(
-    FgGLContext *
-);
+FG_FUNCTION_VOID(
+    void fgGLContextFree(
+        FgGLContext *   _this
+    )
+)
 
 #endif  // FG_GL_CONTEXT_H
