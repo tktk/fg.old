@@ -1,4 +1,5 @@
-﻿#ifndef FG_COMMON_PRIMITIVES_H
+﻿//REMOVEME
+#ifndef FG_COMMON_PRIMITIVES_H
 #define FG_COMMON_PRIMITIVES_H
 
 #include <stddef.h>

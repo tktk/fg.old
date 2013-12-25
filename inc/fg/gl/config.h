@@ -1,106 +1,154 @@
 ﻿#ifndef FG_GL_CONFIG_H
 #define FG_GL_CONFIG_H
 
-typedef struct FgGLConfig FgGLConfig;
+#include "fg/type/gl/config.h"
+#include "fg/type/gl/version.h"
+#include "fg/type/primitives.h"
+#include "fg/util/import_new.h"
 
-#include "fg/gl/version.h"
-#include "fg/common/primitives.h"
-#include "fg/util/import.h"
+FG_FUNCTION(
+    FgGLVersion fgGLConfigGetVersion(
+        const FgGLConfig *  _THIS
+    )
+    , return FG_GL_VERSION_INVALID;
+)
 
-FGEXPORT FgGLVersion fgGLConfigGetVersion(
-    const FgGLConfig *
-);
+FG_FUNCTION_BOOL(
+    FgBool fgGLConfigGetDoubleBuffer(
+        const FgGLConfig *  _THIS
+    )
+)
 
-FGEXPORT FgBool fgGLConfigGetDoubleBuffer(
-    const FgGLConfig *
-);
+FG_FUNCTION_BOOL(
+    FgBool fgGLConfigExistsAuxBuffers(
+        const FgGLConfig *  _THIS
+    )
+)
 
-FGEXPORT FgBool fgGLConfigExistsAuxBuffers(
-    const FgGLConfig *
-);
+FG_FUNCTION_NUM(
+    FgInt fgGLConfigGetAuxBuffers(
+        const FgGLConfig *  _THIS
+    )
+)
 
-FGEXPORT FgInt fgGLConfigGetAuxBuffers(
-    const FgGLConfig *
-);
+FG_FUNCTION_BOOL(
+    FgBool fgGLConfigExistsRedBits(
+        const FgGLConfig *  _THIS
+    )
+)
 
-FGEXPORT FgBool fgGLConfigExistsRedBits(
-    const FgGLConfig *
-);
+FG_FUNCTION_NUM(
+    FgInt fgGLConfigGetRedBits(
+        const FgGLConfig *  _THIS
+    )
+)
 
-FGEXPORT FgInt fgGLConfigGetRedBits(
-    const FgGLConfig *
-);
+FG_FUNCTION_BOOL(
+    FgBool fgGLConfigExistsGreenBits(
+        const FgGLConfig *  _THIS
+    )
+)
 
-FGEXPORT FgBool fgGLConfigExistsGreenBits(
-    const FgGLConfig *
-);
+FG_FUNCTION_NUM(
+    FgInt fgGLConfigGetGreenBits(
+        const FgGLConfig *  _THIS
+    )
+)
 
-FGEXPORT FgInt fgGLConfigGetGreenBits(
-    const FgGLConfig *
-);
+FG_FUNCTION_BOOL(
+    FgBool fgGLConfigExistsBlueBits(
+        const FgGLConfig *  _THIS
+    )
+)
 
-FGEXPORT FgBool fgGLConfigExistsBlueBits(
-    const FgGLConfig *
-);
+FG_FUNCTION_NUM(
+    FgInt fgGLConfigGetBlueBits(
+        const FgGLConfig *  _THIS
+    )
+)
 
-FGEXPORT FgInt fgGLConfigGetBlueBits(
-    const FgGLConfig *
-);
+FG_FUNCTION_BOOL(
+    FgBool fgGLConfigExistsAlphaBits(
+        const FgGLConfig *  _THIS
+    )
+)
 
-FGEXPORT FgBool fgGLConfigExistsAlphaBits(
-    const FgGLConfig *
-);
+FG_FUNCTION_NUM(
+    FgInt fgGLConfigGetAlphaBits(
+        const FgGLConfig *  _THIS
+    )
+)
 
-FGEXPORT FgInt fgGLConfigGetAlphaBits(
-    const FgGLConfig *
-);
+FG_FUNCTION_BOOL(
+    FgBool fgGLConfigExistsDepthBits(
+        const FgGLConfig *  _THIS
+    )
+)
 
-FGEXPORT FgBool fgGLConfigExistsDepthBits(
-    const FgGLConfig *
-);
+FG_FUNCTION_NUM(
+    FgInt fgGLConfigGetDepthBits(
+        const FgGLConfig *  _THIS
+    )
+)
 
-FGEXPORT FgInt fgGLConfigGetDepthBits(
-    const FgGLConfig *
-);
+FG_FUNCTION_BOOL(
+    FgBool fgGLConfigExistsStencilBits(
+        const FgGLConfig *  _THIS
+    )
+)
 
-FGEXPORT FgBool fgGLConfigExistsStencilBits(
-    const FgGLConfig *
-);
+FG_FUNCTION_NUM(
+    FgInt fgGLConfigGetStencilBits(
+        const FgGLConfig *  _THIS
+    )
+)
 
-FGEXPORT FgInt fgGLConfigGetStencilBits(
-    const FgGLConfig *
-);
+FG_FUNCTION_BOOL(
+    FgBool fgGLConfigExistsAccumRedBits(
+        const FgGLConfig *  _THIS
+    )
+)
 
-FGEXPORT FgBool fgGLConfigExistsAccumRedBits(
-    const FgGLConfig *
-);
+FG_FUNCTION_NUM(
+    FgInt fgGLConfigGetAccumRedBits(
+        const FgGLConfig *  _THIS
+    )
+)
 
-FGEXPORT FgInt fgGLConfigGetAccumRedBits(
-    const FgGLConfig *
-);
+FG_FUNCTION_BOOL(
+    FgBool fgGLConfigExistsAccumGreenBits(
+        const FgGLConfig *  _THIS
+    )
+)
 
-FGEXPORT FgBool fgGLConfigExistsAccumGreenBits(
-    const FgGLConfig *
-);
+FG_FUNCTION_NUM(
+    FgInt fgGLConfigGetAccumGreenBits(
+        const FgGLConfig *  _THIS
+    )
+)
 
-FGEXPORT FgInt fgGLConfigGetAccumGreenBits(
-    const FgGLConfig *
-);
+FG_FUNCTION_BOOL(
+    FgBool fgGLConfigExistsAccumBlueBits(
+        const FgGLConfig *  _THIS
+    )
+)
 
-FGEXPORT FgBool fgGLConfigExistsAccumBlueBits(
-    const FgGLConfig *
-);
+FG_FUNCTION_NUM(
+    FgInt fgGLConfigGetAccumBlueBits(
+        const FgGLConfig *  _THIS
+    )
+)
 
-FGEXPORT FgInt fgGLConfigGetAccumBlueBits(
-    const FgGLConfig *
-);
+FG_FUNCTION_BOOL(
+    FgBool fgGLConfigExistsAccumAlphaBits(
+        const FgGLConfig *  _THIS
+    )
+)
 
-FGEXPORT FgBool fgGLConfigExistsAccumAlphaBits(
-    const FgGLConfig *
-);
-
-FGEXPORT FgInt fgGLConfigGetAccumAlphaBits(
-    const FgGLConfig *
-);
+FG_FUNCTION_NUM(
+    FgInt fgGLConfigGetAccumAlphaBits(
+        const FgGLConfig *  _THIS
+    )
+)
 
 #endif  // FG_GL_CONFIG_H
