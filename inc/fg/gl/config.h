@@ -3,7 +3,7 @@
 
 #include "fg/def/gl/config.h"
 #include "fg/def/gl/version.h"
-#include "fg/def/primitives.h"
+#include "fg/def/common/primitives.h"
 #include "fg/util/import.h"
 
 FG_FUNCTION(

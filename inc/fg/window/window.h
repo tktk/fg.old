@@ -4,7 +4,7 @@
 #include "fg/def/window/window.h"
 #include "fg/def/window/eventhandlers.h"
 #include "fg/def/string/utf32.h"
-#include "fg/def/primitives.h"
+#include "fg/def/common/primitives.h"
 #include "fg/util/import.h"
 
 FG_FUNCTION_PTR(

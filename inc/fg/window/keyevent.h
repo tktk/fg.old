@@ -4,7 +4,7 @@
 #include "fg/def/window/keyevent.h"
 #include "fg/def/window/window.h"
 #include "fg/def/window/key.h"
-#include "fg/def/primitives.h"
+#include "fg/def/common/primitives.h"
 #include "fg/util/import.h"
 
 FG_FUNCTION_PTR(
