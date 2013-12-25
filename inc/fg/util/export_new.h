@@ -3,6 +3,8 @@
 
 #include "fg/util/export.h"
 
+#include <stddef.h>
+
 #define FG_DEFINE_FUNCTION( _func, _proc ) \
     FGEXPORT _func { _proc };
 #define FG_FUNCTION_VOID( _func ) \

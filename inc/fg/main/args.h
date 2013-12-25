@@ -1,13 +1,14 @@
 ﻿#ifndef FG_MAIN_ARGS_H
 #define FG_MAIN_ARGS_H
 
-typedef struct FgArgs FgArgs;
+#include "fg/type/main/args.h"
+#include "fg/type/gl/config.h"
+#include "fg/util/import_new.h"
 
-#include "fg/gl/config.h"
-#include "fg/util/import.h"
-
-FGEXPORT const FgGLConfig * fgArgsGetGLConfig(
-    const FgArgs *
-);
+FG_FUNCTION_PTR(
+    const FgGLConfig * fgArgsGetGLConfig(
+        const FgArgs *
+    )
+)
 
 #endif  // FG_MAIN_ARGS_H
