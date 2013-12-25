@@ -1,30 +1,32 @@
 ﻿#ifndef FG_WINDOW_CLOSEEVENT_H
 #define FG_WINDOW_CLOSEEVENT_H
 
-typedef struct FgWindowCloseEvent FgWindowCloseEvent;
+#include "fg/type/window/closeevent.h"
+#include "fg/type/window/window.h"
+#include "fg/util/import_new.h"
 
-typedef void( * FgWindowCloseEventHandler )(
-    const FgWindowCloseEvent *
-    , void *
-);
+FG_FUNCTION_PTR(
+    FgWindowCloseEvent * fgWindowCloseEventNew(
+        FgWindow *  _source
+    )
+)
 
-#include "fg/window/window.h"
-#include "fg/util/import.h"
+FG_FUNCTION_PTR(
+    FgWindowCloseEvent * fgWindowCloseEventClone(
+        const FgWindowCloseEvent *  _ORG
+    )
+)
 
-FGEXPORT FgWindowCloseEvent * fgWindowCloseEventNew(
-    FgWindow *
-);
+FG_FUNCTION_VOID(
+    void fgWindowCloseEventFree(
+        FgWindowCloseEvent *    _this
+    )
+)
 
-FGEXPORT FgWindowCloseEvent * fgWindowCloseEventClone(
-    const FgWindowCloseEvent *
-);
-
-FGEXPORT void fgWindowCloseEventFree(
-    FgWindowCloseEvent *
-);
-
-FGEXPORT FgWindow * fgWindowCloseEventGetSource(
-    const FgWindowCloseEvent *
-);
+FG_FUNCTION_PTR(
+    FgWindow * fgWindowCloseEventGetSource(
+        const FgWindowCloseEvent *  _THIS
+    )
+)
 
 #endif  // FG_WINDOW_CLOSEEVENT_H
