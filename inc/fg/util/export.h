@@ -1,33 +1,19 @@
 ﻿#ifndef FG_UTIL_EXPORT_H
 #define FG_UTIL_EXPORT_H
 
-#include <stddef.h>
+#include "fg/util/exportcommon.h"
 
-#ifndef __cplusplus
-#   define FGEXTERN extern
-#else   // __cplusplus
-#   define FGEXTERN extern "C"
-#endif  // __cplusplus
-
-#if defined OS_LINUX    // OS
-#   define FGEXPORT FGEXTERN __attribute__( ( visibility( "default" ) ) )
-#elif defined OS_WINDOWS    // OS
-#   define FGEXPORT FGEXTERN __declspec( dllexport )
-#else   // OS
-#   error 未対応のOS
-#endif  // OS
-
-#define FG_DEFINE_FUNCTION( _func, _dummyProc ) \
-    FGEXPORT _func { _dummyProc };
+#define FG_DECLARE_FUNCTION( _func ) \
+    FGEXPORT _func;
 #define FG_FUNCTION( _func, _dummyProc ) \
-    FG_DEFINE_FUNCTION( _func, _dummyProc )
+    FG_DECLARE_FUNCTION( _func )
 #define FG_FUNCTION_VOID( _func ) \
-    FG_DEFINE_FUNCTION( _func, )
+    FG_DECLARE_FUNCTION( _func )
 #define FG_FUNCTION_NUM( _func ) \
-    FG_DEFINE_FUNCTION( _func, return 0; )
+    FG_DECLARE_FUNCTION( _func )
 #define FG_FUNCTION_PTR( _func ) \
-    FG_DEFINE_FUNCTION( _func, return NULL; )
+    FG_DECLARE_FUNCTION( _func )
 #define FG_FUNCTION_BOOL( _func ) \
-    FG_DEFINE_FUNCTION( _func, return false; )
+    FG_DECLARE_FUNCTION( _func )
 
 #endif  // FG_UTIL_EXPORT_H

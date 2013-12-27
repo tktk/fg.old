@@ -1,13 +1,9 @@
 ﻿#ifndef FG_UTIL_IMPORT_H
 #define FG_UTIL_IMPORT_H
 
-#ifndef FGEXPORT
+#include "fg/util/extern.h"
 
-#   ifndef __cplusplus
-#       define FGEXTERN extern
-#   else   // __cplusplus
-#       define FGEXTERN extern "C"
-#   endif  // __cplusplus
+#ifndef FGEXPORT
 
 #   if defined OS_LINUX // OS
 #       define FGEXPORT FGEXTERN
