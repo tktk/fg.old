@@ -3,12 +3,12 @@
 
 #include "fg/util/extern.h"
 
-#if defined OS_LINUX    // OS
+#if defined COMPILER_TYPE_CLANG // COMPILER_TYPE
 #   define FGEXPORT FGEXTERN __attribute__( ( visibility( "default" ) ) )
-#elif defined OS_WINDOWS    // OS
+#elif defined COMPILER_TYPE_MSVC    // COMPILER_TYPE
 #   define FGEXPORT FGEXTERN __declspec( dllexport )
-#else   // OS
-#   error 未対応のOS
-#endif  // OS
+#else   // COMPILER_TYPE
+#   error 未対応のコンパイラタイプ
+#endif  // COMPILER_TYPE
 
 #endif  // FG_UTIL_EXPORTCOMMON_H

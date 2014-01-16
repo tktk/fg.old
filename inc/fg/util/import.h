@@ -5,13 +5,13 @@
 
 #ifndef FGEXPORT
 
-#   if defined OS_LINUX // OS
+#   if defined COMPILER_TYPE_CLANG  // COMPILER_TYPE
 #       define FGEXPORT FGEXTERN
-#   elif defined OS_WINDOWS // OS
+#   elif defined COMPILER_TYPE_MSVC // COMPILER_TYPE
 #       define FGEXPORT FGEXTERN __declspec( dllimport )
-#   else   // OS
-#       error 未対応のOS
-#   endif  // OS
+#   else   // COMPILER_TYPE
+#       error 未対応のコンパイラタイプ
+#   endif  // COMPILER_TYPE
 
 #   define FG_DECLARE_FUNCTION( _func ) \
         FGEXPORT _func;

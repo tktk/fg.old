@@ -2,69 +2,55 @@
 
 from waflib import Utils
 
-OS = 'os'
-OS_LINUX = 'linux'
-OS_WINDOWS = 'windows'
-
 BUILD = 'build'
 BUILD_DEBUG = 'debug'
 BUILD_RELEASE = 'release'
 
-CFLAGS_BASE = 'cflagsbase'
-CFLAGS_BASE_GCC = 'gcc'
-CFLAGS_BASE_MSVC = 'msvc'
+COMPILER_TYPE = 'compilertype'
+COMPILER_TYPE_CLANG = 'clang'
+COMPILER_TYPE_MSVC = 'msvc'
 
-LINKFLAGS_BASE = 'linkflagsbase'
-LINKFLAGS_BASE_LD = 'ld'
-LINKFLAGS_BASE_MSVC = 'msvc'
+LINKER_TYPE = 'linkertype'
+LINKER_TYPE_LD = 'ld'
+LINKER_TYPE_MSVC = 'msvc'
 
 TYPE = 'type'
 _TYPE_STRING = 'string'
 
 DEFAULT = 'default'
 
-def _defaultOs():
-    PLATFORM = Utils.unversioned_sys_platform()
-
-    if PLATFORM == 'linux':
-        return OS_LINUX
-    elif PLATFORM == 'win32':
-        return OS_WINDOWS
-
-    return None
+_OS_LINUX = 'linux'
+_OS_WINDOWS = 'win32'
 
 def _defaultValue( _VALUES ):
-    OS = _defaultOs()
+    PLATFORM = Utils.unversioned_sys_platform()
 
-    if OS in _VALUES:
-        return _VALUES[ OS ]
+    if PLATFORM in _VALUES:
+        return _VALUES[ PLATFORM ]
 
     return None
 
 OPTIONS = {
-    OS : {
-        TYPE : _TYPE_STRING,
-        DEFAULT : _defaultOs(),
-    },
     BUILD : {
         TYPE : _TYPE_STRING,
         DEFAULT : BUILD_DEBUG,
     },
-    CFLAGS_BASE : {
+
+    COMPILER_TYPE : {
         TYPE : _TYPE_STRING,
         DEFAULT : _defaultValue(
             {
-                OS_LINUX : CFLAGS_BASE_GCC,
-                OS_WINDOWS : CFLAGS_BASE_MSVC,
+                _OS_LINUX : COMPILER_TYPE_CLANG,
+                _OS_WINDOWS : COMPILER_TYPE_MSVC,
             },
         ),
     },
-    LINKFLAGS_BASE : {
+    LINKER_TYPE : {
         TYPE : _TYPE_STRING,
         DEFAULT : _defaultValue(
             {
-                OS_LINUX : LINKFLAGS_BASE_LD,
-                OS_WINDOWS : LINKFLAGS_BASE_MSVC,
+                _OS_LINUX : LINKER_TYPE_LD,
+                _OS_WINDOWS : LINKER_TYPE_MSVC,
             },
         ),
     },

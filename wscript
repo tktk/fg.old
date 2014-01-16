@@ -26,7 +26,7 @@ def _generateFlags(
     }
 
 _CFLAGS_BASES = {
-    cmdoption.CFLAGS_BASE_GCC : _generateFlags(
+    cmdoption.COMPILER_TYPE_CLANG : _generateFlags(
         common = [
             '-Wall',
             '-fvisibility=hidden',
@@ -40,7 +40,7 @@ _CFLAGS_BASES = {
             '-O2',
         ],
     ),
-    cmdoption.CFLAGS_BASE_MSVC : _generateFlags(
+    cmdoption.COMPILER_TYPE_MSVC : _generateFlags(
         common = [
             '/Wall',
             '/nologo',
@@ -60,12 +60,12 @@ _CFLAGS_BASES = {
 }
 
 _LINKFLAGS_BASES = {
-    cmdoption.LINKFLAGS_BASE_LD : _generateFlags(
+    cmdoption.LINKER_TYPE_LD : _generateFlags(
         debug = [
             '-rdynamic',
         ],
     ),
-    cmdoption.LINKFLAGS_BASE_MSVC : _generateFlags(
+    cmdoption.LINKER_TYPE_MSVC : _generateFlags(
         common = [
             '/NOLOGO',
             '/DYNAMICBASE',
@@ -80,17 +80,17 @@ _LINKFLAGS_BASES = {
 }
 
 _DEFINES = {
-    cmdoption.OS_LINUX : _generateFlags(
+    cmdoption.COMPILER_TYPE_CLANG : _generateFlags(
         common = [
-            'OS_LINUX',
+            'COMPILER_TYPE_CLANG',
         ],
         debug = [
             'DEBUG',
         ],
     ),
-    cmdoption.OS_WINDOWS : _generateFlags(
+    cmdoption.COMPILER_TYPE_MSVC : _generateFlags(
         common = [
-            'OS_WINDOWS',
+            'COMPILER_TYPE_MSVC',
         ],
         debug = [
             'DEBUG',
@@ -115,11 +115,12 @@ def _optionKey(
 
 def configure( _context ):
     _configureBuild( _context )
-    _configureOs( _context )
-    _configureIncludes( _context )
-    _configureDefines( _context )
+    _configureCompiler( _context )
+    _configureLinker( _context )
     _configureCflags( _context )
     _configureLinkflags( _context )
+    _configureIncludes( _context )
+    _configureDefines( _context )
 
     _context.load( 'compiler_c' )
 
@@ -138,55 +139,30 @@ def _configureBuild( _context ):
 
     _context.fatal( '非対応のビルドタイプ' )
 
-def _configureOs( _context ):
-    OS = _context.options.os
+def _configureCompiler( _context ):
+    COMPILER_TYPE = _context.options.compilertype
 
     _context.msg(
-        cmdoption.OS,
-        OS,
+        cmdoption.COMPILER_TYPE,
+        COMPILER_TYPE,
     )
 
-    _context.env.MY_OS = OS
+    _context.env.MY_COMPILER_TYPE = COMPILER_TYPE
 
-def _configureIncludes( _context ):
-    INCLUDES = [
-        os.path.abspath( i )
-        for i in [
-            common.INCLUDE_DIR,
-        ]
-    ]
+def _configureLinker( _context ):
+    LINKER_TYPE = _context.options.linkertype
 
     _context.msg(
-        'includes',
-        INCLUDES,
+        cmdoption.LINKER_TYPE,
+        LINKER_TYPE,
     )
 
-    _context.env.MY_INCLUDES = INCLUDES
-
-def _configureDefines( _context ):
-    defines = None
-    OS = _context.env.MY_OS
-    if OS in _DEFINES:
-        defines = _DEFINES[ OS ][ _context.options.build ]
-
-    _context.msg(
-        'defines',
-        defines,
-    )
-
-    _context.env.MY_DEFINES = defines
+    _context.env.MY_LINKER_TYPE = LINKER_TYPE
 
 def _configureCflags( _context ):
-    CFLAGS_BASE = _context.options.cflagsbase
-
-    _context.msg(
-        cmdoption.CFLAGS_BASE,
-        CFLAGS_BASE,
-    )
-
     CFLAGS = _configureFlags(
         _context,
-        CFLAGS_BASE,
+        _context.env.MY_COMPILER_TYPE,
         _CFLAGS_BASES,
     )
 
@@ -198,16 +174,9 @@ def _configureCflags( _context ):
     _context.env.MY_CFLAGS = CFLAGS
 
 def _configureLinkflags( _context ):
-    LINKFLAGS_BASE = _context.options.linkflagsbase
-
-    _context.msg(
-        cmdoption.LINKFLAGS_BASE,
-        LINKFLAGS_BASE,
-    )
-
     LINKFLAGS = _configureFlags(
         _context,
-        LINKFLAGS_BASE,
+        _context.env.MY_LINKER_TYPE,
         _LINKFLAGS_BASES,
     )
 
@@ -228,6 +197,45 @@ def _configureFlags(
         flags = _FLAGS_BASES[ _FLAGS_BASE ][ _context.options.build ]
 
     return flags
+
+def _configureFlags(
+    _context,
+    _FLAGS_BASE,
+    _FLAGS_BASES,
+):
+    flags = None
+    if _FLAGS_BASE in _FLAGS_BASES:
+        flags = _FLAGS_BASES[ _FLAGS_BASE ][ _context.options.build ]
+
+    return flags
+
+def _configureIncludes( _context ):
+    INCLUDES = [
+        os.path.abspath( i )
+        for i in [
+            common.INCLUDE_DIR,
+        ]
+    ]
+
+    _context.msg(
+        'includes',
+        INCLUDES,
+    )
+
+    _context.env.MY_INCLUDES = INCLUDES
+
+def _configureDefines( _context ):
+    defines = None
+    COMPILER_TYPE = _context.env.MY_COMPILER_TYPE
+    if COMPILER_TYPE in _DEFINES:
+        defines = _DEFINES[ COMPILER_TYPE ][ _context.options.build ]
+
+    _context.msg(
+        'defines',
+        defines,
+    )
+
+    _context.env.MY_DEFINES = defines
 
 def build( _context ):
     fg.build( _context )
